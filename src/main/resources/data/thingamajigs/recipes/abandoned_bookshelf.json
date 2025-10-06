@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "thingamajigs:blank_bookshelf"
+    },
+    {
+      "item": "minecraft:cobweb"
+    }
+  ],
+  "result": {
+    "item": "thingamajigs:abandoned_bookshelf",
+    "count": 1
+  }
+}
+

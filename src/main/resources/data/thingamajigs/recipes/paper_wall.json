@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "tag": "minecraft:planks"
+    },
+    {
+      "item": "thingamajigs:home_component"
+    }
+  ],
+  "result": {
+    "item": "thingamajigs:paper_wall",
+    "count": 6
+  }
+}

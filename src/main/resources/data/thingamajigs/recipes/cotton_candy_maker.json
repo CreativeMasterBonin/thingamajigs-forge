@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:smoker"
+    },
+    {
+      "item": "thingamajigs:carnival_awning"
+    },
+    {
+      "item": "minecraft:pink_dye"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "result": {
+    "item": "thingamajigs:cotton_candy_maker",
+    "count": 1
+  }
+}
+

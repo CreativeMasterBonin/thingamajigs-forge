@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "pdp",
+    "ppp",
+    " s "
+  ],
+  "key": {
+    "s": {
+      "item": "minecraft:stick"
+    },
+    "d": {
+      "item": "minecraft:brown_dye"
+    },
+    "p": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "thingamajigs:brown_roadway_sign",
+    "count": 3
+  }
+}

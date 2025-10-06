@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "thingamajigs:arcade_component"
+  },
+  "result": "thingamajigs:gumball_machine",
+  "count": 1
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": {
+    "item": "thingamajigs:technology_component"
+  },
+  "base": {
+    "item": "minecraft:potion"
+  },
+  "addition": {
+    "item": "minecraft:crafting_table"
+  },
+  "result": {
+    "item": "thingamajigs:science_component",
+    "count": 4
+  }
+}
+

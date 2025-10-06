@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": {
+    "item": "thingamajigs:technology_component"
+  },
+  "base": {
+    "item": "thingamajigs:science_component"
+  },
+  "addition": {
+    "item": "minecraft:golden_apple"
+  },
+  "result": {
+    "item": "thingamajigs:health_component",
+    "count": 8
+  }
+}
+

@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "get_powder": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:gunpowder"
+            ]
+          }
+        ]
+      }
+    },
+    "get_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "thingamajigs:powder_keg"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "get_powder",
+      "get_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "thingamajigs:powder_keg"
+    ]
+  },
+  "sends_telemetry_event": false
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "thingamajigs:misc_component"
+    },
+    {
+      "item": "minecraft:red_concrete"
+    },
+    {
+      "item": "thingamajigs:poop"
+    }
+  ],
+  "result": {
+    "item": "thingamajigs:biohazard_bin",
+    "count": 3
+  }
+}
+

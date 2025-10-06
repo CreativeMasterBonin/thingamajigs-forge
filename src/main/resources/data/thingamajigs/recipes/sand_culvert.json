@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "minecraft:sand"
+  },
+  "result": "thingamajigs:sand_culvert",
+  "count": 4
+}

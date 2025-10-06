@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "thingamajigs:circle_sign_glob"
+  },
+  "result": "thingamajigs:no_stopping",
+  "count": 1
+}

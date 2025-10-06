@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ppp",
+    "ppp",
+    "ppp"
+  ],
+  "key": {
+    "p": {
+      "item": "thingamajigs:poop"
+    }
+  },
+  "result": {
+    "item": "thingamajigs:full_poop_block",
+    "count": 1
+  }
+}
+

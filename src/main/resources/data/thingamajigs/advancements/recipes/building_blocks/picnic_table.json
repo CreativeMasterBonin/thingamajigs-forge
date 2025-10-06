@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "get_planks": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:oak_planks"
+            ]
+          }
+        ]
+      }
+    },
+    "get_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "thingamajigs:picnic_table"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "get_planks",
+      "get_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "thingamajigs:picnic_table"
+    ]
+  },
+  "sends_telemetry_event": false
+}

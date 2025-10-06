@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "thingamajigs:block/restaurant_trash_can",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "thingamajigs:block/restaurant_trash_can"
+    },
+    "facing=south": {
+      "model": "thingamajigs:block/restaurant_trash_can",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "thingamajigs:block/restaurant_trash_can",
+      "y": 270
+    }
+  }
+}

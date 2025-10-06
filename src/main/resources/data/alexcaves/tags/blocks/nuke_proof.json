@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "thingamajigs:not_quite",
+    "thingamajigs:colored_glass",
+    "thingamajigs:reinforced_glass",
+    "thingamajigs:charged_volcanic_stone",
+    "thingamajigs:lockable_door",
+    "thingamajigs:cinder_block",
+    "thingamajigs:cinder_block_slab",
+    "thingamajigs:cinder_block_small"
+  ]
+}

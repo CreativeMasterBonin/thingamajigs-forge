@@ -1,0 +1,9 @@
+{
+  "parent": "thingamajigs:bases/sign",
+  "textures": {
+    "front": "thingamajigs:block/signs/symbol_signs/tram_rail_sign",
+    "back": "thingamajigs:block/signs/back/back_diamond",
+    "pole": "minecraft:block/blast_furnace_side",
+    "particle": "minecraft:block/blast_furnace_side"
+  }
+}

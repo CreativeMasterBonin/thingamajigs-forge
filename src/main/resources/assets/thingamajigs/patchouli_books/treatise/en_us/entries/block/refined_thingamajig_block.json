@@ -1,0 +1,19 @@
+{
+    "name": "entry.thingamajigs.refined_thing_block",
+    "icon": "thingamajigs:refined_thingamajig_block",
+    "category": "thingamajigs:block",
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "The ultimate refined block, forged for the world. Believed to be the best form of storage of many thingamajigs. Has many benefits, including being immune to most destructive types and has the looks to boot."
+        },
+        {
+            "type": "patchouli:text",
+            "text": "We recommend using iron tools to break this block for you to be able to move it from place to place. It may be hefty, but that doesn't mean it should be hard to break!"
+        },
+        {
+            "type": "patchouli:text",
+            "text": "Not only is this block the best, it's a gift to all those who supported the mod. Well done! :D ;)"
+        }
+    ]
+}

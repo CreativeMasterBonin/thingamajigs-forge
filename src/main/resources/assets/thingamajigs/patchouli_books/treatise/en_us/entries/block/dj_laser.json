@@ -1,0 +1,63 @@
+{
+    "name": "DJ Laser Light",
+    "icon": "thingamajigs:laser_light",
+    "category": "thingamajigs:block",
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "The DJ Laser Light Block creates visible beams that fire out from the center of the block(ish). It's quite nice looking even against particles and water. Maybe perhaps some fancy shaders will make it look better (or worse)!"
+        },
+        {
+            "type": "patchouli:image",
+            "images": ["thingamajigs:textures/gui/lsrlt.png"],
+            "title": "The Laser Beam Itself",
+            "border": false
+        },
+        {
+            "type": "patchouli:text",
+            "text": "The DJ Laser was created a while ago. Since it's introduction to music concerts and more, its been a hit. Not so much for phone camera users. Thingamajigs doesn't guarantee phone safety either."
+        },
+        {
+            "type": "patchouli:text",
+            "text": "The laser ui is on the next page. It shows a bit of what it has to offer."
+        },
+        {
+            "type": "patchouli:image",
+            "images": ["thingamajigs:textures/gui/lasertut.png"],
+            "title": "Settings UI",
+            "border": false
+        },
+        {
+            "type": "patchouli:text",
+            "text": "The top left buttons control the 'height' of the laser. This can go up to 32, a reasonable viewing distance for entities. Along with that, the 'vert ang' buttons control Vertical Angle (the initial angle, not the oscillating one)."
+        },
+        {
+            "type": "patchouli:text",
+            "text": "The middle left buttons control the colors. Since MC uses RGBA-ish colors, this is what the color labels display as well (alpha is always about half, less than a beacon transparency, with a glow filter effect used by entities). Each RGB value can be between 0.0-1.0."
+        },
+        {
+            "type": "patchouli:text",
+            "text": "The top right corner buttons control the custom colors and random colors, respectively. Custom Colors allows the user to define the color of all lasers using the RGB buttons. If random colors is on, the user setting is still saved (not overwritten), but random RGB values are used instead."
+        },
+        {
+            "type": "patchouli:text",
+            "text": "The buttons labels 'Osc' and 'VOsc' control the oscillation amount for horizontal and vertical movement. These require you to see the laser so point your player sort of away from the point where you can see the laser. Do this with some other button adjustments too."
+        },
+        {
+            "type": "patchouli:text",
+            "text": "The buttons labels 'MM' and 'VMM' control the oscillation multiplier. This is the intensity of the oscillation angular movement that Osc and VOsc control."
+        },
+        {
+            "type": "patchouli:text",
+            "text": "The buttons labeled 'Size' control the total laser size. This size makes the laser bigger than the block or almost invisible, to a size more correct for a laser."
+        },
+        {
+            "type": "patchouli:text",
+            "text": "Finally, the buttons labeled 'Count' control the amount of lasers that show for the current laser block. These can be a least 1 or at most 7. Party like there's no tomorrow, but be responsible."
+        },
+        {
+            "type": "patchouli:text",
+            "text": "Now that you know the buttons, look at the image again. See all that text and info? That is the value display. It shows all values and when they've hit minimum/maximum values. Currently the light mode value isn't changeable but does exist and is functionally shown as such."
+        }
+    ]
+}

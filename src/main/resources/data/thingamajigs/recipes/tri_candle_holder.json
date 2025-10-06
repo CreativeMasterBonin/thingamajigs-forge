@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ccc",
+    "iii",
+    " g "
+  ],
+  "key": {
+    "c": {
+      "item": "minecraft:candle"
+    },
+    "i": {
+      "item": "minecraft:gold_ingot"
+    },
+    "g": {
+      "item": "minecraft:gold_nugget"
+    }
+  },
+  "result": {
+    "item": "thingamajigs:tri_candle_holder",
+    "count": 1
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "thingamajigs:square_sign_glob"
+  },
+  "result": "thingamajigs:reserved_disabled_parking_alt",
+  "count": 1
+}

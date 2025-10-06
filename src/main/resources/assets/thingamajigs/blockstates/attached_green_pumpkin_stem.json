@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "thingamajigs:bases/base_attached_stem",
+      "y": 180
+    },
+    "facing=north": {
+      "model": "thingamajigs:bases/base_attached_stem",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "thingamajigs:bases/base_attached_stem",
+      "y": 270
+    },
+    "facing=west": {
+      "model": "thingamajigs:bases/base_attached_stem"
+    }
+  }
+}

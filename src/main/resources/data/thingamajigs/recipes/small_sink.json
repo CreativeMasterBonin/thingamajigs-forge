@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "cbc",
+    "ccc"
+  ],
+  "key": {
+    "c": {
+      "item": "minecraft:white_concrete"
+    },
+    "b": {
+      "item": "minecraft:water_bucket"
+    }
+  },
+  "result": {
+    "item": "thingamajigs:small_sink",
+    "count": 1
+  }
+}
+

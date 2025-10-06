@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "door_glob_recipes",
+  "ingredients": [
+    {
+      "item": "thingamajigs:door_glob"
+    },
+    {
+      "item": "minecraft:red_dye"
+    },
+    {
+      "item": "minecraft:sweet_berries"
+    }
+  ],
+  "result": {
+    "item": "thingamajigs:festive_door",
+    "count": 3
+  }
+}

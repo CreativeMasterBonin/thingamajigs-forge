@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:piston"
+    },
+    {
+      "tag": "minecraft:stairs"
+    },
+    {
+      "item": "thingamajigs:rubber"
+    }
+  ],
+  "result": {
+    "item": "thingamajigs:escalator",
+    "count": 5
+  }
+}

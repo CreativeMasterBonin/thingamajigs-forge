@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "door_glob_recipes",
+  "ingredients": [
+    {
+      "item": "thingamajigs:door_glob"
+    },
+    {
+      "item": "minecraft:iron_door"
+    },
+    {
+      "item": "minecraft:note_block"
+    }
+  ],
+  "result": {
+    "item": "thingamajigs:alarmed_door",
+    "count": 3
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:barrel"
+    },
+    {
+      "item": "minecraft:iron_nugget"
+    },
+    {
+      "item": "thingamajigs:misc_component"
+    }
+  ],
+  "result": {
+    "item": "thingamajigs:barrel_keg",
+    "count": 1
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "sandwiches",
+  "pattern": [
+    "bbb",
+    "aaa",
+    "bbb"
+  ],
+  "key": {
+    "a": {
+      "item": "thingamajigs:thingamajig_glob"
+    },
+    "b": {
+      "item": "minecraft:bread"
+    }
+  },
+  "result": {
+    "item": "thingamajigs:glob_sandwich",
+    "count": 1
+  }
+}

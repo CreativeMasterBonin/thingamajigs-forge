@@ -1,0 +1,41 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:sculk_sensor"
+    },
+    "title": {
+      "translate": "advancement.thingamajigs.avoid_detection.title"
+    },
+    "description": {
+      "translate": "advancement.thingamajigs.avoid_detection.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "thingamajigs:get_checkerboard_wool",
+  "criteria": {
+    "avoid_vibration": {
+      "trigger": "minecraft:avoid_vibration",
+      "conditions": {
+        "player": {
+          "stepping_on": {
+            "block": {
+              "blocks": [
+                "thingamajigs:checkerboard_wool"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "avoid_vibration"
+    ]
+  ],
+  "sends_telemetry_event": false
+}
+

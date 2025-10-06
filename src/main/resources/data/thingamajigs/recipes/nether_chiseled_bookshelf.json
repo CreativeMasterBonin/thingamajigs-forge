@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": {
+      "item": "minecraft:netherrack"
+    },
+    "q": {
+      "item": "minecraft:nether_brick_slab"
+    }
+  },
+  "pattern": [
+    "###",
+    "qqq",
+    "###"
+  ],
+  "result": {
+    "item": "thingamajigs:nether_chiseled_bookshelf"
+  }
+}

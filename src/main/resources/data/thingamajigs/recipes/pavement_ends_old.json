@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "thingamajigs:sign_glob"
+  },
+  "result": "thingamajigs:pavement_ends_old",
+  "count": 1
+}

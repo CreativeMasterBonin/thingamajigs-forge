@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "thingamajigs:technology_component"
+    },
+    {
+      "item": "thingamajigs:shopping_cart"
+    },
+    {
+      "item": "minecraft:red_concrete"
+    }
+  ],
+  "result": {
+    "item": "thingamajigs:shopping_cart_mover",
+    "count": 1
+  }
+}
+

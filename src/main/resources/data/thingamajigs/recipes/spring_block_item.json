@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "iii",
+    "bsb",
+    "ici"
+  ],
+  "key": {
+    "i": {
+      "item": "minecraft:iron_ingot"
+    },
+    "b": {
+      "item": "minecraft:iron_bars"
+    },
+    "s": {
+      "item": "minecraft:slime_ball"
+    },
+    "c": {
+      "item": "thingamajigs:misc_component"
+    }
+  },
+  "result": {
+    "item": "thingamajigs:spring_block_item",
+    "count": 1
+  }
+}

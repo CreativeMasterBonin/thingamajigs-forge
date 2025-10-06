@@ -1,0 +1,8 @@
+{
+  "parent": "thingamajigs:bases/base_marked_asphalt",
+  "textures": {
+    "marking": "thingamajigs:block/marked_road/mediocre_py",
+    "age": "thingamajigs:block/mediocre_asphalt"
+  }
+}
+

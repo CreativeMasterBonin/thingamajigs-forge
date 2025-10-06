@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ab",
+    "ba"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:white_concrete"
+    },
+    "b": {
+      "item": "minecraft:polished_diorite"
+    }
+  },
+  "result": {
+    "item": "thingamajigs:store_flooring",
+    "count": 4
+  }
+}

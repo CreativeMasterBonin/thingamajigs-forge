@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "thingamajigs:block/sidewalk_new_sectioned",
+    "up": "thingamajigs:block/sidewalk_new_sectioned",
+    "north": "thingamajigs:block/slabs/sidewalk_slab_side",
+    "south": "thingamajigs:block/slabs/sidewalk_slab_side",
+    "east": "thingamajigs:block/slabs/sidewalk_slab_side",
+    "west": "thingamajigs:block/slabs/sidewalk_slab_side",
+    "particle": "thingamajigs:block/sidewalk_new_sectioned"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:rail"
+    },
+    {
+      "item": "thingamajigs:mini_component"
+    }
+  ],
+  "result": {
+    "item": "thingamajigs:mini_rail",
+    "count": 16
+  }
+}
+

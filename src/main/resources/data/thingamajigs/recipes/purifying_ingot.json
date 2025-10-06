@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "nnn",
+    "nnn",
+    "nnn"
+  ],
+  "key": {
+    "n": {
+      "item": "thingamajigs:purifying_nugget"
+    }
+  },
+  "result": {
+    "item": "thingamajigs:purifying_ingot",
+    "count": 1
+  }
+}

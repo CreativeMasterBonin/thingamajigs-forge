@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "lll",
+    "lll",
+    "p p"
+  ],
+  "key": {
+    "l": {
+      "item": "thingamajigs:love_seat_wool"
+    },
+    "p": {
+      "tag": "minecraft:planks"
+    }
+  },
+  "result": {
+    "item": "thingamajigs:love_couch",
+    "count": 1
+  }
+}
+

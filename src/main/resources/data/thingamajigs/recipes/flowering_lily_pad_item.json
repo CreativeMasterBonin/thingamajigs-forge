@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "minecraft:lily_pad"
+  },
+  "result": "thingamajigs:flowering_lily_pad_item",
+  "count": 1
+}

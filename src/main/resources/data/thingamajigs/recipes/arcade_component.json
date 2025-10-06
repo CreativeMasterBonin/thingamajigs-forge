@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": {
+    "item": "thingamajigs:sports_component"
+  },
+  "base": {
+    "item": "thingamajigs:technology_component"
+  },
+  "addition": {
+    "item": "thingamajigs:misc_component"
+  },
+  "result": {
+    "item": "thingamajigs:arcade_component",
+    "count": 3
+  }
+}
+

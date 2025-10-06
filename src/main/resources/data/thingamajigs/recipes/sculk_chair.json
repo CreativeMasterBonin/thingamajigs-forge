@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:sculk"
+    },
+    {
+      "item": "thingamajigs:stone_chair"
+    }
+  ],
+  "result": {
+    "item": "thingamajigs:sculk_chair",
+    "count": 1
+  }
+}

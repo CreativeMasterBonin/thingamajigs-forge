@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 2,
+  "ingredient": {
+    "item": "thingamajigs:cracked_sidewalk"
+  },
+  "result": "thingamajigs:cracked_sidewalk_slab"
+}

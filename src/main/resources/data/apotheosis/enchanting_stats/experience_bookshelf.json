@@ -1,0 +1,12 @@
+{
+	"block": "thingamajigs:experience_bookshelf",
+	"stats": {
+		"maxEterna": 8.0,
+        "maxArcana": 10.0,
+		"eterna": 4.0,
+		"quanta": -1.0,
+		"arcana": 5.0,
+        "rectification": 2,
+        "clues": 0
+	}
+}

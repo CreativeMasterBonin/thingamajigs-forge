@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "thingamajigs:ice_cream_maker"
+    },
+    {
+      "item": "thingamajigs:infrastructure_component"
+    },
+    {
+      "item": "thingamajigs:technology_component"
+    }
+  ],
+  "result": {
+    "item": "thingamajigs:icecream_machine",
+    "count": 1
+  }
+}
+

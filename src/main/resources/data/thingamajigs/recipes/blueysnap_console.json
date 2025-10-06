@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "thingamajigs:game_console_component"
+  },
+  "result": "thingamajigs:blueysnap_console",
+  "count": 1
+}

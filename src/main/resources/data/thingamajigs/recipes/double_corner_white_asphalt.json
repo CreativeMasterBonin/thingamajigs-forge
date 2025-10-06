@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "thingamajigs:asphalt"
+  },
+  "result": "thingamajigs:double_corner_white_asphalt",
+  "count": 1
+}

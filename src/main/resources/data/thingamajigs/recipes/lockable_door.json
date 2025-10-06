@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "door_glob_recipes",
+  "ingredients": [
+    {
+      "item": "thingamajigs:door_glob"
+    },
+    {
+      "item": "minecraft:iron_door"
+    },
+    {
+      "item": "thingamajigs:key"
+    },
+    {
+      "item": "minecraft:obsidian"
+    }
+  ],
+  "result": {
+    "item": "thingamajigs:lockable_door",
+    "count": 3
+  }
+}

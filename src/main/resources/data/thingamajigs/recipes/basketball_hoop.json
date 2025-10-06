@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "www",
+    "wtw",
+    "rrr"
+  ],
+  "key": {
+    "w": {
+      "item": "minecraft:white_concrete"
+    },
+    "t": {
+      "item": "thingamajigs:thingamajig"
+    },
+    "r": {
+      "item": "minecraft:red_terracotta"
+    }
+  },
+  "result": {
+    "item": "thingamajigs:basketball_hoop",
+    "count": 2
+  }
+}
+

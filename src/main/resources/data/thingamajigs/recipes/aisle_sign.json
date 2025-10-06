@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "thingamajigs:sign_glob"
+    },
+    {
+      "item": "minecraft:light_blue_dye"
+    },
+    {
+      "item": "minecraft:white_dye"
+    },
+    {
+      "tag": "minecraft:hanging_signs"
+    }
+  ],
+  "result": {
+    "item": "thingamajigs:aisle_sign",
+    "count": 10
+  }
+}
+

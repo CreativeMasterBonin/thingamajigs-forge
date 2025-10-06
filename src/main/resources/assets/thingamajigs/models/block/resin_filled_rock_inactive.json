@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "thingamajigs:block/resin_filled_rock_inactive"
+  }
+}
+

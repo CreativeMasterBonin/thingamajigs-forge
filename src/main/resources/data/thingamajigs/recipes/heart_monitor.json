@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "thingamajigs:health_component"
+  },
+  "result": "thingamajigs:heart_monitor",
+  "count": 1
+}

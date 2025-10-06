@@ -1,0 +1,7 @@
+{
+  "parent": "thingamajigs:bases/road_marking",
+  "textures": {
+    "all": "thingamajigs:block/pavement_markings/yellow/thick_yellow_pl",
+    "particle": "thingamajigs:block/pavement_markings/yellow/thick_yellow_pl"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "t t",
+    "drd",
+    "t t"
+  ],
+  "key": {
+    "r": {
+      "item": "thingamajigs:purple_rail"
+    },
+    "t": {
+      "item": "minecraft:redstone"
+    },
+    "d": {
+      "item": "minecraft:dispenser"
+    }
+  },
+  "result": {
+    "item": "thingamajigs:purple_activator_rail",
+    "count": 1
+  }
+}
+

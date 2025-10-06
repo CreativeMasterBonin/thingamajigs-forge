@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "get_blackstone_inventory": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:blackstone"
+            ]
+          }
+        ]
+      }
+    },
+    "get_a_recipe_rs": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "thingamajigs:runicstone"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "get_blackstone_inventory",
+      "get_a_recipe_rs"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "thingamajigs:runicstone"
+    ]
+  },
+  "sends_telemetry_event": false
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "thingamajigs:asphalt_crafting_ingredients"
+    },
+    {
+      "item": "thingamajigs:mini_component"
+    }
+  ],
+  "result": {
+    "item": "thingamajigs:mini_road",
+    "count": 16
+  }
+}
+

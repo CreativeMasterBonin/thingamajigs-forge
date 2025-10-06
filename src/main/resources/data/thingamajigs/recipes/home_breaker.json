@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "thingamajigs:infrastructure_component"
+  },
+  "result": "thingamajigs:home_breaker",
+  "count": 1
+}

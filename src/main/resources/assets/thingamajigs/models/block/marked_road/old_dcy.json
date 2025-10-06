@@ -1,0 +1,9 @@
+{
+  "parent": "thingamajigs:bases/base_marked_curve_asphalt",
+  "textures": {
+    "2": "thingamajigs:block/marked_road/old_dy",
+    "marking": "thingamajigs:block/marked_road/old_dcy",
+    "age": "thingamajigs:block/old_asphalt"
+  }
+}
+

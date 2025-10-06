@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "thingamajigs:item/red_roadway_sign"
+  }
+}
+

@@ -1,0 +1,35 @@
+{
+    "name": "entry.thingamajigs.purple_rails",
+    "icon": "thingamajigs:purple_rail",
+    "category": "thingamajigs:railroad",
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "Purple rails have a max speed of 1.1x, which is a bit faster than normal rails; however other custom rails may be faster. Note that minecarts can't turn at this speed, so slow them down at curves or they'll jump off the track!"
+        },
+        {
+            "type": "patchouli:text",
+            "text": "Purple rails can be crafted using purple dye and a normal rail. Powered variants of these rails always have a 0.9x speed boost, and when given redstone power, give the full 1.1x speed boost that the purple rails support. If boosting is not sustained, the minecart will slow down quickly."
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "thingamajigs:purple_rail",
+            "text": "Purple rails can float in mid air, but cannot be walked upon"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "thingamajigs:purple_powered_rail",
+            "text": "Powered purple rails super boost minecarts when powered up"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "thingamajigs:purple_activator_rail",
+            "text": "Only powered up with direct redstone power, and hurts enemies that pass over it in minecarts"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "thingamajigs:purple_detector_rail",
+            "text": "Turns off faster when carts are off the detector rail"
+        }
+    ]
+}

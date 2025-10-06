@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "minecraft:quartz_pillar"
+  },
+  "result": "thingamajigs:fancy_quartz_pillar",
+  "count": 1
+}
+

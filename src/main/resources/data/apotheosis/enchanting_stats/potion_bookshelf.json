@@ -1,0 +1,11 @@
+{
+	"block": "thingamajigs:potion_bookshelf",
+	"stats": {
+		"maxEterna": 2.0,
+		"eterna": 1.0,
+		"quanta": 0.25,
+		"arcana": 1.0,
+        "rectification": 0,
+        "clues": 0
+	}
+}

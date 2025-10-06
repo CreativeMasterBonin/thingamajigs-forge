@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:smoker"
+    },
+    {
+      "item": "thingamajigs:carnival_awning"
+    },
+    {
+      "item": "minecraft:iron_ingot"
+    }
+  ],
+  "result": {
+    "item": "thingamajigs:popcorn_machine",
+    "count": 1
+  }
+}
+

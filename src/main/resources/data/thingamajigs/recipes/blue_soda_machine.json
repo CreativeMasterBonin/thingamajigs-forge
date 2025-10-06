@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "thingamajigs:technology_component"
+    },
+    {
+      "item": "thingamajigs:thingamajig"
+    },
+    {
+      "item": "minecraft:blue_concrete"
+    },
+    {
+      "item": "minecraft:glass_bottle"
+    }
+  ],
+  "result": {
+    "item": "thingamajigs:blue_soda_machine",
+    "count": 2
+  }
+}
+

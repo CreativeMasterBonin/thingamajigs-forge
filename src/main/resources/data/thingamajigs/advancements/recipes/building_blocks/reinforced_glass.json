@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "get_glass_inventory": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:glass"
+            ]
+          }
+        ]
+      }
+    },
+    "get_a_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "thingamajigs:reinforced_glass"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "get_glass_inventory",
+      "get_a_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "thingamajigs:reinforced_glass"
+    ]
+  },
+  "sends_telemetry_event": false
+}

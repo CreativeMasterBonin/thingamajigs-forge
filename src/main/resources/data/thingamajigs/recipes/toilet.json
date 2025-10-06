@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "c  ",
+    "cb ",
+    "ccc"
+  ],
+  "key": {
+    "c": {
+      "item": "minecraft:white_concrete"
+    },
+    "b": {
+      "item": "minecraft:water_bucket"
+    }
+  },
+  "result": {
+    "item": "thingamajigs:toilet",
+    "count": 1
+  }
+}

@@ -1,0 +1,35 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="Custom License"
+
+[[mods]]
+modId="thingamajigs"
+version="1.8.2"
+displayName="Thingamajigs"
+credits="Created by CreativeMasterBonin. Some textures made by Greenspelunking. Other ideas and original artwork by blueman."
+displayURL="https://github.com/roberttkahelin8/thingmajigs"
+logoFile="logo.png"
+iconFile="logo.png"
+authors="CreativeMasterBonin"
+description='''Adds many decorative blocks to your worlds! Remember to check for updates using the website link.'''
+issueTrackerURL="https://github.com/roberttkahelin8/thingmajigs/issues"
+updateJSONURL="https://raw.githubusercontent.com/roberttkahelin8/thingmajigs/refs/heads/main/updates/versions.json"
+
+[[dependencies.thingamajigs]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.20.1,1.21)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.thingamajigs]]
+    modId="athena"
+    mandatory=false
+    versionRange="[3.0.0,)"
+    ordering="NONE"
+    side="CLIENT"
+
+[[dependencies.thingamajigs]]
+    modId="patchouli"
+    mandatory=false
+    versionRange="[1.20.1-83,)"

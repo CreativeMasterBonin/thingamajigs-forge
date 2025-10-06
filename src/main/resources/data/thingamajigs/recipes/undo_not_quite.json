@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "thingamajigs_undoables",
+  "ingredients": [
+    {
+      "item": "thingamajigs:not_quite"
+    }
+  ],
+  "result": {
+    "item": "thingamajigs:thingamajig",
+    "count": 9
+  }
+}

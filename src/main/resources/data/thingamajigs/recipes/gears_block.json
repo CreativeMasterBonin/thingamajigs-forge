@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "thingamajigs:technology_component"
+    },
+    {
+      "item": "minecraft:redstone"
+    },
+    {
+      "item": "thingamajigs:infrastructure_component"
+    },
+    {
+      "item": "minecraft:iron_block"
+    }
+  ],
+  "result": {
+    "item": "thingamajigs:gears_block",
+    "count": 1
+  }
+}

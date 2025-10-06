@@ -1,0 +1,18 @@
+{
+  "parent": "minecraft:item/handheld",
+  "loader": "forge:separate_transforms",
+  "base": {
+    "parent": "thingamajigs:item/inficart_item_3d"
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "thingamajigs:item/inficart_item_2d"
+    },
+    "ground":{
+      "parent": "thingamajigs:item/inficart_item_2d"
+    },
+    "fixed": {
+      "parent": "thingamajigs:item/inficart_item_2d"
+    }
+  }
+}

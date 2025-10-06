@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "thingamajigs:sports_component"
+  },
+  "result": "thingamajigs:minigolf_flag",
+  "count": 1
+}

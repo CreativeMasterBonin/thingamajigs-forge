@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "thingamajigs:phone_component"
+  },
+  "result": "thingamajigs:old_microwave_transmitter",
+  "count": 1
+}

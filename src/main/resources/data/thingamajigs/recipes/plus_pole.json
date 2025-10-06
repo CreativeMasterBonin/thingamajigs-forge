@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "thingamajigs:straight_pole"
+  },
+  "result": "thingamajigs:plus_pole",
+  "count": 2
+}

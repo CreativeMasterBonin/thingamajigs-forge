@@ -1,0 +1,7 @@
+{
+  "parent": "thingamajigs:bases/base_marked_asphalt_slab_bottom",
+  "textures": {
+    "marking": "thingamajigs:block/marked_road/ok_pw",
+    "age": "thingamajigs:block/ok_asphalt"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "loader": "forge:obj",
+  "flip_v": true,
+  "model": "thingamajigs:models/oversized/railroad_crossing_lights_on.obj",
+  "textures": {
+    "texture0": "thingamajigs:block/extra_metal",
+    "texture1": "thingamajigs:block/railroad_crossing_light_off",
+    "texture2": "thingamajigs:block/railroad_crossing_light_on",
+    "particle": "#texture0"
+  }
+}
+
+

@@ -1,0 +1,15 @@
+{
+    "name": "entry.thingamajigs.lava_lamp",
+    "icon": "thingamajigs:lava_lamp",
+    "category": "thingamajigs:block",
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "Lava lamps were invented a while ago. Very long ago. They look like lava. They use physics to do their stuff."
+        },
+        {
+            "type": "patchouli:text",
+            "text": "In order to use the lava lamp in this mod, just place it, then get red, orange, yellow, lime green, blue, or purple dye and right click the lava lamp to change it's color. Hold an unacceptable dye and right click to see the supported dye types."
+        }
+    ]
+}

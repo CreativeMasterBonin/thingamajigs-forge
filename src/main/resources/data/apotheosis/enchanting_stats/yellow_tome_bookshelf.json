@@ -1,0 +1,11 @@
+{
+	"block": "thingamajigs:yellow_tome_bookshelf",
+	"stats": {
+		"maxEterna": 4.0,
+		"eterna": 1.0,
+		"quanta": 1.0,
+		"arcana": -1.0,
+        "rectification": 0,
+        "clues": 0
+	}
+}

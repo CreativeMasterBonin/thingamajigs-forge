@@ -1,0 +1,27 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "rtr",
+      "scs",
+      "rsr"
+    ],
+    "key": {
+      "r": {
+        "item": "minecraft:redstone"
+      },
+      "s": {
+        "item": "minecraft:blackstone"
+      },
+      "c": {
+        "item": "minecraft:comparator"
+      },
+      "t": {
+        "item": "thingamajigs:thingamajig"
+      }
+    },
+    "result": {
+      "item": "thingamajigs:thingamajig_state_cell",
+      "count": 1
+    }
+  }
+  

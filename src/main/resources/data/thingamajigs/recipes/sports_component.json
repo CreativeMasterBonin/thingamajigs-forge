@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": {
+    "item": "thingamajigs:base_component"
+  },
+  "base": {
+    "item": "minecraft:bow"
+  },
+  "addition": {
+    "item": "minecraft:snowball"
+  },
+  "result": {
+    "item": "thingamajigs:sports_component",
+    "count": 16
+  }
+}

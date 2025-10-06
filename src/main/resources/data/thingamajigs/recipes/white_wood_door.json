@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "door_glob_recipes",
+  "ingredients": [
+    {
+      "item": "thingamajigs:door_glob"
+    },
+    {
+      "tag": "minecraft:planks"
+    },
+    {
+      "item": "minecraft:white_dye"
+    }
+  ],
+  "result": {
+    "item": "thingamajigs:white_wood_door",
+    "count": 3
+  }
+}
+

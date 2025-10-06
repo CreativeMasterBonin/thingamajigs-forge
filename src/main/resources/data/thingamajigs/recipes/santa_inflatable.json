@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "thingamajigs:christmas_component"
+  },
+  "result": "thingamajigs:santa_inflatable",
+  "count": 1
+}

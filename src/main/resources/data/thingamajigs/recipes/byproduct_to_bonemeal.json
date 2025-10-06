@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "b",
+    "b"
+  ],
+  "key": {
+    "b": {
+      "item": "thingamajigs:byproduct"
+    }
+  },
+  "result": {
+    "item": "minecraft:bone_meal",
+    "count": 2
+  }
+}
+

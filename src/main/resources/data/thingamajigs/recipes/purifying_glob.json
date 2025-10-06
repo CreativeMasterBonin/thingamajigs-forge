@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "thingamajigs:purifying_ingot"
+  },
+  "result": "thingamajigs:purifying_glob",
+  "experience": 0.05,
+  "cookingtime": 320
+}
+

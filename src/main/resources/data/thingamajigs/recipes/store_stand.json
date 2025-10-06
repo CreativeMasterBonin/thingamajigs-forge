@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "acg",
+    "www",
+    "i i"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:apple"
+    },
+    "c": {
+      "item": "minecraft:carrot"
+    },
+    "g": {
+      "item": "minecraft:glow_berries"
+    },
+    "w": {
+      "item": "minecraft:white_concrete"
+    },
+    "i": {
+      "item": "minecraft:iron_bars"
+    }
+  },
+  "result": {
+    "item": "thingamajigs:store_stand",
+    "count": 3
+  }
+}
+

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "thingamajigs:circle_sign_glob"
+  },
+  "result": "thingamajigs:peds_prohibited",
+  "count": 1
+}

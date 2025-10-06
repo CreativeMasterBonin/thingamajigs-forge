@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "iii",
+    "ici",
+    "iii"
+  ],
+  "key": {
+    "i": {
+      "item": "minecraft:iron_bars"
+    },
+    "c": {
+      "item": "thingamajigs:metal_scaffolding"
+    }
+  },
+  "result": {
+    "item": "thingamajigs:metal_vents",
+    "count": 1
+  }
+}

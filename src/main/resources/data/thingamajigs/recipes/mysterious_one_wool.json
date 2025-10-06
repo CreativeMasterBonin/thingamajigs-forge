@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " d ",
+    "dwd",
+    " d "
+  ],
+  "key": {
+    "w": {
+      "item": "minecraft:pink_wool"
+    },
+    "d": {
+      "item": "minecraft:magenta_dye"
+    }
+  },
+  "result": {
+    "item": "thingamajigs:mysterious_one_wool",
+    "count": 1
+  }
+}

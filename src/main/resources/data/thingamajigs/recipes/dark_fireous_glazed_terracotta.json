@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:stonecutting",
+  "group": "thingamajigs_glazed_terracotta",
+  "ingredient": {
+    "item": "minecraft:purple_glazed_terracotta"
+  },
+  "result": "thingamajigs:dark_fireous_glazed_terracotta",
+  "count": 4
+}

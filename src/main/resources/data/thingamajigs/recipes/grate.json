@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "thingamajigs:factory_component"
+  },
+  "result": "thingamajigs:grate",
+  "count": 8
+}

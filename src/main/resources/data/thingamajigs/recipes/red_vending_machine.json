@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "thingamajigs:technology_component"
+    },
+    {
+      "item": "thingamajigs:thingamajig"
+    },
+    {
+      "item": "minecraft:red_concrete"
+    }
+  ],
+  "result": {
+    "item": "thingamajigs:red_vending_machine",
+    "count": 2
+  }
+}
+

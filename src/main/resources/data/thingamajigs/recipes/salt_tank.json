@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "thingamajigs:infrastructure_component"
+  },
+  "result": "thingamajigs:salt_tank",
+  "count": 1
+}

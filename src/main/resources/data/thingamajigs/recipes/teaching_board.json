@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ggg",
+    "gsg",
+    "www"
+  ],
+  "key": {
+    "w": {
+      "tag": "minecraft:planks"
+    },
+    "g": {
+      "item": "minecraft:green_concrete"
+    },
+    "s": {
+      "tag": "minecraft:hanging_signs"
+    }
+  },
+  "result": {
+    "item": "thingamajigs:teaching_board",
+    "count": 4
+  }
+}
+

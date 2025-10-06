@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "thingamajigs:traffic_signal_component"
+  },
+  "result": "thingamajigs:hawk_signal",
+  "count": 2
+}

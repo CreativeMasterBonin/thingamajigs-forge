@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "thingamajigs:traffic_signal_component"
+  },
+  "result": "thingamajigs:traffic_signal_doghouse_left",
+  "count": 4
+}

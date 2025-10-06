@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "nnn",
+    "ici",
+    " i "
+  ],
+  "key": {
+    "n": {
+      "item": "minecraft:iron_nugget"
+    },
+    "i": {
+      "item": "minecraft:iron_ingot"
+    },
+    "c": {
+      "item": "thingamajigs:clear_bulb"
+    }
+  },
+  "result": {
+    "item": "thingamajigs:clear_lantern",
+    "count": 1
+  }
+}
+

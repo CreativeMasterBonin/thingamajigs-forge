@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "lll",
+    "lll",
+    "p p"
+  ],
+  "key": {
+    "l": {
+      "item": "thingamajigs:mysterious_one_wool"
+    },
+    "p": {
+      "tag": "minecraft:stone_crafting_materials"
+    }
+  },
+  "result": {
+    "item": "thingamajigs:mysterious_couch",
+    "count": 1
+  }
+}
+

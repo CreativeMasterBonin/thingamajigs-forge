@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": {
+    "item": "thingamajigs:thingamajig_glob"
+  },
+  "base": {
+    "item": "thingamajigs:sign_glob"
+  },
+  "addition": {
+    "item": "minecraft:clay_ball"
+  },
+  "result": {
+    "item": "thingamajigs:misc_sign_glob",
+    "count": 2
+  }
+}
+

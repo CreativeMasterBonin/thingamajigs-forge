@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "thingamajigs:arcade_component"
+  },
+  "result": "thingamajigs:basketball_machine",
+  "count": 1
+}

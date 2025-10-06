@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "bookshelves",
+  "pattern": [
+    "sss",
+    "ltl",
+    "sss"
+  ],
+  "key": {
+    "s": {
+      "tag": "minecraft:wooden_slabs"
+    },
+    "l": {
+      "tag": "minecraft:logs_that_burn"
+    },
+    "t": {
+      "item": "thingamajigs:thingamajig"
+    }
+  },
+  "result": {
+    "item": "thingamajigs:blank_bookshelf",
+    "count": 4
+  }
+}

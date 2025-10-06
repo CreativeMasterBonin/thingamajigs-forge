@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "thingamajigs:traffic_signal_component"
+  },
+  "result": "thingamajigs:ped_signal_man_1",
+  "count": 4
+}

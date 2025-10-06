@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "full_buckets",
+  "ingredients": [
+    {
+      "item": "thingamajigs:poop"
+    },
+    {
+      "item": "minecraft:slime_ball"
+    },
+    {
+      "item": "minecraft:bucket"
+    }
+  ],
+  "result": {
+    "item": "thingamajigs:sludge_bucket",
+    "count": 1
+  }
+}

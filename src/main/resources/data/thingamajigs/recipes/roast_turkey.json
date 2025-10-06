@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:cooked_chicken"
+    },
+    {
+      "item": "thingamajigs:plate"
+    }
+  ],
+  "result": {
+    "item": "thingamajigs:roast_turkey",
+    "count": 1
+  }
+}
+

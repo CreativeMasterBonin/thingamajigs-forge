@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "thingamajigs:railroad_component"
+  },
+  "result": "thingamajigs:bluey_bell_two",
+  "count": 1
+}

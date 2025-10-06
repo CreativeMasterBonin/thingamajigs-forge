@@ -1,0 +1,25 @@
+{
+    "name": "entry.thingamajigs.railroad_crossing",
+    "icon": "thingamajigs:railroad_crossing",
+    "category": "thingamajigs:railroad",
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "Railroad (or railway) crossings protect those on roads from oncoming trains by showing lights and have signs and gates to make it obvious. You can't beat a minecart either, so Thingamajigs adds gates, lights, and other railroad crossing components."
+        },
+        {
+            "type": "patchouli:text",
+            "text": "In Thingamajigs 1.7.6+, railroad crossing gates are now dynamic! This is to create parity with another addon for a newer game version of Thingamajigs. If a gate is invisible, either it's broken, or apply a redstone signal pulse to make old gates convert to the new gates. It's that easy!"
+        },
+        {
+            "type": "patchouli:text",
+            "text": "The gates go up and down with redstone signals, and relay the signal with a custom 'vertical redstone' system to other 'vertical redstone' compatible blocks. The redstone is pseudo so only the bells emit redstone signals (when they have a vertical redstone signal from below) at the top for cantilever usage."
+        },
+        {
+            "type": "patchouli:image",
+            "images": ["thingamajigs:textures/gui/rrcrossing.png"],
+            "title": "Crossing Power Direction",
+            "border": false
+        }
+    ]
+}

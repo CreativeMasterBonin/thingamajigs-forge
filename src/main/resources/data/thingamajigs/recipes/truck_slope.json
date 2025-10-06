@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "thingamajigs:sign_glob"
+  },
+  "result": "thingamajigs:truck_slope",
+  "count": 1
+}

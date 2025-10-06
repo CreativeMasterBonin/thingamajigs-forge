@@ -1,0 +1,19 @@
+{
+    "name": "entry.thingamajigs.vertical_rs_pole",
+    "icon": "thingamajigs:vertical_pole_redstone",
+    "category": "thingamajigs:block",
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "Vertical redstone is like it's horizontal equivalent, but is not functionally the same. It is a pseudo-rs system."
+        },
+        {
+            "type": "patchouli:text",
+            "text": "Blocks that use the system update the block above them in order from the starting powered block all the way to the last block. A redstone signal is required for these kind of blocks to work."
+        },
+        {
+            "type": "patchouli:text",
+            "text": "The vertical redstone pole, and some other components, are all tagged as 'vertical_redstone_blocks', which allows them to use the system in the first place, which is hard-coded."
+        }
+    ]
+}

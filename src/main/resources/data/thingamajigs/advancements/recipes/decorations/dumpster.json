@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "get_thing": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:composter"
+            ]
+          }
+        ]
+      }
+    },
+    "get_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "thingamajigs:dumpster"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "get_thing",
+      "get_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "thingamajigs:dumpster"
+    ]
+  },
+  "sends_telemetry_event": false
+}

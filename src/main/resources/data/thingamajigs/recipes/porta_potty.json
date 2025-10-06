@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "thingamajigs:toilet"
+    },
+    {
+      "item": "minecraft:blue_concrete"
+    },
+    {
+      "item": "minecraft:white_concrete"
+    }
+  ],
+  "result": {
+    "item": "thingamajigs:porta_potty",
+    "count": 1
+  }
+}
+

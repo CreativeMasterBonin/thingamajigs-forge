@@ -1,0 +1,7 @@
+{
+  "parent": "thingamajigs:bases/huge_horz_sign_exitonlyvariant",
+  "textures": {
+    "1": "thingamajigs:block/signs/back/back_halfed_double_wide",
+    "front": "thingamajigs:block/signs/speciality_signs/exit_only_halfed_sign"
+  }
+}

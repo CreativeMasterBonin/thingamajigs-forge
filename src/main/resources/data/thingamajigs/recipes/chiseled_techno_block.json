@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "thingamajigs:techno_core"
+  },
+  "result": "thingamajigs:chiseled_techno_block",
+  "count": 4
+}

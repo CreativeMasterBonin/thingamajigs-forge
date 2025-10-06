@@ -1,0 +1,11 @@
+{
+	"block": "thingamajigs:red_tome_bookshelf",
+	"stats": {
+		"maxEterna": 1.0,
+		"eterna": 0.0,
+		"quanta": 1.0,
+		"arcana": 0.5,
+        "rectification": 0,
+        "clues": 0
+	}
+}

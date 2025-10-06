@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "thingamajigs:green_roadway_sign"
+  },
+  "result": "thingamajigs:green_hanging_roadway_sign",
+  "count": 1
+}

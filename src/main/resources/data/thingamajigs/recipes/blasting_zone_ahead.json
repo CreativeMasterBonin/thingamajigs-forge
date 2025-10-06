@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "thingamajigs:sign_glob"
+  },
+  "result": "thingamajigs:blasting_zone_ahead",
+  "count": 1
+}

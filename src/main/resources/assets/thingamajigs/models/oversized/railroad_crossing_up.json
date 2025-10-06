@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "flip_v": true,
+  "model": "thingamajigs:models/oversized/railroad_crossing_up.obj",
+  "textures": {
+    "texture0": "thingamajigs:block/barriers/concrete_barrier",
+    "texture1": "thingamajigs:block/extra_metal",
+    "texture2": "thingamajigs:block/railroad_crossing_arm",
+    "particle": "#texture2"
+  }
+}

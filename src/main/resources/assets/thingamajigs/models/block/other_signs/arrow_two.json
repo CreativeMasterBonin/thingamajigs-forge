@@ -1,0 +1,9 @@
+{
+  "parent": "thingamajigs:bases/arrow_sign",
+  "textures": {
+    "0": "thingamajigs:block/signs/back/back_middle_rectangle",
+    "1": "thingamajigs:block/signs/arrow_signs/arrow_sign_left",
+    "2": "minecraft:block/blast_furnace_side",
+    "particle": "thingamajigs:block/signs/back/back_middle_rectangle"
+  }
+}

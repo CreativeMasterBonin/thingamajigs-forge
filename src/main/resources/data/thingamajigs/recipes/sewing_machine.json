@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "thingamajigs:home_component"
+  },
+  "result": "thingamajigs:sewing_machine",
+  "count": 1
+}

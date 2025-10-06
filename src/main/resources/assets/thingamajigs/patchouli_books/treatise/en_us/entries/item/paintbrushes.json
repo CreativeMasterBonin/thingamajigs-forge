@@ -1,0 +1,33 @@
+{
+    "name": "entry.thingamajigs.paintbrushes",
+    "icon": "thingamajigs:paint_brush",
+    "category": "thingamajigs:item",
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "Paintbrushes are used in arts and crafts in real life, plus other cool things. In the mod, you can paint roads with them! Just craft a paint brush, and combine with yellow, white or blue dye to get started!"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "thingamajigs:paint_brush",
+            "text": "Craft this, then combine it with yellow, white or blue dye!"
+        },
+        {
+            "type": "patchouli:text",
+            "text": "To paint a block or road, shift-right click on anything but a block to 'activate' the paintbrush. Then, shift-right click anything to change the pattern of the current brush. Right click to place that pattern on a block or road."
+        },
+        {
+            "type": "patchouli:text",
+            "text": "Paint brush patterns are saved per item to world and don't use durability, so go wild! Each pattern has a name, and some can convert regular roads into painted roads, which can then be harvested with a pickaxe. Road markings by themselves cannot be harvested."
+        },
+        {
+            "type": "patchouli:text",
+            "text": "Use a scrape tool to get rid of any paint on roads and converted painted roads into normal roads. This item also has no durability, so have fun!"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "thingamajigs:scrape_tool",
+            "text": "Scrape Tool are quite useful for road marking mistakes."
+        }
+    ]
+}

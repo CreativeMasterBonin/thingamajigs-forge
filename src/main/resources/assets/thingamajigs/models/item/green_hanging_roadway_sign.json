@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "thingamajigs:item/green_hanging_roadway_sign"
+  }
+}
+

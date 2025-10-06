@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "blb",
+    "iii",
+    " r "
+  ],
+  "key": {
+    "b": {
+      "item": "minecraft:blue_dye"
+    },
+    "l": {
+      "item": "minecraft:light_blue_dye"
+    },
+    "i": {
+      "item": "minecraft:iron_trapdoor"
+    },
+    "r": {
+      "item": "minecraft:iron_bars"
+    }
+  },
+  "result": {
+    "item": "thingamajigs:solar_panel",
+    "count": 4
+  }
+}
+

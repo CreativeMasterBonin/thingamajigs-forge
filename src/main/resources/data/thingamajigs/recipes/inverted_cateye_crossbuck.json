@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "thingamajigs:crossbuck"
+  },
+  "result": "thingamajigs:inverted_cateye_crossbuck",
+  "count": 1
+}

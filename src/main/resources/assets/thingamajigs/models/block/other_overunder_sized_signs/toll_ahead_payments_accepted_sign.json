@@ -1,0 +1,6 @@
+{
+  "parent": "thingamajigs:bases/huge_sign",
+  "textures": {
+    "front": "thingamajigs:block/signs/speciality_signs/toll_ahead_payments_accepted_sign"
+  }
+}

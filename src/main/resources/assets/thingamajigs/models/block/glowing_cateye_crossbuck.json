@@ -1,0 +1,130 @@
+{
+	"credit": "Made By CreativeMasterBonin",
+	"ambientocclusion": false,
+    "render_type": "cutout",
+	"textures": {
+		"0": "thingamajigs:block/signs/cateye_overlay",
+		"1": "thingamajigs:block/signs/cateye_overlay_emissive",
+		"2": "thingamajigs:block/signs/back/back_rr_crossing",
+		"3": "thingamajigs:block/signs/text_signs/inverted_cateye_railroad_crossing",
+		"4": "thingamajigs:block/extra_metal",
+		"particle": "thingamajigs:block/extra_metal"
+	},
+	"elements": [
+		{
+			"from": [7, 0, 7],
+			"to": [9, 16, 9],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 8]},
+			"faces": {
+				"north": {"uv": [14, 0, 16, 16], "texture": "#4"},
+				"east": {"uv": [2, 0, 4, 16], "texture": "#4"},
+				"south": {"uv": [6, 0, 8, 16], "texture": "#4"},
+				"west": {"uv": [12, 0, 14, 16], "texture": "#4"},
+				"up": {"uv": [5, 9, 7, 11], "texture": "#4", "cullface": "up"},
+				"down": {"uv": [6, 0, 8, 2], "texture": "#4", "cullface": "down"}
+			}
+		},
+		{
+			"name": "sign",
+			"from": [0, 0, 6.95],
+			"to": [16, 16, 6.95],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 6.95]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#3"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#2"}
+			}
+		},
+		{
+			"name": "overlay",
+			"from": [0, 0, 6.94],
+			"to": [16, 16, 6.94],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 6.94]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#0"}
+			}
+		},
+		{
+			"name": "overlay",
+			"from": [0, 0, 6.92],
+			"to": [16, 16, 6.92],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 6.94]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#0"}
+			}
+		},
+		{
+			"name": "overlay",
+			"from": [0, 0, 6.9],
+			"to": [16, 16, 6.9],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 6.94]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#0"}
+			}
+		},
+		{
+			"name": "overlay",
+			"from": [0, 0, 6.88],
+			"to": [16, 16, 6.88],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 6.94]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#0"}
+			}
+		},
+		{
+			"name": "overlay",
+			"from": [0, 0, 6.86],
+			"to": [16, 16, 6.86],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 6.94]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#0"}
+			}
+		},
+		{
+			"name": "overlay_emissive",
+			"from": [0, 0, 6.84],
+			"to": [16, 16, 6.84],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 6.88]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#1"}
+			},
+			"forge_data": {
+                "block_light": 15,
+                "sky_light": 15
+            }
+		}
+	],
+	"gui_light": "front",
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [0, 135, 0],
+			"translation": [0, 2.25, 0],
+			"scale": [0.3, 0.3, 0.3]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [0, 135, 0],
+			"translation": [0, 2.25, 0],
+			"scale": [0.3, 0.3, 0.3]
+		},
+		"firstperson_righthand": {
+			"rotation": [0, 135, 0],
+			"translation": [3, 2, 0],
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"firstperson_lefthand": {
+			"rotation": [0, 135, 0],
+			"translation": [3, 2, 0],
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"ground": {
+			"translation": [0, 0.75, 0],
+			"scale": [0.3, 0.3, 0.3]
+		},
+		"gui": {
+			"rotation": [0, 180, 0],
+			"scale": [0.9, 0.9, 0.9]
+		},
+		"head": {
+			"translation": [0, 14, 0]
+		}
+	}
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "thingamajigs:bases/blueypass_only_sign_base",
+  "textures": {
+    "front": "thingamajigs:block/signs/speciality_signs/change_provided_only"
+  }
+}

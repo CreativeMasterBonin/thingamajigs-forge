@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": {
+    "item": "thingamajigs:misc_component"
+  },
+  "base": {
+    "item": "thingamajigs:home_component"
+  },
+  "addition": {
+    "item": "minecraft:snowball"
+  },
+  "result": {
+    "item": "thingamajigs:toy_component",
+    "count": 3
+  }
+}
+

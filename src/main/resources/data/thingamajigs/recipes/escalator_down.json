@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "thingamajigs:escalator"
+  },
+  "result": "thingamajigs:escalator_down",
+  "count": 1
+}

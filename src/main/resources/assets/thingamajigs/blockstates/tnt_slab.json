@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "thingamajigs:block/slabs/tnt_slab"
+    },
+    "type=double": {
+      "model": "minecraft:block/tnt"
+    },
+    "type=top": {
+      "model": "thingamajigs:block/slabs/tnt_slab_top"
+    }
+  }
+}

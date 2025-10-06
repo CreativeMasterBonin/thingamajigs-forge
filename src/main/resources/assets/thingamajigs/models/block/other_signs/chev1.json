@@ -1,0 +1,9 @@
+{
+  "parent": "thingamajigs:bases/sign",
+  "textures": {
+    "front": "thingamajigs:block/signs/chevrons/chevron_white_left",
+    "back": "thingamajigs:block/signs/back/back_chevron",
+    "pole": "minecraft:block/blast_furnace_side",
+    "particle": "minecraft:block/blast_furnace_side"
+  }
+}

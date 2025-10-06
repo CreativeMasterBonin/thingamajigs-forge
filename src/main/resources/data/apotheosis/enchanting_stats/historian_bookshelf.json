@@ -1,0 +1,11 @@
+{
+	"block": "thingamajigs:historian_bookshelf",
+	"stats": {
+		"maxEterna": 2.0,
+		"eterna": 1.0,
+		"quanta": -1.0,
+		"arcana": 0.25,
+        "rectification": 0,
+        "clues": 0
+	}
+}

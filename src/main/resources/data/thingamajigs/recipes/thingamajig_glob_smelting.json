@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "thingamajigs:thingamajig"
+  },
+  "result": "thingamajigs:thingamajig_glob",
+  "cookingtime": 75
+}

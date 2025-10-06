@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": {
+    "item": "minecraft:glass"
+  },
+  "base": {
+    "item": "minecraft:iron_bars"
+  },
+  "addition": {
+    "item": "minecraft:iron_nugget"
+  },
+  "result": {
+    "item": "thingamajigs:ticket_teller_window",
+    "count": 4
+  }
+}
+

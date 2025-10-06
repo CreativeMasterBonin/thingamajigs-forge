@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "minecraft:lever"
+  },
+  "result": "thingamajigs:button_switch",
+  "count": 1
+}

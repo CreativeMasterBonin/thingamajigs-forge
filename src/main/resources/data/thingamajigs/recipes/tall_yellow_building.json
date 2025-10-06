@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "thingamajigs:mini_component"
+  },
+  "result": "thingamajigs:tall_yellow_building",
+  "count": 1
+}

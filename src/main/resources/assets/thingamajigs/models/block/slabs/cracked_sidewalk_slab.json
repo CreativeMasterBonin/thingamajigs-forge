@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "thingamajigs:block/sidewalk_cracked",
+    "side": "thingamajigs:block/slabs/sidewalk_slab_side_cracked",
+    "top": "thingamajigs:block/sidewalk_cracked"
+  }
+}

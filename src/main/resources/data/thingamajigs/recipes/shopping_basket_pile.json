@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "thingamajigs:shopping_basket"
+  },
+  "result": "thingamajigs:shopping_basket_pile",
+  "count": 1
+}

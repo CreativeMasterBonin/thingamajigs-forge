@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:diamond"
+    },
+    {
+      "item": "thingamajigs:globized_golden_apple_shard"
+    },
+    {
+      "item": "thingamajigs:globized_golden_apple_shard"
+    }
+  ],
+  "result": {
+    "item": "thingamajigs:purifying_nugget",
+    "count": 2
+  }
+}
+

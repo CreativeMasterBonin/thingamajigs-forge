@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "mailboxes",
+  "ingredients": [
+    {
+      "item": "thingamajigs:mailbox"
+    },
+    {
+      "item": "minecraft:black_dye"
+    }
+  ],
+  "result": {
+    "item": "thingamajigs:black_mailbox",
+    "count": 1
+  }
+}

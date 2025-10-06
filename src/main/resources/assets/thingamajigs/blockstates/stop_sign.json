@@ -1,0 +1,49 @@
+{
+  "variants": {
+    "facing=east,type=0": {
+      "model": "thingamajigs:block/stop_sign",
+      "y": 90
+    },
+    "facing=north,type=0": {
+      "model": "thingamajigs:block/stop_sign"
+    },
+    "facing=south,type=0": {
+      "model": "thingamajigs:block/stop_sign",
+      "y": 180
+    },
+    "facing=west,type=0": {
+      "model": "thingamajigs:block/stop_sign",
+      "y": 270
+    },
+    "facing=east,type=1": {
+      "model": "thingamajigs:block/sign_variants/alto",
+      "y": 90
+    },
+    "facing=north,type=1": {
+      "model": "thingamajigs:block/sign_variants/alto"
+    },
+    "facing=south,type=1": {
+      "model": "thingamajigs:block/sign_variants/alto",
+      "y": 180
+    },
+    "facing=west,type=1": {
+      "model": "thingamajigs:block/sign_variants/alto",
+      "y": 270
+    },
+    "facing=east,type=2": {
+      "model": "thingamajigs:block/sign_variants/pare",
+      "y": 90
+    },
+    "facing=north,type=2": {
+      "model": "thingamajigs:block/sign_variants/pare"
+    },
+    "facing=south,type=2": {
+      "model": "thingamajigs:block/sign_variants/pare",
+      "y": 180
+    },
+    "facing=west,type=2": {
+      "model": "thingamajigs:block/sign_variants/pare",
+      "y": 270
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:smoker"
+    },
+    {
+      "item": "thingamajigs:carnival_awning"
+    },
+    {
+      "item": "minecraft:porkchop"
+    }
+  ],
+  "result": {
+    "item": "thingamajigs:hotdog_rotator",
+    "count": 1
+  }
+}
+

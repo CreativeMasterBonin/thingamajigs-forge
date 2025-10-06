@@ -1,0 +1,124 @@
+{
+  "variants": {
+    "facing=east,type=0": {
+      "model": "thingamajigs:bases/blueypass_only_sign_base",
+      "y": 90
+    },
+    "facing=north,type=0": {
+      "model": "thingamajigs:bases/blueypass_only_sign_base"
+    },
+    "facing=south,type=0": {
+      "model": "thingamajigs:bases/blueypass_only_sign_base",
+      "y": 180
+    },
+    "facing=west,type=0": {
+      "model": "thingamajigs:bases/blueypass_only_sign_base",
+      "y": 270
+    },
+    "facing=east,type=1": {
+      "model": "thingamajigs:block/other_overunder_sized_signs/cash_lanes_only",
+      "y": 90
+    },
+    "facing=north,type=1": {
+      "model": "thingamajigs:block/other_overunder_sized_signs/cash_lanes_only"
+    },
+    "facing=south,type=1": {
+      "model": "thingamajigs:block/other_overunder_sized_signs/cash_lanes_only",
+      "y": 180
+    },
+    "facing=west,type=1": {
+      "model": "thingamajigs:block/other_overunder_sized_signs/cash_lanes_only",
+      "y": 270
+    },
+    "facing=east,type=2": {
+      "model": "thingamajigs:block/other_overunder_sized_signs/cash_lanes_only_left",
+      "y": 90
+    },
+    "facing=north,type=2": {
+      "model": "thingamajigs:block/other_overunder_sized_signs/cash_lanes_only_left"
+    },
+    "facing=south,type=2": {
+      "model": "thingamajigs:block/other_overunder_sized_signs/cash_lanes_only_left",
+      "y": 180
+    },
+    "facing=west,type=2": {
+      "model": "thingamajigs:block/other_overunder_sized_signs/cash_lanes_only_left",
+      "y": 270
+    },
+    "facing=east,type=3": {
+      "model": "thingamajigs:block/other_overunder_sized_signs/change_provided_only",
+      "y": 90
+    },
+    "facing=north,type=3": {
+      "model": "thingamajigs:block/other_overunder_sized_signs/change_provided_only"
+    },
+    "facing=south,type=3": {
+      "model": "thingamajigs:block/other_overunder_sized_signs/change_provided_only",
+      "y": 180
+    },
+    "facing=west,type=3": {
+      "model": "thingamajigs:block/other_overunder_sized_signs/change_provided_only",
+      "y": 270
+    },
+    "facing=east,type=4": {
+      "model": "thingamajigs:block/other_overunder_sized_signs/change_provided_only_left",
+      "y": 90
+    },
+    "facing=north,type=4": {
+      "model": "thingamajigs:block/other_overunder_sized_signs/change_provided_only_left"
+    },
+    "facing=south,type=4": {
+      "model": "thingamajigs:block/other_overunder_sized_signs/change_provided_only_left",
+      "y": 180
+    },
+    "facing=west,type=4": {
+      "model": "thingamajigs:block/other_overunder_sized_signs/change_provided_only_left",
+      "y": 270
+    },
+    "facing=east,type=5": {
+      "model": "thingamajigs:block/other_overunder_sized_signs/blueypass_only_no_cash",
+      "y": 90
+    },
+    "facing=north,type=5": {
+      "model": "thingamajigs:block/other_overunder_sized_signs/blueypass_only_no_cash"
+    },
+    "facing=south,type=5": {
+      "model": "thingamajigs:block/other_overunder_sized_signs/blueypass_only_no_cash",
+      "y": 180
+    },
+    "facing=west,type=5": {
+      "model": "thingamajigs:block/other_overunder_sized_signs/blueypass_only_no_cash",
+      "y": 270
+    },
+    "facing=east,type=6": {
+      "model": "thingamajigs:block/other_overunder_sized_signs/full_service_small",
+      "y": 90
+    },
+    "facing=north,type=6": {
+      "model": "thingamajigs:block/other_overunder_sized_signs/full_service_small"
+    },
+    "facing=south,type=6": {
+      "model": "thingamajigs:block/other_overunder_sized_signs/full_service_small",
+      "y": 180
+    },
+    "facing=west,type=6": {
+      "model": "thingamajigs:block/other_overunder_sized_signs/full_service_small",
+      "y": 270
+    },
+    "facing=east,type=7": {
+      "model": "thingamajigs:block/other_overunder_sized_signs/toll_plaza_ahead_small",
+      "y": 90
+    },
+    "facing=north,type=7": {
+      "model": "thingamajigs:block/other_overunder_sized_signs/toll_plaza_ahead_small"
+    },
+    "facing=south,type=7": {
+      "model": "thingamajigs:block/other_overunder_sized_signs/toll_plaza_ahead_small",
+      "y": 180
+    },
+    "facing=west,type=7": {
+      "model": "thingamajigs:block/other_overunder_sized_signs/toll_plaza_ahead_small",
+      "y": 270
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "thingamajigs:bases/base_railway_lights",
+  "textures": {
+    "mainlayer": "thingamajigs:block/brit_amber",
+    "overlayer": "thingamajigs:block/brit_amber_emissive"
+  }
+}

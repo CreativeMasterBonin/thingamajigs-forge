@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "iii",
+    "dsd",
+    "b b"
+  ],
+  "key": {
+    "i": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "s": {
+      "item": "thingamajigs:sludge_bucket"
+    },
+    "d": {
+      "item": "minecraft:dropper"
+    },
+    "b": {
+      "item": "minecraft:blaze_rod"
+    }
+  },
+  "result": {
+    "item": "thingamajigs:sludge_converter",
+    "count": 1
+  }
+}
+

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "thingamajigs:railroad_crossing"
+    },
+    {
+      "item": "thingamajigs:stop_sign"
+    },
+    {
+      "item": "minecraft:smooth_stone"
+    }
+  ],
+  "result": {
+    "item": "thingamajigs:stop_gate",
+    "count": 2
+  }
+}
+

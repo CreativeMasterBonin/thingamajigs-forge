@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "sss",
+    "sts",
+    "sss"
+  ],
+  "key": {
+    "s": {
+      "item": "minecraft:smooth_stone_slab"
+    },
+    "t": {
+      "item": "thingamajigs:thingamajig"
+    }
+  },
+  "result": {
+    "item": "thingamajigs:store_shelf",
+    "count": 4
+  }
+}
+

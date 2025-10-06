@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "sss",
+    "s#s",
+    "sss"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:torch"
+    },
+    "s": {
+      "item": "minecraft:sculk"
+    }
+  },
+  "result": {
+    "item": "thingamajigs:sculk_lantern",
+    "count": 1
+  }
+}

@@ -1,0 +1,38 @@
+{
+    "name": "Infimove Minecart",
+    "icon": "thingamajigs:infimove_minecart_item",
+    "category": "thingamajigs:decorations",
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "The infimove minecart is pretty much an improved version of a furnace minecart. Note however, that it is not required to power it at all. Just place green wool (or concrete) below a track to power it up, and red wool (or concrete) above the track to stop it. Think of it like programming on a 'while' loop or a 'for' loop. Or think of it like an inaccurate electricity model (jk)."
+        },
+        {
+            "type": "patchouli:entity",
+            "entity": "thingamajigs:infimove_minecart",
+            "scale": 0.5,
+            "offset": 0.0,
+            "text": "Can be powered in a few ways."
+        },
+        {
+            "type": "patchouli:text",
+            "text": "In the 1.7.7 version of Thingamajigs, Infimove minecarts now like to 'trick' over ~3+ block gaps! They also can glide over 1 block gaps if going fast enough. Their physics are slightly better than normal minecarts, and can be walked upon now."
+        },
+        {
+            "type": "patchouli:image",
+            "images": ["thingamajigs:textures/gui/trickcart.png"],
+            "title": "A cart tricking",
+            "border": false
+        },
+        {
+            "type": "patchouli:text",
+            "text": "Not only this, but green and red block logic now is a little more based on cart direction. It may take some experimentation to get a system working with the changes."
+        },
+        {
+            "type": "patchouli:image",
+            "images": ["thingamajigs:textures/gui/newcartcontrol.png"],
+            "title": "An example loop system",
+            "border": false
+        }
+    ]
+}

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "thingamajigs:thingamajig"
+  },
+  "result": "thingamajigs:hardhat_hazard",
+  "count": 1
+}

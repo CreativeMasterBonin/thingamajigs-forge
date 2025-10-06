@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " b ",
+    "ltg",
+    " e "
+  ],
+  "key": {
+    "b": {
+      "item": "minecraft:blue_dye"
+    },
+    "e": {
+      "item": "minecraft:lime_dye"
+    },
+    "g": {
+      "item": "minecraft:green_dye"
+    },
+    "l": {
+      "item": "minecraft:light_blue_dye"
+    },
+    "t": {
+      "item": "minecraft:tinted_glass"
+    }
+  },
+  "result": {
+    "item": "thingamajigs:colored_glass",
+    "count": 1
+  }
+}

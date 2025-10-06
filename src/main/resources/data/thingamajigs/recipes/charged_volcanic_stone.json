@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "cmc",
+    "mvm",
+    "cmc"
+  ],
+  "key": {
+    "c": {
+      "item": "minecraft:fire_charge"
+    },
+    "v": {
+      "item": "thingamajigs:volcanic_stone"
+    },
+    "m": {
+      "item": "minecraft:magma_block"
+    }
+  },
+  "result": {
+    "item": "thingamajigs:charged_volcanic_stone",
+    "count": 1
+  }
+}

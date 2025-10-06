@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "r",
+    "p",
+    "r"
+  ],
+  "key": {
+    "r": {
+      "item": "minecraft:redstone"
+    },
+    "p": {
+      "item": "thingamajigs:straight_pole"
+    }
+  },
+  "result": {
+    "item": "thingamajigs:vertical_pole_redstone",
+    "count": 1
+  }
+}
+

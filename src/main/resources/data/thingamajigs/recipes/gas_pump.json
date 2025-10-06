@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "thingamajigs:gas_can"
+    },
+    {
+      "item": "thingamajigs:infrastructure_component"
+    },
+    {
+      "item": "thingamajigs:technology_component"
+    }
+  ],
+  "result": {
+    "item": "thingamajigs:gas_pump",
+    "count": 4
+  }
+}
+

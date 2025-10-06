@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "thingamajigs:safety_component"
+  },
+  "result": "thingamajigs:dome_cam",
+  "count": 4
+}

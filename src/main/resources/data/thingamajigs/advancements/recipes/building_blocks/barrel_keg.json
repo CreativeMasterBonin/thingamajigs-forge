@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "get_barrel": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:barrel"
+            ]
+          }
+        ]
+      }
+    },
+    "get_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "thingamajigs:barrel_keg"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "get_barrel",
+      "get_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "thingamajigs:barrel_keg"
+    ]
+  },
+  "sends_telemetry_event": false
+}

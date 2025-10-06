@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "thingamajigs:toy_component"
+    },
+    {
+      "item": "thingamajigs:home_component"
+    }
+  ],
+  "result": {
+    "item": "thingamajigs:toy_box",
+    "count": 2
+  }
+}
+

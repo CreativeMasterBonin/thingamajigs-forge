@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "get_gold_inventory_again": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:gold_ingot"
+            ]
+          }
+        ]
+      }
+    },
+    "get_a_recipe_again": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "thingamajigs:tri_candle_holder"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "get_gold_inventory_again",
+      "get_a_recipe_again"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "thingamajigs:tri_candle_holder"
+    ]
+  },
+  "sends_telemetry_event": false
+}

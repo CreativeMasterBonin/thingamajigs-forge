@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "thingamajigs:sports_component"
+  },
+  "result": "thingamajigs:green_bowling_ball",
+  "count": 1
+}

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ppp",
+    "prp",
+    "ppp"
+  ],
+  "key": {
+    "p": {
+      "item": "minecraft:purple_dye"
+    },
+    "r": {
+      "item": "minecraft:rail"
+    }
+  },
+  "result": {
+    "item": "thingamajigs:purple_rail",
+    "count": 1
+  }
+}

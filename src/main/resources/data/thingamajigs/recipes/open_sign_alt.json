@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "open_neon_signs",
+  "ingredients": [
+    {
+      "item": "thingamajigs:open_sign"
+    },
+    {
+      "item": "minecraft:lime_dye"
+    },
+    {
+      "item": "minecraft:magenta_dye"
+    }
+  ],
+  "result": {
+    "item": "thingamajigs:open_sign_alt",
+    "count": 1
+  }
+}
+

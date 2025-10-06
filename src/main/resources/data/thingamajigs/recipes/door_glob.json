@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "thingamajigs:thingamajig_glob"
+    },
+    {
+      "tag": "minecraft:doors"
+    }
+  ],
+  "result": {
+    "item": "thingamajigs:door_glob",
+    "count": 1
+  }
+}
+

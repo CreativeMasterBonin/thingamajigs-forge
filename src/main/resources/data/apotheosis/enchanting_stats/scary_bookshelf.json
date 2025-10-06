@@ -1,0 +1,11 @@
+{
+	"block": "thingamajigs:scary_bookshelf",
+	"stats": {
+		"maxEterna": 4.0,
+		"eterna": 2.0,
+		"quanta": 5.0,
+		"arcana": -2.0,
+        "rectification": 0,
+        "clues": 0
+	}
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": {
+    "item": "thingamajigs:base_component"
+  },
+  "base": {
+    "item": "minecraft:crafting_table"
+  },
+  "addition": {
+    "item": "thingamajigs:thingamajig_glob"
+  },
+  "result": {
+    "item": "thingamajigs:misc_component",
+    "count": 16
+  }
+}

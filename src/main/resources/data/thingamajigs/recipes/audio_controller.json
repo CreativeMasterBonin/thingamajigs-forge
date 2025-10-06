@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "thingamajigs:music_component"
+  },
+  "result": "thingamajigs:audio_controller",
+  "count": 1
+}

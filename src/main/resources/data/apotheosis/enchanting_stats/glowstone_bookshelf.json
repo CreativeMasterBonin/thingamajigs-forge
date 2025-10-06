@@ -1,0 +1,11 @@
+{
+	"block": "thingamajigs:glowstone_bookshelf",
+	"stats": {
+		"maxEterna": 5.0,
+		"eterna": 1.0,
+		"quanta": 2.0,
+		"arcana": 0.5,
+        "rectification": 0,
+        "clues": 0
+	}
+}

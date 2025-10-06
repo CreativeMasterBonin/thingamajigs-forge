@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "oso",
+    "oio",
+    "b b"
+  ],
+  "key": {
+    "b": {
+      "item": "minecraft:black_wool"
+    },
+    "o": {
+      "item": "minecraft:orange_concrete"
+    },
+    "i": {
+      "item": "minecraft:iron_ingot"
+    },
+    "s": {
+      "tag": "minecraft:signs"
+    }
+  },
+  "result": {
+    "item": "thingamajigs:arrow_board",
+    "count": 1
+  }
+}
+

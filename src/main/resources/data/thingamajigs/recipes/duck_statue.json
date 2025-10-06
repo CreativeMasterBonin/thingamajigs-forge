@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "y",
+    "p"
+  ],
+  "key": {
+    "p": {
+      "item": "minecraft:quartz_pillar"
+    },
+    "y": {
+      "item": "minecraft:yellow_concrete"
+    }
+  },
+  "result": {
+    "item": "thingamajigs:duck_statue",
+    "count": 1
+  }
+}
+

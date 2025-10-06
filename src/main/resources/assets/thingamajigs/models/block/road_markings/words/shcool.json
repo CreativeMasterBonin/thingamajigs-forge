@@ -1,0 +1,7 @@
+{
+  "parent": "thingamajigs:bases/road_marking",
+  "textures": {
+    "all": "thingamajigs:block/pavement_markings/worded/shcool",
+    "particle": "thingamajigs:block/pavement_markings/white/all_white"
+  }
+}

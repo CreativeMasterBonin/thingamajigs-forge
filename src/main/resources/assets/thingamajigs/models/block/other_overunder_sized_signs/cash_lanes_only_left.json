@@ -1,0 +1,6 @@
+{
+  "parent": "thingamajigs:bases/blueypass_only_sign_base",
+  "textures": {
+    "front": "thingamajigs:block/signs/speciality_signs/cash_lanes_only_left"
+  }
+}

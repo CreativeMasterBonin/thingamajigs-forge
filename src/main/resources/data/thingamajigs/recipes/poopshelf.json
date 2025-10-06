@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "thingamajigs:blank_bookshelf"
+    },
+    {
+      "item": "thingamajigs:poop"
+    }
+  ],
+  "result": {
+    "item": "thingamajigs:poopshelf",
+    "count": 1
+  }
+}
+

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "nnn",
+    "ntn",
+    "n n"
+  ],
+  "key": {
+    "n": {
+      "item": "minecraft:iron_nugget"
+    },
+    "t": {
+      "item": "minecraft:glowstone_dust"
+    }
+  },
+  "result": {
+    "item": "thingamajigs:clear_bulb",
+    "count": 4
+  }
+}
+

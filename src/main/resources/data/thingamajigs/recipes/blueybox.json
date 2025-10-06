@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "thingamajigs:dvd_player"
+    },
+    {
+      "item": "thingamajigs:technology_component"
+    },
+    {
+      "item": "minecraft:light_blue_concrete"
+    }
+  ],
+  "result": {
+    "item": "thingamajigs:blueybox",
+    "count": 1
+  }
+}
+

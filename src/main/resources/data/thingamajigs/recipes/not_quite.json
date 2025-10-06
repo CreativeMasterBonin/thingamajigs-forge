@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "thingamajigs_material_storage",
+  "pattern": [
+    "ttt",
+    "ttt",
+    "ttt"
+  ],
+  "key": {
+    "t": {
+      "item": "thingamajigs:thingamajig"
+    }
+  },
+  "result": {
+    "item": "thingamajigs:not_quite",
+    "count": 1
+  }
+}

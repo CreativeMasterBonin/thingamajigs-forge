@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "thingamajigs:misc_sign_glob"
+  },
+  "result": "thingamajigs:exit_left",
+  "count": 1
+}

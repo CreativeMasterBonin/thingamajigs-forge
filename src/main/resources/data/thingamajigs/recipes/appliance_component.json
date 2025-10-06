@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "thingamajigs:technology_component"
+    },
+    {
+      "item": "thingamajigs:home_component"
+    }
+  ],
+  "result": {
+    "item": "thingamajigs:appliance_component",
+    "count": 4
+  }
+}
+

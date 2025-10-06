@@ -1,0 +1,6 @@
+{
+  "parent": "thingamajigs:bases/huge_horz_sign",
+  "textures": {
+    "front": "thingamajigs:block/signs/speciality_signs/cash_lanes_sign"
+  }
+}

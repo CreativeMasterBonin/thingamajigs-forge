@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "g g",
+    " g ",
+    " t "
+  ],
+  "key": {
+    "g": {
+      "item": "minecraft:gold_ingot"
+    },
+    "t": {
+      "item": "thingamajigs:thingamajig"
+    }
+  },
+  "result": {
+    "item": "thingamajigs:key",
+    "count": 1
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "thingamajigs:tree_resin"
+  },
+  "result": "thingamajigs:rubber",
+  "cookingtime": 80
+}

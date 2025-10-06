@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ses",
+    "ede",
+    "ses"
+  ],
+  "key": {
+    "d": {
+      "item": "minecraft:calibrated_sculk_sensor"
+    },
+    "s": {
+      "item": "minecraft:sculk_catalyst"
+    },
+    "e": {
+      "item": "minecraft:echo_shard"
+    }
+  },
+  "result": {
+    "item": "thingamajigs:warden_trophy",
+    "count": 1
+  }
+}
+

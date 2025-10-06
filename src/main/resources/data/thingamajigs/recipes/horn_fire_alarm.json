@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "thingamajigs:safety_component"
+  },
+  "result": "thingamajigs:horn_fire_alarm",
+  "count": 1
+}

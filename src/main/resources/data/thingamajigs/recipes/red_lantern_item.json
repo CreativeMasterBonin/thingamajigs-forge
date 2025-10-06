@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "torch_lanterns",
+  "pattern": [
+    "prp",
+    "pap",
+    "p p"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:torch"
+    },
+    "p": {
+      "item": "minecraft:paper"
+    },
+    "r": {
+      "item": "minecraft:red_dye"
+    }
+  },
+  "result": {
+    "item": "thingamajigs:red_lantern_item",
+    "count": 4
+  }
+}

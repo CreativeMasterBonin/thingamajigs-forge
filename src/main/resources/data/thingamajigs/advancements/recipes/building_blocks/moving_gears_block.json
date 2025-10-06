@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "get_gears": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "thingamajigs:gears_block"
+            ]
+          }
+        ]
+      }
+    },
+    "get_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "thingamajigs:moving_gears_block"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "get_gears",
+      "get_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "thingamajigs:moving_gears_block"
+    ]
+  },
+  "sends_telemetry_event": false
+}

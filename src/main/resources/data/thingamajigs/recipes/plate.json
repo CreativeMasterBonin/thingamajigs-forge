@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "q q",
+    "qwq"
+  ],
+  "key": {
+    "q": {
+      "item": "minecraft:quartz"
+    },
+    "w": {
+      "item": "minecraft:white_concrete"
+    }
+  },
+  "result": {
+    "item": "thingamajigs:plate",
+    "count": 3
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "variants": {
+    "facing=east,type=bottom": {
+      "model": "thingamajigs:block/marked_road_slab/ok_dcy_bottom",
+      "y": 90
+    },
+    "facing=north,type=bottom": {
+      "model": "thingamajigs:block/marked_road_slab/ok_dcy_bottom"
+    },
+    "facing=south,type=bottom": {
+      "model": "thingamajigs:block/marked_road_slab/ok_dcy_bottom",
+      "y": 180
+    },
+    "facing=west,type=bottom": {
+      "model": "thingamajigs:block/marked_road_slab/ok_dcy_bottom",
+      "y": 270
+    },
+
+    "facing=east,type=double": {
+      "model": "thingamajigs:block/marked_road/ok_dcy",
+      "y": 90
+    },
+    "facing=north,type=double": {
+      "model": "thingamajigs:block/marked_road/ok_dcy"
+    },
+    "facing=south,type=double": {
+      "model": "thingamajigs:block/marked_road/ok_dcy",
+      "y": 180
+    },
+    "facing=west,type=double": {
+      "model": "thingamajigs:block/marked_road/ok_dcy",
+      "y": 270
+    },
+
+    "facing=east,type=top": {
+      "model": "thingamajigs:block/marked_road_slab/ok_dcy_top",
+      "y": 90
+    },
+    "facing=north,type=top": {
+      "model": "thingamajigs:block/marked_road_slab/ok_dcy_top"
+    },
+    "facing=south,type=top": {
+      "model": "thingamajigs:block/marked_road_slab/ok_dcy_top",
+      "y": 180
+    },
+    "facing=west,type=top": {
+      "model": "thingamajigs:block/marked_road_slab/ok_dcy_top",
+      "y": 270
+    }
+  }
+}

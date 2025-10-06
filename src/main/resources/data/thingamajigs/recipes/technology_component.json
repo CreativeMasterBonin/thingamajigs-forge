@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": {
+    "item": "thingamajigs:base_component"
+  },
+  "base": {
+    "item": "minecraft:blast_furnace"
+  },
+  "addition": {
+    "item": "minecraft:redstone"
+  },
+  "result": {
+    "item": "thingamajigs:technology_component",
+    "count": 16
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "thingamajigs:furniture_component"
+    },
+    {
+      "item": "thingamajigs:misc_component"
+    }
+  ],
+  "result": {
+    "item": "thingamajigs:home_component",
+    "count": 1
+  }
+}
+

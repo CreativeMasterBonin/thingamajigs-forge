@@ -1,0 +1,15 @@
+{
+    "name": "entry.thingamajigs.clock",
+    "icon": "thingamajigs:clock_radio",
+    "category": "thingamajigs:block",
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "Clocks are strange, and can be a progress bar to some of the day, or a meaningless number. For now, they show the in-game progression of the dimension's daytime (unsupported ones may not have a daylight cycle!)."
+        },
+        {
+            "type": "patchouli:text",
+            "text": "Just place either the analog or digital radio version clock. They automatically check for time and update. They slowly tick at lowest priority, reducing server and world lag."
+        }
+    ]
+}

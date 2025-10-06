@@ -1,0 +1,6 @@
+{
+  "parent": "thingamajigs:bases/base_balloon_block",
+  "textures": {
+    "all": "thingamajigs:block/balloon_block"
+  }
+}

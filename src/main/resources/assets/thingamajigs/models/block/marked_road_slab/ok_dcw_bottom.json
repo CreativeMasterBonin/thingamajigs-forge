@@ -1,0 +1,8 @@
+{
+  "parent": "thingamajigs:bases/base_marked_curve_asphalt_slab_bottom",
+  "textures": {
+    "2": "thingamajigs:block/marked_road/ok_dw",
+    "marking": "thingamajigs:block/marked_road/ok_dcw",
+    "age": "thingamajigs:block/ok_asphalt"
+  }
+}

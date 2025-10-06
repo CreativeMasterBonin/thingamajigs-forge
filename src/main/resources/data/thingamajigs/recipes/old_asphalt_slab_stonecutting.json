@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 2,
+  "ingredient": {
+    "item": "thingamajigs:old_asphalt"
+  },
+  "result": "thingamajigs:old_asphalt_slab"
+}

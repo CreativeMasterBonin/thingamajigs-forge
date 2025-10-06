@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "thingamajigs:infrastructure_component"
+  },
+  "result": "thingamajigs:straight_pole",
+  "count": 16
+}
+

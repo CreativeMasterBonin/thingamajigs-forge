@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "thingamajigs:infrastructure_component"
+    },
+    {
+      "item": "thingamajigs:technology_component"
+    }
+  ],
+  "result": {
+    "item": "thingamajigs:phone_component",
+    "count": 1
+  }
+}
+

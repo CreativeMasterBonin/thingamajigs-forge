@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "rbr",
+    "rpr",
+    "rbr"
+  ],
+  "key": {
+    "r": {
+      "item": "minecraft:redstone"
+    },
+    "b": {
+      "tag": "minecraft:stone_buttons"
+    },
+    "p": {
+      "item": "thingamajigs:purple_rail"
+    }
+  },
+  "result": {
+    "item": "thingamajigs:purple_detector_rail",
+    "count": 1
+  }
+}
+

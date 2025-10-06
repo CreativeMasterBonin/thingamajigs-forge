@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "thingamajigs:home_component"
+    },
+    {
+      "item": "minecraft:oak_planks"
+    },
+    {
+      "item": "minecraft:oak_fence"
+    }
+  ],
+  "result": {
+    "item": "thingamajigs:picnic_table",
+    "count": 4
+  }
+}

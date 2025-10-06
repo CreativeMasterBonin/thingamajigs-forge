@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "thingamajigs:full_poop_block"
+  },
+  "result": "thingamajigs:poop_chair",
+  "count": 2
+}

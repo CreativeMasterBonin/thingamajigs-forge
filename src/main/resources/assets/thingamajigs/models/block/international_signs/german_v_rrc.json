@@ -1,0 +1,10 @@
+{
+  "parent": "thingamajigs:bases/sign",
+  "textures": {
+    "front": "thingamajigs:block/signs/international/german_v_rrc",
+    "back": "thingamajigs:block/signs/back/international/back_v_grrc",
+    "pole": "minecraft:block/blast_furnace_side",
+    "particle": "minecraft:block/blast_furnace_side"
+  }
+}
+

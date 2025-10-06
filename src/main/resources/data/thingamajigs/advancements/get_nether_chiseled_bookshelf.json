@@ -1,0 +1,33 @@
+{
+  "display": {
+    "icon": {
+      "item": "thingamajigs:nether_chiseled_bookshelf"
+    },
+    "title": {
+      "translate": "advancement.thingamajigs.tough.title"
+    },
+    "description": {
+      "translate": "advancement.thingamajigs.tough.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "parent": "thingamajigs:root",
+  "criteria": {
+    "get_nether_chiseled_bookshelf": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "thingamajigs:nether_chiseled_bookshelf"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "sends_telemetry_event": false
+}

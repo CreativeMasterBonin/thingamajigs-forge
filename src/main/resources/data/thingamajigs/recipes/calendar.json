@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "thingamajigs:home_component"
+    },
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:map"
+    },
+    {
+      "item": "minecraft:clock"
+    }
+  ],
+  "result": {
+    "item": "thingamajigs:calendar",
+    "count": 4
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "sww",
+    "d  "
+  ],
+  "key": {
+    "w": {
+      "item": "minecraft:white_concrete"
+    },
+    "d": {
+      "item": "minecraft:iron_nugget"
+    },
+    "s": {
+      "item": "minecraft:smooth_stone_slab"
+    }
+  },
+  "result": {
+    "item": "thingamajigs:diving_board",
+    "count": 1
+  }
+}
+

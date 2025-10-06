@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "iii",
+    "tct",
+    "iii"
+  ],
+  "key": {
+    "i": {
+      "item": "minecraft:iron_ingot"
+    },
+    "c": {
+      "item": "minecraft:clock"
+    },
+    "t": {
+      "item": "thingamajigs:thingamajig"
+    }
+  },
+  "result": {
+    "item": "thingamajigs:clock_radio",
+    "count": 1
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "thingamajigs:misc_component"
+  },
+  "result": "thingamajigs:neon_block",
+  "count": 16
+}

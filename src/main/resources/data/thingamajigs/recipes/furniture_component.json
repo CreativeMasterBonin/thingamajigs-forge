@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": {
+    "item": "thingamajigs:base_component"
+  },
+  "base": {
+    "tag": "minecraft:wool"
+  },
+  "addition": {
+    "tag": "minecraft:planks"
+  },
+  "result": {
+    "item": "thingamajigs:furniture_component",
+    "count": 16
+  }
+}

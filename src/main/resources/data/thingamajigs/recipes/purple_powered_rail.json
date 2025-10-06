@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "gsg",
+    "grg",
+    "gsg"
+  ],
+  "key": {
+    "r": {
+      "item": "thingamajigs:purple_rail"
+    },
+    "g": {
+      "item": "minecraft:gold_ingot"
+    },
+    "s": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "result": {
+    "item": "thingamajigs:purple_powered_rail",
+    "count": 1
+  }
+}
+

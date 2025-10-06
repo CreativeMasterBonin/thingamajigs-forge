@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "y  ",
+    "iy ",
+    "iiy"
+  ],
+  "key": {
+    "y": {
+      "item": "minecraft:yellow_concrete"
+    },
+    "i": {
+      "item": "minecraft:iron_bars"
+    }
+  },
+  "result": {
+    "item": "thingamajigs:water_slide",
+    "count": 3
+  }
+}
+

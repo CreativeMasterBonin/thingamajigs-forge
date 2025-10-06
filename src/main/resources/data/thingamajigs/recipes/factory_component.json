@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": {
+    "item": "thingamajigs:base_component"
+  },
+  "base": {
+    "item": "minecraft:dispenser"
+  },
+  "addition": {
+    "item": "minecraft:iron_ingot"
+  },
+  "result": {
+    "item": "thingamajigs:factory_component",
+    "count": 16
+  }
+}
+

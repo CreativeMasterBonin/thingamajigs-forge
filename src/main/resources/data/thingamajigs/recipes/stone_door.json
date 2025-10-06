@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "door_glob_recipes",
+  "ingredients": [
+    {
+      "item": "thingamajigs:door_glob"
+    },
+    {
+      "item": "minecraft:stone"
+    },
+    {
+      "item": "minecraft:glass"
+    }
+  ],
+  "result": {
+    "item": "thingamajigs:stone_door",
+    "count": 3
+  }
+}
+

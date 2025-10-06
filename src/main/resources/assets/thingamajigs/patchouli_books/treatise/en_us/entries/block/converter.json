@@ -1,0 +1,64 @@
+{
+    "name": "Converter",
+    "icon": "thingamajigs:sludge_converter",
+    "category": "thingamajigs:block",
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "The converter quickly and precisely changes specific blocks and items into other things. Notably, it changes sludge buckets into a bucket and byproduct. Quite useful for farms if crafted into bonemeal. There are other uses of course."
+        },
+        {
+            "type": "patchouli:multiblock",
+            "name": "Converter Setup",
+            "multiblock": {
+                "pattern": [
+                    [ "  " ], 
+                    [ "C " ],
+                    [ "P0" ]
+                ],
+                "mapping": {
+                    "C": "thingamajigs:sludge_converter",
+                    "P": "thingamajigs:purifying_block"
+                }
+            },
+            "text": "An example recipe setup. Creates infinite purifying water!"
+        },
+        {
+            "type": "patchouli:text",
+            "text": "The Converter will convert cobblestone to netherrack if lava is placed under it (but only if a certain 'creative' mod is installed... (Hint: it has cogs in it))"
+        },
+        {
+            "type": "patchouli:multiblock",
+            "name": "Netherrack Gen",
+            "multiblock": {
+                "pattern": [
+                    [ "B " ], 
+                    [ "C " ],
+                    [ "L0" ]
+                ],
+                "mapping": {
+                    "B": "minecraft:cobblestone",
+                    "C": "thingamajigs:sludge_converter",
+                    "L": "minecraft:lava"
+                }
+            },
+            "text": "The recipe for infinite cobblestone."
+        },
+        {
+            "type": "patchouli:multiblock",
+            "name": "Sludge Byproduct",
+            "multiblock":{
+                "pattern":[
+                    ["S "],
+                    ["C "],
+                    ["0 "]
+                ],
+                "mapping":{
+                    "S": "thingamajigs:sludge",
+                    "C": "thingamajigs:sludge_converter"
+                }
+            },
+            "text": "Turn sludge into byproduct!"
+        }
+    ]
+}

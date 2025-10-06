@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "mailboxes",
+  "pattern": [
+    "wtw",
+    " s ",
+    " s "
+  ],
+  "key": {
+    "w": {
+      "item": "minecraft:iron_ingot"
+    },
+    "t": {
+      "item": "thingamajigs:thingamajig"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "thingamajigs:mailbox",
+    "count": 1
+  }
+}

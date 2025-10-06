@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "wdw",
+    "wtw"
+  ],
+  "key": {
+    "w": {
+      "item": "minecraft:dark_oak_slab"
+    },
+    "t": {
+      "item": "thingamajigs:thingamajig"
+    },
+    "d": {
+      "item": "minecraft:dark_oak_trapdoor"
+    }
+  },
+  "result": {
+    "item": "thingamajigs:coffin",
+    "count": 1
+  }
+}
+

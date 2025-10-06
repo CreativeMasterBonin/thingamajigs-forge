@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "thingamajigs:arcade_machine"
+  },
+  "result": "thingamajigs:arcade_machine_openable",
+  "count": 1
+}

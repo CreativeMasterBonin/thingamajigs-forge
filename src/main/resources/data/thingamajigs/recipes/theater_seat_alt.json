@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  r",
+    "rrr",
+    "w w"
+  ],
+  "key": {
+    "r": {
+      "item": "minecraft:red_wool"
+    },
+    "w": {
+      "item": "minecraft:spruce_planks"
+    }
+  },
+  "result": {
+    "item": "thingamajigs:theater_seat",
+    "count": 2
+  }
+}
+

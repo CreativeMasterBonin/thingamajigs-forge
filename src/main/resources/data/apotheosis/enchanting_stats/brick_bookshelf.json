@@ -1,0 +1,13 @@
+{
+	"block": "thingamajigs:brick_bookshelf",
+	"stats": {
+		"maxEterna": 1.0,
+        "maxQuanta": 1.0,
+        "maxArcana": 1.0,
+		"eterna": -2.0,
+		"quanta": -2.0,
+		"arcana": 0.0,
+        "rectification": 0,
+        "clues": 0
+	}
+}

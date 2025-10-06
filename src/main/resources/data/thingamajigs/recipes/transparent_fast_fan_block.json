@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "thingamajigs:factory_component"
+  },
+  "result": "thingamajigs:transparent_fast_fan_block",
+  "count": 1
+}

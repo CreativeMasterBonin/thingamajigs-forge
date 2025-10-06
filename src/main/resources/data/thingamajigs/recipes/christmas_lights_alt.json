@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "thingamajigs:christmas_component"
+  },
+  "result": "thingamajigs:christmas_lights_alt",
+  "count": 8
+}

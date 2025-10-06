@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "thingamajigs:tree_resin"
+  },
+  "result": "thingamajigs:rubber",
+  "cookingtime": 100
+}

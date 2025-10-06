@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": {
+    "item": "thingamajigs:technology_component"
+  },
+  "base": {
+    "item": "thingamajigs:water_fountain"
+  },
+  "addition": {
+    "item": "thingamajigs:red_soda_machine"
+  },
+  "result": {
+    "item": "thingamajigs:refreshment_machine",
+    "count": 1
+  }
+}
+
