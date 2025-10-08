@@ -16,7 +16,7 @@ import net.rk.thingamajigs.xtrablock.CurvedMonitor;
 public class CurvedMonitorModel extends Model{
     public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(
             new ResourceLocation("thingamajigs:textures/entity/curved_monitor.png"), "main");
-    private final ModelPart screen;
+    public final ModelPart screen;
     private final ModelPart keys;
 
     public CurvedMonitorModel(ModelPart root){

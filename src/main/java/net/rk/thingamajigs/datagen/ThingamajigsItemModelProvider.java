@@ -131,12 +131,12 @@ public class ThingamajigsItemModelProvider extends ItemModelProvider {
 
         handheld(ThingamajigsItems.SCRAPE_TOOL);
 
-        simpleCustomBlock(ThingamajigsBlocks.CURVED_MONITOR,"item/curved_monitor");
+        //simpleCustomBlock(ThingamajigsBlocks.CURVED_MONITOR,"item/curved_monitor");
         //simpleCustomBlock(ThingamajigsBlocks.CLEVER_BLACKBOARD,"item/clever_blackboard");
         //simpleCustomBlock(ThingamajigsBlocks.UMBRELLA,"item/umbrella");
 
         simple(ThingamajigsItems.MUSIC_COMPONENT);
-        simpleCustomBlock(ThingamajigsBlocks.THEATER_PROJECTOR,"item/theater_projector");
+        //simpleCustomBlock(ThingamajigsBlocks.THEATER_PROJECTOR,"item/theater_projector");
 
         fromModelMod(ThingamajigsBlocks.TRIPLE_SHELF.get(),"block/triple_shelf");
         fromModelMod(ThingamajigsBlocks.TEDDY_BEAR.get(),"block/teddy_bear");

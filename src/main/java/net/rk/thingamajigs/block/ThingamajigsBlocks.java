@@ -3731,7 +3731,7 @@ public class ThingamajigsBlocks {
                 }
             });
 
-    public static final RegistryObject<Block> CURVED_MONITOR = registerBlock("curved_monitor",
+    public static final RegistryObject<Block> CURVED_MONITOR = customRegisterBlock("curved_monitor",
             () -> new CurvedMonitor(BlockBehaviour.Properties.of().lightLevel(s -> 7)));
 
     // 1.7.7
@@ -4135,7 +4135,7 @@ public class ThingamajigsBlocks {
                 }
             });
 
-    public static final RegistryObject<Block> THEATER_PROJECTOR = registerBlock("theater_projector",
+    public static final RegistryObject<Block> THEATER_PROJECTOR = customRegisterBlock("theater_projector",
             () -> new TheaterProjector(BlockBehaviour.Properties.of()));
 
     public static final RegistryObject<Block> TRIPLE_SHELF = registerBlock("triple_shelf",

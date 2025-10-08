@@ -775,7 +775,7 @@ public class Thingamajigs {
             event.accept(ThingamajigsBlocks.DUMPSTER.get().asItem());
             event.accept(ThingamajigsBlocks.TRASH_BAG.get().asItem());
             // theater stuff
-            event.accept(ThingamajigsBlocks.THEATER_PROJECTOR.get().asItem());
+            event.accept(ThingamajigsItems.THEATER_PROJECTOR.get().asItem());
             event.accept(ThingamajigsBlocks.THEATER_SEAT.get().asItem());
             event.accept(ThingamajigsBlocks.THEATER_SEAT_CONTINUOUS.get().asItem());
             event.accept(ThingamajigsBlocks.POPCORN_MACHINE.get().asItem());

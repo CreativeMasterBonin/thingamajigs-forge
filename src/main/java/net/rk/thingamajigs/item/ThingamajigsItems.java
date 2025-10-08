@@ -463,6 +463,10 @@ public class ThingamajigsItems {
             () -> new CustomBEWLRBlockItem(ThingamajigsBlocks.ANIMATED_ICE_RINK.get(),new Item.Properties()));
     public static final RegistryObject<Item> UMBRELLA = ITEMS.register("umbrella",
             () -> new UmbrellaBlockItem(ThingamajigsBlocks.UMBRELLA.get(),new Item.Properties()));
+    public static final RegistryObject<Item> CURVED_MONITOR = ITEMS.register("curved_monitor",
+            () -> new CustomBEWLRBlockItem(ThingamajigsBlocks.CURVED_MONITOR.get(),new Item.Properties()));
+    public static final RegistryObject<Item> THEATER_PROJECTOR = ITEMS.register("theater_projector",
+            () -> new CustomBEWLRBlockItem(ThingamajigsBlocks.THEATER_PROJECTOR.get(),new Item.Properties()));
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);

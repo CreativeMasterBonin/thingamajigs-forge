@@ -7,13 +7,13 @@ modId="thingamajigs"
 version="1.8.2"
 displayName="Thingamajigs"
 credits="Created by CreativeMasterBonin. Some textures made by Greenspelunking. Other ideas and original artwork by blueman."
-displayURL="https://github.com/roberttkahelin8/thingmajigs"
+displayURL="https://github.com/CreativeMasterBonin/thingmajigs"
 logoFile="logo.png"
 iconFile="logo.png"
 authors="CreativeMasterBonin"
 description='''Adds many decorative blocks to your worlds! Remember to check for updates using the website link.'''
-issueTrackerURL="https://github.com/roberttkahelin8/thingmajigs/issues"
-updateJSONURL="https://raw.githubusercontent.com/roberttkahelin8/thingmajigs/refs/heads/main/updates/versions.json"
+issueTrackerURL="https://github.com/CreativeMasterBonin/thingmajigs/issues"
+updateJSONURL="https://raw.githubusercontent.com/CreativeMasterBonin/thingmajigs/refs/heads/main/updates/versions.json"
 
 [[dependencies.thingamajigs]]
     modId="minecraft"
