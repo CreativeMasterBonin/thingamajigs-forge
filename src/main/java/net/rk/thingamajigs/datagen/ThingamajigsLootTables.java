@@ -1,15 +1,10 @@
 package net.rk.thingamajigs.datagen;
 
-import net.minecraft.advancements.critereon.EnchantmentPredicate;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.loot.packs.VanillaBlockLoot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.DoorBlock;
@@ -1573,6 +1568,7 @@ public class ThingamajigsLootTables extends VanillaBlockLoot {
         // 1.8.3
         this.dropSelf(ThingamajigsBlocks.FOOD_COOLER.get());
         this.dropSelf(ThingamajigsBlocks.FOOTBALL_GOAL.get());
+        this.dropSelf(ThingamajigsBlocks.SPHERES_AND_RINGS_MACHINE.get());
 
 
 
@@ -1783,6 +1779,7 @@ public class ThingamajigsLootTables extends VanillaBlockLoot {
     protected Iterable<Block> getKnownBlocks() {
         return ForgeRegistries.BLOCKS.getEntries().stream()
                 .filter(e -> e.getKey().location().getNamespace().equals(Thingamajigs.MOD_ID))
+                //.filter(e -> e.getValue() != ThingamajigsBlocks.SPHERES_AND_RINGS_MACHINE.get())
                 .map(Map.Entry::getValue)
                 .collect(Collectors.toList());
     }

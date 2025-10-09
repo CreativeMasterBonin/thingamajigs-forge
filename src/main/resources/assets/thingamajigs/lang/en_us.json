@@ -1572,6 +1572,7 @@
   "block.thingamajigs.wispy_weed": "Wispy Weed",
   "block.thingamajigs.food_cooler": "Food Cooler",
   "block.thingamajigs.football_goal": "Football Goal",
+  "block.thingamajigs.throw_sphere_into_ring_machine": "Spheres and Rings Machine",
 
 
   "blockEntities.openable_container.name": "Accessible Container",

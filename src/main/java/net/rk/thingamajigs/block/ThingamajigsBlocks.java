@@ -3,19 +3,12 @@ package net.rk.thingamajigs.block;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -27,7 +20,6 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
-import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -53,7 +45,6 @@ import net.rk.thingamajigs.fluid.fluidblocks.SludgeBlock;
 import net.rk.thingamajigs.interfacing.WeatheringCopperChair;
 import net.rk.thingamajigs.item.ThingamajigsItems;
 import net.rk.thingamajigs.misc.ThingamajigsBlockTypes;
-import net.rk.thingamajigs.particle.ThingamajigsParticles;
 import net.rk.thingamajigs.world.tree.RubberTreeGrower;
 import net.rk.thingamajigs.xtrablock.*;
 import net.rk.thingamajigs.xtrablock.Mirror;
@@ -4492,6 +4483,9 @@ public class ThingamajigsBlocks {
                     return NORTHSOUTH;
                 }
             });
+
+    public static final RegistryObject<Block> SPHERES_AND_RINGS_MACHINE = registerBlock("throw_sphere_into_ring_machine",
+            () -> new ThrowSphereIntoRingMachine(BlockBehaviour.Properties.of()));
 
 
     //requality

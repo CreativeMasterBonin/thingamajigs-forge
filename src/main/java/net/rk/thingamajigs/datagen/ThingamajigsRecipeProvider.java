@@ -1524,6 +1524,15 @@ public class ThingamajigsRecipeProvider extends RecipeProvider implements ICondi
                 .pattern(" y ")
                 .unlockedBy("has_thing",InventoryChangeTrigger.TriggerInstance.hasItems(ThingamajigsItems.SPORTS_COMPONENT.get()))
                 .save(frc);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ThingamajigsBlocks.SPHERES_AND_RINGS_MACHINE.get().asItem(),1)
+                .requires(ThingamajigsBlocks.SCREEN.get().asItem())
+                .requires(ThingamajigsBlocks.BASKETBALL_MACHINE.get())
+                .requires(Items.BLUE_CONCRETE)
+                .requires(ItemTags.WOODEN_SLABS)
+                .requires(ItemTags.WOODEN_SLABS)
+                .requires(ThingamajigsItems.ARCADE_COMPONENT.get())
+                .unlockedBy("has_thingy",has(ThingamajigsItems.ARCADE_COMPONENT.get()))
+                .save(frc);
         //
     }
 

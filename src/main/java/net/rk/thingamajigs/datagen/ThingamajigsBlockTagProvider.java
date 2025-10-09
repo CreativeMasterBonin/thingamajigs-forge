@@ -809,6 +809,7 @@ public class ThingamajigsBlockTagProvider extends BlockTagsProvider {
         ;
 
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE)
+                .add(ThingamajigsBlocks.SPHERES_AND_RINGS_MACHINE.get())
                 .add(ThingamajigsBlocks.FOOTBALL_GOAL.get())
                 .add(ThingamajigsBlocks.FOOD_COOLER.get())
                 .add(ThingamajigsBlocks.VALIANT_STATUE.get())
