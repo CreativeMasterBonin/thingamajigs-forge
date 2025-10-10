@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "thingamajigs:block/plunger",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "thingamajigs:block/plunger"
+    },
+    "facing=south": {
+      "model": "thingamajigs:block/plunger",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "thingamajigs:block/plunger",
+      "y": 270
+    }
+  }
+}

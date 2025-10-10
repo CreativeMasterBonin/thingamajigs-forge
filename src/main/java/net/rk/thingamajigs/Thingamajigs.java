@@ -715,6 +715,7 @@ public class Thingamajigs {
             event.accept(ThingamajigsBlocks.HAMMER_MACHINE.get().asItem());
             event.accept(ThingamajigsBlocks.WACK_MACHINE.get().asItem());
             event.accept(ThingamajigsBlocks.AIR_HOCKEY_TABLE.get().asItem());
+            event.accept(ThingamajigsBlocks.SPHERES_AND_RINGS_MACHINE.get().asItem());
             // Water Park
             event.accept(ThingamajigsBlocks.WATER_SLIDE.get().asItem());
             event.accept(ThingamajigsBlocks.DIVING_BOARD.get().asItem());
@@ -750,6 +751,7 @@ public class Thingamajigs {
             event.accept(ThingamajigsBlocks.COMMERCIAL_JUICE_DISPENSER.get().asItem());
             event.accept(ThingamajigsBlocks.COMMERCIAL_LIQUID_DISPENSER.get().asItem());
             event.accept(ThingamajigsBlocks.CLOTHES_RACK.get().asItem());
+            event.accept(ThingamajigsBlocks.ROUND_CLOTHES_RACK.get().asItem());
             event.accept(ThingamajigsBlocks.CASH_REGISTER.get().asItem());
             event.accept(ThingamajigsBlocks.CARD_READER.get().asItem());
             event.accept(ThingamajigsBlocks.SUPERMARKET_CONVEYOR.get().asItem());
@@ -1083,6 +1085,7 @@ public class Thingamajigs {
             event.accept(ThingamajigsBlocks.SHOWER_HANDLES.get().asItem());
             event.accept(ThingamajigsBlocks.SHOWER_HEAD.get().asItem());
             event.accept(ThingamajigsBlocks.BATHTUB_NOZZLE.get().asItem());
+            event.accept(ThingamajigsBlocks.PLUNGER.get().asItem());
             event.accept(ThingamajigsBlocks.TOILET.get().asItem());
             event.accept(ThingamajigsBlocks.DENTAL_CUP.get().asItem());
             event.accept(ThingamajigsBlocks.TOILET_PAPER.get().asItem());

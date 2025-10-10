@@ -1533,6 +1533,23 @@ public class ThingamajigsRecipeProvider extends RecipeProvider implements ICondi
                 .requires(ThingamajigsItems.ARCADE_COMPONENT.get())
                 .unlockedBy("has_thingy",has(ThingamajigsItems.ARCADE_COMPONENT.get()))
                 .save(frc);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ThingamajigsBlocks.ROUND_CLOTHES_RACK.get().asItem(),1)
+                .requires(ThingamajigsBlocks.CLOTHES_RACK.get())
+                .requires(Items.IRON_INGOT)
+                .requires(Tags.Items.ARMORS)
+                .requires(ThingamajigsItems.MISC_COMPONENT.get())
+                .unlockedBy("has_thingy",has(ThingamajigsItems.MISC_COMPONENT.get()))
+                .save(frc);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ThingamajigsBlocks.PLUNGER.get().asItem(),1)
+                .requires(ThingamajigsItems.RUBBER.get())
+                .requires(ThingamajigsItems.RUBBER.get())
+                .requires(ThingamajigsItems.RUBBER.get())
+                .requires(Items.STICK)
+                .requires(Items.RED_DYE)
+                .requires(Items.PINK_DYE)
+                .requires(ThingamajigsItems.MISC_COMPONENT.get())
+                .unlockedBy("has_thingy",has(ThingamajigsItems.MISC_COMPONENT.get()))
+                .save(frc);
         //
     }
 

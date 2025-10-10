@@ -1573,6 +1573,8 @@
   "block.thingamajigs.food_cooler": "Food Cooler",
   "block.thingamajigs.football_goal": "Football Goal",
   "block.thingamajigs.throw_sphere_into_ring_machine": "Spheres and Rings Machine",
+  "block.thingamajigs.round_clothes_rack": "Round Clothes Rack",
+  "block.thingamajigs.plunger": "Plunger",
 
 
   "blockEntities.openable_container.name": "Accessible Container",

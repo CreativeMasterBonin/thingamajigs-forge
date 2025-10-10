@@ -4467,8 +4467,6 @@ public class ThingamajigsBlocks {
 
     public static final RegistryObject<Block> FOOTBALL_GOAL = customRegisterBlock("football_goal",
             () -> new FootballGoal(BlockBehaviour.Properties.of().sound(SoundType.LANTERN).noOcclusion()){
-                public static final VoxelShape NORTHSOUTH = makeShape();
-
                 public static VoxelShape makeShape(){
                     VoxelShape shape = Shapes.empty();
                     shape = Shapes.join(shape, Shapes.box(0.375, 0, 0.375, 0.625, 3, 0.625), BooleanOp.OR);
@@ -4478,15 +4476,58 @@ public class ThingamajigsBlocks {
                     return shape;
                 }
 
+                public static VoxelShape makeAltShape(){
+                    VoxelShape shape = Shapes.empty();
+                    shape = Shapes.join(shape, Shapes.box(0.375, 3.125, -1.5, 0.625, 6.125, -1.375), BooleanOp.OR);
+                    shape = Shapes.join(shape, Shapes.box(0.375, 0, 0.375, 0.625, 3.125, 0.625), BooleanOp.OR);
+                    shape = Shapes.join(shape, Shapes.box(0.375, 3, -1.5, 0.625, 3.125, 2.5), BooleanOp.OR);
+                    shape = Shapes.join(shape, Shapes.box(0.375, 3.125, 2.375, 0.625, 6.125, 2.5), BooleanOp.OR);
+                    return shape;
+                }
+
+                public static final VoxelShape NORTHSOUTH = makeShape();
+                public static final VoxelShape EASTWEST = makeAltShape();
+
+
                 @Override
                 public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-                    return NORTHSOUTH;
+                    switch(state.getValue(FACING)){
+                        case NORTH,SOUTH -> {
+                            return NORTHSOUTH;
+                        }
+                        case EAST,WEST -> {
+                            return EASTWEST;
+                        }
+                        default -> {
+                            return Shapes.block();
+                        }
+                    }
                 }
             });
 
     public static final RegistryObject<Block> SPHERES_AND_RINGS_MACHINE = registerBlock("throw_sphere_into_ring_machine",
             () -> new ThrowSphereIntoRingMachine(BlockBehaviour.Properties.of()));
 
+    public static final RegistryObject<Block> ROUND_CLOTHES_RACK = registerBlock("round_clothes_rack",
+            () -> new RoundClothesRack(BlockBehaviour.Properties.of()));
+
+    public static final RegistryObject<Block> PLUNGER = registerBlock("plunger",
+            () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.of()){
+                public static final VoxelShape ALL = Stream.of(
+                        Block.box(7, 5, 7, 9, 21, 9),
+                        Block.box(5, 3, 5, 11, 5, 11),
+                        Block.box(6, 5, 6, 10, 6, 10),
+                        Block.box(4, 2, 4, 12, 3, 12),
+                        Block.box(3, 0, 3, 12, 2, 4),
+                        Block.box(4, 0, 12, 13, 2, 13),
+                        Block.box(3, 0, 4, 4, 2, 13),
+                        Block.box(12, 0, 3, 13, 2, 12)
+                ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+                @Override
+                public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
+                    return ALL;
+                }
+            });
 
     //requality
     // end of blocks list
