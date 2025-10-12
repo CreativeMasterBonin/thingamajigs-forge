@@ -106,5 +106,16 @@ public class ThingamajigsItemTagProvider extends ItemTagsProvider {
                 .add(ThingamajigsBlocks.WAXED_OXIDIZED_COPPER_TABLE.get().asItem())
                 .replace(false)
         ;
+        this.tag(ThingamajigsTags.ARCADE_ITEMS)
+                .add(ThingamajigsBlocks.LIGHTUP_MACHINE.get().asItem())
+                .add(ThingamajigsBlocks.BASKETBALL_MACHINE.get().asItem())
+                .add(ThingamajigsBlocks.HAMMER_MACHINE.get().asItem())
+                .add(ThingamajigsBlocks.SPHERES_AND_RINGS_MACHINE.get().asItem())
+                .add(ThingamajigsBlocks.PINBALL_MACHINE.get().asItem())
+                .add(ThingamajigsBlocks.LIGHTUP_MACHINE.get().asItem())
+                .add(ThingamajigsBlocks.ARCADE_MACHINE.get().asItem())
+                .add(ThingamajigsBlocks.ARCADE_MACHINE_OPENABLE.get().asItem())
+                .replace(false)
+        ;
     }
 }

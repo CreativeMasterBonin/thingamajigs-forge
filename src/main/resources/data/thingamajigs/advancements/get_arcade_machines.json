@@ -1,0 +1,60 @@
+{
+  "display": {
+    "icon": {
+      "item": "thingamajigs:arcade_machine_openable"
+    },
+    "title": {
+      "translate": "title.advancement.get_arcade_machines"
+    },
+    "description": {
+      "translate": "desc.advancement.get_arcade_machines"
+    },
+    "frame": "task",
+    "announce_to_chat": false
+  },
+  "parent": "thingamajigs:root",
+  "criteria": {
+    "get_arcade_machines": {
+      "trigger": "minecraft:placed_block",
+      "conditions": {
+        "location": [
+          {
+            "condition": "minecraft:any_of",
+            "terms": [
+              {
+                "condition": "minecraft:block_state_property",
+                "block": "thingamajigs:throw_sphere_into_ring_machine"
+              },
+              {
+                "condition": "minecraft:block_state_property",
+                "block": "thingamajigs:basketball_machine"
+              },
+              {
+                "condition": "minecraft:block_state_property",
+                "block": "thingamajigs:pinball_machine"
+              },
+              {
+                "condition": "minecraft:block_state_property",
+                "block": "thingamajigs:lightup_machine"
+              },
+              {
+                "condition": "minecraft:block_state_property",
+                "block": "thingamajigs:arcade_machine_openable"
+              },
+              {
+                "condition": "minecraft:block_state_property",
+                "block": "thingamajigs:arcade_machine"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "get_arcade_machines"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

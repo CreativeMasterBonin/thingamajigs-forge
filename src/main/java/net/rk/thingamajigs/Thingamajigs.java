@@ -571,6 +571,8 @@ public class Thingamajigs {
             event.accept(ThingamajigsBlocks.CINDER_BLOCK_SMALL.get().asItem());
             event.accept(ThingamajigsBlocks.DOOR_BLOCKADE.get().asItem());
             event.accept(ThingamajigsBlocks.WINDOW_BLOCKADE.get().asItem());
+            // Car Shop Related
+            event.accept(ThingamajigsBlocks.CAR_WHEEL.get().asItem());
             // Road Covers (sewer or otherwise, service panels, etc.)
             event.accept(ThingamajigsBlocks.ROAD_COVER.get().asItem());
             event.accept(ThingamajigsBlocks.ALT_ROAD_COVER.get().asItem());
@@ -1153,6 +1155,7 @@ public class Thingamajigs {
             event.accept(ThingamajigsBlocks.FOOD_COOLER.get().asItem());
             event.accept(ThingamajigsBlocks.WINE_BOTTLE.get().asItem());
             event.accept(ThingamajigsBlocks.ROAST_TURKEY.get().asItem());
+            event.accept(ThingamajigsBlocks.PIZZA.get().asItem());
             event.accept(ThingamajigsBlocks.PIZZA_BOX.get().asItem());
             event.accept(ThingamajigsBlocks.TENTH_ANNIVERSARY_CAKE.get().asItem());
             event.accept(ThingamajigsBlocks.CHEESE_BLOCK.get().asItem());

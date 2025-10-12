@@ -4506,7 +4506,7 @@ public class ThingamajigsBlocks {
             });
 
     public static final RegistryObject<Block> SPHERES_AND_RINGS_MACHINE = registerBlock("throw_sphere_into_ring_machine",
-            () -> new ThrowSphereIntoRingMachine(BlockBehaviour.Properties.of()));
+            () -> new ThrowSphereIntoRingMachine(BlockBehaviour.Properties.of().friction(0.8F)));
 
     public static final RegistryObject<Block> ROUND_CLOTHES_RACK = registerBlock("round_clothes_rack",
             () -> new RoundClothesRack(BlockBehaviour.Properties.of()));
@@ -4526,6 +4526,35 @@ public class ThingamajigsBlocks {
                 @Override
                 public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
                     return ALL;
+                }
+            });
+
+    public static final RegistryObject<Block> PIZZA = registerBlock("pizza",
+            () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.of()){
+                public static final VoxelShape PIZZA_ALL = Stream.of(
+                        Block.box(2, 0, 2, 14, 1, 14),
+                        Block.box(2, 0, 1, 14, 1, 2),
+                        Block.box(2, 0, 14, 14, 1, 15),
+                        Block.box(1, 0, 2, 2, 1, 14),
+                        Block.box(14, 0, 2, 15, 1, 14)
+                ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+
+                @Override
+                public VoxelShape getShape(BlockState p_60555_, BlockGetter p_60556_, BlockPos p_60557_, CollisionContext p_60558_) {
+                    return PIZZA_ALL;
+                }
+
+                @Override
+                public void appendHoverText(ItemStack p_49816_, @org.jetbrains.annotations.Nullable BlockGetter p_49817_, List<Component> list, TooltipFlag p_49819_) {
+                    list.add(Component.translatable("block.thingamajigs.pizza.desc").withStyle(ChatFormatting.GRAY));
+                }
+            });
+
+    public static final RegistryObject<Block> CAR_WHEEL = registerBlock("car_wheel",
+            () -> new CarWheel(BlockBehaviour.Properties.of()) {
+                @Override
+                public boolean isRandomlyTicking(BlockState p_49921_) {
+                    return false;
                 }
             });
 

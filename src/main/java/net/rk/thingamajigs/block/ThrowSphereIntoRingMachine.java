@@ -2,8 +2,11 @@ package net.rk.thingamajigs.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.util.Mth;
 import net.minecraft.util.StringRepresentable;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -129,6 +132,62 @@ public class ThrowSphereIntoRingMachine extends ThingamajigsDecorativeBlock {
             Block.box(0, 11, 0, 16, 13, 2)
     ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
 
+    public static final VoxelShape NORTH_BACK_COL = Stream.of(
+            Block.box(0, 7, 0, 16, 11, 16),
+            Block.box(0, 0, 14, 4, 7, 16),
+            Block.box(12, 0, 14, 16, 7, 16),
+            Block.box(14, 11, 0, 16, 13, 16),
+            Block.box(0, 11, 0, 2, 13, 16),
+            Block.box(0, 25, 14, 16, 26, 28),
+            Block.box(4, 24, 13, 12, 29, 14),
+            Block.box(0, 13, 26, 16, 25, 28),
+            Block.box(0, 13, 13, 2, 26, 14),
+            Block.box(14, 13, 13, 16, 26, 14),
+            Block.box(2, 6, 4, 14, 7, 13)
+    ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+
+    public static final VoxelShape EAST_BACK_COL = Stream.of(
+            Block.box(0, 7, 0, 16, 11, 16),
+            Block.box(0, 0, 0, 2, 7, 4),
+            Block.box(0, 0, 12, 2, 7, 16),
+            Block.box(0, 11, 14, 16, 13, 16),
+            Block.box(0, 11, 0, 16, 13, 2),
+            Block.box(-12, 25, 0, 2, 26, 16),
+            Block.box(2, 24, 4, 3, 29, 12),
+            Block.box(-12, 13, 0, -10, 25, 16),
+            Block.box(2, 13, 0, 3, 26, 2),
+            Block.box(2, 13, 14, 3, 26, 16),
+            Block.box(3, 6, 2, 12, 7, 14)
+    ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+
+    public static final VoxelShape SOUTH_BACK_COL = Stream.of(
+            Block.box(0, 7, 0, 16, 11, 16),
+            Block.box(12, 0, 0, 16, 7, 2),
+            Block.box(0, 0, 0, 4, 7, 2),
+            Block.box(0, 11, 0, 2, 13, 16),
+            Block.box(14, 11, 0, 16, 13, 16),
+            Block.box(0, 25, -12, 16, 26, 2),
+            Block.box(4, 24, 2, 12, 29, 3),
+            Block.box(0, 13, -12, 16, 25, -10),
+            Block.box(14, 13, 2, 16, 26, 3),
+            Block.box(0, 13, 2, 2, 26, 3),
+            Block.box(2, 6, 3, 14, 7, 12)
+    ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+
+    public static final VoxelShape WEST_BACK_COL = Stream.of(
+            Block.box(0, 7, 0, 16, 11, 16),
+            Block.box(14, 0, 12, 16, 7, 16),
+            Block.box(14, 0, 0, 16, 7, 4),
+            Block.box(0, 11, 0, 16, 13, 2),
+            Block.box(0, 11, 14, 16, 13, 16),
+            Block.box(14, 25, 0, 28, 26, 16),
+            Block.box(13, 24, 4, 14, 29, 12),
+            Block.box(26, 13, 0, 28, 25, 16),
+            Block.box(13, 13, 14, 14, 26, 16),
+            Block.box(13, 13, 0, 14, 26, 2),
+            Block.box(4, 6, 2, 13, 7, 14)
+    ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+
     public ThrowSphereIntoRingMachine(Properties properties) {
         super(properties.strength(2f,10f).noOcclusion().sound(SoundType.LANTERN).pushReaction(PushReaction.BLOCK));
         this.registerDefaultState(this.defaultBlockState().setValue(MACHINE_ENDING,MachineEnding.PAYMENT_SECTION)
@@ -138,6 +197,27 @@ public class ThrowSphereIntoRingMachine extends ThingamajigsDecorativeBlock {
     public static Direction getConnected(BlockState blockState) {
         Direction direction = blockState.getValue(FACING);
         return blockState.getValue(MACHINE_ENDING) == MachineEnding.PAYMENT_SECTION ? direction.getOpposite() : direction;
+    }
+
+    @Override
+    public VoxelShape getCollisionShape(BlockState blockState, BlockGetter getter, BlockPos blockPos, CollisionContext context) {
+        if(blockState.getValue(MACHINE_ENDING) != MachineEnding.PAYMENT_SECTION){
+            switch (blockState.getValue(FACING)){
+                case NORTH -> {
+                    return NORTH_BACK_COL;
+                }
+                case SOUTH -> {
+                    return SOUTH_BACK_COL;
+                }
+                case EAST -> {
+                    return EAST_BACK_COL;
+                }
+                case WEST -> {
+                    return WEST_BACK_COL;
+                }
+            }
+        }
+        return super.getCollisionShape(blockState,getter,blockPos,context);
     }
 
     @Override
@@ -264,5 +344,55 @@ public class ThrowSphereIntoRingMachine extends ThingamajigsDecorativeBlock {
 
         return level.getBlockState(blockPos1).canBeReplaced(context) && level.getWorldBorder().isWithinBounds(blockPos1) ?
                 this.defaultBlockState().setValue(FACING, direction.getOpposite()) : null;
+    }
+
+    @Override
+    public void stepOn(Level lvl, BlockPos bp, BlockState bs, Entity e) {
+        if(e instanceof ItemEntity){
+            double x = 0.0D;
+            double y = 0.035D;
+            double z = 0.0D;
+
+            if(bs.getValue(MACHINE_ENDING) == MachineEnding.GOAL_SECTION){
+                y = 0.035D * (double)Mth.randomBetween(lvl.getRandom(),2.0f,7.0f);
+            }
+            else{
+                y = 0.035D;
+            }
+
+            switch(bs.getValue(FACING)){
+                case NORTH -> z = 0.5D;
+                case SOUTH -> z = -0.5D;
+                case EAST -> x = -0.5D;
+                case WEST -> x = 0.5D;
+            }
+
+            e.setDeltaMovement(x,y,z);
+        }
+    }
+
+    @Override
+    public void fallOn(Level lvl, BlockState bs, BlockPos bp, Entity e, float f1) {
+        if(e instanceof ItemEntity){
+            double x = 0.0D;
+            double y = e.getDeltaMovement().y;
+            double z = 0.0D;
+
+            if(bs.getValue(MACHINE_ENDING) == MachineEnding.GOAL_SECTION){
+                y = e.getDeltaMovement().y * (double)Mth.randomBetween(lvl.getRandom(),2.0f,7.0f);
+            }
+            else{
+                y = e.getDeltaMovement().y;
+            }
+
+            switch(bs.getValue(FACING)){
+                case NORTH -> z = 0.5D * 2.0D;
+                case SOUTH -> z = -0.5D * 2.0D;
+                case EAST -> x = -0.5D * 2.0D;
+                case WEST -> x = 0.5D * 2.0D;
+            }
+
+            e.setDeltaMovement(x,y,z);
+        }
     }
 }

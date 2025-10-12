@@ -793,6 +793,7 @@ public class ThingamajigsBlockTagProvider extends BlockTagsProvider {
                 .replace(false)
         ;
         this.tag(BlockTags.MINEABLE_WITH_SHOVEL)
+                .add(ThingamajigsBlocks.PIZZA.get())
                 .add(ThingamajigsBlocks.SNOWMAN.get())
                 .add(ThingamajigsBlocks.SNOWMAN_BLUEMAN_STATUE.get())
                 .add(ThingamajigsBlocks.FULL_POOP_BLOCK.get())
@@ -809,6 +810,8 @@ public class ThingamajigsBlockTagProvider extends BlockTagsProvider {
         ;
 
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE)
+                .add(ThingamajigsBlocks.CAR_WHEEL.get())
+                .add(ThingamajigsBlocks.PIZZA.get())
                 .add(ThingamajigsBlocks.PLUNGER.get())
                 .add(ThingamajigsBlocks.ROUND_CLOTHES_RACK.get())
                 .add(ThingamajigsBlocks.SPHERES_AND_RINGS_MACHINE.get())

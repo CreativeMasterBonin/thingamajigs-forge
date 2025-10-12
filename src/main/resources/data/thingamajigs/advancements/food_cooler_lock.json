@@ -1,0 +1,42 @@
+{
+  "display": {
+    "icon": {
+      "item": "thingamajigs:key"
+    },
+    "title": {
+      "translate": "title.advancement.cooling_food"
+    },
+    "description": {
+      "translate": "desc.advancement.cooling_food"
+    }
+  },
+  "parent": "thingamajigs:upgrade_spring",
+  "criteria": {
+    "locked_cooler": {
+      "trigger": "minecraft:item_used_on_block",
+      "conditions": {
+        "player": {
+          "equipment": {
+            "mainhand": {
+              "items": [
+                "thingamajigs:key"
+              ]
+            }
+          }
+        },
+        "location": [
+          {
+            "condition": "minecraft:block_state_property",
+            "block": "thingamajigs:food_cooler"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "locked_cooler"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

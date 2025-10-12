@@ -18,6 +18,7 @@ public class ThingamajigsTags {
     public static final TagKey<Block> VERTICAL_REDSTONE_BLOCKS = thingamajigsBlockTag("vertical_redstone_blocks");
     public static final TagKey<Block> RAILROAD_CROSSING_BELLS = thingamajigsBlockTag("railroad_crossing_bells");
     public static final TagKey<Block> SUPPORTS_BUSH_LIKE = thingamajigsBlockTag("supports_bush_like");
+    public static final TagKey<Item> ARCADE_ITEMS = thingamajigsItemTag("arcade_items");
 
     // 1.7.7 tags
     public static final TagKey<Item> TABLES_ITEM = thingamajigsItemTag("tables");

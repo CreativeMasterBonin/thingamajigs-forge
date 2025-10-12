@@ -1,0 +1,35 @@
+{
+  "display": {
+    "icon": {
+      "item": "thingamajigs:poop_horn"
+    },
+    "title": {
+      "translate": "title.advancement.use_poop_horn"
+    },
+    "description": {
+      "translate": "desc.advancement.use_poop_horn"
+    },
+    "frame": "task",
+    "announce_to_chat": false,
+    "hidden": true
+  },
+  "parent": "thingamajigs:get_not_quite",
+  "criteria": {
+    "use_the_item": {
+      "trigger": "minecraft:using_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "thingamajigs:poop_horn"
+          ]
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "use_the_item"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

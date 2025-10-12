@@ -8,6 +8,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 import net.rk.thingamajigs.block.custom.ThingamajigsDecorativeBlock;
 
 public class ExplodingPC extends ThingamajigsDecorativeBlock {
@@ -22,6 +23,7 @@ public class ExplodingPC extends ThingamajigsDecorativeBlock {
         if(!lvl.isClientSide){
             float explosionPower = (float)lvl.random.nextFloat() + 2.0F;
             lvl.explode(null,bp.getX(),bp.getY(),bp.getZ(),explosionPower,Level.ExplosionInteraction.TNT);
+            pl.hurt(pl.damageSources().badRespawnPointExplosion(Vec3.ZERO),1.0f);
             return InteractionResult.SUCCESS;
         }
         return InteractionResult.PASS;

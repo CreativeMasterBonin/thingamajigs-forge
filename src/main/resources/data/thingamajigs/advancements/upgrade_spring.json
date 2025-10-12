@@ -1,0 +1,43 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:iron_ingot"
+    },
+    "title": {
+      "translate": "title.advancement.upgrading_spring"
+    },
+    "description": {
+      "translate": "desc.advancement.upgrading_spring"
+    },
+    "frame": "goal",
+    "announce_to_chat": false,
+    "hidden": true
+  },
+  "parent": "thingamajigs:avoid_detection_on_wool",
+  "criteria": {
+    "spring_upgrade": {
+      "trigger": "minecraft:item_used_on_block",
+      "conditions": {
+        "location": [
+          {
+            "condition": "minecraft:match_tool",
+            "predicate": {
+              "items": [
+                "minecraft:iron_ingot"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "spring_upgrade"
+    ]
+  ],
+  "rewards": {
+    "experience": 5
+  },
+  "sends_telemetry_event": false
+}

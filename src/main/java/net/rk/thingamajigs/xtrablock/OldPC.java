@@ -12,8 +12,10 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 import net.rk.thingamajigs.block.custom.ThingamajigsDecorativeBlock;
 
 import java.util.Calendar;
@@ -40,15 +42,17 @@ public class OldPC extends ThingamajigsDecorativeBlock {
         if (!level.isClientSide) {
             if(player.getAbilities().mayBuild){
                 if(itemstack.getItem() == Items.DANGER_POTTERY_SHERD){
-                    level.setBlock(blockPos, blockState, 2);
-                    level.updateNeighborsAt(blockPos,this);
                     player.displayClientMessage(Component.translatable("block.thingamajigs.old_pc.use"), true);
                     changed = true;
                     if(getDateJoke()){
+                        level.playSound(null,blockPos,SoundEvents.VEX_AMBIENT,SoundSource.BLOCKS,1.0f,0.5f);
+                        level.setBlock(blockPos, Blocks.AIR.defaultBlockState(), 2);
+                        level.updateNeighborsAt(blockPos,this);
                         PrimedTnt primedtnt = new PrimedTnt(level,blockPos.getX(),blockPos.getY(),blockPos.getZ(),player);
                         int i = primedtnt.getFuse();
                         primedtnt.setFuse((short)(level.random.nextInt(i / 4) + i / 8));
                         level.addFreshEntity(primedtnt);
+                        player.displayClientMessage(Component.translatable("block.thingamajigs.old_pc.gotem"), true);
                     }
                 }
                 else{

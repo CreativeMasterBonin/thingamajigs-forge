@@ -1,0 +1,43 @@
+{
+  "display": {
+    "icon": {
+      "item": "thingamajigs:throw_sphere_into_ring_machine"
+    },
+    "title": {
+      "translate": "title.advancement.play_spheres_and_rings"
+    },
+    "description": {
+      "translate": "desc.advancement.play_spheres_and_rings"
+    },
+    "frame": "task"
+  },
+  "parent": "thingamajigs:get_arcade_machines",
+  "criteria": {
+    "sphere_hit": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "minecraft:snowball"
+          ]
+        }
+      }
+    },
+    "is_on_game": {
+      "trigger": "minecraft:enter_block",
+      "conditions": {
+        "block": "thingamajigs:throw_sphere_into_ring_machine",
+        "state": {
+          "machine_ending": "payment_section"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "is_on_game",
+      "sphere_hit"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

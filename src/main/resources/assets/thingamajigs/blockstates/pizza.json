@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "thingamajigs:block/pizza",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "thingamajigs:block/pizza"
+    },
+    "facing=south": {
+      "model": "thingamajigs:block/pizza",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "thingamajigs:block/pizza",
+      "y": 270
+    }
+  }
+}
