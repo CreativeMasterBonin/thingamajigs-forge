@@ -4506,7 +4506,8 @@ public class ThingamajigsBlocks {
             });
 
     public static final RegistryObject<Block> SPHERES_AND_RINGS_MACHINE = registerBlock("throw_sphere_into_ring_machine",
-            () -> new ThrowSphereIntoRingMachine(BlockBehaviour.Properties.of().friction(0.8F)));
+            () -> new ThrowSphereIntoRingMachine(BlockBehaviour.Properties.of().friction(0.8F)
+                    .strength(2f,10f).noOcclusion().sound(SoundType.LANTERN)));
 
     public static final RegistryObject<Block> ROUND_CLOTHES_RACK = registerBlock("round_clothes_rack",
             () -> new RoundClothesRack(BlockBehaviour.Properties.of()));
@@ -4557,6 +4558,14 @@ public class ThingamajigsBlocks {
                     return false;
                 }
             });
+
+    public static final RegistryObject<Block> POOL_TABLE = registerBlock("pool_table",
+            () -> new PoolTable(BlockBehaviour.Properties.of()
+                    .sound(SoundType.WOOD).strength(1f,5f).noOcclusion()));
+
+    public static final RegistryObject<Block> METAL_POOL_TABLE = registerBlock("metal_pool_table",
+            () -> new PoolTable(BlockBehaviour.Properties.of()
+                    .sound(SoundType.METAL).strength(1.25f,10f).noOcclusion()));
 
     //requality
     // end of blocks list

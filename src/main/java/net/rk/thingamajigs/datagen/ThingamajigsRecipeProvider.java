@@ -1570,6 +1570,21 @@ public class ThingamajigsRecipeProvider extends RecipeProvider implements ICondi
                 .requires(ThingamajigsItems.MISC_COMPONENT.get())
                 .unlockedBy("has_thingy",has(ThingamajigsItems.MISC_COMPONENT.get()))
                 .save(frc);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ThingamajigsBlocks.POOL_TABLE.get().asItem(),1)
+                .requires(ThingamajigsTags.TABLES_ITEM)
+                .requires(Items.DARK_OAK_PLANKS)
+                .requires(ThingamajigsBlocks.BALL_PIT.get())
+                .requires(ThingamajigsItems.RUBBER.get())
+                .requires(ThingamajigsItems.MISC_COMPONENT.get())
+                .unlockedBy("has_thingy",has(ThingamajigsItems.MISC_COMPONENT.get()))
+                .save(frc);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ThingamajigsBlocks.METAL_POOL_TABLE.get().asItem(),1)
+                .requires(ThingamajigsBlocks.POOL_TABLE.get())
+                .requires(Items.IRON_INGOT)
+                .requires(Items.IRON_INGOT)
+                .requires(Items.HEAVY_WEIGHTED_PRESSURE_PLATE)
+                .unlockedBy("has_thingy",has(ThingamajigsBlocks.POOL_TABLE.get().asItem()))
+                .save(frc);
         //
     }
 

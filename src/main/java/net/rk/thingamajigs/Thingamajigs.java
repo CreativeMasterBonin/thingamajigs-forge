@@ -718,6 +718,9 @@ public class Thingamajigs {
             event.accept(ThingamajigsBlocks.WACK_MACHINE.get().asItem());
             event.accept(ThingamajigsBlocks.AIR_HOCKEY_TABLE.get().asItem());
             event.accept(ThingamajigsBlocks.SPHERES_AND_RINGS_MACHINE.get().asItem());
+            // Other games and things
+            event.accept(ThingamajigsBlocks.POOL_TABLE.get().asItem());
+            event.accept(ThingamajigsBlocks.METAL_POOL_TABLE.get().asItem());
             // Water Park
             event.accept(ThingamajigsBlocks.WATER_SLIDE.get().asItem());
             event.accept(ThingamajigsBlocks.DIVING_BOARD.get().asItem());

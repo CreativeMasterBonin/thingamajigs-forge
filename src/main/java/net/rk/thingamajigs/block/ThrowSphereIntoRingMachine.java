@@ -189,7 +189,7 @@ public class ThrowSphereIntoRingMachine extends ThingamajigsDecorativeBlock {
     ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
 
     public ThrowSphereIntoRingMachine(Properties properties) {
-        super(properties.strength(2f,10f).noOcclusion().sound(SoundType.LANTERN).pushReaction(PushReaction.BLOCK));
+        super(properties.pushReaction(PushReaction.BLOCK));
         this.registerDefaultState(this.defaultBlockState().setValue(MACHINE_ENDING,MachineEnding.PAYMENT_SECTION)
                 .setValue(WATERLOGGED,false).setValue(FACING,Direction.NORTH));
     }

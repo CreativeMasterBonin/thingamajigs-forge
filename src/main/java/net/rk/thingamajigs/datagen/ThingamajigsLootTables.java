@@ -1573,6 +1573,8 @@ public class ThingamajigsLootTables extends VanillaBlockLoot {
         this.dropSelf(ThingamajigsBlocks.PLUNGER.get());
         this.dropSelf(ThingamajigsBlocks.PIZZA.get());
         this.dropSelf(ThingamajigsBlocks.CAR_WHEEL.get());
+        this.dropSelf(ThingamajigsBlocks.POOL_TABLE.get());
+        this.dropSelf(ThingamajigsBlocks.METAL_POOL_TABLE.get());
 
 
         // old end
