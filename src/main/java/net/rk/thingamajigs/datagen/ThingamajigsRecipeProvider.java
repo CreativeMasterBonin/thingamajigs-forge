@@ -1612,6 +1612,16 @@ public class ThingamajigsRecipeProvider extends RecipeProvider implements ICondi
                 .requires(ThingamajigsBlocks.DVD_PLAYER.get())
                 .unlockedBy("has_thingy",has(ThingamajigsBlocks.GRAY_GAME_CONSOLE.get().asItem()))
                 .save(frc);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ThingamajigsBlocks.CARDBOARD_BOX.get().asItem(),1)
+                .requires(Items.PAPER)
+                .requires(Items.PAPER)
+                .requires(Items.PAPER)
+                .requires(Items.PAPER)
+                .requires(Items.BROWN_DYE)
+                .requires(Items.BROWN_DYE)
+                .requires(ThingamajigsItems.MISC_COMPONENT.get())
+                .unlockedBy("has_thingy",has(ThingamajigsItems.MISC_COMPONENT.get()))
+                .save(frc);
         //
     }
 

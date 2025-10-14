@@ -1583,7 +1583,9 @@
   "block.thingamajigs.rare_blue_gray_game_console": "Gray Game Console (Rare Blue Variant)",
   "block.thingamajigs.goldme_console": "Blueman Console (Rare Fully Gold Variant)",
   "block.thingamajigs.fundevice_game_console": "FunDevice Game Console (Prototype)",
+  "block.thingamajigs.cardboard_box": "Cardboard Box",
 
+  "block.thingamajigs.cardboard_box.desc": "Cannot be carried like other cardboard boxes",
   "block.thingamajigs.fundevice_game_console.desc": "Based on a game console that never was...",
   "desc.advancement.toilet_intro": "Sit on the toilet",
   "title.advancement.toilet_intro": "This Thing Stinks",

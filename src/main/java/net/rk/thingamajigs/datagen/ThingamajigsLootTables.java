@@ -1579,6 +1579,7 @@ public class ThingamajigsLootTables extends VanillaBlockLoot {
         this.dropSelf(ThingamajigsBlocks.RARE_BLUE_GRAY_GAME_CONSOLE.get());
         this.dropSelf(ThingamajigsBlocks.GOLDME_CONSOLE.get());
         this.dropSelf(ThingamajigsBlocks.FUNDEVICE_GAME_CONSOLE.get());
+        this.dropSelf(ThingamajigsBlocks.CARDBOARD_BOX.get());
 
 
         // old end

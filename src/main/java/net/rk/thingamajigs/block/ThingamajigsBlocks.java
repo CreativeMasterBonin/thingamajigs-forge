@@ -4653,6 +4653,24 @@ public class ThingamajigsBlocks {
                 }
             });
 
+    public static final RegistryObject<Block> CARDBOARD_BOX = registerBlock("cardboard_box",
+            () -> new OpenableContainerBlock(BlockBehaviour.Properties.of().sound(SoundType.BAMBOO_WOOD)){
+                @Override
+                public void appendHoverText(ItemStack itemStack, @Nullable BlockGetter getter, List<Component> list, TooltipFlag flag) {
+                    list.add(Component.translatable("block.thingamajigs.cardboard_box.desc")
+                            .withStyle(ChatFormatting.GRAY));
+                }
+
+                @Override
+                public void playCustomSound(Level lvl, BlockPos bp) {
+                    lvl.playSound(null,bp,SoundEvents.BAMBOO_WOOD_TRAPDOOR_OPEN,SoundSource.BLOCKS,1.0f,1.0f);
+                }
+            });
+
+
+
+
+
     //requality
     // end of blocks list
 

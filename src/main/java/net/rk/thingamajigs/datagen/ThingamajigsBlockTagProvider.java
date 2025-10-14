@@ -670,6 +670,7 @@ public class ThingamajigsBlockTagProvider extends BlockTagsProvider {
 
         // tools that break these blocks better than others (required tools)
         this.tag(BlockTags.MINEABLE_WITH_AXE)
+                .add(ThingamajigsBlocks.CARDBOARD_BOX.get())
                 .add(ThingamajigsBlocks.POOL_TABLE.get())
                 .add(ThingamajigsBlocks.STRING_BASS.get())
                 .add(ThingamajigsBlocks.UMBRELLA.get())
@@ -812,6 +813,7 @@ public class ThingamajigsBlockTagProvider extends BlockTagsProvider {
         ;
 
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE)
+                .add(ThingamajigsBlocks.CARDBOARD_BOX.get())
                 .add(ThingamajigsBlocks.FUNDEVICE_GAME_CONSOLE.get())
                 .add(ThingamajigsBlocks.GOLDME_CONSOLE.get())
                 .add(ThingamajigsBlocks.RARE_BLUE_GRAY_GAME_CONSOLE.get())

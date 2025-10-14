@@ -1126,6 +1126,7 @@ public class Thingamajigs {
             // Packed & Bulk Items
             event.accept(ThingamajigsBlocks.WATER_BOTTLE_PACK.get().asItem());
             event.accept(ThingamajigsBlocks.BULK_PRODUCT.get().asItem());
+            event.accept(ThingamajigsBlocks.CARDBOARD_BOX.get().asItem());
             // Graveyards & Death
             event.accept(ThingamajigsBlocks.COFFIN.get().asItem());
             event.accept(ThingamajigsBlocks.CROSS_GRAVESTONE.get().asItem());

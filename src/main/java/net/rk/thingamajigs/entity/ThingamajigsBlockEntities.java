@@ -120,7 +120,7 @@ ThingamajigsBlocks.TRIPLE_SHELF.get(),ThingamajigsBlocks.TOY_BOX.get()
     // general purpose block entities (add blocks here so they are supported when needed)
     public static final Supplier<BlockEntityType<OpenableContainer>> OPENABLE_CONTAINER = BLOCK_ENTITIES.register(
             "openable_container_be",() -> BlockEntityType.Builder.of(OpenableContainer::new,
-                            ThingamajigsBlocks.FOOD_COOLER.get()
+                            ThingamajigsBlocks.FOOD_COOLER.get(),ThingamajigsBlocks.CARDBOARD_BOX.get()
                     )
                     .build(null));
 
