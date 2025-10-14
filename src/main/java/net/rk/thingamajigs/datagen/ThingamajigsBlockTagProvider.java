@@ -602,6 +602,7 @@ public class ThingamajigsBlockTagProvider extends BlockTagsProvider {
                 .replace(false)
         ;
         this.tag(BlockTags.SWORD_EFFICIENT)
+                .add(ThingamajigsBlocks.TOWEL_STACK.get())
                 .add(ThingamajigsBlocks.BULBY_FLOWER.get())
                 .add(ThingamajigsBlocks.DROOPY_FLOWER.get())
                 .add(ThingamajigsBlocks.CHECKBOARD_WOOL.get())
@@ -811,6 +812,9 @@ public class ThingamajigsBlockTagProvider extends BlockTagsProvider {
         ;
 
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE)
+                .add(ThingamajigsBlocks.FUNDEVICE_GAME_CONSOLE.get())
+                .add(ThingamajigsBlocks.GOLDME_CONSOLE.get())
+                .add(ThingamajigsBlocks.RARE_BLUE_GRAY_GAME_CONSOLE.get())
                 .add(ThingamajigsBlocks.METAL_POOL_TABLE.get())
                 .add(ThingamajigsBlocks.CAR_WHEEL.get())
                 .add(ThingamajigsBlocks.PIZZA.get())

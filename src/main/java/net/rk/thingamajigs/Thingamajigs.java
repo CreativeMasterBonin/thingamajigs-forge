@@ -829,13 +829,16 @@ public class Thingamajigs {
             event.accept(ThingamajigsBlocks.BLUEYDOWS_LAPTOP.get().asItem());
             event.accept(ThingamajigsBlocks.BLUEYTOSH_LAPTOP.get().asItem());
             event.accept(ThingamajigsBlocks.BLUEYTOSH_STUDIO.get().asItem());
+            event.accept(ThingamajigsBlocks.FUNDEVICE_GAME_CONSOLE.get().asItem());
             event.accept(ThingamajigsBlocks.GRAY_GAME_CONSOLE.get().asItem());
+            event.accept(ThingamajigsBlocks.RARE_BLUE_GRAY_GAME_CONSOLE.get().asItem());
             event.accept(ThingamajigsBlocks.BLACK_GAME_CONSOLE.get().asItem());
             event.accept(ThingamajigsBlocks.BOXY_CONSOLE.get().asItem());
             event.accept(ThingamajigsBlocks.ORANGE_BOXY_CONSOLE.get().asItem());
             event.accept(ThingamajigsBlocks.TALL_BOXY_CONSOLE.get().asItem());
             event.accept(ThingamajigsBlocks.BLUEYCUBE_CONSOLE.get().asItem());
             event.accept(ThingamajigsBlocks.BLUEMAN_CONSOLE.get().asItem());
+            event.accept(ThingamajigsBlocks.GOLDME_CONSOLE.get().asItem());
             event.accept(ThingamajigsBlocks.BLUEYSNAP_BASE.get().asItem());
             event.accept(ThingamajigsBlocks.BLUEYSNAP_CONSOLE.get().asItem());
             event.accept(ThingamajigsBlocks.ANALOG_CLOCK.get().asItem());
@@ -1087,6 +1090,7 @@ public class Thingamajigs {
             event.accept(ThingamajigsBlocks.MIRROR.get().asItem());
             event.accept(ThingamajigsBlocks.SMALL_SINK.get().asItem());
             event.accept(ThingamajigsBlocks.FANCY_SINK.get().asItem());
+            event.accept(ThingamajigsBlocks.TOWEL_STACK.get().asItem());
             event.accept(ThingamajigsBlocks.SHOWER_HANDLES.get().asItem());
             event.accept(ThingamajigsBlocks.SHOWER_HEAD.get().asItem());
             event.accept(ThingamajigsBlocks.BATHTUB_NOZZLE.get().asItem());

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "thingamajigs:block/towel_stack",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "thingamajigs:block/towel_stack"
+    },
+    "facing=south": {
+      "model": "thingamajigs:block/towel_stack",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "thingamajigs:block/towel_stack",
+      "y": 270
+    }
+  }
+}

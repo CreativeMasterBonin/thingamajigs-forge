@@ -1,0 +1,51 @@
+{
+  "display": {
+    "icon": {
+      "item": "thingamajigs:plunger"
+    },
+    "title": {
+      "translate": "title.advancement.plunger_use"
+    },
+    "description": {
+      "translate": "desc.advancement.plunger_use"
+    }
+  },
+  "parent": "thingamajigs:toilet_usefulness",
+  "criteria": {
+    "plunger_in_toilet": {
+      "trigger": "minecraft:item_used_on_block",
+      "conditions": {
+        "player": {
+          "equipment": {
+            "mainhand": {
+              "items": [
+                "thingamajigs:plunger"
+              ]
+            }
+          }
+        },
+        "location": [
+          {
+            "condition": "minecraft:block_state_property",
+            "block": "thingamajigs:toilet",
+            "properties": {
+              "enabled": "true"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "plunger_in_toilet"
+    ]
+  ],
+  "rewards": {
+    "loot": [
+      "thingamajigs:poop"
+    ],
+    "experience": 5
+  },
+  "sends_telemetry_event": false
+}

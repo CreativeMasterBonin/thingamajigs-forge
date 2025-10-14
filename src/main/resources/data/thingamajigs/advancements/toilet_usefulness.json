@@ -1,0 +1,33 @@
+{
+  "display": {
+    "icon": {
+      "item": "thingamajigs:poop"
+    },
+    "title": {
+      "translate": "title.advancement.toilet_intro"
+    },
+    "description": {
+      "translate": "desc.advancement.toilet_intro"
+    },
+    "announce_to_chat": false
+  },
+  "parent": "thingamajigs:get_not_quite",
+  "criteria": {
+    "on_toilet": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "vehicle": {
+            "type": "thingamajigs:toilet_entity"
+          }
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "on_toilet"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

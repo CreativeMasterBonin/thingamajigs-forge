@@ -151,7 +151,7 @@ public class ThingamajigsBlocks {
     public static final RegistryObject<Block> DVD_PLAYER = registerBlock("dvd_player",
             () -> new DvdPlayer(BlockBehaviour.Properties.of().sound(SoundType.LANTERN)), 0);
     public static final RegistryObject<Block> BLUEMAN_CONSOLE = registerBlock("blueman_console",
-            () -> new BluemanConsole(BlockBehaviour.Properties.of().sound(SoundType.METAL)), 0);
+            () -> new BluemanConsole(BlockBehaviour.Properties.of().sound(SoundType.METAL)));
     public static final RegistryObject<Block> WHITE_FAN = registerBlock("white_fan",
             () -> new StandingFanBlock(BlockBehaviour.Properties.of().sound(SoundType.LANTERN)), 0);
     public static final RegistryObject<Block> GRAY_FAN = registerBlock("gray_fan",
@@ -4566,6 +4566,92 @@ public class ThingamajigsBlocks {
     public static final RegistryObject<Block> METAL_POOL_TABLE = registerBlock("metal_pool_table",
             () -> new PoolTable(BlockBehaviour.Properties.of()
                     .sound(SoundType.METAL).strength(1.25f,10f).noOcclusion()));
+
+    public static final RegistryObject<Block> TOWEL_STACK = registerBlock("towel_stack",
+            () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.of().sound(SoundType.WOOL)
+                    .strength(1f,2f).mapColor(MapColor.WOOL)){
+                public static final VoxelShape NORTHSOUTH = Stream.of(
+                        Block.box(0, 0, 2, 16, 4, 6),
+                        Block.box(0, 0, 6, 16, 4, 10),
+                        Block.box(0, 0, 10, 16, 4, 14),
+                        Block.box(0, 4, 8, 16, 8, 12),
+                        Block.box(0, 4, 4, 16, 8, 8),
+                        Block.box(0, 8, 6, 16, 12, 10)
+                ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+                public static final VoxelShape EASTWEST = Stream.of(
+                        Block.box(10, 0, 0, 14, 4, 16),
+                        Block.box(6, 0, 0, 10, 4, 16),
+                        Block.box(2, 0, 0, 6, 4, 16),
+                        Block.box(4, 4, 0, 8, 8, 16),
+                        Block.box(8, 4, 0, 12, 8, 16),
+                        Block.box(6, 8, 0, 10, 12, 16)
+                ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+
+                @Override
+                public VoxelShape getShape(BlockState blockState, BlockGetter getter, BlockPos blockPos, CollisionContext context) {
+                    switch(blockState.getValue(FACING)){
+                        case NORTH,SOUTH -> {
+                            return NORTHSOUTH;
+                        }
+                        case EAST,WEST -> {
+                            return EASTWEST;
+                        }
+                        default -> {
+                            return Shapes.block();
+                        }
+                    }
+                }
+            });
+
+    public static final RegistryObject<Block> RARE_BLUE_GRAY_GAME_CONSOLE = registerBlock("rare_blue_gray_game_console",
+            () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLUE)
+                    .noOcclusion().strength(1f,10f)){
+                public static final VoxelShape NORTHSOUTH = Block.box(2, 0, 4, 14, 2, 12);
+                public static final VoxelShape EASTWEST = Block.box(4, 0, 2, 12, 2, 14);
+                @Override
+                public VoxelShape getShape(BlockState bs, BlockGetter bg, BlockPos bp, CollisionContext cc) {
+                    switch(bs.getValue(FACING)){
+                        case NORTH,SOUTH -> {
+                            return NORTHSOUTH;
+                        }
+                        case EAST,WEST -> {
+                            return EASTWEST;
+                        }
+                        default -> {
+                            return Shapes.block();
+                        }
+                    }
+                }
+            });
+
+    public static final RegistryObject<Block> GOLDME_CONSOLE = registerBlock("goldme_console",
+            () -> new BluemanConsole(BlockBehaviour.Properties.of().sound(SoundType.METAL).mapColor(MapColor.GOLD)));
+
+    public static final RegistryObject<Block> FUNDEVICE_GAME_CONSOLE = registerBlock("fundevice_game_console",
+            () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.of().sound(SoundType.METAL).mapColor(MapColor.METAL)){
+                public static final VoxelShape NORTHSOUTH =
+                        Block.box(3, 0, 2, 13, 2, 14);
+                public static final VoxelShape EASTWEST = Block.box(2, 0, 3, 14, 2, 13);
+                @Override
+                public VoxelShape getShape(BlockState blockState, BlockGetter getter, BlockPos blockPos, CollisionContext context) {
+                    switch(blockState.getValue(FACING)){
+                        case NORTH,SOUTH -> {
+                            return NORTHSOUTH;
+                        }
+                        case EAST,WEST -> {
+                            return EASTWEST;
+                        }
+                        default -> {
+                            return Shapes.block();
+                        }
+                    }
+                }
+
+                @Override
+                public void appendHoverText(ItemStack is, @org.jetbrains.annotations.Nullable BlockGetter getter, List<Component> list, TooltipFlag flag) {
+                    list.add(Component.translatable("block.thingamajigs.fundevice_game_console.desc").withStyle(ChatFormatting.GRAY));
+                }
+            });
 
     //requality
     // end of blocks list

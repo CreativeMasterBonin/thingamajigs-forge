@@ -1585,6 +1585,33 @@ public class ThingamajigsRecipeProvider extends RecipeProvider implements ICondi
                 .requires(Items.HEAVY_WEIGHTED_PRESSURE_PLATE)
                 .unlockedBy("has_thingy",has(ThingamajigsBlocks.POOL_TABLE.get().asItem()))
                 .save(frc);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ThingamajigsBlocks.TOWEL_STACK.get().asItem(),1)
+                .requires(Items.WHITE_WOOL)
+                .requires(Items.STRING)
+                .requires(Items.STRING)
+                .requires(ThingamajigsBlocks.PAPER_TOWEL.get())
+                .requires(ThingamajigsItems.HOME_COMPONENT.get())
+                .unlockedBy("has_thingy",has(ThingamajigsItems.HOME_COMPONENT.get()))
+                .save(frc);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ThingamajigsBlocks.RARE_BLUE_GRAY_GAME_CONSOLE.get().asItem(),1)
+                .requires(ThingamajigsBlocks.GRAY_GAME_CONSOLE.get())
+                .requires(Items.LAPIS_BLOCK)
+                .requires(Items.GOLDEN_APPLE)
+                .unlockedBy("has_thingy",has(ThingamajigsBlocks.GRAY_GAME_CONSOLE.get().asItem()))
+                .save(frc);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ThingamajigsBlocks.GOLDME_CONSOLE.get().asItem(),1)
+                .requires(ThingamajigsBlocks.BLUEMAN_CONSOLE.get())
+                .requires(Items.GOLD_BLOCK)
+                .requires(Items.ENCHANTED_GOLDEN_APPLE)
+                .unlockedBy("has_thingy",has(ThingamajigsBlocks.BLUEMAN_CONSOLE.get().asItem()))
+                .save(frc);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ThingamajigsBlocks.FUNDEVICE_GAME_CONSOLE.get().asItem(),1)
+                .requires(ThingamajigsBlocks.GRAY_GAME_CONSOLE.get())
+                .requires(Tags.Items.DYES)
+                .requires(ThingamajigsItems.TECHNOLOGY_COMPONENT.get())
+                .requires(ThingamajigsBlocks.DVD_PLAYER.get())
+                .unlockedBy("has_thingy",has(ThingamajigsBlocks.GRAY_GAME_CONSOLE.get().asItem()))
+                .save(frc);
         //
     }
 
