@@ -66,10 +66,6 @@ public class Thingamajigs {
         LOGGERV2.error("Thingamajigs encountered and error: Exception goes as follows: " + e.getMessage());
     }
 
-    // fun little things are here for personal fun, they don't add MUCH to the actual mod itself...
-    // also if you can see these comments without looking at the public source, please stop...
-    // if any libraries listed here as incompatible affect mod packs, don't use the mod in that mod pack...
-
     public Thingamajigs() {
         // Register the setup method for mod loading
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -83,12 +79,11 @@ public class Thingamajigs {
             logErrorInternal(e);
         }
 
-        // register creative mode tabs using new method for 1.20+
+        // register creative mode tabs
         ThingamajigsCreativeTab.register(eventBus);
 
         ThingamajigsMenuTypes.register(eventBus);
 
-        // Particles are experimental for this mod they will be under a 'try' permanently
         try {
             ThingamajigsParticles.register(eventBus);
         }
