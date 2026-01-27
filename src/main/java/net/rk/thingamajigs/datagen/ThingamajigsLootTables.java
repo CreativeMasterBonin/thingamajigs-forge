@@ -6,14 +6,15 @@ import net.minecraft.data.loot.packs.VanillaBlockLoot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.DoorBlock;
-import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.block.state.properties.SlabType;
+import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.entries.AlternativesEntry;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.*;
@@ -1581,6 +1582,11 @@ public class ThingamajigsLootTables extends VanillaBlockLoot {
         this.dropSelf(ThingamajigsBlocks.FUNDEVICE_GAME_CONSOLE.get());
         this.dropSelf(ThingamajigsBlocks.CARDBOARD_BOX.get());
 
+
+        // 1.8.4
+        this.add(ThingamajigsBlocks.SIDEWALK_LAYER_LEFT.get(),noDrop());
+        this.add(ThingamajigsBlocks.SIDEWALK_LAYER.get(),noDrop());
+        this.add(ThingamajigsBlocks.SIDEWALK_LAYER_RIGHT.get(),noDrop());
 
         // old end
         this.add(ThingamajigsBlocks.WHITE_ROAD_MARKING.get(),noDrop());

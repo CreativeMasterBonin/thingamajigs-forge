@@ -4,11 +4,9 @@ import net.minecraftforge.common.ForgeConfigSpec;
 import org.apache.commons.lang3.tuple.Pair;
 
 public class ThingamajigsServerConfigs {
-    // Common configs (server and client shared, must be synced)
-    // server must require users to match configs here or there will be issues
-    // this means the server should OVERRIDE users' configs when in multiplayer mode
+    // SERVER CONFIG (must be synced to client)
 
-    public static class ThingamajigsCommon
+    public static class ThingamajigsServer
     {
         // values to store in config file for modification
         public final ForgeConfigSpec.BooleanValue opBlocksEnabled;
@@ -32,7 +30,7 @@ public class ThingamajigsServerConfigs {
             # What this config option does
             The config option (=, [], etc.) changeable value
         */
-        ThingamajigsCommon(ForgeConfigSpec.Builder builder)
+        ThingamajigsServer(ForgeConfigSpec.Builder builder)
         {
             // Config Options List
             builder.comment(" Thingamajigs Common Config");
@@ -70,7 +68,7 @@ public class ThingamajigsServerConfigs {
             builder.comment(" Money Exchanging"); // money exchange mechanic
             this.moneyExchangeEnabled = builder
                     .comment(" Enables the money exchanging mechanic. Basically makes the change machine useful or not.")
-                    .define("moneyExchangeEnabled",false);
+                    .define("moneyExchangeEnabled",true);
         }
     }
 
@@ -78,12 +76,12 @@ public class ThingamajigsServerConfigs {
 
     // only Thingamajigs should ever need to access the config options here
     public static final ForgeConfigSpec CPSEC; // used in thingamajigs setup phase
-    public static final ThingamajigsServerConfigs.ThingamajigsCommon COMMON; // used internally in this class
+    public static final ThingamajigsServer SERVER; // used internally in this class
 
     // common way to setup pairs of configs in Forge (a way is shown in documentation)
     static {
-        final Pair<ThingamajigsCommon, ForgeConfigSpec> commonSpecPair = new ForgeConfigSpec.Builder().configure(ThingamajigsServerConfigs.ThingamajigsCommon::new);
+        final Pair<ThingamajigsServer, ForgeConfigSpec> commonSpecPair = new ForgeConfigSpec.Builder().configure(ThingamajigsServer::new);
         CPSEC = commonSpecPair.getRight();
-        COMMON = commonSpecPair.getLeft();
+        SERVER = commonSpecPair.getLeft();
     }
 }

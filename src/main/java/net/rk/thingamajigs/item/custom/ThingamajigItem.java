@@ -22,12 +22,12 @@ public class ThingamajigItem extends Item {
 
     @Override
     public int getMaxStackSize(ItemStack stack) {
-        int size = ThingamajigsServerConfigs.COMMON.maxThingamajigsStackSize.get();
+        int size = ThingamajigsServerConfigs.SERVER.maxThingamajigsStackSize.get();
         if(size > 64){
             return 64;
         }
         else if(size >= 16){
-            return ThingamajigsServerConfigs.COMMON.maxThingamajigsStackSize.get();
+            return ThingamajigsServerConfigs.SERVER.maxThingamajigsStackSize.get();
         }
         else{
             return 16;

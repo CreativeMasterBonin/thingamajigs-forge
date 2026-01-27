@@ -33,6 +33,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLLoader;
 import net.rk.thingamajigs.block.ThingamajigsBlocks;
+import net.rk.thingamajigs.config.ThingamajigsClientConfigs;
 import net.rk.thingamajigs.config.ThingamajigsServerConfigs;
 import net.rk.thingamajigs.entity.ThingamajigsBlockEntities;
 import net.rk.thingamajigs.entity.ThingamajigsEntities;
@@ -120,7 +121,9 @@ public class Thingamajigs {
         // register client and server (common) configs
         LOGGERV2.info("Thingamajigs is doing final preparations.");
 
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ThingamajigsServerConfigs.CPSEC);
+        // Split config into two parts client and server
+        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, ThingamajigsServerConfigs.CPSEC);
+        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, ThingamajigsClientConfigs.CPSECCLIENT);
 
         // hmm.... colors?
         try{
@@ -420,6 +423,10 @@ public class Thingamajigs {
             event.accept(ThingamajigsBlocks.CRACKED_SIDEWALK_SLAB.get().asItem());
             event.accept(ThingamajigsBlocks.SECTIONED_SIDEWALK_SLAB.get().asItem());
             event.accept(ThingamajigsBlocks.BLOCKED_SIDEWALK_SLAB.get().asItem());
+            // misc roads and sidewalks
+            event.accept(ThingamajigsBlocks.SIDEWALK_LAYER.get().asItem());
+            event.accept(ThingamajigsBlocks.SIDEWALK_LAYER_LEFT.get().asItem());
+            event.accept(ThingamajigsBlocks.SIDEWALK_LAYER_RIGHT.get().asItem());
             // painted road full blocks and slabs
             event.accept(ThingamajigsBlocks.DOUBLE_WHITE_ASPHALT.get().asItem());
             event.accept(ThingamajigsBlocks.WHITE_D_ASPHALT_SLAB.get().asItem());
@@ -1510,7 +1517,7 @@ public class Thingamajigs {
             event.getEntries().putBefore(Items.CAMPFIRE.getDefaultInstance(),ThingamajigsBlocks.SLUDGE_CONVERTER.get().asItem().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
         // config option can disable or enable these features in the creative tab (otherwise the give command will work)
-        if(ThingamajigsServerConfigs.COMMON.opBlocksEnabled.get()){
+        if(ThingamajigsServerConfigs.SERVER.opBlocksEnabled.get()){
             if(event.getTabKey() == CreativeModeTabs.OP_BLOCKS){
                 if(event.hasPermissions()){
                     event.accept(ThingamajigsItems.WATER_SOURCE);

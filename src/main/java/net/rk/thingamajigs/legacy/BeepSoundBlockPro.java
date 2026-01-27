@@ -11,6 +11,7 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 
+// BLECK! What ugly code you've got! We have to fix this and make it cleaner like all the other custom stuff
 public class BeepSoundBlockPro {
     public static void execute(LevelAccessor world, double x, double y, double z) {
         new Object() {
@@ -36,16 +37,8 @@ public class BeepSoundBlockPro {
             private void run() {
                 if (world instanceof Level _level) {
                     if (!_level.isClientSide()) {
-                        /*
-                        _level.playSound(null, new BlockPos((int) x, (int) y, (int) z),
-                                ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("thingamajigs:beep")), SoundSource.BLOCKS, 1, 1);
-                         */
                         _level.playSound(null, new BlockPos((int)x, (int)y, (int)z), SoundEvents.AMETHYST_BLOCK_CHIME, SoundSource.BLOCKS,1, 1);
                     } else {
-                        /*
-                        _level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("thingamajigs:beep")),
-                                SoundSource.BLOCKS, 1, 1, false);
-                         */
                         _level.playLocalSound(x, y, z, SoundEvents.AMETHYST_BLOCK_CHIME, SoundSource.BLOCKS,1, 1, false);
                     }
                 }

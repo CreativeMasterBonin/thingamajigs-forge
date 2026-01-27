@@ -14,7 +14,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.BlockHitResult;
 import net.rk.thingamajigs.block.custom.ThingamajigsDecorativeBlock;
-import net.rk.thingamajigs.config.ThingamajigsConfigs;
 import net.rk.thingamajigs.config.ThingamajigsServerConfigs;
 import net.rk.thingamajigs.item.ThingamajigsItems;
 
@@ -26,7 +25,7 @@ public class ChangeMachine extends ThingamajigsDecorativeBlock {
 
     @Override
     public InteractionResult use(BlockState bs, Level lvl, BlockPos bp, Player p, InteractionHand ih, BlockHitResult bhr) {
-        if(!ThingamajigsServerConfigs.COMMON.moneyExchangeEnabled.get()){
+        if(!ThingamajigsServerConfigs.SERVER.moneyExchangeEnabled.get()){
             return InteractionResult.PASS;
         }
         // can't use a machine underwater

@@ -24,8 +24,8 @@ public class ThingamajigsCreativeTab {
             () -> CreativeModeTab.builder()
                     .icon(() -> new ItemStack(ThingamajigsItems.THINGAMAJIG.get()))
                     .title(Component.translatable("itemGroup.Thingamajigs"))
-                    .withBackgroundLocation(ITEMS)
-                    .withTabsImage(TABS)
+                    .withBackgroundLocation(CreativeModeTabs.getDefaultTab().getBackgroundLocation())
+                    .withTabsImage(CreativeModeTabs.getDefaultTab().getTabsImage())
                     .withTabsBefore(CreativeModeTabs.SPAWN_EGGS)
                     .build());
 
@@ -34,8 +34,8 @@ public class ThingamajigsCreativeTab {
                     .icon(() -> new ItemStack(ThingamajigsBlocks.STOP_SIGN.get()))
                     .title(Component.translatable("itemGroup.ThingamajigsRoadSigns"))
                     .withTabsBefore(ThingamajigsCreativeTab.ALL_ITEMS_TAB_v2.getKey())
-                    .withBackgroundLocation(ITEMS_LONGER)
-                    .withTabsImage(TABS)
+                    .withBackgroundLocation(CreativeModeTabs.getDefaultTab().getBackgroundLocation())
+                    .withTabsImage(CreativeModeTabs.getDefaultTab().getTabsImage())
                     .build());
 
     public static void register(IEventBus eventBus){

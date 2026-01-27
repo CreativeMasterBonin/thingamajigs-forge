@@ -4667,8 +4667,13 @@ public class ThingamajigsBlocks {
                 }
             });
 
-
-
+    // 1.8.4
+    public static final RegistryObject<Block> SIDEWALK_LAYER_LEFT = registerBlock("sidewalk_layer_left",
+            () -> new SidewalkLayer(BlockBehaviour.Properties.of()));
+    public static final RegistryObject<Block> SIDEWALK_LAYER = registerBlock("sidewalk_layer",
+            () -> new SidewalkLayer(BlockBehaviour.Properties.of()));
+    public static final RegistryObject<Block> SIDEWALK_LAYER_RIGHT = registerBlock("sidewalk_layer_right",
+            () -> new SidewalkLayer(BlockBehaviour.Properties.of()));
 
 
     //requality

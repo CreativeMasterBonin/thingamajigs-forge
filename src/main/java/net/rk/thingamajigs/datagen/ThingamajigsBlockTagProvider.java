@@ -1337,6 +1337,8 @@ public class ThingamajigsBlockTagProvider extends BlockTagsProvider {
                 .add(ThingamajigsBlocks.WAXED_WEATHERED_COPPER_TABLE.get())
                 .add(ThingamajigsBlocks.WAXED_OXIDIZED_COPPER_TABLE.get())
                 .add(ThingamajigsBlocks.IRON_TABLE.get())
+                .add(ThingamajigsBlocks.SIDEWALK_LAYER_LEFT.get())
+                .add(ThingamajigsBlocks.SIDEWALK_LAYER_RIGHT.get())
                 .replace(false)
         ;
     }

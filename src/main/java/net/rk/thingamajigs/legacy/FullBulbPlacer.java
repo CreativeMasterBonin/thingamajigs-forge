@@ -21,6 +21,7 @@ import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.rk.thingamajigs.block.ThingamajigsBlocks;
 
+// BLECK! What ugly code you've got! We have to fix this and make it cleaner like all the other custom stuff
 public class FullBulbPlacer {
     // what is this hack and slashing? YES! Stinky old code that had been changed here and there 100s of times
     // it is from an old version of the mod (rewritten here and there to prevent errors)

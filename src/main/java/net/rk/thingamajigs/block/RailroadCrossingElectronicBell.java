@@ -76,7 +76,7 @@ public class RailroadCrossingElectronicBell extends Block {
                     return;
                 }
                 attemptToHorn(slvl,bp);
-                slvl.scheduleTick(bp,bs.getBlock(),ThingamajigsServerConfigs.COMMON.electronicBellSpeed.get(), TickPriority.LOW);
+                slvl.scheduleTick(bp,bs.getBlock(),ThingamajigsServerConfigs.SERVER.electronicBellSpeed.get(), TickPriority.LOW);
             }
         }
     }
@@ -84,7 +84,7 @@ public class RailroadCrossingElectronicBell extends Block {
     @Override
     public void onPlace(BlockState bs, Level lvl, BlockPos bp, BlockState bsOri, boolean bo1) {
         if(!lvl.isClientSide()){
-            lvl.scheduleTick(bp,bs.getBlock(),ThingamajigsServerConfigs.COMMON.electronicBellSpeed.get(),TickPriority.LOW);
+            lvl.scheduleTick(bp,bs.getBlock(),ThingamajigsServerConfigs.SERVER.electronicBellSpeed.get(),TickPriority.LOW);
         }
     }
 

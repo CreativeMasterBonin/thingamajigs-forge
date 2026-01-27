@@ -1622,7 +1622,25 @@ public class ThingamajigsRecipeProvider extends RecipeProvider implements ICondi
                 .requires(ThingamajigsItems.MISC_COMPONENT.get())
                 .unlockedBy("has_thingy",has(ThingamajigsItems.MISC_COMPONENT.get()))
                 .save(frc);
-        //
+        // 1.8.4
+        stonecutterAny(ThingamajigsBlocks.SIDEWALK_LAYER_LEFT.get().asItem(),
+                Ingredient.of(ThingamajigsBlocks.SIDEWALK_SLAB.get()),
+                ThingamajigsBlocks.SIDEWALK_LAYER_LEFT.get().asItem(),4)
+                .unlockedBy("has_thingy",InventoryChangeTrigger.TriggerInstance
+                        .hasItems(ThingamajigsBlocks.SIDEWALK_SLAB.get()))
+                .save(frc);
+        stonecutterAny(ThingamajigsBlocks.SIDEWALK_LAYER_RIGHT.get().asItem(),
+                Ingredient.of(ThingamajigsBlocks.SIDEWALK_SLAB.get()),
+                ThingamajigsBlocks.SIDEWALK_LAYER_RIGHT.get().asItem(),4)
+                .unlockedBy("has_thingy",InventoryChangeTrigger.TriggerInstance
+                        .hasItems(ThingamajigsBlocks.SIDEWALK_SLAB.get()))
+                .save(frc);
+        stonecutterAny(ThingamajigsBlocks.SIDEWALK_LAYER.get().asItem(),
+                Ingredient.of(ThingamajigsBlocks.SIDEWALK_SLAB.get()),
+                ThingamajigsBlocks.SIDEWALK_LAYER.get().asItem(),4)
+                .unlockedBy("has_thingy",InventoryChangeTrigger.TriggerInstance
+                        .hasItems(ThingamajigsBlocks.SIDEWALK_SLAB.get()))
+                .save(frc);
     }
 
     public static RecipeBuilder stonecutterAny(Item requiredItem, Ingredient inputItem, Item result, int amt){

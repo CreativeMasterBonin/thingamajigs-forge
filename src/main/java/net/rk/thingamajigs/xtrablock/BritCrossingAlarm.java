@@ -93,7 +93,7 @@ public class BritCrossingAlarm extends Block {
                     return;
                 }
                 attemptToHorn(slvl,bp);
-                slvl.scheduleTick(bp,bs.getBlock(),ThingamajigsServerConfigs.COMMON.britAlarmSpeed.get(),TickPriority.LOW);
+                slvl.scheduleTick(bp,bs.getBlock(),ThingamajigsServerConfigs.SERVER.britAlarmSpeed.get(),TickPriority.LOW);
             }
         }
     }
@@ -102,7 +102,7 @@ public class BritCrossingAlarm extends Block {
     @Override
     public void onPlace(BlockState bs, Level lvl, BlockPos bp, BlockState bsOri, boolean bo1) {
         if(!lvl.isClientSide()){
-            lvl.scheduleTick(bp,bs.getBlock(),ThingamajigsServerConfigs.COMMON.britAlarmSpeed.get(),TickPriority.LOW);
+            lvl.scheduleTick(bp,bs.getBlock(),ThingamajigsServerConfigs.SERVER.britAlarmSpeed.get(),TickPriority.LOW);
         }
     }
 
