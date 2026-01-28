@@ -825,6 +825,7 @@ public class ThingamajigsBlockTagProvider extends BlockTagsProvider {
                 .add(ThingamajigsBlocks.SPHERES_AND_RINGS_MACHINE.get())
                 .add(ThingamajigsBlocks.FOOTBALL_GOAL.get())
                 .add(ThingamajigsBlocks.FOOD_COOLER.get())
+                .add(ThingamajigsBlocks.FURIOUS_STATUE.get())
                 .add(ThingamajigsBlocks.VALIANT_STATUE.get())
                 .add(ThingamajigsBlocks.ANIMATED_DEER.get())
                 .add(ThingamajigsBlocks.STRANGE_STATUE.get())
@@ -1339,6 +1340,7 @@ public class ThingamajigsBlockTagProvider extends BlockTagsProvider {
                 .add(ThingamajigsBlocks.IRON_TABLE.get())
                 .add(ThingamajigsBlocks.SIDEWALK_LAYER_LEFT.get())
                 .add(ThingamajigsBlocks.SIDEWALK_LAYER_RIGHT.get())
+                .add(ThingamajigsBlocks.SIDEWALK_LAYER.get())
                 .replace(false)
         ;
     }

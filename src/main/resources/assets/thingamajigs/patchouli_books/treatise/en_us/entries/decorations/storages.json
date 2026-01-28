@@ -1,0 +1,24 @@
+{
+    "name": "Storage",
+    "icon": "thingamajigs:cardboard_box",
+    "category": "thingamajigs:decorations",
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "Storages can store items in compact spaces. What nonsense allows this? We think magic, or math. In any case, cardboard boxes, coolers, shelves and more can store items just like a regular chest."
+        },
+        {
+            "type": "patchouli:text",
+            "text": "Some storages can be locked with a key item. It allows a little bit of security from other players. Note that any key can open a key-lockable block."
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "thingamajigs:key",
+            "text": "The key that unlocks key-lockables."
+        },
+        {
+            "type": "patchouli:text",
+            "text": "As a strange rule, most decorations if not all are unmoveable. This means they cannot be transferred to other locations like shulker boxes can."
+        }
+    ]
+}

@@ -467,6 +467,8 @@ public class ThingamajigsItems {
             () -> new CustomBEWLRBlockItem(ThingamajigsBlocks.CURVED_MONITOR.get(),new Item.Properties()));
     public static final RegistryObject<Item> THEATER_PROJECTOR = ITEMS.register("theater_projector",
             () -> new CustomBEWLRBlockItem(ThingamajigsBlocks.THEATER_PROJECTOR.get(),new Item.Properties()));
+    public static final RegistryObject<Item> ANIMATED_DEER = ITEMS.register("animated_deer",
+            () -> new CustomBEWLRBlockItem(ThingamajigsBlocks.ANIMATED_DEER.get(),new Item.Properties()));
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);

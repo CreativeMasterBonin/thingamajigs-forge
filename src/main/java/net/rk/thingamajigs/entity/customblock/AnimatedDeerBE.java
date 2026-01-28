@@ -41,7 +41,7 @@ public class AnimatedDeerBE extends BlockEntity{
 
     @Override
     public void handleUpdateTag(CompoundTag tag) {
-        super.load(tag);
+        this.load(tag);
     }
 
     @Override
@@ -53,6 +53,7 @@ public class AnimatedDeerBE extends BlockEntity{
 
     @Override
     public void saveAdditional(CompoundTag tag) {
+        super.saveAdditional(tag);
         tag.putFloat("y_angle",yAngle);
         tag.putBoolean("custom",custom);
         tag.putFloat("head_angle",headAngle);
@@ -62,17 +63,18 @@ public class AnimatedDeerBE extends BlockEntity{
 
     @Override
     public void load(CompoundTag tag) {
-        if(tag.contains("y_angle"))
-            yAngle = tag.getFloat("y_angle");
-        if(tag.contains("custom"))
-            custom = tag.getBoolean("custom");
-        if(tag.contains("head_angle"))
-            headAngle = tag.getFloat("head_angle");
-        if(tag.contains("show_antlers"))
-            showAntlers = tag.getBoolean("show_antlers");
-        if(tag.contains("alternate_movement"))
-            alternateMovement = tag.getBoolean("alternate_movement");
+        yAngle = tag.getFloat("y_angle");
+        custom = tag.getBoolean("custom");
+        headAngle = tag.getFloat("head_angle");
+        showAntlers = tag.getBoolean("show_antlers");
+        alternateMovement = tag.getBoolean("alternate_movement");
     }
+
+    @Override
+    public void setRemoved() {super.setRemoved();}
+
+    @Override
+    public void clearRemoved() {super.clearRemoved();}
 
     public static void serverTick(Level slvl, BlockPos sbp, BlockState sbs, AnimatedDeerBE sbe){
         ++sbe.ticks;

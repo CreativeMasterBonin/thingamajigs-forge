@@ -1156,7 +1156,7 @@ public class Thingamajigs {
             event.accept(ThingamajigsBlocks.LIGHTED_CHRISTMAS_TREE.get().asItem());
             event.accept(ThingamajigsBlocks.PRESENT_PILE.get().asItem());
             event.accept(ThingamajigsBlocks.LIGHTED_DEER.get().asItem());
-            event.accept(ThingamajigsBlocks.ANIMATED_DEER.get().asItem());
+            event.accept(ThingamajigsItems.ANIMATED_DEER.get().asItem());
             event.accept(ThingamajigsBlocks.CHRISTMAS_LIGHTS.get().asItem());
             event.accept(ThingamajigsBlocks.CHRISTMAS_LIGHTS_ALT.get().asItem());
             event.accept(ThingamajigsBlocks.AMBER_STRING_LIGHTS.get().asItem());
@@ -1181,7 +1181,7 @@ public class Thingamajigs {
             event.accept(ThingamajigsBlocks.BLUEMAN_STATUE.get().asItem());
             event.accept(ThingamajigsBlocks.SPECIAL_STATUE.get().asItem());
             event.accept(ThingamajigsBlocks.PARTICULAR_STATUE.get().asItem());
-            // put redstone statue here
+            event.accept(ThingamajigsBlocks.FURIOUS_STATUE.get().asItem());
             event.accept(ThingamajigsBlocks.CATCHING_STATUE.get().asItem());
             // put lapis statue here
             event.accept(ThingamajigsBlocks.BONDING_STATUE.get().asItem());

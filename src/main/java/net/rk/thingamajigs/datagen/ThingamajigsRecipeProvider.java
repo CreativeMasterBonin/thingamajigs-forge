@@ -1641,6 +1641,17 @@ public class ThingamajigsRecipeProvider extends RecipeProvider implements ICondi
                 .unlockedBy("has_thingy",InventoryChangeTrigger.TriggerInstance
                         .hasItems(ThingamajigsBlocks.SIDEWALK_SLAB.get()))
                 .save(frc);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ThingamajigsBlocks.FURIOUS_STATUE.get().asItem(),1)
+                .requires(Items.REDSTONE)
+                .requires(ItemTags.PLANKS)
+                .requires(Items.RED_GLAZED_TERRACOTTA)
+                .requires(Items.FLINT_AND_STEEL)
+                .requires(Tags.Items.GEMS)
+                .requires(Items.ARMOR_STAND)
+                .requires(ThingamajigsItems.MISC_COMPONENT.get())
+                .unlockedBy("has_thingy",has(ThingamajigsItems.MISC_COMPONENT.get()))
+                .save(frc);
     }
 
     public static RecipeBuilder stonecutterAny(Item requiredItem, Ingredient inputItem, Item result, int amt){

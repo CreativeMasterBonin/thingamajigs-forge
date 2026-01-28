@@ -4370,7 +4370,7 @@ public class ThingamajigsBlocks {
                 }
             });
 
-    public static final RegistryObject<Block> ANIMATED_DEER = registerBlock("animated_deer",
+    public static final RegistryObject<Block> ANIMATED_DEER = customRegisterBlock("animated_deer",
             () -> new AnimatedDeer(BlockBehaviour.Properties.of()));
 
     public static final RegistryObject<Block> VALIANT_STATUE = registerBlock("valiant_statue",
@@ -4675,13 +4675,30 @@ public class ThingamajigsBlocks {
     public static final RegistryObject<Block> SIDEWALK_LAYER_RIGHT = registerBlock("sidewalk_layer_right",
             () -> new SidewalkLayer(BlockBehaviour.Properties.of()));
 
+    public static final RegistryObject<Block> FURIOUS_STATUE = registerBlock("furious_statue",
+            () -> new Podium(BlockBehaviour.Properties.of()
+                    .sound(SoundType.METAL).mapColor(MapColor.FIRE).requiresCorrectToolForDrops()
+                    .strength(5.0f,6.0f)
+                    .isRedstoneConductor(ThingamajigsBlocks::never)){
+                @Override
+                public void appendHoverText(ItemStack p_49816_, @org.jetbrains.annotations.Nullable BlockGetter p_49817_, List<Component> list, TooltipFlag p_49819_) {
+                    list.add(Component.translatable("statue.thingamajigs.author.cmb")
+                            .withStyle(ChatFormatting.BLUE));
+                }
+
+                @Override
+                public boolean isSignalSource(BlockState p_60571_) {
+                    return true;
+                }
+
+                @Override
+                public int getSignal(BlockState p_60483_, BlockGetter p_60484_, BlockPos p_60485_, Direction p_60486_) {
+                    return 15;
+                }
+            });
 
     //requality
     // end of blocks list
-
-    // TESTING BLOCKS
-
-    // END TESTING BLOCKS LIST
 
     // additional things (may use Mojang Mappings)
     // states

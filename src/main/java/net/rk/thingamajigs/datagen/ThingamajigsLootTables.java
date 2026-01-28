@@ -1587,6 +1587,7 @@ public class ThingamajigsLootTables extends VanillaBlockLoot {
         this.add(ThingamajigsBlocks.SIDEWALK_LAYER_LEFT.get(),noDrop());
         this.add(ThingamajigsBlocks.SIDEWALK_LAYER.get(),noDrop());
         this.add(ThingamajigsBlocks.SIDEWALK_LAYER_RIGHT.get(),noDrop());
+        this.dropSelf(ThingamajigsBlocks.FURIOUS_STATUE.get());
 
         // old end
         this.add(ThingamajigsBlocks.WHITE_ROAD_MARKING.get(),noDrop());

@@ -15,6 +15,7 @@ import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.util.Mth;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
+import net.rk.thingamajigs.block.AnimatedDeer;
 import net.rk.thingamajigs.block.ThingamajigsBlocks;
 import net.rk.thingamajigs.entity.customblock.*;
 import net.rk.thingamajigs.entity.models.*;
@@ -46,6 +47,10 @@ public class ThingamajigsBEWLR extends BlockEntityWithoutLevelRenderer {
             new BlockPos(0,0,0),
             ThingamajigsBlocks.THEATER_PROJECTOR.get().defaultBlockState()
     );
+    private AnimatedDeerBE animatedDeerBE = new AnimatedDeerBE(
+            new BlockPos(0,0,0),
+            ThingamajigsBlocks.ANIMATED_DEER.get().defaultBlockState()
+    );
 
     // model instances
     private FootballGoalModel footballGoalModel;
@@ -54,6 +59,7 @@ public class ThingamajigsBEWLR extends BlockEntityWithoutLevelRenderer {
     private UmbrellaModel umbrellaModel;
     private CurvedMonitorModel curvedMonitorModel;
     private TheaterProjectorModel theaterProjectorModel;
+    private AnimatedDeerModel animatedDeerModel;
 
 
     private EntityModelSet set = Minecraft.getInstance().getEntityModels();
@@ -71,6 +77,8 @@ public class ThingamajigsBEWLR extends BlockEntityWithoutLevelRenderer {
             new ResourceLocation("thingamajigs:textures/entity/curved_monitor.png"), "main");
     public static final ModelLayerLocation THEATER_PROJECTOR_LOC = new ModelLayerLocation(
             new ResourceLocation("thingamajigs:textures/entity/theater_projector.png"), "main");
+    public static final ModelLayerLocation ANIMATED_DEER_LOC = new ModelLayerLocation(
+            new ResourceLocation("thingamajigs:textures/entity/animated_deer.png"), "main");
 
 
 
@@ -82,6 +90,7 @@ public class ThingamajigsBEWLR extends BlockEntityWithoutLevelRenderer {
         this.umbrellaModel = new UmbrellaModel(this.set.bakeLayer(UMBRELLA_LOC));
         this.curvedMonitorModel = new CurvedMonitorModel(this.set.bakeLayer(CURVED_MONITOR_LOC));
         this.theaterProjectorModel = new TheaterProjectorModel(this.set.bakeLayer(THEATER_PROJECTOR_LOC));
+        this.animatedDeerModel = new AnimatedDeerModel(this.set.bakeLayer(ANIMATED_DEER_LOC));
     }
 
     @Override
@@ -92,6 +101,7 @@ public class ThingamajigsBEWLR extends BlockEntityWithoutLevelRenderer {
         this.umbrellaModel = new UmbrellaModel(this.set.bakeLayer(UMBRELLA_LOC));
         this.curvedMonitorModel = new CurvedMonitorModel(this.set.bakeLayer(CURVED_MONITOR_LOC));
         this.theaterProjectorModel = new TheaterProjectorModel(this.set.bakeLayer(THEATER_PROJECTOR_LOC));
+        this.animatedDeerModel = new AnimatedDeerModel(this.set.bakeLayer(ANIMATED_DEER_LOC));
     }
 
     // item form context rendering
@@ -153,6 +163,14 @@ public class ThingamajigsBEWLR extends BlockEntityWithoutLevelRenderer {
             VertexConsumer vc = mbs.getBuffer(RenderType.entityCutout(THEATER_PROJECTOR_LOC.getModel()));
             this.theaterProjectorModel.setupAnim(theaterProjectorBE);
             this.theaterProjectorModel.main.render(poseStack,vc,
+                    i,i1,1.0f,1.0f,1.0f,1.0f);
+            poseStack.popPose();
+        }
+        else if(itemStack.is(ThingamajigsItems.ANIMATED_DEER.get())){
+            poseStack.pushPose();
+            VertexConsumer vc = mbs.getBuffer(RenderType.entityCutout(ANIMATED_DEER_LOC.getModel()));
+            this.animatedDeerModel.setupAnim(animatedDeerBE);
+            this.animatedDeerModel.main.render(poseStack,vc,
                     i,i1,1.0f,1.0f,1.0f,1.0f);
             poseStack.popPose();
         }

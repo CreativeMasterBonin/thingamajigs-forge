@@ -12,6 +12,10 @@
             "images": ["thingamajigs:textures/gui/paintings.png"],
             "title": "Many Paintings",
             "border": true
+        },
+        {
+            "type": "patchouli:text",
+            "text": "Due to a bug that cannot be fixed for the foreseeable future, all paintings are creative-only."
         }
     ]
 }
