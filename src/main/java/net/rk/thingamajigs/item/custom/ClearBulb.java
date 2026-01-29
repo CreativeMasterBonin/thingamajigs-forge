@@ -1,17 +1,12 @@
 package net.rk.thingamajigs.item.custom;
 
 
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
 import net.rk.thingamajigs.block.ThingamajigsBlocks;
-import net.rk.thingamajigs.legacy.BtlanternitemRightClickedOnBlockProcedure;
+import net.rk.thingamajigs.legacy.ClearBulbItemActions;
 
 
 public class ClearBulb extends Item{
@@ -25,7 +20,7 @@ public class ClearBulb extends Item{
 
     @Override public InteractionResult useOn(UseOnContext context) {
         InteractionResult retval = super.useOn(context);
-        BtlanternitemRightClickedOnBlockProcedure.execute(
+        ClearBulbItemActions.rightClickOnBlock(
                 context.getLevel(),context.getClickedPos().getX(),context.getClickedPos().getY(),context.getClickedPos().getZ(),context.getClickedFace(),context.getPlayer(),context.getItemInHand()
         );
         return retval;

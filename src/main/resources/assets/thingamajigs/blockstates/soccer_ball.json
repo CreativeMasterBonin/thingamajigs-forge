@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "thingamajigs:block/soccer_ball",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "thingamajigs:block/soccer_ball"
+    },
+    "facing=south": {
+      "model": "thingamajigs:block/soccer_ball",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "thingamajigs:block/soccer_ball",
+      "y": 270
+    }
+  }
+}

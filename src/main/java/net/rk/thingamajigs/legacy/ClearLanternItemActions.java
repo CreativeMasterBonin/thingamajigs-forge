@@ -1,10 +1,10 @@
 package net.rk.thingamajigs.legacy;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
@@ -21,10 +21,17 @@ import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.rk.thingamajigs.block.ThingamajigsBlocks;
+import net.rk.thingamajigs.misc.ThingamajigsCalcStuffs;
 
-// BLECK! What ugly code you've got! We have to fix this and make it cleaner like all the other custom stuff
-public class FullLanternPlacer {
-    public static void run(LevelAccessor world, double x, double y, double z, Direction direction, Entity entity, ItemStack itemstack) {
+public class ClearLanternItemActions {
+    public static void rightClickOnBlock(LevelAccessor world, double x, double y, double z, Direction direction, Entity entity, ItemStack itemstack){
+        if(!world.isClientSide()){
+            world.playSound(null,
+                    new BlockPos((int)x,(int)y,(int)z),
+                    SoundEvents.LANTERN_PLACE,SoundSource.BLOCKS,
+                    1.0f, ThingamajigsCalcStuffs.nextFloatBetweenInclusive(0.95f,1.17f));
+        }
+
         if(direction == null || entity == null){
             return;
         }
@@ -37,13 +44,13 @@ public class FullLanternPlacer {
                 }
                 return false;
             }
-        }.checkGamemode(entity))) {(itemstack).shrink(1);}if (direction == Direction.UP) {if ((world.getBlockState(new BlockPos((int)x,(int)(y+1),(int)z))).getBlock() == Blocks.AIR) {world.setBlock(new BlockPos((int)x,(int)(y+1),(int)z), ThingamajigsBlocks.GROUND_FULL_LANTERN.get().defaultBlockState(),3);if(world instanceof Level _level) {
+        }.checkGamemode(entity))) {(itemstack).shrink(1);}if (direction == Direction.UP) {if ((world.getBlockState(new BlockPos((int)x,(int)(y+1),(int)z))).getBlock() == Blocks.AIR) {world.setBlock(new BlockPos((int)x,(int)(y+1),(int)z), ThingamajigsBlocks.GROUND_CLEAR_LANTERN.get().defaultBlockState(),3);if(world instanceof Level _level) {
             if(!_level.isClientSide()) {
-                _level.playSound(null, new BlockPos((int) x, (int) y, (int) z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.metal.place")), SoundSource.BLOCKS, 1, 1);
+
             } else {
-                _level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.metal.place")), SoundSource.BLOCKS, 1, 1, false);
+
             }
-        }}}else if (direction == Direction.NORTH) {if ((world.getBlockState(new BlockPos((int)x,(int)y,(int)(z-1)))).getBlock() == Blocks.AIR) {world.setBlock(new BlockPos((int)x,(int)y,(int)(z-1)), ThingamajigsBlocks.WALL_FULL_LANTERN.get().defaultBlockState(), 3);{
+        }}}else if (direction == Direction.NORTH) {if ((world.getBlockState(new BlockPos((int)x,(int)y,(int)(z-1)))).getBlock() == Blocks.AIR) {world.setBlock(new BlockPos((int)x,(int)y,(int)(z-1)), ThingamajigsBlocks.WALL_CLEAR_LANTERN.get().defaultBlockState(), 3);{
             Direction _dir = Direction.NORTH;
             BlockPos _pos = new BlockPos((int)x,(int)y,(int)(z-1));
             BlockState _bs = world.getBlockState(_pos);
@@ -57,15 +64,11 @@ public class FullLanternPlacer {
             }
         }if(world instanceof Level _level) {
             if(!_level.isClientSide()) {
-                _level.playSound(null, new BlockPos((int) x, (int) y, (int) z),
-                        ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.metal.place")),
-                        SoundSource.BLOCKS, 1, 1);
+
             } else {
-                _level.playLocalSound(x, y, z,
-                        ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.metal.place")),
-                        SoundSource.BLOCKS, 1, 1, false);
+
             }
-        }}}else if (direction == Direction.SOUTH) {if ((world.getBlockState(new BlockPos((int)x,(int)y,(int)(z+1)))).getBlock() == Blocks.AIR) {world.setBlock(new BlockPos((int)x,(int)y,(int)(z+1)), ThingamajigsBlocks.WALL_FULL_LANTERN.get().defaultBlockState(),3);{
+        }}}else if (direction == Direction.SOUTH) {if ((world.getBlockState(new BlockPos((int)x,(int)y,(int)(z+1)))).getBlock() == Blocks.AIR) {world.setBlock(new BlockPos((int)x,(int)y,(int)(z+1)), ThingamajigsBlocks.WALL_CLEAR_LANTERN.get().defaultBlockState(),3);{
             Direction _dir = Direction.SOUTH;
             BlockPos _pos = new BlockPos((int)x,(int)y,(int)(z+1));
             BlockState _bs = world.getBlockState(_pos);
@@ -79,14 +82,11 @@ public class FullLanternPlacer {
             }
         }if(world instanceof Level _level) {
             if(!_level.isClientSide()) {
-                _level.playSound(null, new BlockPos((int) x, (int) y, (int) z),
-                        ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.metal.place")),
-                        SoundSource.BLOCKS, 1, 1);
-            } else {_level.playLocalSound(x, y, z,
-                    ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.metal.place")),
-                    SoundSource.BLOCKS, 1, 1, false);
+
+            } else {
+
             }
-        }}}else if (direction == Direction.WEST) {if ((world.getBlockState(new BlockPos((int)(x-1),(int)y,(int)z))).getBlock() == Blocks.AIR) {world.setBlock(new BlockPos((int)(x-1),(int)y,(int)z), ThingamajigsBlocks.WALL_FULL_LANTERN.get().defaultBlockState(),3);{
+        }}}else if (direction == Direction.WEST) {if ((world.getBlockState(new BlockPos((int)(x-1),(int)y,(int)z))).getBlock() == Blocks.AIR) {world.setBlock(new BlockPos((int)(x-1),(int)y,(int)z), ThingamajigsBlocks.WALL_CLEAR_LANTERN.get().defaultBlockState(),3);{
             Direction _dir = Direction.WEST;
             BlockPos _pos = new BlockPos((int)(x-1),(int)y,(int)z);
             BlockState _bs = world.getBlockState(_pos);
@@ -100,15 +100,11 @@ public class FullLanternPlacer {
             }
         }if(world instanceof Level _level) {
             if(!_level.isClientSide()) {
-                _level.playSound(null, new BlockPos((int) x, (int) y, (int) z),
-                        ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.metal.place")),
-                        SoundSource.BLOCKS, 1, 1);
+
             } else {
-                _level.playLocalSound(x, y, z,
-                        ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.metal.place")),
-                        SoundSource.BLOCKS, 1, 1, false);
+
             }
-        }}}else if (direction == Direction.EAST) {if ((world.getBlockState(new BlockPos((int)(x+1),(int)y,(int)z))).getBlock() == Blocks.AIR) {world.setBlock(new BlockPos((int)(x+1),(int)y,(int)z), ThingamajigsBlocks.WALL_FULL_LANTERN.get().defaultBlockState(),3);{
+        }}}else if (direction == Direction.EAST) {if ((world.getBlockState(new BlockPos((int)(x+1),(int)y,(int)z))).getBlock() == Blocks.AIR) {world.setBlock(new BlockPos((int)(x+1),(int)y,(int)z), ThingamajigsBlocks.WALL_CLEAR_LANTERN.get().defaultBlockState(),3);{
             Direction _dir = Direction.EAST;
             BlockPos _pos = new BlockPos((int)(x+1),(int)y,(int)z);
             BlockState _bs = world.getBlockState(_pos);
@@ -122,13 +118,9 @@ public class FullLanternPlacer {
             }
         }if(world instanceof Level _level) {
             if(!_level.isClientSide()) {
-                _level.playSound(null, new BlockPos((int) x, (int) y, (int) z),
-                        ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.metal.place")),
-                        SoundSource.BLOCKS, 1, 1);
+
             } else {
-                _level.playLocalSound(x, y, z,
-                        ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.metal.place")),
-                        SoundSource.BLOCKS, 1, 1, false);
+
             }
         }}}
     }

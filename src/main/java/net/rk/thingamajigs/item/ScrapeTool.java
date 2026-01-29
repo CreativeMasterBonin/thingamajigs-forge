@@ -134,7 +134,6 @@ public class ScrapeTool extends Item{
     }
 
     private static void changeIt(Level lvl, BlockState bs, BlockState nBs, BlockPos bp){
-        // sniff, sniff
         for(int i = 0; i < 17; ++i) {
             Vec3 vec3 = Vec3.atCenterOf(bp).add(0.0D, (double)0.75F, 0.0D);
             lvl.addParticle(new BlockParticleOption(ParticleTypes.BLOCK,bs), vec3.x, vec3.y, vec3.z, 0.0D, 0.0D, 0.0D);
@@ -146,6 +145,6 @@ public class ScrapeTool extends Item{
     @Override
     public void appendHoverText(ItemStack is, @Nullable Level lvl, List<Component> list, TooltipFlag tf) {
         list.add(Component.translatable("item.thingamajigs.scrape_tool.desc")
-                .withStyle(ChatFormatting.DARK_GRAY));
+                .withStyle(ChatFormatting.GRAY));
     }
 }

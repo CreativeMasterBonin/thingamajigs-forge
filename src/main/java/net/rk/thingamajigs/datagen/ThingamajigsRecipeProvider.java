@@ -1652,6 +1652,36 @@ public class ThingamajigsRecipeProvider extends RecipeProvider implements ICondi
                 .requires(ThingamajigsItems.MISC_COMPONENT.get())
                 .unlockedBy("has_thingy",has(ThingamajigsItems.MISC_COMPONENT.get()))
                 .save(frc);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ThingamajigsBlocks.SORROW_STATUE.get().asItem(),1)
+                .requires(Items.LAPIS_LAZULI)
+                .requires(ItemTags.PLANKS)
+                .requires(Items.BLUE_CONCRETE)
+                .requires(Items.GRAY_CONCRETE_POWDER)
+                .requires(Items.GHAST_TEAR)
+                .requires(Items.ARMOR_STAND)
+                .requires(ThingamajigsItems.MISC_COMPONENT.get())
+                .unlockedBy("has_thingy",has(ThingamajigsItems.MISC_COMPONENT.get()))
+                .save(frc);
+
+        stonecutterAny(ThingamajigsBlocks.SOCCER_BALL.get().asItem(),
+                Ingredient.of(ThingamajigsItems.SPORTS_COMPONENT.get()),
+                ThingamajigsBlocks.SOCCER_BALL.get().asItem(),1)
+                .unlockedBy("has_thingy",InventoryChangeTrigger.TriggerInstance
+                        .hasItems(ThingamajigsItems.SPORTS_COMPONENT.get()))
+                .save(frc);
+        stonecutterAny(ThingamajigsBlocks.BASKETBALL.get().asItem(),
+                Ingredient.of(ThingamajigsItems.SPORTS_COMPONENT.get()),
+                ThingamajigsBlocks.BASKETBALL.get().asItem(),1)
+                .unlockedBy("has_thingy",InventoryChangeTrigger.TriggerInstance
+                        .hasItems(ThingamajigsItems.SPORTS_COMPONENT.get()))
+                .save(frc);
+        stonecutterAny(ThingamajigsBlocks.TENNIS_BALL.get().asItem(),
+                Ingredient.of(ThingamajigsItems.SPORTS_COMPONENT.get()),
+                ThingamajigsBlocks.TENNIS_BALL.get().asItem(),1)
+                .unlockedBy("has_thingy",InventoryChangeTrigger.TriggerInstance
+                        .hasItems(ThingamajigsItems.SPORTS_COMPONENT.get()))
+                .save(frc);
     }
 
     public static RecipeBuilder stonecutterAny(Item requiredItem, Ingredient inputItem, Item result, int amt){

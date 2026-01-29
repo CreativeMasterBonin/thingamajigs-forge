@@ -12,6 +12,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 
 // BLECK! What ugly code you've got! We have to fix this and make it cleaner like all the other custom stuff
+@Deprecated(forRemoval = true,since = "1.20.1")
 public class BeepSoundBlockPro {
     public static void execute(LevelAccessor world, double x, double y, double z) {
         new Object() {

@@ -57,7 +57,6 @@
   "block.thingamajigs.payphone_seethrough": "Teléfono público transparente",
   "block.thingamajigs.mrpuppy": "Sr. Cachorro",
   "block.thingamajigs.nether_chiseled_bookshelf": "Estantería Nether",
-  "block.thingamajigs.football_goal": "Gol de fútbol americano",
 
   "block.droopy_flower.desc": "§7¡Ricochet! Tiene efectos adversos cuando lo rompes.",
   "block.full_poop_block.desc": "§7¡Cuidado! Este bloque es muy blando y difícil de pisar.",
@@ -94,5 +93,8 @@
   "tooltip.thingamajigs.tv": "§eHaz clic con el botón derecho del ratón en el bloque para cambiar de canal (mientras mantiene pulsada la tecla Mayús)",
 
   "blockEntities.mailbox.name": "Inventario de buzones",
-  "blockEntities.fridge.name": "Inventario frigorífico"
+  "blockEntities.fridge.name": "Inventario frigorífico",
+  "block.thingamajigs.soccer_ball": "Fútbol",
+  "block.thingamajigs.basketball": "Baloncesto",
+  "block.thingamajigs.football_goal": "Poste de gol de fútbol americano"
 }

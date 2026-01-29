@@ -3,9 +3,7 @@ package net.rk.thingamajigs.block;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.ItemStack;
@@ -23,12 +21,9 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.ticks.TickPriority;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.rk.thingamajigs.events.ThingamajigsSoundEvents;
-import net.rk.thingamajigs.legacy.BlahblahtestRedstoneOnProcedure;
 
 import java.util.List;
-import java.util.Random;
 
 public class HornFireAlarm extends RedstoneLampBlock {
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;

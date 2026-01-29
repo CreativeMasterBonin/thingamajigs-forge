@@ -4,11 +4,11 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.TagsProvider;
-import net.minecraft.tags.PaintingVariantTags;
 import net.minecraft.world.entity.decoration.PaintingVariant;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.rk.thingamajigs.Thingamajigs;
 import net.rk.thingamajigs.painting.ThingamajigsPaintings;
+import net.rk.thingamajigs.tag.ThingamajigsTags;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -18,8 +18,8 @@ public class ThingamajigsPaintingTagsProvider extends TagsProvider<PaintingVaria
     }
 
     @Override
-    protected void addTags(HolderLookup.Provider p) {
-        this.tag(PaintingVariantTags.PLACEABLE)
+    protected void addTags(HolderLookup.Provider p){
+        this.tag(ThingamajigsTags.THINGAMAJIGS_PAINTING)
                 .add(ThingamajigsPaintings.ANOLE.getKey())
                 .add(ThingamajigsPaintings.BLUE_PEOPLE.getKey())
                 .add(ThingamajigsPaintings.BRICK_FIGURE.getKey())

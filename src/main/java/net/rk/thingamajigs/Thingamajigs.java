@@ -679,6 +679,9 @@ public class Thingamajigs {
             event.accept(ThingamajigsBlocks.PURIFYING_BOOKSHELF.get().asItem());
             event.accept(ThingamajigsBlocks.ANCIENT_BOOKSHELF.get().asItem());
             // Sports & Games
+            // main or side pieces for play
+            event.accept(ThingamajigsBlocks.SOCCER_BALL.get().asItem());
+            event.accept(ThingamajigsBlocks.BASKETBALL.get().asItem());
             // outdoor and workout
             event.accept(ThingamajigsBlocks.GOAL.get().asItem());
             event.accept(ThingamajigsItems.FOOTBALL_GOAL.get().asItem());
@@ -1183,7 +1186,7 @@ public class Thingamajigs {
             event.accept(ThingamajigsBlocks.PARTICULAR_STATUE.get().asItem());
             event.accept(ThingamajigsBlocks.FURIOUS_STATUE.get().asItem());
             event.accept(ThingamajigsBlocks.CATCHING_STATUE.get().asItem());
-            // put lapis statue here
+            event.accept(ThingamajigsBlocks.SORROW_STATUE.get().asItem());
             event.accept(ThingamajigsBlocks.BONDING_STATUE.get().asItem());
             event.accept(ThingamajigsItems.STRANGE_STATUE.get());
             event.accept(ThingamajigsBlocks.DUCK_STATUE.get().asItem());

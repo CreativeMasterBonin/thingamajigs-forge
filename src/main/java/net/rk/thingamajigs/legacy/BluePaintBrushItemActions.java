@@ -3,12 +3,10 @@ package net.rk.thingamajigs.legacy;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
@@ -16,11 +14,10 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.rk.thingamajigs.block.ThingamajigsBlocks;
-import net.rk.thingamajigs.block.custom.blocks.YellowRoadMarking;
+import net.rk.thingamajigs.block.custom.blocks.BlueRoadMarking;
 
-public class CTFThree {
-
-    public static void execute(LevelAccessor world, double x, double y, double z, Entity entity, ItemStack stack, int marking_type) {
+public class BluePaintBrushItemActions {
+    public static void paint(LevelAccessor world, double x, double y, double z, Entity entity, ItemStack stack, int marking_type) {
         double variable = 0;
         BlockPos pos = new BlockPos((int)x,(int)y,(int)z);
 
@@ -32,7 +29,6 @@ public class CTFThree {
         if (entity.isShiftKeyDown()) {
             return;
         }
-
         if(!world.getBlockState(pos).isSolid()){
             return;
         }
@@ -60,11 +56,11 @@ public class CTFThree {
             }
             // new sound for paintbrushes
             world.playSound(null,new BlockPos((int)x,(int)y,(int)z), SoundEvents.CAKE_ADD_CANDLE, SoundSource.BLOCKS, 1F, 1F);
-            world.setBlock(new BlockPos((int) x, (int) (y + 1), (int) z), ThingamajigsBlocks.YELLOW_ROAD_MARKING.get().defaultBlockState(), 3);
+            world.setBlock(new BlockPos((int) x, (int) (y + 1), (int) z), ThingamajigsBlocks.BLUE_ROAD_MARKING.get().defaultBlockState(), 3);
             {
                 Direction _dir = ((entity.getDirection()).getOpposite());
                 BlockPos _pos = new BlockPos((int) x, (int) (y + 1), (int) z);
-                BlockState _bs = world.getBlockState(_pos).setValue(YellowRoadMarking.TYPE,marking_type);
+                BlockState _bs = world.getBlockState(_pos).setValue(BlueRoadMarking.TYPE,marking_type);
                 Property<?> _property = _bs.getBlock().getStateDefinition().getProperty("facing");
 
                 // change block to face player

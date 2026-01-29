@@ -3,6 +3,7 @@ package net.rk.thingamajigs.tag;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.*;
+import net.minecraft.world.entity.decoration.PaintingVariant;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
@@ -19,6 +20,7 @@ public class ThingamajigsTags {
     public static final TagKey<Block> RAILROAD_CROSSING_BELLS = thingamajigsBlockTag("railroad_crossing_bells");
     public static final TagKey<Block> SUPPORTS_BUSH_LIKE = thingamajigsBlockTag("supports_bush_like");
     public static final TagKey<Item> ARCADE_ITEMS = thingamajigsItemTag("arcade_items");
+    public static final TagKey<PaintingVariant> THINGAMAJIGS_PAINTING = thingamajigsPaintingVariantTag("thingamajigs_painting");
 
     // 1.7.7 tags
     public static final TagKey<Item> TABLES_ITEM = thingamajigsItemTag("tables");
@@ -58,6 +60,10 @@ public class ThingamajigsTags {
 
     public static TagKey<Biome> thingamajigsBiomeTag(String name){
         return TagKey.create(Registries.BIOME, new ResourceLocation(Thingamajigs.MOD_ID,name));
+    }
+
+    public static TagKey<PaintingVariant> thingamajigsPaintingVariantTag(String name){
+        return TagKey.create(Registries.PAINTING_VARIANT, new ResourceLocation(Thingamajigs.MOD_ID,name));
     }
 
     // default tag registry

@@ -3,7 +3,6 @@ package net.rk.thingamajigs.item.custom;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -13,21 +12,18 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.SlabType;
 import net.rk.thingamajigs.block.MarkedAsphalt;
-import net.rk.thingamajigs.block.Sidewalk;
 import net.rk.thingamajigs.block.ThingamajigsBlocks;
 import net.rk.thingamajigs.block.custom.Asphalt;
 import net.rk.thingamajigs.block.custom.blocks.WhiteRoadMarking;
-import net.rk.thingamajigs.legacy.ChangeTypeFirst;
+import net.rk.thingamajigs.legacy.WhitePaintBrushItemActions;
 import net.rk.thingamajigs.xtrablock.AsphaltSlab;
 import net.rk.thingamajigs.xtrablock.RotatingSlab;
 
@@ -223,7 +219,7 @@ public class Paintbrush extends Item {
                     if(stack.hasTag()){
                         marking_type = stack.getTag().getInt("marking_type");
                     }
-                    ChangeTypeFirst.execute(levelAccessor,pContext.getClickedPos().getX(),pContext.getClickedPos().getY(),pContext.getClickedPos().getZ(),pContext.getPlayer(), stack, marking_type);
+                    WhitePaintBrushItemActions.paint(levelAccessor,pContext.getClickedPos().getX(),pContext.getClickedPos().getY(),pContext.getClickedPos().getZ(),pContext.getPlayer(), stack, marking_type);
                 }
                 return InteractionResult.SUCCESS;
             }

@@ -12,7 +12,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
@@ -24,7 +23,7 @@ import net.rk.thingamajigs.block.MarkedAsphalt;
 import net.rk.thingamajigs.block.ThingamajigsBlocks;
 import net.rk.thingamajigs.block.custom.Asphalt;
 import net.rk.thingamajigs.block.custom.blocks.BlueRoadMarking;
-import net.rk.thingamajigs.legacy.CTFTwo;
+import net.rk.thingamajigs.legacy.BluePaintBrushItemActions;
 import net.rk.thingamajigs.xtrablock.AsphaltSlab;
 import net.rk.thingamajigs.xtrablock.RotatingSlab;
 
@@ -175,7 +174,7 @@ public class BluePaintBrush extends Item {
                     if(stack.hasTag()){
                         marking_type = stack.getTag().getInt("marking_type");
                     }
-                    CTFTwo.execute(levelAccessor,pContext.getClickedPos().getX(),pContext.getClickedPos().getY(),pContext.getClickedPos().getZ(),pContext.getPlayer(), stack, marking_type);
+                    BluePaintBrushItemActions.paint(levelAccessor,pContext.getClickedPos().getX(),pContext.getClickedPos().getY(),pContext.getClickedPos().getZ(),pContext.getPlayer(), stack, marking_type);
                 }
 
                 return InteractionResult.SUCCESS;

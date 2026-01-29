@@ -118,24 +118,40 @@ public class ThingamajigsBlocks {
 
     // Torch-Like Blocks
     public static final RegistryObject<Block> GROUND_CLEAR_BULB = customRegisterBlock("standing_clear_bulb",
-            () -> new GroundClearBulbBlock(BlockBehaviour.Properties.copy(Blocks.TORCH).lightLevel(s -> 12),ParticleTypes.FLAME));
+            () -> new GroundClearBulbBlock(BlockBehaviour.Properties.copy(Blocks.TORCH)
+                    .sound(SoundType.METAL)
+                    .lightLevel(s -> 15),ParticleTypes.FLAME));
     public static final RegistryObject<Block> WALL_CLEAR_BULB = customRegisterBlock("wall_clear_bulb",
-            () -> new WallClearBulbBlock(BlockBehaviour.Properties.copy(Blocks.WALL_TORCH).lightLevel(s -> 12),ParticleTypes.FLAME));
+            () -> new WallClearBulbBlock(BlockBehaviour.Properties.copy(Blocks.WALL_TORCH)
+                    .sound(SoundType.METAL)
+                    .lightLevel(s -> 15),ParticleTypes.FLAME));
 
     public static final RegistryObject<Block> GROUND_FULL_BULB = customRegisterBlock("standing_full_bulb",
-            () -> new GroundFullBulbBlock(BlockBehaviour.Properties.copy(Blocks.TORCH).lightLevel(s -> 15),ParticleTypes.FLAME));
+            () -> new GroundFullBulbBlock(BlockBehaviour.Properties.copy(Blocks.TORCH)
+                    .sound(SoundType.METAL)
+                    .lightLevel(s -> 12),ParticleTypes.FLAME));
     public static final RegistryObject<Block> WALL_FULL_BULB = customRegisterBlock("wall_full_bulb",
-            () -> new WallFullBulbBlock(BlockBehaviour.Properties.copy(Blocks.WALL_TORCH).lightLevel(s -> 15),ParticleTypes.FLAME));
+            () -> new WallFullBulbBlock(BlockBehaviour.Properties.copy(Blocks.WALL_TORCH)
+                    .sound(SoundType.METAL)
+                    .lightLevel(s -> 12),ParticleTypes.FLAME));
 
     public static final RegistryObject<Block> GROUND_CLEAR_LANTERN = customRegisterBlock("standing_clear_lantern",
-            () -> new GroundClearLanternBlock(BlockBehaviour.Properties.copy(Blocks.TORCH).lightLevel(s -> 13),ParticleTypes.FLAME));
+            () -> new GroundClearLanternBlock(BlockBehaviour.Properties.copy(Blocks.TORCH)
+                    .sound(SoundType.LANTERN)
+                    .lightLevel(s -> 14),ParticleTypes.FLAME));
     public static final RegistryObject<Block> WALL_CLEAR_LANTERN = customRegisterBlock("wall_clear_lantern",
-            () -> new WallClearLanternBlock(BlockBehaviour.Properties.copy(Blocks.WALL_TORCH).lightLevel(s -> 13), ParticleTypes.FLAME));
+            () -> new WallClearLanternBlock(BlockBehaviour.Properties.copy(Blocks.WALL_TORCH)
+                    .sound(SoundType.LANTERN)
+                    .lightLevel(s -> 14), ParticleTypes.FLAME));
 
     public static final RegistryObject<Block> GROUND_FULL_LANTERN = customRegisterBlock("standing_full_lantern",
-            () -> new GroundFullLanternBlock(BlockBehaviour.Properties.copy(Blocks.TORCH).lightLevel(s -> 14),ParticleTypes.FLAME));
+            () -> new GroundFullLanternBlock(BlockBehaviour.Properties.copy(Blocks.TORCH)
+                    .sound(SoundType.LANTERN)
+                    .lightLevel(s -> 13),ParticleTypes.FLAME));
     public static final RegistryObject<Block> WALL_FULL_LANTERN = customRegisterBlock("wall_full_lantern",
-            () -> new WallFullLanternBlock(BlockBehaviour.Properties.copy(Blocks.WALL_TORCH).lightLevel(s -> 14),ParticleTypes.FLAME));
+            () -> new WallFullLanternBlock(BlockBehaviour.Properties.copy(Blocks.WALL_TORCH)
+                    .sound(SoundType.LANTERN)
+                    .lightLevel(s -> 13),ParticleTypes.FLAME));
 
 
     // Decorative Blocks
@@ -4669,11 +4685,11 @@ public class ThingamajigsBlocks {
 
     // 1.8.4
     public static final RegistryObject<Block> SIDEWALK_LAYER_LEFT = registerBlock("sidewalk_layer_left",
-            () -> new SidewalkLayer(BlockBehaviour.Properties.of()));
+            () -> new SidewalkLayer(BlockBehaviour.Properties.of().sound(SoundType.TUFF)));
     public static final RegistryObject<Block> SIDEWALK_LAYER = registerBlock("sidewalk_layer",
-            () -> new SidewalkLayer(BlockBehaviour.Properties.of()));
+            () -> new SidewalkLayer(BlockBehaviour.Properties.of().sound(SoundType.TUFF)));
     public static final RegistryObject<Block> SIDEWALK_LAYER_RIGHT = registerBlock("sidewalk_layer_right",
-            () -> new SidewalkLayer(BlockBehaviour.Properties.of()));
+            () -> new SidewalkLayer(BlockBehaviour.Properties.of().sound(SoundType.TUFF)));
 
     public static final RegistryObject<Block> FURIOUS_STATUE = registerBlock("furious_statue",
             () -> new Podium(BlockBehaviour.Properties.of()
@@ -4681,21 +4697,39 @@ public class ThingamajigsBlocks {
                     .strength(5.0f,6.0f)
                     .isRedstoneConductor(ThingamajigsBlocks::never)){
                 @Override
-                public void appendHoverText(ItemStack p_49816_, @org.jetbrains.annotations.Nullable BlockGetter p_49817_, List<Component> list, TooltipFlag p_49819_) {
+                public void appendHoverText(ItemStack stack, @Nullable BlockGetter getter, List<Component> list, TooltipFlag flag) {
                     list.add(Component.translatable("statue.thingamajigs.author.cmb")
                             .withStyle(ChatFormatting.BLUE));
                 }
 
                 @Override
-                public boolean isSignalSource(BlockState p_60571_) {
+                public boolean isSignalSource(BlockState state) {
                     return true;
                 }
 
                 @Override
-                public int getSignal(BlockState p_60483_, BlockGetter p_60484_, BlockPos p_60485_, Direction p_60486_) {
+                public int getSignal(BlockState state, BlockGetter getter, BlockPos pos, Direction dir) {
                     return 15;
                 }
             });
+
+    public static final RegistryObject<Block> SORROW_STATUE = registerBlock("sorrow_statue",
+            () -> new Podium(BlockBehaviour.Properties.of()
+                    .sound(SoundType.STONE).mapColor(MapColor.LAPIS).requiresCorrectToolForDrops()
+                    .strength(3.0f)){
+                @Override
+                public void appendHoverText(ItemStack stack, @Nullable BlockGetter getter, List<Component> list, TooltipFlag flag) {
+                    list.add(Component.translatable("statue.thingamajigs.author.cmb")
+                            .withStyle(ChatFormatting.BLUE));
+                }
+            });
+
+    public static final RegistryObject<Block> SOCCER_BALL = registerBlock("soccer_ball",
+            () -> new DecorativeSportBall(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK)));
+    public static final RegistryObject<Block> BASKETBALL = registerBlock("basketball",
+            () -> new DecorativeSportBall(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_ORANGE)));
+    public static final RegistryObject<Block> TENNIS_BALL = registerBlock("tennis_ball",
+            () -> new TennisBall(BlockBehaviour.Properties.of()));
 
     //requality
     // end of blocks list
