@@ -188,6 +188,7 @@ public class Thingamajigs {
             event.accept(ThingamajigsItems.TOY_COMPONENT);
             event.accept(ThingamajigsItems.MUSIC_COMPONENT);
             // items continued
+            event.accept(ThingamajigsItems.THINGAMAJIGS_PAINTING_ITEM);
             event.accept(ThingamajigsItems.POOP_HORN);
             event.accept(ThingamajigsItems.KEY);
             event.accept(ThingamajigsItems.COIN);
@@ -679,10 +680,14 @@ public class Thingamajigs {
             event.accept(ThingamajigsBlocks.PURIFYING_BOOKSHELF.get().asItem());
             event.accept(ThingamajigsBlocks.ANCIENT_BOOKSHELF.get().asItem());
             // Sports & Games
-            // main or side pieces for play
+            // sports balls
+            event.accept(ThingamajigsBlocks.TENNIS_BALL.get().asItem());
             event.accept(ThingamajigsBlocks.SOCCER_BALL.get().asItem());
             event.accept(ThingamajigsBlocks.BASKETBALL.get().asItem());
-            // outdoor and workout
+            // sports tools
+            event.accept(ThingamajigsBlocks.TENNIS_RACKET.get().asItem());
+            // sports outdoor and workout equipment
+            event.accept(ThingamajigsBlocks.TENNIS_NET.get().asItem());
             event.accept(ThingamajigsBlocks.GOAL.get().asItem());
             event.accept(ThingamajigsItems.FOOTBALL_GOAL.get().asItem());
             event.accept(ThingamajigsBlocks.PUNCHING_BAG.get().asItem());

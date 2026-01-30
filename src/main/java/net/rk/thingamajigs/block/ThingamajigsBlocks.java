@@ -4730,6 +4730,16 @@ public class ThingamajigsBlocks {
             () -> new DecorativeSportBall(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_ORANGE)));
     public static final RegistryObject<Block> TENNIS_BALL = registerBlock("tennis_ball",
             () -> new TennisBall(BlockBehaviour.Properties.of()));
+    public static final RegistryObject<Block> TENNIS_NET = registerBlock("tennis_net",
+            () -> new TennisNet(BlockBehaviour.Properties.of()));
+    public static final RegistryObject<Block> TENNIS_RACKET = registerBlock("tennis_racket",
+            () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.of()
+                    .sound(SoundType.CANDLE).instabreak()){
+                @Override
+                public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
+                    return Block.box(0,0,0,16,1,16);
+                }
+            });
 
     //requality
     // end of blocks list

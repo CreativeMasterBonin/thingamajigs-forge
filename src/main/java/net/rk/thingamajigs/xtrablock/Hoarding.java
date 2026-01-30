@@ -111,7 +111,7 @@ public class Hoarding extends Block implements SimpleWaterloggedBlock {
             }
             // if neither pillar on top nor bottom
             else{
-                // set to free-standing pillar
+                // set to freestanding pillar
                 lvl.setBlock(bp,state.setValue(TYPE,3),3);
             }
         }

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "thingamajigs:block/tennis_racket",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "thingamajigs:block/tennis_racket"
+    },
+    "facing=south": {
+      "model": "thingamajigs:block/tennis_racket",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "thingamajigs:block/tennis_racket",
+      "y": 270
+    }
+  }
+}

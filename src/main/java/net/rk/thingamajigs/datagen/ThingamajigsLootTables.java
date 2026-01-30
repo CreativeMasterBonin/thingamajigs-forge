@@ -1592,6 +1592,8 @@ public class ThingamajigsLootTables extends VanillaBlockLoot {
         this.dropSelf(ThingamajigsBlocks.SOCCER_BALL.get());
         this.dropSelf(ThingamajigsBlocks.BASKETBALL.get());
         this.add(ThingamajigsBlocks.TENNIS_BALL.get(),noDrop());
+        this.dropSelf(ThingamajigsBlocks.TENNIS_NET.get());
+        this.dropSelf(ThingamajigsBlocks.TENNIS_RACKET.get());
 
 
         // old end

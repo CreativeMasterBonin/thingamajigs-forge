@@ -1682,6 +1682,29 @@ public class ThingamajigsRecipeProvider extends RecipeProvider implements ICondi
                 .unlockedBy("has_thingy",InventoryChangeTrigger.TriggerInstance
                         .hasItems(ThingamajigsItems.SPORTS_COMPONENT.get()))
                 .save(frc);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ThingamajigsBlocks.TENNIS_NET.get().asItem(),10)
+                .requires(Items.LIME_CONCRETE)
+                .requires(Items.STRING)
+                .requires(Items.STRING)
+                .requires(ThingamajigsBlocks.TENNIS_BALL.get().asItem())
+                .requires(ThingamajigsBlocks.TENNIS_RACKET.get().asItem())
+                .requires(ThingamajigsBlocks.TENNIS_RACKET.get().asItem())
+                .requires(ThingamajigsItems.SPORTS_COMPONENT.get())
+                .unlockedBy("has_thingy",has(ThingamajigsItems.SPORTS_COMPONENT.get()))
+                .save(frc);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ThingamajigsBlocks.TENNIS_RACKET.get().asItem(),2)
+                .requires(Items.BLACK_DYE)
+                .requires(Items.BLUE_DYE)
+                .requires(Items.STICK)
+                .requires(Items.STRING)
+                .requires(ThingamajigsItems.SPORTS_COMPONENT.get())
+                .unlockedBy("has_thingy",has(ThingamajigsItems.SPORTS_COMPONENT.get()))
+                .save(frc);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ThingamajigsItems.THINGAMAJIGS_PAINTING_ITEM.get(),1)
+                .requires(Items.PAINTING)
+                .requires(ThingamajigsItems.THINGAMAJIG.get())
+                .unlockedBy("has_thingy",has(ThingamajigsItems.THINGAMAJIG.get()))
+                .save(frc);
     }
 
     public static RecipeBuilder stonecutterAny(Item requiredItem, Ingredient inputItem, Item result, int amt){

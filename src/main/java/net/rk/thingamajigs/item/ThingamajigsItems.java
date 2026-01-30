@@ -470,6 +470,9 @@ public class ThingamajigsItems {
     public static final RegistryObject<Item> ANIMATED_DEER = ITEMS.register("animated_deer",
             () -> new CustomBEWLRBlockItem(ThingamajigsBlocks.ANIMATED_DEER.get(),new Item.Properties()));
 
+    public static final RegistryObject<Item> THINGAMAJIGS_PAINTING_ITEM = ITEMS.register("thingamajig_painting",
+            () -> new ThingamajigsPaintingItem(new Item.Properties()));
+
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);
     }

@@ -146,6 +146,8 @@ public class ThingamajigsItemModelProvider extends ItemModelProvider {
         fromModelMod(ThingamajigsBlocks.ORANGE_PRIVATE_PROPERTY_SIGN.get(),"block/orange_private_property");
         fromModelMod(ThingamajigsBlocks.VIDEO_IN_PROGRESS_SIGN.get(),"block/video_in_progress");
         fromModelMod(ThingamajigsBlocks.NO_STARING_PRIVATE_PROPERTY_SIGN.get(),"block/no_staring_private_property");
+
+        simple(ThingamajigsItems.THINGAMAJIGS_PAINTING_ITEM);
     }
 
     // flat 2D facing player model

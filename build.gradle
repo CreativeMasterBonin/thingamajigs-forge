@@ -146,6 +146,14 @@ dependencies {
     implementation fg.deobf("curse.maven:patchouli-306770:4966125")
 }
 
+mixin {
+    add sourceSets.main, "thingamajigs.refmap.json"
+    config "thingamajigs.mixins.json"
+
+    debug.verbose = true
+    debug.export = true
+}
+
 // Example for how to get properties into the manifest for reading at runtime.
 jar {
     manifest {
