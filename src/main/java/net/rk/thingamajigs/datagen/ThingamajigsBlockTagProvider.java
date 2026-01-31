@@ -1342,6 +1342,7 @@ public class ThingamajigsBlockTagProvider extends BlockTagsProvider {
                 .add(ThingamajigsBlocks.SIDEWALK_LAYER_LEFT.get())
                 .add(ThingamajigsBlocks.SIDEWALK_LAYER_RIGHT.get())
                 .add(ThingamajigsBlocks.SIDEWALK_LAYER.get())
+                .add(ThingamajigsBlocks.PHONE_CROSSBAR.get())
                 .replace(false)
         ;
     }

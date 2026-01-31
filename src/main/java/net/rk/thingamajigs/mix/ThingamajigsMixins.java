@@ -29,4 +29,12 @@ public abstract class ThingamajigsMixins {
         }
         return originalItem;
     }
+
+    @ModifyArg(method = "getPickResult",at= @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;<init>(Lnet/minecraft/world/level/ItemLike;)V"))
+    public ItemLike thingamajigs_getPick(ItemLike itemLike){
+        if(this.getVariant().is(ThingamajigsTags.THINGAMAJIGS_PAINTING)) { // is this a thingamajigs painting?
+            return ThingamajigsItems.THINGAMAJIGS_PAINTING_ITEM.get();
+        }
+        return itemLike;
+    }
 }

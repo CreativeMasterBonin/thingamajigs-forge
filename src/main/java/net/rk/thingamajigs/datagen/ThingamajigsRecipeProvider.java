@@ -1705,6 +1705,12 @@ public class ThingamajigsRecipeProvider extends RecipeProvider implements ICondi
                 .requires(ThingamajigsItems.THINGAMAJIG.get())
                 .unlockedBy("has_thingy",has(ThingamajigsItems.THINGAMAJIG.get()))
                 .save(frc);
+        stonecutterAny(ThingamajigsBlocks.PHONE_CROSSBAR.get().asItem(),
+                Ingredient.of(ThingamajigsItems.PHONE_COMPONENT.get()),
+                ThingamajigsBlocks.PHONE_CROSSBAR.get().asItem(),1)
+                .unlockedBy("has_thingy",InventoryChangeTrigger.TriggerInstance
+                        .hasItems(ThingamajigsItems.PHONE_COMPONENT.get()))
+                .save(frc);
     }
 
     public static RecipeBuilder stonecutterAny(Item requiredItem, Ingredient inputItem, Item result, int amt){

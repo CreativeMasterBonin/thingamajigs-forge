@@ -23,6 +23,7 @@ import net.rk.thingamajigs.block.MarkedAsphalt;
 import net.rk.thingamajigs.block.ThingamajigsBlocks;
 import net.rk.thingamajigs.block.custom.Asphalt;
 import net.rk.thingamajigs.block.custom.blocks.YellowRoadMarking;
+import net.rk.thingamajigs.item.bases.AbstractPaintbrush;
 import net.rk.thingamajigs.legacy.YellowPaintBrushItemActions;
 import net.rk.thingamajigs.xtrablock.AsphaltSlab;
 import net.rk.thingamajigs.xtrablock.RotatingSlab;
@@ -30,9 +31,7 @@ import net.rk.thingamajigs.xtrablock.RotatingSlab;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class YellowPaintBrush extends Item {
-    public String currentName = "Undefined";
-
+public class YellowPaintBrush extends AbstractPaintbrush {
     public YellowPaintBrush(Properties pProperties) {
         super(pProperties);
     }

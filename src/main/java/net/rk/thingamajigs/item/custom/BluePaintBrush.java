@@ -23,6 +23,7 @@ import net.rk.thingamajigs.block.MarkedAsphalt;
 import net.rk.thingamajigs.block.ThingamajigsBlocks;
 import net.rk.thingamajigs.block.custom.Asphalt;
 import net.rk.thingamajigs.block.custom.blocks.BlueRoadMarking;
+import net.rk.thingamajigs.item.bases.AbstractPaintbrush;
 import net.rk.thingamajigs.legacy.BluePaintBrushItemActions;
 import net.rk.thingamajigs.xtrablock.AsphaltSlab;
 import net.rk.thingamajigs.xtrablock.RotatingSlab;
@@ -30,8 +31,7 @@ import net.rk.thingamajigs.xtrablock.RotatingSlab;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class BluePaintBrush extends Item {
-    public String currentname = "Undefined";
+public class BluePaintBrush extends AbstractPaintbrush {
     public BluePaintBrush(Properties pProperties) {
         super(pProperties);
     }
@@ -204,7 +204,7 @@ public class BluePaintBrush extends Item {
         if(pStack.hasTag()) {
             typeToName(pStack.getTag().getInt("marking_type"));
             pTooltipComponents.add(Component.literal("Type: " + pStack.getTag().getInt("marking_type")));
-            pTooltipComponents.add(Component.literal(currentname).withStyle(ChatFormatting.GREEN));
+            pTooltipComponents.add(Component.literal(currentName).withStyle(ChatFormatting.GREEN));
         }
 
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
@@ -212,21 +212,21 @@ public class BluePaintBrush extends Item {
 
     public void typeToName(int type){
         switch(type){
-            case 0: currentname = "Thin Corner";break;
-            case 1: currentname = "Thin Parking Line";break;
-            case 2: currentname = "Thick Parking Line";break;
-            case 3: currentname = "Sidewalk Line";break;
-            case 4: currentname = "Thin Corner Dot";break;
-            case 5: currentname = "Disabled Parking";break;
-            case 6: currentname = "Disabled Parking (Alt)";break;
-            case 7: currentname = "Short Line";break;
-            case 8: currentname = "Short 'T'";break;
-            case 9: currentname = "Plus";break;
-            case 10: currentname = "Square";break;
-            case 11: currentname = "Center 'T'";break;
-            case 12: currentname = "Long 'T'";break;
-            case 13: currentname = "blue marking";break;
-            default: currentname = "undefined";break;
+            case 0: currentName = "Thin Corner";break;
+            case 1: currentName = "Thin Parking Line";break;
+            case 2: currentName = "Thick Parking Line";break;
+            case 3: currentName = "Sidewalk Line";break;
+            case 4: currentName = "Thin Corner Dot";break;
+            case 5: currentName = "Disabled Parking";break;
+            case 6: currentName = "Disabled Parking (Alt)";break;
+            case 7: currentName = "Short Line";break;
+            case 8: currentName = "Short 'T'";break;
+            case 9: currentName = "Plus";break;
+            case 10: currentName = "Square";break;
+            case 11: currentName = "Center 'T'";break;
+            case 12: currentName = "Long 'T'";break;
+            case 13: currentName = "blue marking";break;
+            default: currentName = "undefined";break;
         }
     }
 }

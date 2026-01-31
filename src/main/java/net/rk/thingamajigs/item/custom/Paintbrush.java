@@ -8,7 +8,10 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.SlotAccess;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.ClickAction;
+import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -23,6 +26,7 @@ import net.rk.thingamajigs.block.MarkedAsphalt;
 import net.rk.thingamajigs.block.ThingamajigsBlocks;
 import net.rk.thingamajigs.block.custom.Asphalt;
 import net.rk.thingamajigs.block.custom.blocks.WhiteRoadMarking;
+import net.rk.thingamajigs.item.bases.AbstractPaintbrush;
 import net.rk.thingamajigs.legacy.WhitePaintBrushItemActions;
 import net.rk.thingamajigs.xtrablock.AsphaltSlab;
 import net.rk.thingamajigs.xtrablock.RotatingSlab;
@@ -30,8 +34,7 @@ import net.rk.thingamajigs.xtrablock.RotatingSlab;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class Paintbrush extends Item {
-    public String currentName = "Undefined";
+public class Paintbrush extends AbstractPaintbrush {
     public Paintbrush(Properties pProperties) {
         super(pProperties);
     }
@@ -249,6 +252,7 @@ public class Paintbrush extends Item {
             typeToName(pStack.getTag().getInt("marking_type"));
             pTooltipComponents.add(Component.literal("Type: " + pStack.getTag().getInt("marking_type")));
             pTooltipComponents.add(Component.literal(currentName).withStyle(ChatFormatting.GREEN));
+            pTooltipComponents.add(Component.literal("Length: " + String.valueOf(currentLength)).withStyle(ChatFormatting.BLUE));
         }
 
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);

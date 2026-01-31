@@ -4740,6 +4740,34 @@ public class ThingamajigsBlocks {
                     return Block.box(0,0,0,16,1,16);
                 }
             });
+    public static final RegistryObject<Block> PHONE_CROSSBAR = registerBlock("phone_crossbar",
+            () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.of()){
+                public static final VoxelShape NORTH = Block.box(0, 0, 0, 16, 16, 10);
+                public static final VoxelShape EAST = Block.box(6, 0, 0, 16, 16, 16);
+                public static final VoxelShape SOUTH = Block.box(0, 0, 6, 16, 16, 16);
+                public static final VoxelShape WEST = Block.box(0, 0, 0, 10, 16, 16);
+
+                @Override
+                public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
+                    switch(state.getValue(FACING)){
+                        case NORTH: {
+                                return NORTH;
+                        }
+                        case SOUTH: {
+                            return SOUTH;
+                        }
+                        case EAST: {
+                            return EAST;
+                        }
+                        case WEST: {
+                            return WEST;
+                        }
+                        default: {
+                            return Shapes.block();
+                        }
+                    }
+                }
+            });
 
     //requality
     // end of blocks list

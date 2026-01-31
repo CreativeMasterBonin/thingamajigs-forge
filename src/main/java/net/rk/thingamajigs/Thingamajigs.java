@@ -598,6 +598,7 @@ public class Thingamajigs {
             event.accept(ThingamajigsBlocks.CAR_WASH_DRYER.get().asItem());
             // telephone & cell service towers
             event.accept(ThingamajigsBlocks.PHONE_SWITCHER.get().asItem());
+            event.accept(ThingamajigsBlocks.PHONE_CROSSBAR.get().asItem());
             event.accept(ThingamajigsBlocks.CELL_MULTI_ANGLED_TRANSMITTER.get().asItem());
             event.accept(ThingamajigsBlocks.CELL_MULTI_TRANSMITTER.get().asItem());
             event.accept(ThingamajigsBlocks.CELL_TRANSMITTER.get().asItem());

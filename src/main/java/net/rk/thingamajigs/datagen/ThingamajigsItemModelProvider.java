@@ -148,6 +148,8 @@ public class ThingamajigsItemModelProvider extends ItemModelProvider {
         fromModelMod(ThingamajigsBlocks.NO_STARING_PRIVATE_PROPERTY_SIGN.get(),"block/no_staring_private_property");
 
         simple(ThingamajigsItems.THINGAMAJIGS_PAINTING_ITEM);
+
+        fromModelMod(ThingamajigsBlocks.PHONE_CROSSBAR.get(),"block/phone_crossbar");
     }
 
     // flat 2D facing player model

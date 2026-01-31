@@ -610,7 +610,7 @@
   "block.thingamajigs.garden_hose": "Garden Hose",
   "block.thingamajigs.wood_duck": "Wooden Toy Duck",
   "block.thingamajigs.wood_car": "Wooden Toy Car",
-  "block.thingamajigs.phone_switcher": "Phone Switcher",
+  "block.thingamajigs.phone_switcher": "Step Switcher (Phone)",
   "block.thingamajigs.hotdog_rotator": "Hot Dog Rotating Cooker",
   "block.thingamajigs.lawn_mower": "Lawn Mower",
   "block.thingamajigs.diving_board": "Diving Board",
@@ -1595,6 +1595,7 @@
   "block.thingamajigs.tennis_net": "Tennis Net",
   "block.thingamajigs.tennis_racket": "Tennis Racket",
   "item.thingamajigs.thingamajig_painting": "Thingamajig Painting",
+  "block.thingamajigs.phone_crossbar": "Crossbar Switch (Phone)",
 
   "item.thingamajigs.thingamajig_painting.desc": "Places a random thingamajigs painting, just like a regular painting does",
   "block.thingamajigs.tennis_net.desc": "Stacks up and horizontally",

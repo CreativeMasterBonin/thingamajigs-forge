@@ -144,6 +144,9 @@ dependencies {
     //implementation fg.deobf("com.tterrag.registrate:Registrate:${registrate_version}")
     implementation fg.deobf("curse.maven:athena-841890:4764357")
     implementation fg.deobf("curse.maven:patchouli-306770:4966125")
+
+    //runtimeOnly fg.deobf("curse.maven:selene-499980:7541536")
+    //runtimeOnly fg.deobf("curse.maven:fast-paintings-883287:5324825") // somewhat compatible, no crashes
 }
 
 mixin {
