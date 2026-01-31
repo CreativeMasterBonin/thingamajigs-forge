@@ -2,6 +2,7 @@
 
 <i>This repository can be built from source. Just import the Gradle project. Any errors are either internet related, or the files may not exist anymore on the Maven system. Most file references are using other website's systems to allow easier downloading of required libraries/testing libraries.</i>
 
+<i>Most data assets are either included or are generated from code. Generated ones require you to run the 'runData' Gradle task to appear in file format.</i>
 
 Enjoy furniture, kitchen and other appliances, railroad crossings, road signs and warning devices, seasonal features, and much, much more.
 

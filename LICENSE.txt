@@ -17,4 +17,4 @@ Mixins used in this mod cannot be copied verbatim into your own mods. If you can
 
 Follow these simple guidelines, and enjoy the mod.
 
-This license was updated January 30th, 2026.
+This license was updated January 31th, 2026.
