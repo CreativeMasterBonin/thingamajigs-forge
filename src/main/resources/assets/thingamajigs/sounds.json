@@ -563,5 +563,17 @@
         "stream": false
       }
     ]
+  },
+
+  "incomplete_call": {
+    "category": "block",
+    "attenuation_distance": 6,
+    "subtitle": "thingamajigs.subtitle.incomplete_call",
+    "sounds": [
+      {
+        "name": "thingamajigs:block/numbers/incomplete_call",
+        "stream": false
+      }
+    ]
   }
 }

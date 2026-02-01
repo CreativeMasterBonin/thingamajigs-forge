@@ -28,6 +28,7 @@ import net.rk.thingamajigs.block.custom.Asphalt;
 import net.rk.thingamajigs.block.custom.blocks.WhiteRoadMarking;
 import net.rk.thingamajigs.item.bases.AbstractPaintbrush;
 import net.rk.thingamajigs.legacy.WhitePaintBrushItemActions;
+import net.rk.thingamajigs.misc.ThingamajigsCalcStuffs;
 import net.rk.thingamajigs.xtrablock.AsphaltSlab;
 import net.rk.thingamajigs.xtrablock.RotatingSlab;
 
@@ -210,19 +211,20 @@ public class Paintbrush extends AbstractPaintbrush {
                     if(stack.hasTag()) {
                         increaseType(stack);
                         marking_type = stack.getTag().getInt("marking_type");
-                        level.playSound(null,positionClicked,SoundEvents.HONEYCOMB_WAX_ON,SoundSource.BLOCKS,1F,1F);
+                        placeMarkingSound(level,positionClicked);
                     }
                     else {
                         tag.putInt("marking_type", 0);
+                        tag.putInt("length",1);
                         stack.setTag(tag);
-                        level.playSound(null,positionClicked,SoundEvents.AXE_STRIP,SoundSource.BLOCKS,1F,1F);
+                        setupMarkingBrush(level,positionClicked);
                     }
                 }
                 else{
                     if(stack.hasTag()){
                         marking_type = stack.getTag().getInt("marking_type");
                     }
-                    WhitePaintBrushItemActions.paint(levelAccessor,pContext.getClickedPos().getX(),pContext.getClickedPos().getY(),pContext.getClickedPos().getZ(),pContext.getPlayer(), stack, marking_type);
+                    WhitePaintBrushItemActions.paint(levelAccessor,pContext.getClickedPos().getX(),pContext.getClickedPos().getY(),pContext.getClickedPos().getZ(),pContext.getPlayer(), stack, marking_type,stack.getTag().getInt("length"));
                 }
                 return InteractionResult.SUCCESS;
             }
@@ -250,11 +252,9 @@ public class Paintbrush extends AbstractPaintbrush {
         pTooltipComponents.add(Component.translatable("tooltip.thingamajigs.paintbrush"));
         if(pStack.hasTag()) {
             typeToName(pStack.getTag().getInt("marking_type"));
-            pTooltipComponents.add(Component.literal("Type: " + pStack.getTag().getInt("marking_type")));
+            pTooltipComponents.add(Component.literal("Type: " + pStack.getTag().getInt("marking_type") + "/" + WhiteRoadMarking.MAX_TYPES));
             pTooltipComponents.add(Component.literal(currentName).withStyle(ChatFormatting.GREEN));
-            pTooltipComponents.add(Component.literal("Length: " + String.valueOf(currentLength)).withStyle(ChatFormatting.BLUE));
         }
-
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
     }
 

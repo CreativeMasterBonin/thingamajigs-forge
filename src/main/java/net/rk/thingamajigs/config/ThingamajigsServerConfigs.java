@@ -18,6 +18,8 @@ public class ThingamajigsServerConfigs {
 
         public final ForgeConfigSpec.BooleanValue moneyExchangeEnabled;
 
+        public final ForgeConfigSpec.IntValue maxAmountOfRoadMarkingPerPaint;
+
         // setup config descriptions, titles, and options to change here
 
         // Format (in file) is:
@@ -69,6 +71,10 @@ public class ThingamajigsServerConfigs {
             this.moneyExchangeEnabled = builder
                     .comment(" Enables the money exchanging mechanic. Basically makes the change machine useful or not.")
                     .define("moneyExchangeEnabled",true);
+            this.maxAmountOfRoadMarkingPerPaint = builder
+                    .comment(" This amount of road marking placed (when length is greater than 1) per paint at maximum (default = 10). Must be higher than 1.")
+                    .comment(" Warning: If set too high the server may not allow any block places from players who use paintbrushes")
+                    .defineInRange("maxAmountOfRoadMarkingPerPaint",10,2,16);
         }
     }
 

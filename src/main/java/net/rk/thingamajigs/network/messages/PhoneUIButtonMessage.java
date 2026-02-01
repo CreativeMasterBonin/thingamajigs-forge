@@ -2,7 +2,9 @@ package net.rk.thingamajigs.network.messages;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -21,6 +23,7 @@ public class PhoneUIButtonMessage {
     private int x = 0;
     private int y = 0;
     private int z = 0;
+    private Component number = Component.empty();
 
     public PhoneUIButtonMessage(){
         // blank constructor
@@ -31,13 +34,15 @@ public class PhoneUIButtonMessage {
         this.x = buffer.readInt();
         this.y = buffer.readInt();
         this.z = buffer.readInt();
+        this.number = buffer.readComponent();
     }
 
-    public PhoneUIButtonMessage(int buttonID, int x, int y, int z) {
+    public PhoneUIButtonMessage(int buttonID, int x, int y, int z, Component number) {
         this.buttonID = buttonID;
         this.x = x;
         this.y = y;
         this.z = z;
+        this.number = number;
     }
 
     public static void buffer(PhoneUIButtonMessage message, FriendlyByteBuf buffer) {
@@ -45,6 +50,7 @@ public class PhoneUIButtonMessage {
         buffer.writeInt(message.x);
         buffer.writeInt(message.y);
         buffer.writeInt(message.z);
+        buffer.writeComponent(message.number);
     }
 
     public static void handler(PhoneUIButtonMessage message, Supplier<NetworkEvent.Context> contextSupplier) {
@@ -55,12 +61,13 @@ public class PhoneUIButtonMessage {
             int x = message.x;
             int y = message.y;
             int z = message.z;
-            handleButtonAction(entity, buttonID, x, y, z);
+            Component number = message.number;
+            handleButtonAction(entity, buttonID, x, y, z, number);
         });
         context.setPacketHandled(true);
     }
 
-    public static void handleButtonAction(Player ply, int buttonID, int x, int y, int z) {
+    public static void handleButtonAction(Player ply, int buttonID, int x, int y, int z, Component number) {
         Level lvl = ply.level();
         BlockPos bp = new BlockPos(x,y,z);
         //
@@ -68,8 +75,37 @@ public class PhoneUIButtonMessage {
             return; // yes it IS necessary!
         }
         else{
-            //0-11
+            String sentNumber = number.getString();
+
             if(!lvl.isClientSide){
+                // for fun numbers
+                if(buttonID == 32){
+                    if(sentNumber.equals("1111111111")){
+                        playLocalOrServerSound(false,lvl,bp,ThingamajigsSoundEvents.PHONE_NOT_A_NUMBER.get());
+                        return;
+                    }
+                    else if(sentNumber.equals("2307771234")){
+                        playLocalOrServerSound(false,lvl,bp,ThingamajigsSoundEvents.PHONE_SONG_MAYBE.get());
+                        return;
+                    }
+                    else if(sentNumber.equals("5712226788")){
+                        playLocalOrServerSound(false,lvl,bp,ThingamajigsSoundEvents.PHONE_BIRDS_PERHAPS.get());
+                        return;
+                    }
+                    else if(sentNumber.equals("3897043333")){
+                        playLocalOrServerSound(false,lvl,bp,SoundEvents.GENERIC_EXPLODE);
+                        return;
+                    }
+                    else if(sentNumber.equals("") || sentNumber.isEmpty() || sentNumber.isBlank() || sentNumber.equals("-1")){
+                        playLocalOrServerSound(false,lvl,bp,ThingamajigsSoundEvents.PHONE_INCOMPLETE_CALL.get());
+                        return;
+                    }
+                    else{
+                        playLocalOrServerSound(false,lvl,bp,ThingamajigsSoundEvents.PHONE_NO_SERVICE.get());
+                    }
+                }
+
+                //0-11
                 if(buttonID == 0){
                     playLocalOrServerSound(false,lvl,bp, ThingamajigsSoundEvents.MOBILE_ONE.get());
                 }
@@ -118,10 +154,10 @@ public class PhoneUIButtonMessage {
         SoundSource ss1 = SoundSource.PLAYERS;
         //
         if(local){
-            l.playLocalSound(p,event,ss1,1.0F,1.0F,false);
+            l.playLocalSound(p,event,ss1,1.0f,1.0f,false);
         }
         else{
-            l.playSound(null,p,event,ss1,1.0F,1.0F);
+            l.playSound(null,p,event,ss1,1.0f,1.0f);
         }
     }
 

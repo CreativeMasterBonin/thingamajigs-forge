@@ -15,9 +15,10 @@ import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.rk.thingamajigs.block.ThingamajigsBlocks;
 import net.rk.thingamajigs.block.custom.blocks.YellowRoadMarking;
+import net.rk.thingamajigs.item.bases.AbstractPaintbrush;
 
 public class YellowPaintBrushItemActions {
-    public static void paint(LevelAccessor world, double x, double y, double z, Entity entity, ItemStack stack, int marking_type) {
+    public static void paint(LevelAccessor world, double x, double y, double z, Entity entity, ItemStack stack, int marking_type,int length) {
         double variable = 0;
         BlockPos pos = new BlockPos((int)x,(int)y,(int)z);
 
@@ -55,9 +56,11 @@ public class YellowPaintBrushItemActions {
                     return;
                 }
             }
-            // new sound for paintbrushes
-            world.playSound(null,new BlockPos((int)x,(int)y,(int)z), SoundEvents.CAKE_ADD_CANDLE, SoundSource.BLOCKS, 1F, 1F);
-            world.setBlock(new BlockPos((int) x, (int) (y + 1), (int) z), ThingamajigsBlocks.YELLOW_ROAD_MARKING.get().defaultBlockState(), 3);
+
+            AbstractPaintbrush.newPaintLogic(world,x,y,z,entity,stack,marking_type,length,ThingamajigsBlocks.YELLOW_ROAD_MARKING.get());
+
+            // old logic for future ref
+            /*world.setBlock(new BlockPos((int) x, (int) (y + 1), (int) z), ThingamajigsBlocks.YELLOW_ROAD_MARKING.get().defaultBlockState(), 3);
             {
                 Direction _dir = ((entity.getDirection()).getOpposite());
                 BlockPos _pos = new BlockPos((int) x, (int) (y + 1), (int) z);
@@ -74,7 +77,7 @@ public class YellowPaintBrushItemActions {
 
                 }
 
-            }
+            }*/
         }
     }
 }

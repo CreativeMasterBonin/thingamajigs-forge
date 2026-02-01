@@ -272,7 +272,7 @@ public class DJLaserLightScreen extends AbstractContainerScreen<DJLaserLightMenu
         RenderSystem.setShaderColor(1, 1, 1, 1);
         RenderSystem.enableBlend();
         RenderSystem.defaultBlendFunc();
-        RenderSystem.setShaderTexture(0, BG_TEXTURE);
+        RenderSystem.setShaderTexture(0,BG_TEXTURE);
         ggraph.blit(BG_TEXTURE,
                 this.leftPos,this.topPos,0,0,
                 this.imageWidth,this.imageHeight,this.imageWidth,this.imageHeight);
