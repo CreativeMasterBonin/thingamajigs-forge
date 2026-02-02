@@ -47,7 +47,7 @@ public class Payphone extends ThingamajigsDecorativeBlock {
         super(p);
     }
 
-    @Override
+    /*@Override
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
         if(pPlayer.isShiftKeyDown() && pPlayer.getItemInHand(pHand).isEmpty()){
             RandomSource rs = pLevel.getRandom();
@@ -55,23 +55,23 @@ public class Payphone extends ThingamajigsDecorativeBlock {
             double fChange = Math.floor(f * 100) / 100;
 
             if(fChange == 0.01D){
-                pPlayer.playSound(ThingamajigsSoundEvents.PHONE_NO_SERVICE.get(),0.5f,1.0f);
+                //pPlayer.playSound(ThingamajigsSoundEvents.PHONE_NO_SERVICE.get(),0.5f,1.0f);
             }
             else if(fChange == 0.05D){
-                pPlayer.playSound(ThingamajigsSoundEvents.PHONE_SONG_MAYBE.get(),0.5f,1.0f);
+                //pPlayer.playSound(ThingamajigsSoundEvents.PHONE_SONG_MAYBE.get(),0.5f,1.0f);
             }
             else if(fChange == 0.31D){
-                pPlayer.playSound(ThingamajigsSoundEvents.PHONE_NOT_A_NUMBER.get(),0.5f,1.0f);
+                //pPlayer.playSound(ThingamajigsSoundEvents.PHONE_NOT_A_NUMBER.get(),0.5f,1.0f);
             }
             else if(fChange == 0.42D){
-                pPlayer.playSound(ThingamajigsSoundEvents.PHONE_BIRDS_PERHAPS.get(),0.5f,1.0f);
+                //pPlayer.playSound(ThingamajigsSoundEvents.PHONE_BIRDS_PERHAPS.get(),0.5f,1.0f);
             }
             return InteractionResult.SUCCESS;
         }
         else{
             return InteractionResult.PASS;
         }
-    }
+    }*/
 
     public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
         Direction direction = pState.getValue(FACING);

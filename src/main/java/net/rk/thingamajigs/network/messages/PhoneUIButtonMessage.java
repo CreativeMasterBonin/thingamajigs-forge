@@ -16,6 +16,7 @@ import net.rk.thingamajigs.events.ThingamajigsSoundEvents;
 import net.rk.thingamajigs.network.ThingamajigsPacketHandler;
 
 import java.util.function.Supplier;
+import java.util.logging.Logger;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class PhoneUIButtonMessage {
@@ -75,7 +76,65 @@ public class PhoneUIButtonMessage {
             return; // yes it IS necessary!
         }
         else{
-            String sentNumber = number.getString();
+            String sentNumberOld = number.getString().toLowerCase()
+                    .replaceAll("a","2")
+                    .replaceAll("b","2")
+                    .replaceAll("c","2")
+                    .replaceAll("d","3")
+                    .replaceAll("e","3")
+                    .replaceAll("f","3")
+                    .replaceAll("g","4")
+                    .replaceAll("h","4")
+                    .replaceAll("i","4")
+                    .replaceAll("j","5")
+                    .replaceAll("k","5")
+                    .replaceAll("l","5")
+                    .replaceAll("m","6")
+                    .replaceAll("n","6")
+                    .replaceAll("o","6")
+                    .replaceAll("p","7")
+                    .replaceAll("r","7")
+                    .replaceAll("s","7")
+                    .replaceAll("t","8")
+                    .replaceAll("u","8")
+                    .replaceAll("v","8")
+                    .replaceAll("w","9")
+                    .replaceAll("x","9")
+                    .replaceAll("y","9")
+                    .replaceAll("z","")
+                    ;
+            String sentNumber = number.getString().toLowerCase()
+                    .replaceAll("a","2")
+                    .replaceAll("b","2")
+                    .replaceAll("c","2")
+                    .replaceAll("d","3")
+                    .replaceAll("e","3")
+                    .replaceAll("f","3")
+                    .replaceAll("g","4")
+                    .replaceAll("h","4")
+                    .replaceAll("i","4")
+                    .replaceAll("j","5")
+                    .replaceAll("k","5")
+                    .replaceAll("l","5")
+                    .replaceAll("m","6")
+                    .replaceAll("n","6")
+                    .replaceAll("o","6")
+                    .replaceAll("p","7")
+                    .replaceAll("q","7")
+                    .replaceAll("r","7")
+                    .replaceAll("s","7")
+                    .replaceAll("t","8")
+                    .replaceAll("u","8")
+                    .replaceAll("v","8")
+                    .replaceAll("w","9")
+                    .replaceAll("x","9")
+                    .replaceAll("y","9")
+                    .replaceAll("z","9")
+                    ;
+            String areaCode = "0";
+            if(number.getString().length() >= 3){
+                areaCode = number.getString().substring(0,3);
+            }
 
             if(!lvl.isClientSide){
                 // for fun numbers
@@ -96,12 +155,44 @@ public class PhoneUIButtonMessage {
                         playLocalOrServerSound(false,lvl,bp,SoundEvents.GENERIC_EXPLODE);
                         return;
                     }
+                    else if(sentNumber.equals("0005551234")){
+                        playLocalOrServerSound(false,lvl,bp,ThingamajigsSoundEvents.POOP.get());
+                        return;
+                    }
+                    else if((areaCode.equals("212") // ny
+                            || areaCode.equals("228")
+                            || areaCode.equals("254")
+                            || areaCode.equals("260")
+                            || areaCode.equals("473")
+                            || areaCode.equals("475")
+                            || areaCode.equals("477")
+                            || areaCode.equals("533")
+                            || areaCode.equals("673")
+                            || areaCode.equals("674")
+                            || areaCode.equals("677")
+                            || areaCode.equals("777")
+                            || areaCode.equals("982") && ply.isOnFire())){
+                        playLocalOrServerSound(false,lvl,bp,SoundEvents.FIRECHARGE_USE);
+                        return;
+                    }
+                    else if(areaCode.equals("911")
+                            || areaCode.equals("811")
+                            || areaCode.equals("711")
+                            || areaCode.equals("611")
+                            || areaCode.equals("511")
+                            || areaCode.equals("411")
+                            || areaCode.equals("311")
+                            || areaCode.equals("211")){
+                        playLocalOrServerSound(false,lvl,bp,ThingamajigsSoundEvents.CODE.get());
+                        return;
+                    }
                     else if(sentNumber.equals("") || sentNumber.isEmpty() || sentNumber.isBlank() || sentNumber.equals("-1")){
                         playLocalOrServerSound(false,lvl,bp,ThingamajigsSoundEvents.PHONE_INCOMPLETE_CALL.get());
                         return;
                     }
                     else{
                         playLocalOrServerSound(false,lvl,bp,ThingamajigsSoundEvents.PHONE_NO_SERVICE.get());
+                        return;
                     }
                 }
 

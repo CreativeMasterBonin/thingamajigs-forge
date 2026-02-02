@@ -15,9 +15,7 @@ public class PhoneEditBox extends EditBox{
         this.setResponder(this::onEdited);
     }
 
-    private void onEdited(String s) {
-
-    }
+    public void onEdited(String s){}
 
     public PhoneEditBox(Minecraft instance,Font font, int x, int y, int sizeX, int sizeY, @Nullable EditBox editbox, Component title) {
         super(font, x, y, sizeX, sizeY, editbox, title);

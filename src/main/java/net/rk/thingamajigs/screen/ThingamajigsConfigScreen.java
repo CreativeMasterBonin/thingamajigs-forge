@@ -1,26 +1,23 @@
 package net.rk.thingamajigs.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.serialization.Codec;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.OptionInstance;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.Checkbox;
-import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.gui.layouts.GridLayout;
 import net.minecraft.client.gui.layouts.SpacerElement;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.gui.widget.ForgeSlider;
 import net.rk.thingamajigs.config.ThingamajigsClientConfigs;
 import net.rk.thingamajigs.screen.widget.RevertedButton;
 
-import java.util.logging.Logger;
-
-
+@OnlyIn(Dist.CLIENT)
 public class ThingamajigsConfigScreen extends Screen {
     public static int leftPos = 0;
     public static int topPos = 0;

@@ -1,36 +1,19 @@
 package net.rk.thingamajigs;
 
 import com.mojang.logging.LogUtils;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screens.MenuScreens;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.*;
-import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
-import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
-import net.minecraft.client.renderer.blockentity.SignRenderer;
-import net.minecraft.client.renderer.entity.EntityRenderers;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.BlockItem;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.FoliageColor;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.client.ConfigScreenHandler;
-import net.minecraftforge.client.event.EntityRenderersEvent;
-import net.minecraftforge.client.event.RegisterColorHandlersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLLoader;
@@ -39,17 +22,13 @@ import net.rk.thingamajigs.config.ThingamajigsClientConfigs;
 import net.rk.thingamajigs.config.ThingamajigsServerConfigs;
 import net.rk.thingamajigs.entity.ThingamajigsBlockEntities;
 import net.rk.thingamajigs.entity.ThingamajigsEntities;
-import net.rk.thingamajigs.entity.models.*;
 import net.rk.thingamajigs.events.ThingamajigsSoundEvents;
 import net.rk.thingamajigs.fluid.ThingamajigsFluids;
 import net.rk.thingamajigs.item.ThingamajigsCreativeTab;
 import net.rk.thingamajigs.item.ThingamajigsItems;
-import net.rk.thingamajigs.misc.ThingamajigsBlockTypes;
-import net.rk.thingamajigs.misc.ThingamajigsColors;
 import net.rk.thingamajigs.painting.ThingamajigsPaintings;
 import net.rk.thingamajigs.particle.ThingamajigsParticles;
 import net.rk.thingamajigs.recipe.ThingamajigsRecipes;
-import net.rk.thingamajigs.renderers.*;
 import net.rk.thingamajigs.screen.*;
 import org.slf4j.Logger;
 
@@ -60,19 +39,16 @@ public class Thingamajigs {
     private static final Logger LOGGERV2 = LogUtils.getLogger();
 
     private static boolean isCreateIn = false;
-
     public static boolean creating(){
         return isCreateIn;
     }
 
     private static void logErrorInternal(Exception e){
-        LOGGERV2.error("Thingamajigs encountered and error: Exception goes as follows: " + e.getMessage());
+        LOGGERV2.error("Thingamajigs encountered and error: Exception goes as follows: {}", e.getMessage());
     }
 
-    public Thingamajigs() {
-        // Register the setup method for mod loading
+    public Thingamajigs(){
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
-
         try{
             if(ModList.get().isLoaded("create")) {
                 isCreateIn = true;
@@ -81,12 +57,8 @@ public class Thingamajigs {
         catch(Exception e){
             logErrorInternal(e);
         }
-
-        // register creative mode tabs
         ThingamajigsCreativeTab.register(eventBus);
-
         ThingamajigsMenuTypes.register(eventBus);
-
         try {
             ThingamajigsParticles.register(eventBus);
         }
@@ -111,11 +83,6 @@ public class Thingamajigs {
 
         // setup listeners "...oh im, listening for your voice..."
         eventBus.addListener(this::setup);
-        eventBus.addListener(this::setupClient);
-
-        if(FMLLoader.getDist() == Dist.CLIENT){
-            eventBus.addListener(this::layerSetup);
-        }
 
         // setup MORE listeners "more, more!"
         eventBus.addListener(this::addCreative);
@@ -127,15 +94,13 @@ public class Thingamajigs {
         ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, ThingamajigsServerConfigs.CPSEC);
         ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, ThingamajigsClientConfigs.CPSECCLIENT);
 
-        // hmm.... colors?
-        try{
-            DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
-                eventBus.addListener(Thingamajigs::setColors);
-                eventBus.addListener(Thingamajigs::setItemColors);
-            });
-        }
-        catch (Exception e){
-            logErrorInternal(e);
+        // split common code into server and client code classes
+        // this ensures one side has its own error checking and the other a different set of error checks
+        if(FMLLoader.getDist() == Dist.CLIENT){
+            eventBus.addListener(ThingamajigsClient::setupClient);
+            eventBus.addListener(ThingamajigsClient::setColors);
+            eventBus.addListener(ThingamajigsClient::setItemColors);
+            eventBus.addListener(ThingamajigsClient::layerSetup);
         }
 
         // finale mod registry
@@ -151,9 +116,6 @@ public class Thingamajigs {
     // New MC Tabs System
     private void addCreative(BuildCreativeModeTabContentsEvent event){
         if(event.getTab() == ThingamajigsCreativeTab.ALL_ITEMS_TAB_v2.get()){
-            //
-            //event.accept(ThingamajigsBlocks.TEST_BLOCK.get().asItem());
-            //
             // items (ingredient items used in primary recipes)
             event.accept(ThingamajigsItems.THINGAMAJIG);
             // globs (used in secondary recipes)
@@ -402,13 +364,21 @@ public class Thingamajigs {
             event.accept(ThingamajigsBlocks.PURPLE_DETECTOR_RAIL.get().asItem());
             event.accept(ThingamajigsBlocks.PURPLE_ACTIVATOR_RAIL.get().asItem());
             // Road Blocks & Items
+            // paintbrushes
+            CompoundTag paintbrushDefaults = new CompoundTag();
+            paintbrushDefaults.putInt("marking_type",0);
+            paintbrushDefaults.putInt("length",1);
+            ItemStack whitePaintBrush = new ItemStack(ThingamajigsItems.WHITE_PAINT_BRUSH.get(),1,paintbrushDefaults);
+            ItemStack yellowPaintBrush = new ItemStack(ThingamajigsItems.YELLOW_PAINT_BRUSH.get(),1,paintbrushDefaults);
+            ItemStack bluePaintBrush = new ItemStack(ThingamajigsItems.BLUE_PAINT_BRUSH.get(),1,paintbrushDefaults);
+
             event.accept(ThingamajigsItems.PAINT_BRUSH);
-            event.accept(ThingamajigsItems.WHITE_PAINT_BRUSH);
-            event.accept(ThingamajigsItems.YELLOW_PAINT_BRUSH);
-            event.accept(ThingamajigsItems.BLUE_PAINT_BRUSH);
+            event.accept(whitePaintBrush,CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.accept(yellowPaintBrush,CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.accept(bluePaintBrush,CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.accept(ThingamajigsItems.SCRAPE_TOOL);
-            //
-            //
+            // end paintbrushes
+
             event.accept(ThingamajigsBlocks.ASPHALT.get().asItem());
             event.accept(ThingamajigsBlocks.ASPHALT_OK.get().asItem());
             event.accept(ThingamajigsBlocks.ASPHALT_MEDIOCRE.get().asItem());
@@ -1525,7 +1495,7 @@ public class Thingamajigs {
         if(event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS){
             event.accept(ThingamajigsBlocks.SLUDGE_CONVERTER.get().asItem(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             // fixed ordering
-            event.getEntries().putBefore(Items.CAMPFIRE.getDefaultInstance(),ThingamajigsBlocks.SLUDGE_CONVERTER.get().asItem().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.getEntries().putBefore(Items.CAMPFIRE.getDefaultInstance(),ThingamajigsBlocks.SLUDGE_CONVERTER.get().asItem().getDefaultInstance(),CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
         // config option can disable or enable these features in the creative tab (otherwise the give command will work)
         if(ThingamajigsServerConfigs.SERVER.opBlocksEnabled.get()){
@@ -1550,354 +1520,10 @@ public class Thingamajigs {
                     event.getEntries().putAfter(ThingamajigsItems.EG_PLACEABLE.get().getDefaultInstance(),
                             ThingamajigsBlocks.SUPER_SPONGE.get().asItem().getDefaultInstance(),
                             CreativeModeTab.TabVisibility.PARENT_TAB_ONLY);
-                    // end
                 }
             }
         }
-        // end creative mode tab items setup
     }
 
-    @OnlyIn(Dist.CLIENT)
-    public static void setRenderTypes(){
-        ItemBlockRenderTypes.setRenderLayer(ThingamajigsFluids.SLUDGE.get(),RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ThingamajigsFluids.SLUDGE_FLOWING.get(),RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ThingamajigsFluids.PURIFYING_WATER.get(),RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(ThingamajigsFluids.PURIFYING_WATER_FLOWING.get(),RenderType.translucent());
-
-        // old method stuff
-        ItemBlockRenderTypes.setRenderLayer(ThingamajigsBlocks.WHITE_PUMPKIN_STEM.get(),RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ThingamajigsBlocks.ATTATCHED_WHITE_PUMPKIN_STEM.get(),RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ThingamajigsBlocks.LIGHT_GRAY_PUMPKIN_STEM.get(),RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ThingamajigsBlocks.ATTATCHED_LIGHT_GRAY_PUMPKIN_STEM.get(),RenderType.cutout());
-        // 1.8.1 additions
-        ItemBlockRenderTypes.setRenderLayer(ThingamajigsBlocks.ROUND_BUSH.get(),RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ThingamajigsBlocks.BULBLET.get(),RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ThingamajigsBlocks.WISPY_WEED.get(),RenderType.cutout());
-    }
-
-    public static void setItemColors(RegisterColorHandlersEvent.Item rchEvent){
-        // register item colors
-        rchEvent.register((itemStack,i) -> {
-            BlockState bs = ((BlockItem)itemStack.getItem()).getBlock().defaultBlockState();
-            return Minecraft.getInstance().getBlockColors().getColor(bs,null,null,i);
-        },
-                ThingamajigsBlocks.FLOWERING_LILY_PAD.get(),
-                ThingamajigsBlocks.TRIPLE_LILY_PAD.get(),
-                ThingamajigsBlocks.COLORED_GLASS.get(),
-                ThingamajigsItems.FLOWERING_LILY_PAD_ITEM.get(),
-                ThingamajigsItems.TRIPLE_LILY_PAD_ITEM.get(),
-                ThingamajigsBlocks.RUBBER_LEAVES.get(),
-                ThingamajigsBlocks.ROUND_BUSH.get(),
-                ThingamajigsBlocks.BULBLET.get(),
-                ThingamajigsBlocks.WISPY_WEED.get()
-        );
-        // balloon block items
-        rchEvent.register((itemStack,i) -> ThingamajigsColors.getTeal(),
-                ThingamajigsItems.TEAL_BALLOON_BLOCK_ITEM.get()
-        );
-        //
-        rchEvent.register((itemStack,i) -> ThingamajigsColors.getLightGray(),
-                ThingamajigsItems.LIGHT_GRAY_BALLOON_BLOCK_ITEM.get(),
-                ThingamajigsBlocks.LIGHT_GRAY_GLOW_BLOCK.get().asItem()
-        );
-        rchEvent.register((itemStack,i) -> ThingamajigsColors.getGray(),
-                ThingamajigsItems.GRAY_BALLOON_BLOCK_ITEM.get(),
-                ThingamajigsBlocks.GRAY_GLOW_BLOCK.get().asItem()
-        );
-        rchEvent.register((itemStack,i) -> ThingamajigsColors.getBlack(),
-                ThingamajigsItems.BLACK_BALLOON_BLOCK_ITEM.get(),
-                ThingamajigsBlocks.BLACK_GLOW_BLOCK.get().asItem()
-        );
-        rchEvent.register((itemStack,i) -> ThingamajigsColors.getBrown(),
-                ThingamajigsItems.BROWN_BALLOON_BLOCK_ITEM.get(),
-                ThingamajigsBlocks.BROWN_GLOW_BLOCK.get().asItem()
-        );
-        // colorful balloon block items
-        rchEvent.register((itemStack,i) -> ThingamajigsColors.getColorFromList(1),
-                ThingamajigsItems.RED_BALLOON_BLOCK_ITEM.get(),
-                ThingamajigsBlocks.RED_GLOW_BLOCK.get().asItem()
-        );
-        rchEvent.register((itemStack,i) -> ThingamajigsColors.getColorFromList(2),
-                ThingamajigsItems.ORANGE_BALLOON_BLOCK_ITEM.get(),
-                ThingamajigsBlocks.ORANGE_GLOW_BLOCK.get().asItem()
-        );
-        rchEvent.register((itemStack,i) -> ThingamajigsColors.getColorFromList(3),
-                ThingamajigsItems.YELLOW_BALLOON_BLOCK_ITEM.get(),
-                ThingamajigsBlocks.YELLOW_GLOW_BLOCK.get().asItem()
-        );
-        rchEvent.register((itemStack,i) -> ThingamajigsColors.getColorFromList(4),
-                ThingamajigsItems.LIME_BALLOON_BLOCK_ITEM.get(),
-                ThingamajigsBlocks.LIME_GLOW_BLOCK.get().asItem()
-        );
-        rchEvent.register((itemStack,i) -> ThingamajigsColors.getColorFromList(5),
-                ThingamajigsItems.GREEN_BALLOON_BLOCK_ITEM.get(),
-                ThingamajigsBlocks.GREEN_GLOW_BLOCK.get().asItem()
-        );
-        rchEvent.register((itemStack,i) -> ThingamajigsColors.getColorFromList(6),
-                ThingamajigsItems.CYAN_BALLOON_BLOCK_ITEM.get(),
-                ThingamajigsBlocks.CYAN_GLOW_BLOCK.get().asItem()
-        );
-        rchEvent.register((itemStack,i) -> ThingamajigsColors.getColorFromList(7),
-                ThingamajigsItems.LIGHT_BLUE_BALLOON_BLOCK_ITEM.get(),
-                ThingamajigsBlocks.LIGHT_BLUE_GLOW_BLOCK.get().asItem()
-        );
-        rchEvent.register((itemStack,i) -> ThingamajigsColors.getColorFromList(8),
-                ThingamajigsItems.BLUE_BALLOON_BLOCK_ITEM.get(),
-                ThingamajigsBlocks.BLUE_GLOW_BLOCK.get().asItem()
-        );
-        rchEvent.register((itemStack,i) -> ThingamajigsColors.getColorFromList(9),
-                ThingamajigsItems.PURPLE_BALLOON_BLOCK_ITEM.get(),
-                ThingamajigsBlocks.PURPLE_GLOW_BLOCK.get().asItem()
-        );
-        rchEvent.register((itemStack,i) -> ThingamajigsColors.getColorFromList(10),
-                ThingamajigsItems.MAGENTA_BALLOON_BLOCK_ITEM.get(),
-                ThingamajigsBlocks.MAGENTA_GLOW_BLOCK.get().asItem()
-        );
-        rchEvent.register((itemStack,i) -> ThingamajigsColors.getColorFromList(11),
-                ThingamajigsItems.PINK_BALLOON_BLOCK_ITEM.get(),
-                ThingamajigsBlocks.PINK_GLOW_BLOCK.get().asItem()
-        );
-    }
-
-    public static void setColors(RegisterColorHandlersEvent.Block rchEvent){
-        // register block colors
-        rchEvent.register((blockState,tintGetter,blockPos,i) ->
-                tintGetter != null && blockPos != null ?
-                        BiomeColors.getAverageFoliageColor(tintGetter,blockPos) : FoliageColor.getDefaultColor(),
-                ThingamajigsBlocks.FLOWERING_LILY_PAD.get(),
-                ThingamajigsBlocks.TRIPLE_LILY_PAD.get(),
-                ThingamajigsBlocks.RUBBER_LEAVES.get()
-                );
-        //
-        rchEvent.register((blockState,tintGetter,blockPos,i) ->
-                        tintGetter != null && blockPos != null ?
-                                BiomeColors.getAverageWaterColor(tintGetter,blockPos) : FoliageColor.getDefaultColor(),
-                ThingamajigsBlocks.COLORED_GLASS.get()
-        );
-
-        rchEvent.register((blockState,tintGetter,blockPos,i) ->
-                        tintGetter != null && blockPos != null ?
-                                BiomeColors.getAverageGrassColor(tintGetter,blockPos) : FoliageColor.getMangroveColor(),
-                ThingamajigsBlocks.ROUND_BUSH.get(),
-                ThingamajigsBlocks.BULBLET.get(),
-                ThingamajigsBlocks.WISPY_WEED.get()
-        );
-
-        // custom colored blocks
-        // darker color balloons
-        rchEvent.register((bs, batg, bp, i1) -> ThingamajigsColors.getTeal(),
-                ThingamajigsBlocks.TEAL_BALLOON_BLOCK.get());
-        rchEvent.register((bs, batg, bp, i1) -> ThingamajigsColors.getWhite(),
-                ThingamajigsBlocks.ATTATCHED_WHITE_PUMPKIN_STEM.get(),
-                ThingamajigsBlocks.WHITE_PUMPKIN_STEM.get()
-        );
-        rchEvent.register((bs, batg, bp, i1) -> ThingamajigsColors.getLightGray(),
-                ThingamajigsBlocks.LIGHT_GRAY_BALLOON_BLOCK.get(),
-                ThingamajigsBlocks.ATTATCHED_LIGHT_GRAY_PUMPKIN_STEM.get(),
-                ThingamajigsBlocks.LIGHT_GRAY_PUMPKIN_STEM.get(),
-                ThingamajigsBlocks.LIGHT_GRAY_GLOW_BLOCK.get()
-        );
-        rchEvent.register((bs, batg, bp, i1) -> ThingamajigsColors.getGray(),
-                ThingamajigsBlocks.GRAY_BALLOON_BLOCK.get(),
-                ThingamajigsBlocks.ATTATCHED_GRAY_PUMPKIN_STEM.get(),
-                ThingamajigsBlocks.GRAY_PUMPKIN_STEM.get(),
-                ThingamajigsBlocks.GRAY_GLOW_BLOCK.get()
-        );
-        rchEvent.register((bs, batg, bp, i1) -> ThingamajigsColors.getBlack(),
-                ThingamajigsBlocks.BLACK_BALLOON_BLOCK.get(),
-                ThingamajigsBlocks.ATTATCHED_BLACK_PUMPKIN_STEM.get(),
-                ThingamajigsBlocks.BLACK_PUMPKIN_STEM.get(),
-                ThingamajigsBlocks.BLACK_GLOW_BLOCK.get()
-        );
-        rchEvent.register((bs, batg, bp, i1) -> ThingamajigsColors.getBrown(),
-                ThingamajigsBlocks.BROWN_BALLOON_BLOCK.get(),
-                ThingamajigsBlocks.ATTATCHED_BROWN_PUMPKIN_STEM.get(),
-                ThingamajigsBlocks.BROWN_PUMPKIN_STEM.get(),
-                ThingamajigsBlocks.BROWN_GLOW_BLOCK.get()
-        );
-        // colorful balloons
-        rchEvent.register((bs, batg, bp, i1) -> ThingamajigsColors.getColorFromList(1),
-                ThingamajigsBlocks.RED_BALLOON_BLOCK.get(),
-                ThingamajigsBlocks.ATTATCHED_RED_PUMPKIN_STEM.get(),
-                ThingamajigsBlocks.RED_PUMPKIN_STEM.get(),
-                ThingamajigsBlocks.RED_GLOW_BLOCK.get()
-        );
-        rchEvent.register((bs, batg, bp, i1) -> ThingamajigsColors.getColorFromList(2),
-                ThingamajigsBlocks.ORANGE_BALLOON_BLOCK.get(),
-                ThingamajigsBlocks.ORANGE_GLOW_BLOCK.get()
-        );
-        rchEvent.register((bs, batg, bp, i1) -> ThingamajigsColors.getColorFromList(3),
-                ThingamajigsBlocks.YELLOW_BALLOON_BLOCK.get(),
-                ThingamajigsBlocks.ATTATCHED_YELLOW_PUMPKIN_STEM.get(),
-                ThingamajigsBlocks.YELLOW_PUMPKIN_STEM.get(),
-                ThingamajigsBlocks.YELLOW_GLOW_BLOCK.get()
-        );
-        rchEvent.register((bs, batg, bp, i1) -> ThingamajigsColors.getColorFromList(4),
-                ThingamajigsBlocks.LIME_BALLOON_BLOCK.get(),
-                ThingamajigsBlocks.ATTATCHED_LIME_PUMPKIN_STEM.get(),
-                ThingamajigsBlocks.LIME_PUMPKIN_STEM.get(),
-                ThingamajigsBlocks.LIME_GLOW_BLOCK.get()
-        );
-        rchEvent.register((bs, batg, bp, i1) -> ThingamajigsColors.getColorFromList(5),
-                ThingamajigsBlocks.GREEN_BALLOON_BLOCK.get(),
-                ThingamajigsBlocks.ATTATCHED_GREEN_PUMPKIN_STEM.get(),
-                ThingamajigsBlocks.GREEN_PUMPKIN_STEM.get(),
-                ThingamajigsBlocks.GREEN_GLOW_BLOCK.get()
-        );
-        rchEvent.register((bs, batg, bp, i1) -> ThingamajigsColors.getColorFromList(6),
-                ThingamajigsBlocks.CYAN_BALLOON_BLOCK.get(),
-                ThingamajigsBlocks.ATTATCHED_CYAN_PUMPKIN_STEM.get(),
-                ThingamajigsBlocks.CYAN_PUMPKIN_STEM.get(),
-                ThingamajigsBlocks.CYAN_GLOW_BLOCK.get()
-        );
-        rchEvent.register((bs, batg, bp, i1) -> ThingamajigsColors.getColorFromList(7),
-                ThingamajigsBlocks.LIGHT_BLUE_BALLOON_BLOCK.get(),
-                ThingamajigsBlocks.ATTATCHED_LIGHT_BLUE_PUMPKIN_STEM.get(),
-                ThingamajigsBlocks.LIGHT_BLUE_PUMPKIN_STEM.get(),
-                ThingamajigsBlocks.LIGHT_BLUE_GLOW_BLOCK.get()
-        );
-        rchEvent.register((bs, batg, bp, i1) -> ThingamajigsColors.getColorFromList(8),
-                ThingamajigsBlocks.BLUE_BALLOON_BLOCK.get(),
-                ThingamajigsBlocks.ATTATCHED_BLUE_PUMPKIN_STEM.get(),
-                ThingamajigsBlocks.BLUE_PUMPKIN_STEM.get(),
-                ThingamajigsBlocks.BLUE_GLOW_BLOCK.get()
-        );
-        rchEvent.register((bs, batg, bp, i1) -> ThingamajigsColors.getColorFromList(9),
-                ThingamajigsBlocks.PURPLE_BALLOON_BLOCK.get(),
-                ThingamajigsBlocks.ATTATCHED_PURPLE_PUMPKIN_STEM.get(),
-                ThingamajigsBlocks.PURPLE_PUMPKIN_STEM.get(),
-                ThingamajigsBlocks.PURPLE_GLOW_BLOCK.get()
-        );
-        rchEvent.register((bs, batg, bp, i1) -> ThingamajigsColors.getColorFromList(10),
-                ThingamajigsBlocks.MAGENTA_BALLOON_BLOCK.get(),
-                ThingamajigsBlocks.ATTATCHED_MAGENTA_PUMPKIN_STEM.get(),
-                ThingamajigsBlocks.MAGENTA_PUMPKIN_STEM.get(),
-                ThingamajigsBlocks.MAGENTA_GLOW_BLOCK.get()
-        );
-        rchEvent.register((bs, batg, bp, i1) -> ThingamajigsColors.getColorFromList(11),
-                ThingamajigsBlocks.PINK_BALLOON_BLOCK.get(),
-                ThingamajigsBlocks.ATTATCHED_PINK_PUMPKIN_STEM.get(),
-                ThingamajigsBlocks.PINK_PUMPKIN_STEM.get(),
-                ThingamajigsBlocks.PINK_GLOW_BLOCK.get()
-        );
-    }
-
-    private void setupClient(final FMLClientSetupEvent event){
-        ModLoadingContext.get().registerExtensionPoint(
-                ConfigScreenHandler.ConfigScreenFactory.class,
-                () -> new ConfigScreenHandler.ConfigScreenFactory((mc,prevScreen) -> new ThingamajigsConfigScreen(mc,prevScreen,
-                        Component.translatable("title.screen.thingamajigs.thingamajigs_config")){})
-        );
-
-
-        // set render types for client
-        event.enqueueWork(Thingamajigs::setRenderTypes);
-
-        // sheets are not thread safe nor to be used server side
-
-        // workers work for a sheet of cheetah paper
-        // set up the wood types for Sheets (the refs for entity model textures, atlases stuff, etc, etc.)
-        event.enqueueWork(() -> {
-            try{
-                Sheets.addWoodType(ThingamajigsBlockTypes.GENERIC_ROAD_WOOD);
-                Sheets.addWoodType(ThingamajigsBlockTypes.GENERIC_RED_ROAD_WOOD);
-                Sheets.addWoodType(ThingamajigsBlockTypes.GENERIC_BLUE_ROAD_WOOD);
-                Sheets.addWoodType(ThingamajigsBlockTypes.GENERIC_BROWN_ROAD_WOOD);
-            }
-            catch (RuntimeException err){
-                LOGGERV2.error("Cannot register sheets. Runtime error.");
-            }
-            // menus
-            try{
-                MenuScreens.register(ThingamajigsMenuTypes.MAILBOX_MENU.get(), MailboxScreen::new);
-                MenuScreens.register(ThingamajigsMenuTypes.PHONE_MENU.get(), PhoneUIScreen::new);
-                MenuScreens.register(ThingamajigsMenuTypes.DJ_BE_MENU.get(), DJLaserLightScreen::new);
-                // 1.7.6 added
-                MenuScreens.register(ThingamajigsMenuTypes.RAILROAD_CROSSING_MENU.get(), RailroadCrossingArmScreen::new);
-            }
-            catch(Exception e){
-                logErrorInternal(e);
-            }
-        });
-
-        // try wood type and sign renderer setup
-        try{
-            WoodType.register(ThingamajigsBlockTypes.GENERIC_ROAD_WOOD);
-            WoodType.register(ThingamajigsBlockTypes.GENERIC_RED_ROAD_WOOD);
-            WoodType.register(ThingamajigsBlockTypes.GENERIC_BLUE_ROAD_WOOD);
-            WoodType.register(ThingamajigsBlockTypes.GENERIC_BROWN_ROAD_WOOD);
-        }
-        catch (Exception woodTypeError){
-            logErrorInternal(woodTypeError);
-        }
-        //
-        try{
-            // regular signs
-            BlockEntityRenderers.register(ThingamajigsBlockEntities.GREEN_ROADWAY_SIGN_BLOCK_ENTITIES.get(), SignRenderer::new);
-            BlockEntityRenderers.register(ThingamajigsBlockEntities.RED_ROADWAY_SIGN_BE.get(), SignRenderer::new);
-            BlockEntityRenderers.register(ThingamajigsBlockEntities.BLUE_ROADWAY_SIGN_BE.get(), SignRenderer::new);
-            BlockEntityRenderers.register(ThingamajigsBlockEntities.BROWN_ROADWAY_SIGN_BE.get(), SignRenderer::new);
-            // hanging signs
-            BlockEntityRenderers.register(ThingamajigsBlockEntities.GREEN_HANGING_SIGN.get(), HangingSignRenderer::new);
-
-            BlockEntityRenderers.register(ThingamajigsBlockEntities.ITEM_DISPLAY_BE.get(),ItemDisplayBERenderer::new);
-            BlockEntityRenderers.register(ThingamajigsBlockEntities.DJ_LASER_LIGHT_BE.get(),DJLaserLightBERenderer::new);
-
-            // 1.7.6
-            BlockEntityRenderers.register(ThingamajigsBlockEntities.RAILROAD_CROSSING_ARM_BE.get(),RailroadCrossingArmBERenderer::new);
-            BlockEntityRenderers.register(ThingamajigsBlockEntities.CURVED_MONITOR_BE.get(),CurvedMonitorBERenderer::new);
-            // 1.7.7
-            BlockEntityRenderers.register(ThingamajigsBlockEntities.CLEVER_BLACKBOARD_BE.get(),CleverBlackboardBERenderer::new);
-            BlockEntityRenderers.register(ThingamajigsBlockEntities.UMBRELLA_BE.get(),UmbrellaBERenderer::new);
-            BlockEntityRenderers.register(ThingamajigsBlockEntities.THEATER_PROJECTOR_BE.get(),TheaterProjectorBERenderer::new);
-            // 1.8.1
-            BlockEntityRenderers.register(ThingamajigsBlockEntities.ANIMATED_ICE_RINK.get(),AnimatedIceRinkRenderer::new);
-            BlockEntityRenderers.register(ThingamajigsBlockEntities.ANIMATED_DEER_BE.get(),AnimatedDeerBERenderer::new);
-            // 1.8.3
-            BlockEntityRenderers.register(ThingamajigsBlockEntities.FOOTBALL_GOAL.get(),FootballGoalRenderer::new);
-        }
-        catch(Exception blockEntityRendererError){
-            logErrorInternal(blockEntityRendererError);
-        }
-        try{
-            setupEntityRenderers();
-        }
-        catch (RuntimeException exc){
-            logErrorInternal(new Exception("Thingamajigs runtime exception: " + exc.getMessage()));
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public void setupEntityRenderers(){
-        try{
-            // entity without layer
-            EntityRenderers.register(ThingamajigsEntities.CHAIR.get(), ChairEntityRenderer::new);
-            EntityRenderers.register(ThingamajigsEntities.STOOL.get(), StoolEntityRenderer::new);
-            EntityRenderers.register(ThingamajigsEntities.TOILET_ENTITY.get(), ToiletEntityRenderer::new);
-            // entity with layer
-            EntityRenderers.register(ThingamajigsEntities.INFIMOVE_MINECART.get(),
-                    (provider) -> new InfiCartRenderer<>(provider, ModelLayers.MINECART));
-        }
-        catch (Exception entityRendererError){
-            logErrorInternal(entityRendererError);
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public void layerSetup(EntityRenderersEvent.RegisterLayerDefinitions event){
-        event.registerLayerDefinition(RRArmModel.LAYER_LOCATION,RRArmModel::createBodyLayer);
-        event.registerLayerDefinition(CurvedMonitorModel.LAYER_LOCATION,CurvedMonitorModel::createBodyLayer);
-        event.registerLayerDefinition(CleverBlackboardModel.LAYER_LOCATION,CleverBlackboardModel::createBodyLayer);
-        event.registerLayerDefinition(UmbrellaModel.LAYER_LOCATION,UmbrellaModel::createBodyLayer);
-        event.registerLayerDefinition(TheaterProjectorModel.LAYER_LOCATION,TheaterProjectorModel::createBodyLayer);
-        event.registerLayerDefinition(AnimatedIceRinkModel.ICE_RINK_ALL,AnimatedIceRinkModel::createBodyLayer);
-        event.registerLayerDefinition(AnimatedDeerModel.LAYER_LOCATION,AnimatedDeerModel::createBodyLayer);
-        event.registerLayerDefinition(FootballGoalModel.LAYER_LOCATION,FootballGoalModel::createBodyLayer);
-    }
-
-
-
-    private void setup(final FMLCommonSetupEvent event) {
-
-    }
+    private void setup(final FMLCommonSetupEvent event){}
 }

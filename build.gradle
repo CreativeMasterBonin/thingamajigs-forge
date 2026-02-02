@@ -138,10 +138,13 @@ dependencies {
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 
     // other mods
+
     runtimeOnly(fg.deobf("mezz.jei:jei-1.20.1-forge:15.2.0.27"))
+
     //implementation fg.deobf("com.simibubi.create:create-${create_minecraft_version}:${create_version}:slim") { transitive = false }
     //implementation fg.deobf("com.jozufozu.flywheel:flywheel-forge-${flywheel_minecraft_version}:${flywheel_version}")
     //implementation fg.deobf("com.tterrag.registrate:Registrate:${registrate_version}")
+
     implementation fg.deobf("curse.maven:athena-841890:4764357")
     implementation fg.deobf("curse.maven:patchouli-306770:4966125")
 
