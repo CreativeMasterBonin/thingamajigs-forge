@@ -93,6 +93,8 @@ public class ThingamajigsBlockTagProvider extends BlockTagsProvider {
                 .add(ThingamajigsBlocks.DOUBLE_YELLOW_ASPHALT.get())
                 .add(ThingamajigsBlocks.DOUBLE_CORNER_WHITE_ASPHALT.get())
                 .add(ThingamajigsBlocks.DOUBLE_CORNER_YELLOW_ASPHALT.get())
+
+                .add(ThingamajigsBlocks.ASPHALT_LAYER.get())
                 .replace(false)
         ;
 
@@ -596,6 +598,8 @@ public class ThingamajigsBlockTagProvider extends BlockTagsProvider {
                 .add(ThingamajigsBlocks.ASPHALT_OK_SLAB.get())
                 .add(ThingamajigsBlocks.ASPHALT_MEDIOCRE_SLAB.get())
                 .add(ThingamajigsBlocks.ASPHALT_OLD_SLAB.get())
+
+                .add(ThingamajigsBlocks.ASPHALT_LAYER.get())
 
                 .add(ThingamajigsBlocks.STORE_FLOORING.get())
                 .add(ThingamajigsBlocks.CHECKBOARD_WOOL.get())
@@ -1343,6 +1347,8 @@ public class ThingamajigsBlockTagProvider extends BlockTagsProvider {
                 .add(ThingamajigsBlocks.SIDEWALK_LAYER_RIGHT.get())
                 .add(ThingamajigsBlocks.SIDEWALK_LAYER.get())
                 .add(ThingamajigsBlocks.PHONE_CROSSBAR.get())
+                .add(ThingamajigsBlocks.STAINLESS_WASHER.get())
+                .add(ThingamajigsBlocks.WEIGHT_SCALE.get())
                 .replace(false)
         ;
     }

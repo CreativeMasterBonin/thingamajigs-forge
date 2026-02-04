@@ -4769,6 +4769,28 @@ public class ThingamajigsBlocks {
                 }
             });
 
+    public static final RegistryObject<Block> STAINLESS_WASHER = registerBlock("stainless_washer",
+            () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.of()
+                    .sound(SoundType.METAL)));
+
+    public static final RegistryObject<Block> WEIGHT_SCALE = registerBlock("weight_scale",
+            () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.of()
+                    .sound(SoundType.METAL)){
+                public static final VoxelShape ALL = Block.box(
+                        0.0D, 0.0D, 0.0D,
+                        16.0D, 2.0D, 16.0D);
+                @Override
+                public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
+                    return ALL;
+                }
+            });
+
+    /*public static final RegistryObject<Block> ASPHALT_LAYER = registerBlock("asphalt_layer",
+            () -> new AsphaltLayer(BlockBehaviour.Properties.of()));*/
+
+
+
+
     //requality
     // end of blocks list
 

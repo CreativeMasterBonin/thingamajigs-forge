@@ -368,9 +368,13 @@ public class Thingamajigs {
             CompoundTag paintbrushDefaults = new CompoundTag();
             paintbrushDefaults.putInt("marking_type",0);
             paintbrushDefaults.putInt("length",1);
-            ItemStack whitePaintBrush = new ItemStack(ThingamajigsItems.WHITE_PAINT_BRUSH.get(),1,paintbrushDefaults);
-            ItemStack yellowPaintBrush = new ItemStack(ThingamajigsItems.YELLOW_PAINT_BRUSH.get(),1,paintbrushDefaults);
-            ItemStack bluePaintBrush = new ItemStack(ThingamajigsItems.BLUE_PAINT_BRUSH.get(),1,paintbrushDefaults);
+            ItemStack whitePaintBrush = new ItemStack(ThingamajigsItems.WHITE_PAINT_BRUSH.get(),1);
+            ItemStack yellowPaintBrush = new ItemStack(ThingamajigsItems.YELLOW_PAINT_BRUSH.get(),1);
+            ItemStack bluePaintBrush = new ItemStack(ThingamajigsItems.BLUE_PAINT_BRUSH.get(),1);
+
+            whitePaintBrush.setTag(paintbrushDefaults);
+            yellowPaintBrush.setTag(paintbrushDefaults);
+            bluePaintBrush.setTag(paintbrushDefaults);
 
             event.accept(ThingamajigsItems.PAINT_BRUSH);
             event.accept(whitePaintBrush,CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
@@ -1029,9 +1033,11 @@ public class Thingamajigs {
             event.accept(ThingamajigsBlocks.LOVE_COUCH.get().asItem());
             event.accept(ThingamajigsBlocks.MYSTERIOUS_ONE_COUCH.get().asItem());
             // appliances
+            event.accept(ThingamajigsBlocks.WEIGHT_SCALE.get().asItem());
             event.accept(ThingamajigsBlocks.WATER_DISPENSER.get().asItem());
             event.accept(ThingamajigsBlocks.DRYER.get().asItem());
             event.accept(ThingamajigsBlocks.WASHER.get().asItem());
+            event.accept(ThingamajigsBlocks.STAINLESS_WASHER.get().asItem());
             event.accept(ThingamajigsBlocks.DISHWASHER_WALL.get().asItem());
             event.accept(ThingamajigsBlocks.PORTABLE_DISH_WASHER.get().asItem());
             event.accept(ThingamajigsBlocks.HUMIDIFIER.get().asItem());

@@ -23,6 +23,7 @@ import net.rk.thingamajigs.item.ThingamajigsItems;
 
 import java.util.List;
 
+@Deprecated(forRemoval = true,since = "1.20.1")
 public class AsphaltDynamicBlock extends Block {
     public static final DirectionProperty FACING = BlockStateProperties.FACING;
     public static final IntegerProperty AGE = IntegerProperty.create("age",0,3);
@@ -33,8 +34,6 @@ public class AsphaltDynamicBlock extends Block {
     public AsphaltDynamicBlock(Properties p) {
         super(p.strength(1.5F).sound(SoundType.TUFF).requiresCorrectToolForDrops());
     }
-
-    // too complex! Sorry!
 
     @Override
     public void appendHoverText(ItemStack itemstack, BlockGetter world, List<Component> list, TooltipFlag flag) {

@@ -1,15 +1,22 @@
 package net.rk.thingamajigs.datagen;
 
+import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.properties.AttachFace;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
+import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.rk.thingamajigs.Thingamajigs;
+import net.rk.thingamajigs.block.SidewalkLayer;
 import net.rk.thingamajigs.block.ThingamajigsBlocks;
+import net.rk.thingamajigs.block.custom.ThingamajigsDecorativeBlock;
+import net.rk.thingamajigs.block.custom.blocks.ToggledStateBlock;
 
 public class ThingamajigsBlockStateProvider extends BlockStateProvider {
     public ThingamajigsBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
@@ -68,10 +75,6 @@ public class ThingamajigsBlockStateProvider extends BlockStateProvider {
         fenceGateBlock((FenceGateBlock)ThingamajigsBlocks.RUBBER_WOOD_FENCE_GATE.get(),
                 new ResourceLocation("thingamajigs:block/rubber_planks"));
 
-        //blockItem(ThingamajigsBlocks.CONCRETE);
-        //blockItem(ThingamajigsBlocks.CONCRETE_BRICKS);
-        //blockItem(ThingamajigsBlocks.COBBLED_CONCRETE);
-
         stairsBlock((StairBlock)ThingamajigsBlocks.CONCRETE_STAIRS.get(),
                 new ResourceLocation("thingamajigs:block/concrete"));
 
@@ -80,6 +83,51 @@ public class ThingamajigsBlockStateProvider extends BlockStateProvider {
 
         stairsBlock((StairBlock)ThingamajigsBlocks.COBBLED_CONCRETE_STAIRS.get(),
                 new ResourceLocation("thingamajigs:block/cobbled_concrete"));
+
+
+        rotatedThingamajigsDecoration(ThingamajigsBlocks.STAINLESS_WASHER.get(),"thingamajigs:block/stainless_washer");
+        rotatedThingamajigsDecoration(ThingamajigsBlocks.WEIGHT_SCALE.get(),"thingamajigs:block/weight_scale");
+    }
+
+    public void rotatedThingamajigsDecoration(Block block,String modelLocation){
+        getVariantBuilder(block).forAllStates(state -> {
+            Direction facing = state.getValue(ThingamajigsDecorativeBlock.FACING);
+            ModelFile decorationModel = new ModelFile(ResourceLocation.tryParse(modelLocation)) {
+                @Override
+                protected boolean exists() {
+                    return ResourceLocation.isValidResourceLocation(modelLocation);
+                }
+            };
+            return ConfiguredModel.builder()
+                    .modelFile(decorationModel)
+                    .rotationY((int)(facing.getOpposite()).toYRot())
+                    .uvLock(false)
+                    .build();
+        });
+    }
+
+    public void rotatedToggledThingamajigsDecoration(Block block,String toggledModel,String untoggledModel){
+        getVariantBuilder(block).forAllStates(state -> {
+            Direction facing = state.getValue(ToggledStateBlock.FACING);
+            boolean toggled = state.getValue(ToggledStateBlock.TOGGLED);
+            ModelFile decorationModelToggled = new ModelFile(ResourceLocation.tryParse(toggledModel)) {
+                @Override
+                protected boolean exists() {
+                    return ResourceLocation.isValidResourceLocation(toggledModel);
+                }
+            };
+            ModelFile decorationModelUntoggled = new ModelFile(ResourceLocation.tryParse(untoggledModel)) {
+                @Override
+                protected boolean exists() {
+                    return ResourceLocation.isValidResourceLocation(untoggledModel);
+                }
+            };
+            return ConfiguredModel.builder()
+                    .modelFile(toggled ? decorationModelToggled : decorationModelUntoggled)
+                    .rotationY((int)(facing.getOpposite()).toYRot())
+                    .uvLock(false)
+                    .build();
+        });
     }
 
 

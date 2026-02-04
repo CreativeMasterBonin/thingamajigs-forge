@@ -5,8 +5,13 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.registries.RegistryObject;
 import net.rk.thingamajigs.Thingamajigs;
+import net.rk.thingamajigs.block.BowlingBall;
 import net.rk.thingamajigs.block.ThingamajigsBlocks;
 import net.rk.thingamajigs.item.ThingamajigsItems;
 import net.rk.thingamajigs.tag.ThingamajigsTags;
@@ -115,6 +120,17 @@ public class ThingamajigsItemTagProvider extends ItemTagsProvider {
                 .add(ThingamajigsBlocks.LIGHTUP_MACHINE.get().asItem())
                 .add(ThingamajigsBlocks.ARCADE_MACHINE.get().asItem())
                 .add(ThingamajigsBlocks.ARCADE_MACHINE_OPENABLE.get().asItem())
+                .replace(false)
+        ;
+        this.tag(ThingamajigsTags.BOWLING_BALLS)
+                .add(ThingamajigsBlocks.PINK_BOWLING_BALL.get().asItem())
+                .add(ThingamajigsBlocks.PURPLE_BOWLING_BALL.get().asItem())
+                .add(ThingamajigsBlocks.BROWN_BOWLING_BALL.get().asItem())
+                .add(ThingamajigsBlocks.YELLOW_BOWLING_BALL.get().asItem())
+                .add(ThingamajigsBlocks.BLUE_BOWLING_BALL.get().asItem())
+                .add(ThingamajigsBlocks.LIGHT_BLUE_BOWLING_BALL.get().asItem())
+                .add(ThingamajigsBlocks.GREEN_BOWLING_BALL.get().asItem())
+                .add(ThingamajigsBlocks.LIME_BOWLING_BALL.get().asItem())
                 .replace(false)
         ;
     }

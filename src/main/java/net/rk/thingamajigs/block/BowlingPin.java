@@ -15,6 +15,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.rk.thingamajigs.Thingamajigs;
+import net.rk.thingamajigs.tag.ThingamajigsTags;
 
 import java.util.logging.Logger;
 
@@ -26,27 +27,28 @@ public class BowlingPin extends Block {
     }
 
     @SuppressWarnings("deprecated")
-    public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
+    public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext){
         return BOWLING_PIN_SHAPE;
     }
 
     @SuppressWarnings("deprecated")
     @Override
-    public void entityInside(BlockState bs, Level lvl, BlockPos bp, Entity e) {
-        if(e instanceof ItemEntity){
-            lvl.playSound(null,bp, SoundEvents.DECORATED_POT_HIT, SoundSource.BLOCKS,2.0f,1.0f);
-            lvl.setBlock(bp,Blocks.AIR.defaultBlockState(),3);
-            double xd = e.getDeltaMovement().x;
-            double yd = e.getDeltaMovement().y;
-            double zd = e.getDeltaMovement().z;
-
-            try{
-                ItemEntity nEe1 = new ItemEntity(lvl,bp.getX(),bp.getY(),bp.getZ(),new ItemStack(this.asItem()),xd,yd,zd);
-                lvl.addFreshEntity(nEe1);
-                lvl.updateNeighborsAt(bp,this);
-            }
-            catch(Exception ne1){
-                Logger.getAnonymousLogger().warning(ne1.getMessage());
+    public void entityInside(BlockState bs, Level lvl, BlockPos bp, Entity e){
+        if(e instanceof ItemEntity itemEntity){
+            if(itemEntity.getItem().is(ThingamajigsTags.BOWLING_BALLS)){
+                lvl.playSound(null,bp, SoundEvents.DECORATED_POT_HIT, SoundSource.BLOCKS,2.0f,1.0f);
+                lvl.setBlock(bp,Blocks.AIR.defaultBlockState(),3);
+                double xd = e.getDeltaMovement().x;
+                double yd = e.getDeltaMovement().y;
+                double zd = e.getDeltaMovement().z;
+                try{
+                    ItemEntity nEe1 = new ItemEntity(lvl,bp.getX(),bp.getY(),bp.getZ(),new ItemStack(this.asItem()),xd,yd,zd);
+                    lvl.addFreshEntity(nEe1);
+                    lvl.updateNeighborsAt(bp,this);
+                }
+                catch(Exception ne1){
+                    Logger.getAnonymousLogger().warning(ne1.getMessage());
+                }
             }
         }
     }

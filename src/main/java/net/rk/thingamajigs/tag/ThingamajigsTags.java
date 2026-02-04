@@ -21,6 +21,7 @@ public class ThingamajigsTags {
     public static final TagKey<Block> SUPPORTS_BUSH_LIKE = thingamajigsBlockTag("supports_bush_like");
     public static final TagKey<Item> ARCADE_ITEMS = thingamajigsItemTag("arcade_items");
     public static final TagKey<PaintingVariant> THINGAMAJIGS_PAINTING = thingamajigsPaintingVariantTag("thingamajigs_painting");
+    public static final TagKey<Item> BOWLING_BALLS = thingamajigsItemTag("bowling_balls");
 
     // 1.7.7 tags
     public static final TagKey<Item> TABLES_ITEM = thingamajigsItemTag("tables");

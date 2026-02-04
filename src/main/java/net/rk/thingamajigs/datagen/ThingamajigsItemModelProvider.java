@@ -129,14 +129,13 @@ public class ThingamajigsItemModelProvider extends ItemModelProvider {
         simpleCustomBlock(ThingamajigsBlocks.BRAMBLE,"block/plants/bramble");
         defaultCustomSimple(ThingamajigsBlocks.POTTED_BRAMBLE.get(),"plants/bramble");
 
+        handheld(ThingamajigsItems.PAINT_BRUSH);
+        handheld(ThingamajigsItems.WHITE_PAINT_BRUSH);
+        handheld(ThingamajigsItems.YELLOW_PAINT_BRUSH);
+        handheld(ThingamajigsItems.BLUE_PAINT_BRUSH);
         handheld(ThingamajigsItems.SCRAPE_TOOL);
 
-        //simpleCustomBlock(ThingamajigsBlocks.CURVED_MONITOR,"item/curved_monitor");
-        //simpleCustomBlock(ThingamajigsBlocks.CLEVER_BLACKBOARD,"item/clever_blackboard");
-        //simpleCustomBlock(ThingamajigsBlocks.UMBRELLA,"item/umbrella");
-
         simple(ThingamajigsItems.MUSIC_COMPONENT);
-        //simpleCustomBlock(ThingamajigsBlocks.THEATER_PROJECTOR,"item/theater_projector");
 
         fromModelMod(ThingamajigsBlocks.TRIPLE_SHELF.get(),"block/triple_shelf");
         fromModelMod(ThingamajigsBlocks.TEDDY_BEAR.get(),"block/teddy_bear");
@@ -150,6 +149,8 @@ public class ThingamajigsItemModelProvider extends ItemModelProvider {
         simple(ThingamajigsItems.THINGAMAJIGS_PAINTING_ITEM);
 
         fromModelMod(ThingamajigsBlocks.PHONE_CROSSBAR.get(),"block/phone_crossbar");
+        fromModelMod(ThingamajigsBlocks.STAINLESS_WASHER.get(),"block/stainless_washer");
+        fromModelMod(ThingamajigsBlocks.WEIGHT_SCALE.get(),"block/weight_scale");
     }
 
     // flat 2D facing player model

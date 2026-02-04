@@ -19,6 +19,7 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
@@ -46,7 +47,12 @@ public abstract class AbstractPaintbrush extends Item {
     public int currentLength = 1;
 
     public AbstractPaintbrush(Properties p) {
-        super(p);
+        super(p.stacksTo(1));
+    }
+
+    @Override
+    public UseAnim getUseAnimation(ItemStack stack) {
+        return UseAnim.BRUSH;
     }
 
     // fixes survival not having the required tags already
@@ -62,6 +68,18 @@ public abstract class AbstractPaintbrush extends Item {
     }
 
     @Override
+    public ItemStack getDefaultInstance(){
+        ItemStack stack = new ItemStack(this);
+        if(!stack.hasTag()){
+            CompoundTag tag = new CompoundTag();
+            tag.putInt("marking_type",0);
+            tag.putInt("length",1);
+            stack.setTag(tag);
+        }
+        return stack;
+    }
+
+    @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
         if(stack.hasTag()){
             list.add(Component.translatable("tooltip.thingamajigs.length",stack.getTag().getInt("length")).withStyle(ChatFormatting.BLUE));
@@ -70,6 +88,7 @@ public abstract class AbstractPaintbrush extends Item {
                 .withStyle(ChatFormatting.GRAY));
     }
 
+    // just right-click the item with a non-stack or otherwise unfamiliar stack to change the length from 1 to the servers' set maximum length
     @Override
     public boolean overrideOtherStackedOnMe(ItemStack currentItemStack, ItemStack stack, Slot slot, ClickAction action, Player player, SlotAccess access) {
         if(action.equals(ClickAction.SECONDARY)){

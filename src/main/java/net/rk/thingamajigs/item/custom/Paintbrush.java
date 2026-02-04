@@ -4,15 +4,9 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.SlotAccess;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.ClickAction;
-import net.minecraft.world.inventory.Slot;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
@@ -28,7 +22,6 @@ import net.rk.thingamajigs.block.custom.Asphalt;
 import net.rk.thingamajigs.block.custom.blocks.WhiteRoadMarking;
 import net.rk.thingamajigs.item.bases.AbstractPaintbrush;
 import net.rk.thingamajigs.legacy.WhitePaintBrushItemActions;
-import net.rk.thingamajigs.misc.ThingamajigsCalcStuffs;
 import net.rk.thingamajigs.xtrablock.AsphaltSlab;
 import net.rk.thingamajigs.xtrablock.RotatingSlab;
 
@@ -52,6 +45,14 @@ public class Paintbrush extends AbstractPaintbrush {
             Player ply = pContext.getPlayer();
             int marking_type = 0;
 
+            // failsafe for any items without the required compound tag
+            if(!pContext.getItemInHand().hasTag()){
+                CompoundTag defTag = new CompoundTag();
+                defTag.putInt("marking_type",0);
+                defTag.putInt("length",1);
+                pContext.getItemInHand().setTag(defTag);
+            }
+
             // direct painting of asphalt slabs
             if (blockClicked instanceof AsphaltSlab && !ply.isShiftKeyDown()) {
                 BlockState oldState = pContext.getLevel().getBlockState(pContext.getClickedPos());
@@ -72,9 +73,6 @@ public class Paintbrush extends AbstractPaintbrush {
                     } else if (oldState.getValue(SlabBlock.TYPE) == d) {
                         slab = d;
                     }
-
-                    //case 2: currentName = "Center Double Line Turn"; break;
-                    //            case 3: currentName = "Center Double Line"; break;
 
                     if (blockClicked == ThingamajigsBlocks.ASPHALT_SLAB.get()) {
                         if (type == 2) {

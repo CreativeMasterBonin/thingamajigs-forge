@@ -1596,6 +1596,8 @@
   "block.thingamajigs.tennis_racket": "Tennis Racket",
   "item.thingamajigs.thingamajig_painting": "Thingamajig Painting",
   "block.thingamajigs.phone_crossbar": "Crossbar Switch (Phone)",
+  "block.thingamajigs.stainless_washer": "Stainless Washer",
+  "block.thingamajigs.weight_scale": "Weight Scale",
 
   "tooltip.thingamajigs.phone_number_input": "Type a phone number in (not a real one) and you may get a response!",
   "thingamajigs.subtitle.incomplete_call": "Incomplete Phone Number Error Sounds",

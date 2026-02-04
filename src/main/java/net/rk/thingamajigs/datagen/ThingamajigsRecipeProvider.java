@@ -1711,6 +1711,23 @@ public class ThingamajigsRecipeProvider extends RecipeProvider implements ICondi
                 .unlockedBy("has_thingy",InventoryChangeTrigger.TriggerInstance
                         .hasItems(ThingamajigsItems.PHONE_COMPONENT.get()))
                 .save(frc);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ThingamajigsBlocks.STAINLESS_WASHER.get().asItem(),1)
+                .requires(ThingamajigsBlocks.STEEL.get().asItem())
+                .requires(ThingamajigsBlocks.WASHER.get().asItem())
+                .requires(ThingamajigsItems.COMPUTER_COMPONENT.get())
+                .unlockedBy("has_thingy",has(ThingamajigsBlocks.WASHER.get().asItem()))
+                .save(frc);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ThingamajigsBlocks.WEIGHT_SCALE.get().asItem(),1)
+                .requires(Items.HEAVY_WEIGHTED_PRESSURE_PLATE)
+                .requires(Items.LIGHT_WEIGHTED_PRESSURE_PLATE)
+                .requires(Items.COAL)
+                .requires(Items.IRON_INGOT)
+                .requires(ThingamajigsItems.HEALTH_COMPONENT.get())
+                .requires(ThingamajigsItems.COMPUTER_COMPONENT.get())
+                .unlockedBy("has_thingy",has(ThingamajigsItems.HEALTH_COMPONENT.get()))
+                .save(frc);
     }
 
     public static RecipeBuilder stonecutterAny(Item requiredItem, Ingredient inputItem, Item result, int amt){
