@@ -2,8 +2,8 @@
 	"format_version": "1.9.0",
 	"credit": "Made By CreativeMasterBonin",
 	"textures": {
-		"0": "thingamajigs:block/sidewalk_new",
-		"particle": "thingamajigs:block/sidewalk_new"
+		"0": "thingamajigs:block/asphalt",
+		"particle": "thingamajigs:block/asphalt"
 	},
 	"elements": [
 		{
@@ -12,10 +12,10 @@
 			"to": [16, 10, 16],
 			"rotation": {"angle": 0, "axis": "y", "origin": [8, 1, 8]},
 			"faces": {
-				"north": {"uv": [0, 14, 16, 16], "texture": "#0", "cullface": "north"},
-				"east": {"uv": [0, 14, 16, 16], "texture": "#0", "cullface": "east"},
-				"south": {"uv": [0, 14, 16, 16], "texture": "#0", "cullface": "south"},
-				"west": {"uv": [0, 14, 16, 16], "texture": "#0", "cullface": "west"},
+				"north": {"uv": [0, 6, 16, 16], "texture": "#0", "cullface": "north"},
+				"east": {"uv": [0, 6, 16, 16], "texture": "#0", "cullface": "east"},
+				"south": {"uv": [0, 6, 16, 16], "texture": "#0", "cullface": "south"},
+				"west": {"uv": [0, 6, 16, 16], "texture": "#0", "cullface": "west"},
 				"up": {"uv": [0, 0, 16, 16], "texture": "#0"},
 				"down": {"uv": [0, 0, 16, 16], "texture": "#0", "cullface": "down"}
 			}

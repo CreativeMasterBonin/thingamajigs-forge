@@ -1,0 +1,15 @@
+{
+    "name": "entry.thingamajigs.bells",
+    "icon": "thingamajigs:ebell_one",
+    "category": "thingamajigs:railroad",
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "Bells are one of the most important parts of a railroad/railway crossing. They warn you early that the gate is active, a train is coming, and you should stop immediately. Thingamajigs adds some mechanical and electronic bells for you to use."
+        },
+        {
+            "type": "patchouli:text",
+            "text": "All railroad crossing components follow the vertical redstone system, and must be placed at the top of crossings, not between or below other parts. They do not receive a redstone signal, and act as a semi-source for redstone components. In a Thingamajigs 2 addon, the bells are improved with performance and there are more of them."
+        }
+    ]
+}

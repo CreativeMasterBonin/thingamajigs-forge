@@ -1705,11 +1705,14 @@ public class ThingamajigsRecipeProvider extends RecipeProvider implements ICondi
                 .requires(ThingamajigsItems.THINGAMAJIG.get())
                 .unlockedBy("has_thingy",has(ThingamajigsItems.THINGAMAJIG.get()))
                 .save(frc);
-        stonecutterAny(ThingamajigsBlocks.PHONE_CROSSBAR.get().asItem(),
-                Ingredient.of(ThingamajigsItems.PHONE_COMPONENT.get()),
-                ThingamajigsBlocks.PHONE_CROSSBAR.get().asItem(),1)
-                .unlockedBy("has_thingy",InventoryChangeTrigger.TriggerInstance
-                        .hasItems(ThingamajigsItems.PHONE_COMPONENT.get()))
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ThingamajigsBlocks.PHONE_CROSSBAR.get().asItem(),1)
+                .requires(ThingamajigsBlocks.STEEL.get().asItem())
+                .requires(Items.PISTON)
+                .requires(Items.STICK)
+                .requires(Items.REDSTONE)
+                .requires(ThingamajigsItems.PHONE_COMPONENT.get())
+                .unlockedBy("has_thingy",has(ThingamajigsItems.PHONE_COMPONENT.get()))
                 .save(frc);
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ThingamajigsBlocks.STAINLESS_WASHER.get().asItem(),1)
@@ -1727,6 +1730,61 @@ public class ThingamajigsRecipeProvider extends RecipeProvider implements ICondi
                 .requires(ThingamajigsItems.HEALTH_COMPONENT.get())
                 .requires(ThingamajigsItems.COMPUTER_COMPONENT.get())
                 .unlockedBy("has_thingy",has(ThingamajigsItems.HEALTH_COMPONENT.get()))
+                .save(frc);
+
+        stonecutterAny(ThingamajigsBlocks.ASPHALT_LAYER.get().asItem(),
+                Ingredient.of(ThingamajigsBlocks.ASPHALT_SLAB.get()),
+                ThingamajigsBlocks.ASPHALT_LAYER.get().asItem(),4)
+                .unlockedBy("has_thingy",InventoryChangeTrigger.TriggerInstance
+                        .hasItems(ThingamajigsBlocks.ASPHALT_SLAB.get()))
+                .save(frc);
+        stonecutterAny(ThingamajigsBlocks.OK_ASPHALT_LAYER.get().asItem(),
+                Ingredient.of(ThingamajigsBlocks.ASPHALT_OK_SLAB.get()),
+                ThingamajigsBlocks.OK_ASPHALT_LAYER.get().asItem(),4)
+                .unlockedBy("has_thingy",InventoryChangeTrigger.TriggerInstance
+                        .hasItems(ThingamajigsBlocks.ASPHALT_OK_SLAB.get()))
+                .save(frc);
+        stonecutterAny(ThingamajigsBlocks.MEDIOCRE_ASPHALT_LAYER.get().asItem(),
+                Ingredient.of(ThingamajigsBlocks.ASPHALT_MEDIOCRE_SLAB.get()),
+                ThingamajigsBlocks.MEDIOCRE_ASPHALT_LAYER.get().asItem(),4)
+                .unlockedBy("has_thingy",InventoryChangeTrigger.TriggerInstance
+                        .hasItems(ThingamajigsBlocks.ASPHALT_MEDIOCRE_SLAB.get()))
+                .save(frc);
+        stonecutterAny(ThingamajigsBlocks.OLD_ASPHALT_LAYER.get().asItem(),
+                Ingredient.of(ThingamajigsBlocks.ASPHALT_OLD_SLAB.get()),
+                ThingamajigsBlocks.OLD_ASPHALT_LAYER.get().asItem(),4)
+                .unlockedBy("has_thingy",InventoryChangeTrigger.TriggerInstance
+                        .hasItems(ThingamajigsBlocks.ASPHALT_OLD_SLAB.get()))
+                .save(frc);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ThingamajigsBlocks.PHONE_GROUP_SELECTOR.get().asItem(),1)
+                .requires(ThingamajigsBlocks.STEEL.get().asItem())
+                .requires(Items.OBSERVER)
+                .requires(Items.REPEATER)
+                .requires(Items.LEVER)
+                .requires(Items.TRIPWIRE_HOOK)
+                .requires(ThingamajigsItems.PHONE_COMPONENT.get())
+                .unlockedBy("has_thingy",has(ThingamajigsItems.PHONE_COMPONENT.get()))
+                .save(frc);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ThingamajigsBlocks.PHONE_AXIS_SWITCH.get().asItem(),1)
+                .requires(ThingamajigsBlocks.STEEL.get().asItem())
+                .requires(Items.HOPPER)
+                .requires(Items.LEVER)
+                .requires(Items.TRIPWIRE_HOOK)
+                .requires(Items.COPPER_INGOT)
+                .requires(ThingamajigsItems.PHONE_COMPONENT.get())
+                .unlockedBy("has_thingy",has(ThingamajigsItems.PHONE_COMPONENT.get()))
+                .save(frc);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ThingamajigsBlocks.PHONE_AXIS_SWITCH_RELAY.get().asItem(),1)
+                .requires(ThingamajigsBlocks.STEEL.get().asItem())
+                .requires(Items.REPEATER)
+                .requires(Items.COMPARATOR)
+                .requires(Items.TRIPWIRE_HOOK)
+                .requires(Items.COPPER_INGOT)
+                .requires(ThingamajigsItems.PHONE_COMPONENT.get())
+                .unlockedBy("has_thingy",has(ThingamajigsItems.PHONE_COMPONENT.get()))
                 .save(frc);
     }
 

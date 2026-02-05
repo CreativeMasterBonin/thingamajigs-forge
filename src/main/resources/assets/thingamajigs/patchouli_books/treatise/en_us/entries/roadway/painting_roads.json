@@ -1,0 +1,15 @@
+{
+    "name": "entry.thingamajigs.painting_roads",
+    "icon": "thingamajigs:double_white_asphalt",
+    "category": "thingamajigs:roadway",
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "Asphalt by itself can be aged, rotated, and more. But combined with paintbrushes, roads can be even better!"
+        },
+        {
+            "type": "patchouli:text",
+            "text": "Paintbrushes with paint on them can paint certain patterns onto roads, notably the double white and yellow stripe pattern."
+        }
+    ]
+}

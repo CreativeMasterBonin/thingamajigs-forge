@@ -2,9 +2,18 @@ package net.rk.thingamajigs.datagen;
 
 import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
+import net.minecraft.data.models.blockstates.MultiVariantGenerator;
+import net.minecraft.data.models.blockstates.PropertyDispatch;
+import net.minecraft.data.models.blockstates.Variant;
+import net.minecraft.data.models.blockstates.VariantProperties;
+import net.minecraft.data.models.model.ModelLocationUtils;
+import net.minecraft.data.models.model.ModelTemplates;
+import net.minecraft.data.models.model.TextureMapping;
+import net.minecraft.data.models.model.TextureSlot;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.properties.AttachFace;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
@@ -87,6 +96,30 @@ public class ThingamajigsBlockStateProvider extends BlockStateProvider {
 
         rotatedThingamajigsDecoration(ThingamajigsBlocks.STAINLESS_WASHER.get(),"thingamajigs:block/stainless_washer");
         rotatedThingamajigsDecoration(ThingamajigsBlocks.WEIGHT_SCALE.get(),"thingamajigs:block/weight_scale");
+        rotatedThingamajigsDecoration(ThingamajigsBlocks.PHONE_GROUP_SELECTOR.get(),"thingamajigs:block/phone_group_selector");
+        rotatedThingamajigsDecoration(ThingamajigsBlocks.PHONE_AXIS_SWITCH.get(),"thingamajigs:block/phone_axis_switch");
+        rotatedThingamajigsDecoration(ThingamajigsBlocks.PHONE_AXIS_SWITCH_RELAY.get(),"thingamajigs:block/phone_axis_switch_relay");
+    }
+
+    // ?
+    public void rotatedLayeredBlock(Block block, String modelsDir, String modelsPrefix){
+        getVariantBuilder(block).forAllStates(state -> {
+            Direction facing = state.getValue(SidewalkLayer.FACING);
+            int layer = state.getValue(SidewalkLayer.LAYERS);
+            String fullLocation = "thingamajigs:block/" + modelsDir + modelsPrefix + "_layer_2";
+
+            ModelFile layerModel = new ModelFile(ResourceLocation.tryParse(fullLocation)) {
+                @Override
+                protected boolean exists() {
+                    return ResourceLocation.isValidResourceLocation(fullLocation);
+                }
+            };
+            return ConfiguredModel.builder()
+                    .modelFile(layerModel)
+                    .rotationY((int)facing.getOpposite().toYRot())
+                    .uvLock(false)
+                    .build();
+        });
     }
 
     public void rotatedThingamajigsDecoration(Block block,String modelLocation){

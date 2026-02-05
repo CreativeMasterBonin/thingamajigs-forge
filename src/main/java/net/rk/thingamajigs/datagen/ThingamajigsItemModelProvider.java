@@ -151,6 +151,14 @@ public class ThingamajigsItemModelProvider extends ItemModelProvider {
         fromModelMod(ThingamajigsBlocks.PHONE_CROSSBAR.get(),"block/phone_crossbar");
         fromModelMod(ThingamajigsBlocks.STAINLESS_WASHER.get(),"block/stainless_washer");
         fromModelMod(ThingamajigsBlocks.WEIGHT_SCALE.get(),"block/weight_scale");
+
+        rotatableLayeredBlockItemModelFromMod(ThingamajigsBlocks.ASPHALT_LAYER.get(),"asphalt");
+        rotatableLayeredBlockItemModelFromMod(ThingamajigsBlocks.OK_ASPHALT_LAYER.get(),"asphalt");
+        rotatableLayeredBlockItemModelFromMod(ThingamajigsBlocks.MEDIOCRE_ASPHALT_LAYER.get(),"asphalt");
+        rotatableLayeredBlockItemModelFromMod(ThingamajigsBlocks.OLD_ASPHALT_LAYER.get(),"asphalt");
+        fromModelMod(ThingamajigsBlocks.PHONE_GROUP_SELECTOR.get(),"block/phone_group_selector");
+        fromModelMod(ThingamajigsBlocks.PHONE_AXIS_SWITCH.get(),"block/phone_axis_switch");
+        fromModelMod(ThingamajigsBlocks.PHONE_AXIS_SWITCH_RELAY.get(),"block/phone_axis_switch_relay");
     }
 
     // flat 2D facing player model
@@ -159,6 +167,13 @@ public class ThingamajigsItemModelProvider extends ItemModelProvider {
         return withExistingParent(item.getId().getPath(),
                 new ResourceLocation("item/generated")).texture("layer0",
                 new ResourceLocation("minecraft","item/barrier"));
+    }
+
+    // exclusively for use with layered rotatable block items
+    private ItemModelBuilder rotatableLayeredBlockItemModelFromMod(Block layeredBlock,String subfolder){
+        String source = layeredBlock.asItem().getDescriptionId().replaceAll("block.thingamajigs.","");
+        return withExistingParent(layeredBlock.asItem().toString(),
+                new ResourceLocation("thingamajigs","block/layer/" + subfolder + "/" + source + "_2"));
     }
 
     // flat 2d custom facing player model

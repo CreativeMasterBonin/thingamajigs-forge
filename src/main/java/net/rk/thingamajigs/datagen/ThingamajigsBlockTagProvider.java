@@ -95,6 +95,9 @@ public class ThingamajigsBlockTagProvider extends BlockTagsProvider {
                 .add(ThingamajigsBlocks.DOUBLE_CORNER_YELLOW_ASPHALT.get())
 
                 .add(ThingamajigsBlocks.ASPHALT_LAYER.get())
+                .add(ThingamajigsBlocks.OK_ASPHALT_LAYER.get())
+                .add(ThingamajigsBlocks.MEDIOCRE_ASPHALT_LAYER.get())
+                .add(ThingamajigsBlocks.OLD_ASPHALT_LAYER.get())
                 .replace(false)
         ;
 
@@ -1349,6 +1352,9 @@ public class ThingamajigsBlockTagProvider extends BlockTagsProvider {
                 .add(ThingamajigsBlocks.PHONE_CROSSBAR.get())
                 .add(ThingamajigsBlocks.STAINLESS_WASHER.get())
                 .add(ThingamajigsBlocks.WEIGHT_SCALE.get())
+                .add(ThingamajigsBlocks.PHONE_GROUP_SELECTOR.get())
+                .add(ThingamajigsBlocks.PHONE_AXIS_SWITCH.get())
+                .add(ThingamajigsBlocks.PHONE_AXIS_SWITCH_RELAY.get())
                 .replace(false)
         ;
     }

@@ -66,6 +66,12 @@ public class ThingamajigsSoundEvents {
     public static final RegistryObject<SoundEvent> PHONE_SONG_MAYBE = registerSoundEvent("song_maybe");
     public static final RegistryObject<SoundEvent> PHONE_INCOMPLETE_CALL = registerSoundEvent("incomplete_call");
 
+    // phone call reports
+    public static final RegistryObject<SoundEvent> PHONE_REPORT_MONKEY = registerSoundEvent("report_monkey");
+    public static final RegistryObject<SoundEvent> PHONE_REPORT_SELF = registerSoundEvent("report_self");
+    public static final RegistryObject<SoundEvent> PHONE_REPORT_FISH = registerSoundEvent("report_fish");
+    public static final RegistryObject<SoundEvent> PHONE_REPORT_SECRET = registerSoundEvent("report_secret");
+
     // instruments for blocks
     public static final RegistryObject<SoundEvent> KICK_DRUM = registerSoundEvent("kick");
     public static final RegistryObject<SoundEvent> SNARE_DRUM = registerSoundEvent("snare");

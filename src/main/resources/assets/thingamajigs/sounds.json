@@ -575,5 +575,51 @@
         "stream": false
       }
     ]
+  },
+
+
+  "report_fish": {
+    "category": "block",
+    "attenuation_distance": 6,
+    "subtitle": "thingamajigs.subtitle.report_fish",
+    "sounds": [
+      {
+        "name": "thingamajigs:block/numbers/report/report_fish",
+        "stream": false
+      }
+    ]
+  },
+  "report_monkey": {
+    "category": "block",
+    "attenuation_distance": 6,
+    "subtitle": "thingamajigs.subtitle.report_monkey",
+    "sounds": [
+      {
+        "name": "thingamajigs:block/numbers/report/report_monkey",
+        "stream": false
+      }
+    ]
+  },
+  "report_secret": {
+    "category": "block",
+    "attenuation_distance": 6,
+    "subtitle": "thingamajigs.subtitle.report_secret",
+    "sounds": [
+      {
+        "name": "thingamajigs:block/numbers/report/report_secret",
+        "stream": false
+      }
+    ]
+  },
+  "report_self": {
+    "category": "block",
+    "attenuation_distance": 6,
+    "subtitle": "thingamajigs.subtitle.report_self",
+    "sounds": [
+      {
+        "name": "thingamajigs:block/numbers/report/report_self",
+        "stream": false
+      }
+    ]
   }
 }

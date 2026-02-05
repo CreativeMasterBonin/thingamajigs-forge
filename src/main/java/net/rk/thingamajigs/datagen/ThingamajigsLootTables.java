@@ -1597,6 +1597,13 @@ public class ThingamajigsLootTables extends VanillaBlockLoot {
         this.dropSelf(ThingamajigsBlocks.PHONE_CROSSBAR.get());
         this.dropSelf(ThingamajigsBlocks.STAINLESS_WASHER.get());
         this.dropSelf(ThingamajigsBlocks.WEIGHT_SCALE.get());
+        this.add(ThingamajigsBlocks.ASPHALT_LAYER.get(),noDrop());
+        this.add(ThingamajigsBlocks.OK_ASPHALT_LAYER.get(),noDrop());
+        this.add(ThingamajigsBlocks.MEDIOCRE_ASPHALT_LAYER.get(),noDrop());
+        this.add(ThingamajigsBlocks.OLD_ASPHALT_LAYER.get(),noDrop());
+        this.dropSelf(ThingamajigsBlocks.PHONE_GROUP_SELECTOR.get());
+        this.dropSelf(ThingamajigsBlocks.PHONE_AXIS_SWITCH.get());
+        this.dropSelf(ThingamajigsBlocks.PHONE_AXIS_SWITCH_RELAY.get());
 
 
         // old end

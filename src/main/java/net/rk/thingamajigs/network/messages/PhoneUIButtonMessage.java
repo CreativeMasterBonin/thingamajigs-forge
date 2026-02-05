@@ -13,8 +13,10 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.network.NetworkEvent;
 import net.rk.thingamajigs.events.ThingamajigsSoundEvents;
+import net.rk.thingamajigs.misc.ThingamajigsCalcStuffs;
 import net.rk.thingamajigs.network.ThingamajigsPacketHandler;
 
+import java.util.Random;
 import java.util.function.Supplier;
 import java.util.logging.Logger;
 
@@ -157,6 +159,24 @@ public class PhoneUIButtonMessage {
                     }
                     else if(sentNumber.equals("0005551234")){
                         playLocalOrServerSound(false,lvl,bp,ThingamajigsSoundEvents.POOP.get());
+                        return;
+                    }
+                    else if(sentNumber.equals("7856552129")){
+                        int tempRandomNum = (int)ThingamajigsCalcStuffs.nextDoubleBetweenInclusive(0,3);
+                        switch(tempRandomNum){
+                            case 0:
+                                playLocalOrServerSound(false,lvl,bp,ThingamajigsSoundEvents.PHONE_REPORT_MONKEY.get());
+                                return;
+                            case 1:
+                                playLocalOrServerSound(false,lvl,bp,ThingamajigsSoundEvents.PHONE_REPORT_SELF.get());
+                                return;
+                            case 2:
+                                playLocalOrServerSound(false,lvl,bp,ThingamajigsSoundEvents.PHONE_REPORT_FISH.get());
+                                return;
+                            case 3:
+                                playLocalOrServerSound(false,lvl,bp,ThingamajigsSoundEvents.PHONE_REPORT_SECRET.get());
+                                return;
+                        }
                         return;
                     }
                     else if((areaCode.equals("212") // ny

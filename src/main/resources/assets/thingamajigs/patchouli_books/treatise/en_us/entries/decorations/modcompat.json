@@ -13,6 +13,10 @@
         },
         {
             "type": "patchouli:text",
+            "text": "As of 1.8.4, this mod supports some mods directly in terms of code compatibility. Notably some door behavior mods, additional wood mods and painting behavior and optimizing mods. Specific mods are not mentioned here."
+        },
+        {
+            "type": "patchouli:text",
             "text": "The documentation for Thingamajigs goes into more depth about certain 'compat' features, read it for in-depth stuff that would otherwise take up far too many pages in this book."
         }
     ]

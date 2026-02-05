@@ -1,0 +1,28 @@
+{
+    "name": "entry.thingamajigs.asphalt",
+    "icon": "thingamajigs:asphalt",
+    "category": "thingamajigs:roadway",
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "Asphalt is a mixed material to build roads with (a concrete, really). It improves wheel rotation, braking, speeding up, friction changes, and more."
+        },
+        {
+            "type": "patchouli:text",
+            "text": "Asphalt comes in 4 ages. New, Ok, Mediocre, and Old. Old is the slowest, and New is the fastest. Put on soul speed boots to go even faster."
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "thingamajigs:asphalt",
+            "text": "A new block of asphalt"
+        },
+        {
+            "type": "patchouli:text",
+            "text": "Asphalt can also be turned into layered asphalt, which can transition from one layer of asphalt to a higher or lower asphalt block layer. Road grades have never been easier to make."
+        },
+        {
+            "type": "patchouli:text",
+            "text": "Combined with sidewalks, roadways can look fairly decent, but not too realistic."
+        }
+    ]
+}

@@ -401,6 +401,10 @@ public class Thingamajigs {
             event.accept(ThingamajigsBlocks.SECTIONED_SIDEWALK_SLAB.get().asItem());
             event.accept(ThingamajigsBlocks.BLOCKED_SIDEWALK_SLAB.get().asItem());
             // misc roads and sidewalks
+            event.accept(ThingamajigsBlocks.ASPHALT_LAYER.get().asItem());
+            event.accept(ThingamajigsBlocks.OK_ASPHALT_LAYER.get().asItem());
+            event.accept(ThingamajigsBlocks.MEDIOCRE_ASPHALT_LAYER.get().asItem());
+            event.accept(ThingamajigsBlocks.OLD_ASPHALT_LAYER.get().asItem());
             event.accept(ThingamajigsBlocks.SIDEWALK_LAYER.get().asItem());
             event.accept(ThingamajigsBlocks.SIDEWALK_LAYER_LEFT.get().asItem());
             event.accept(ThingamajigsBlocks.SIDEWALK_LAYER_RIGHT.get().asItem());
@@ -574,7 +578,10 @@ public class Thingamajigs {
             event.accept(ThingamajigsBlocks.CAR_WASH_DRYER.get().asItem());
             // telephone & cell service towers
             event.accept(ThingamajigsBlocks.PHONE_SWITCHER.get().asItem());
+            event.accept(ThingamajigsBlocks.PHONE_AXIS_SWITCH.get().asItem());
+            event.accept(ThingamajigsBlocks.PHONE_AXIS_SWITCH_RELAY.get().asItem());
             event.accept(ThingamajigsBlocks.PHONE_CROSSBAR.get().asItem());
+            event.accept(ThingamajigsBlocks.PHONE_GROUP_SELECTOR.get().asItem());
             event.accept(ThingamajigsBlocks.CELL_MULTI_ANGLED_TRANSMITTER.get().asItem());
             event.accept(ThingamajigsBlocks.CELL_MULTI_TRANSMITTER.get().asItem());
             event.accept(ThingamajigsBlocks.CELL_TRANSMITTER.get().asItem());

@@ -28,6 +28,14 @@
             "type": "patchouli:crafting",
             "recipe": "thingamajigs:scrape_tool",
             "text": "Scrape Tool are quite useful for road marking mistakes."
+        },
+        {
+            "type": "patchouli:text",
+            "text": "As of 1.8.4, paintbrushes by default have all properties applied to the item. Shift-right clicking is not needed. Also, paintbrushes have a length property. More on this on the next page."
+        },
+        {
+            "type": "patchouli:text",
+            "text": "Paintbrush length determines how far out from the center of placement the paint will be applied to a surface. When right clicking a supported pattern on asphalt, only it will be painted."
         }
     ]
 }

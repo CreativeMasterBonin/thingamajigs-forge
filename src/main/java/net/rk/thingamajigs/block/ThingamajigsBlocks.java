@@ -2966,7 +2966,7 @@ public class ThingamajigsBlocks {
     public static final RegistryObject<Block> PARKING_METER = registerBlock("parking_meter",
             () -> new ParkingMeter(BlockBehaviour.Properties.of()));
 
-    // copper tables (cannot implement weathering for these yet due to issues) TODO add weather functionality to copper tables
+    // copper tables
     public static final RegistryObject<Block> WAXED_COPPER_TABLE = registerBlock("waxed_copper_table",
             () -> new ConnectedTableBlock(BlockBehaviour.Properties.copy(Blocks.WAXED_COPPER_BLOCK)));
     public static final RegistryObject<Block> WAXED_EXPOSED_COPPER_TABLE = registerBlock("waxed_exposed_copper_table",
@@ -4785,10 +4785,47 @@ public class ThingamajigsBlocks {
                 }
             });
 
-    /*public static final RegistryObject<Block> ASPHALT_LAYER = registerBlock("asphalt_layer",
-            () -> new AsphaltLayer(BlockBehaviour.Properties.of()));*/
+    public static final RegistryObject<Block> ASPHALT_LAYER = registerBlock("asphalt_layer",
+            () -> new AsphaltLayer(BlockBehaviour.Properties.of().friction(0.4F).strength(2f)));
+    public static final RegistryObject<Block> OK_ASPHALT_LAYER = registerBlock("ok_asphalt_layer",
+            () -> new AsphaltLayer(BlockBehaviour.Properties.of().friction(0.45F).strength(1.9f)));
+    public static final RegistryObject<Block> MEDIOCRE_ASPHALT_LAYER = registerBlock("mediocre_asphalt_layer",
+            () -> new AsphaltLayer(BlockBehaviour.Properties.of().friction(0.5F).strength(1.5f)));
+    public static final RegistryObject<Block> OLD_ASPHALT_LAYER = registerBlock("old_asphalt_layer",
+            () -> new AsphaltLayer(BlockBehaviour.Properties.of().strength(1.2f)));
 
+    public static final RegistryObject<Block> PHONE_GROUP_SELECTOR = registerBlock("phone_group_selector",
+            () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.of().sound(SoundType.METAL)){
+                public static final VoxelShape NORTH = Block.box(0, 0, 0, 16, 16, 10);
+                public static final VoxelShape EAST = Block.box(6, 0, 0, 16, 16, 16);
+                public static final VoxelShape SOUTH = Block.box(0, 0, 6, 16, 16, 16);
+                public static final VoxelShape WEST = Block.box(0, 0, 0, 10, 16, 16);
 
+                @Override
+                public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
+                    switch(state.getValue(FACING)){
+                        case NORTH: {
+                            return NORTH;
+                        }
+                        case SOUTH: {
+                            return SOUTH;
+                        }
+                        case EAST: {
+                            return EAST;
+                        }
+                        case WEST: {
+                            return WEST;
+                        }
+                        default: {
+                            return Shapes.block();
+                        }
+                    }
+                }
+            });
+    public static final RegistryObject<Block> PHONE_AXIS_SWITCH = registerBlock("phone_axis_switch",
+            () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.of().sound(SoundType.METAL)));
+    public static final RegistryObject<Block> PHONE_AXIS_SWITCH_RELAY = registerBlock("phone_axis_switch_relay",
+            () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.of().sound(SoundType.METAL)));
 
 
     //requality
