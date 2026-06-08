@@ -17,7 +17,7 @@ import net.rk.thingamajigs.block.custom.ThingamajigsDecorativeBlock;
 import net.rk.thingamajigs.misc.ThingamajigsCalcStuffs;
 
 public class BlueydlaptopBlock extends ThingamajigsDecorativeBlock {
-    public static final IntegerProperty VERSION = IntegerProperty.create("version",0,1);
+    public static final IntegerProperty VERSION = IntegerProperty.create("version",0,2);
     public BlueydlaptopBlock(Properties properties) {
         super(properties);
     }

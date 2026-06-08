@@ -101,6 +101,7 @@ public class Thingamajigs {
             eventBus.addListener(ThingamajigsClient::setColors);
             eventBus.addListener(ThingamajigsClient::setItemColors);
             eventBus.addListener(ThingamajigsClient::layerSetup);
+            //eventBus.addListener(ThingamajigsClient::addModels); // 1.8.5 - currently broken
         }
 
         // finale mod registry
@@ -1179,6 +1180,7 @@ public class Thingamajigs {
             event.accept(ThingamajigsBlocks.CHEESE_BLOCK.get().asItem());
             event.accept(ThingamajigsBlocks.GLOWING_CHEESE_BLOCK.get().asItem());
             // Misc. Junk
+            event.accept(ThingamajigsBlocks.DECORATIONAL_BUCKET.get().asItem());
             event.accept(ThingamajigsBlocks.TNT_SLAB.get().asItem());
             event.accept(ThingamajigsBlocks.POWDER_KEG.get().asItem());
             event.accept(ThingamajigsBlocks.BIOHAZARD_BIN.get().asItem());
@@ -1552,5 +1554,7 @@ public class Thingamajigs {
         }
     }
 
-    private void setup(final FMLCommonSetupEvent event){}
+    private void setup(final FMLCommonSetupEvent event){
+
+    }
 }

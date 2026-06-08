@@ -141,6 +141,12 @@ ThingamajigsBlocks.TRIPLE_SHELF.get(),ThingamajigsBlocks.TOY_BOX.get()
                             ThingamajigsBlocks.SAFE.get())
                     .build(null));
 
+    public static final Supplier<BlockEntityType<CarWashBrushBE>> CAR_WASH_BRUSH_BE = BLOCK_ENTITIES.register(
+            "car_wash_brush_be",() -> BlockEntityType.Builder.of(CarWashBrushBE::new,
+                            ThingamajigsBlocks.CAR_WASH_BLUE_BRUSH.get(),ThingamajigsBlocks.CAR_WASH_RED_BRUSH.get(),
+                            ThingamajigsBlocks.CAR_WASH_YELLOW_BRUSH.get(),ThingamajigsBlocks.CAR_WASH_MIXED_BRUSH.get())
+                    .build(null));
+
     public static void register(IEventBus eventBus){
         BLOCK_ENTITIES.register(eventBus);
     }

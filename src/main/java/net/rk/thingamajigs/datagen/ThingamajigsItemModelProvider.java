@@ -161,6 +161,13 @@ public class ThingamajigsItemModelProvider extends ItemModelProvider {
         fromModelMod(ThingamajigsBlocks.PHONE_AXIS_SWITCH_RELAY.get(),"block/phone_axis_switch_relay");
         fromModelMod(ThingamajigsBlocks.RUBBER_LEAVES.get(),"block/rubber_leaves");
         // 1.8.5
+        fromModelMod(ThingamajigsBlocks.CAR_WASH_MIXED_BRUSH.get(),"block/car_wash_brush_mixed");
+        fromModelMod(ThingamajigsBlocks.CAR_WASH_RED_BRUSH.get(),"block/car_wash_brush_red");
+        fromModelMod(ThingamajigsBlocks.CAR_WASH_BLUE_BRUSH.get(),"block/car_wash_brush_blue");
+        fromModelMod(ThingamajigsBlocks.CAR_WASH_YELLOW_BRUSH.get(),"block/car_wash_brush_yellow");
+        fromModelMod(ThingamajigsBlocks.CAR_WASH_TIRE_SCRUBBER.get(),"block/tire_scrubber");
+        fromModelMod(ThingamajigsBlocks.CAR_WASH_MITTER_CURTAIN.get(),"block/car_wash_mitter_curtain");
+
         fromModelMod(ThingamajigsBlocks.DELUXE_CAT_TREE.get(),"block/deluxe_cat_tree");
         fromModelMod(ThingamajigsBlocks.CLAW_MACHINE.get(),"block/claw_machine");
         fromModelMod(ThingamajigsBlocks.OLD_MICROWAVE_TRANSMITTER.get(),"block/old_microwave_reflector");
@@ -181,6 +188,9 @@ public class ThingamajigsItemModelProvider extends ItemModelProvider {
         fromModelMod(ThingamajigsBlocks.DELUXE_ARCADE_MACHINE.get(),"item/deluxe_arcade_machine_held");
         fromModelMod(ThingamajigsBlocks.CEILING_FAN.get(),"block/ceiling_fan");
         fromModelMod(ThingamajigsBlocks.DAUNTING_STATUE.get(),"block/statue/daunting_statue");
+        fromModelMod(ThingamajigsBlocks.BLUEYDOWS_LAPTOP.get(),"block/laptop/blueydows_laptop");
+        fromModelMod(ThingamajigsBlocks.BLUEYTOSH_LAPTOP.get(),"block/laptop/blueytosh_laptop");
+        fromModelMod(ThingamajigsBlocks.BLUEYTOSH_LAPTOP_OLD.get(),"block/laptop/blueytosh_laptop_old");
     }
 
     // flat 2D facing player model

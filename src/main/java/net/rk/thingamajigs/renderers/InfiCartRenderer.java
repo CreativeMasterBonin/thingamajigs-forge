@@ -3,6 +3,7 @@ package net.rk.thingamajigs.renderers;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
+import net.minecraft.Util;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -82,8 +83,16 @@ public class InfiCartRenderer<T extends AbstractMinecart> extends EntityRenderer
 
         // posing the model
         poseStack1.translate(0.0F, 0.375F, 0.0F);
-        poseStack1.mulPose(Axis.YP.rotationDegrees(180.0F - paramF1));
-        poseStack1.mulPose(Axis.ZP.rotationDegrees(-f3));
+        poseStack1.mulPose(Axis.YP.rotationDegrees(180.0F - Mth.lerp(0.0f,paramF1,0.01f)));
+        poseStack1.mulPose(Axis.ZP.rotationDegrees(Mth.rotLerp(0.0f,-f3,0.01f)));
+        /*if(tObj1 instanceof InfiMoveCart infiMoveCart){
+            poseStack1.mulPose(Axis.YP.rotationDegrees(180.0F - Mth.lerp(0.0f,paramF1,0.01f)));
+            poseStack1.mulPose(Axis.ZP.rotationDegrees(Mth.rotLerp(0.0f,-f3,0.01f)));
+        }
+        else{
+            poseStack1.mulPose(Axis.YP.rotationDegrees(180.0F - Mth.lerp(0.0f,paramF1,1.0f)));
+            poseStack1.mulPose(Axis.ZP.rotationDegrees(-f3));
+        }*/
         float f5 = (float)tObj1.getHurtTime() - paramF2;
         float f6 = tObj1.getDamage() - paramF2;
         if (f6 < 0.0F) {
@@ -109,7 +118,7 @@ public class InfiCartRenderer<T extends AbstractMinecart> extends EntityRenderer
         if(tObj1.getDeltaMovement().y != 0 && !tObj1.isOnRails()){
             poseStack1.mulPose(Axis.ZN.rotationDegrees(
                     (float)(
-                            (Mth.clamp(tObj1.getDeltaMovement().y,-75.0,75.0) * 180.0f) / Mth.PI)
+                            (Mth.clamp(Mth.lerp(0.0D,tObj1.getDeltaMovement().y,0.01D),-75.0,75.0) * 180.0f) / Mth.PI)
             ));
         }
 

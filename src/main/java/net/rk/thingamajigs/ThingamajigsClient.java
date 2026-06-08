@@ -12,13 +12,16 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.FoliageColor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraftforge.client.ConfigScreenHandler;
 import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.client.event.ModelEvent;
 import net.minecraftforge.client.event.RegisterColorHandlersEvent;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -333,6 +336,7 @@ public class ThingamajigsClient {
             // 1.8.5
             BlockEntityRenderers.register(ThingamajigsBlockEntities.FANCY_STORAGE_DECORATION_BE.get(),FancyStorageDecorationBERenderer::new);
             BlockEntityRenderers.register(ThingamajigsBlockEntities.DECORATIONAL_BUCKET_BE.get(),DecorationalBucketBERenderer::new);
+            //BlockEntityRenderers.register(ThingamajigsBlockEntities.CAR_WASH_BRUSH_BE.get(),CarWashBrushBERenderer::new);
         }
         catch(Exception blockEntityRendererError){
             logErrorInternal(blockEntityRendererError);
@@ -362,5 +366,31 @@ public class ThingamajigsClient {
         catch (Exception entityRendererError){
             logErrorInternal(entityRendererError);
         }
+    }
+
+    public static final String carWashCustomModelBaseLocation = "bases/car_wash_components/";
+    public static final String blockLocation = "block/";
+    /*public static ModelResourceLocation ceilingFanBlade = new ModelResourceLocation(new ResourceLocation(Thingamajigs.MOD_ID,
+            blockLocation + "ceiling_fan_blade"),null);
+    public static ModelResourceLocation ceilingFanConnector = new ModelResourceLocation(new ResourceLocation(Thingamajigs.MOD_ID,
+            blockLocation + "ceiling_fan_connector"),null);*/
+
+    public static void addModels(ModelEvent.RegisterAdditional event){
+        event.register(new ResourceLocation(Thingamajigs.MOD_ID,carWashCustomModelBaseLocation + "mitter_curtain_base"));
+        event.register(new ResourceLocation(Thingamajigs.MOD_ID,carWashCustomModelBaseLocation + "mitter_curtain"));
+        event.register(new ResourceLocation(Thingamajigs.MOD_ID,carWashCustomModelBaseLocation + "spinning_brush_base"));
+        event.register(new ResourceLocation(Thingamajigs.MOD_ID,carWashCustomModelBaseLocation + "spinning_brush_long_blade"));
+        event.register(new ResourceLocation(Thingamajigs.MOD_ID,carWashCustomModelBaseLocation + "spinning_brush_medium_blade"));
+        event.register(new ResourceLocation(Thingamajigs.MOD_ID,carWashCustomModelBaseLocation + "spinning_brush_short_blade"));
+        event.register(new ResourceLocation(Thingamajigs.MOD_ID,carWashCustomModelBaseLocation + "spinning_mixed_brush_blade"));
+        event.register(new ResourceLocation(Thingamajigs.MOD_ID,carWashCustomModelBaseLocation + "spinning_red_brush_long_blade"));
+        event.register(new ResourceLocation(Thingamajigs.MOD_ID,carWashCustomModelBaseLocation + "spinning_red_brush_medium_blade"));
+        event.register(new ResourceLocation(Thingamajigs.MOD_ID,carWashCustomModelBaseLocation + "spinning_red_brush_short_blade"));
+        event.register(new ResourceLocation(Thingamajigs.MOD_ID,carWashCustomModelBaseLocation + "spinning_short_brush_base"));
+        event.register(new ResourceLocation(Thingamajigs.MOD_ID,carWashCustomModelBaseLocation + "spinning_yellow_brush_long_blade"));
+        event.register(new ResourceLocation(Thingamajigs.MOD_ID,carWashCustomModelBaseLocation + "spinning_yellow_brush_medium_blade"));
+        event.register(new ResourceLocation(Thingamajigs.MOD_ID,carWashCustomModelBaseLocation + "spinning_yellow_brush_short_blade"));
+        event.register(new ResourceLocation(Thingamajigs.MOD_ID,carWashCustomModelBaseLocation + "tire_scrubber_base"));
+        event.register(new ResourceLocation(Thingamajigs.MOD_ID,carWashCustomModelBaseLocation + "tire_scrubber_blade"));
     }
 }

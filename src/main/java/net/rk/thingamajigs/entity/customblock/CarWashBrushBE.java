@@ -1,0 +1,115 @@
+package net.rk.thingamajigs.entity.customblock;
+
+import net.minecraft.Util;
+import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.phys.AABB;
+import net.rk.thingamajigs.block.ShortCarWashBrush;
+import net.rk.thingamajigs.entity.ThingamajigsBlockEntities;
+
+public class CarWashBrushBE extends BlockEntity {
+    public float yAngle = 0.0f;
+    public float extensionAngle = 0.0f;
+
+    public CarWashBrushBE(BlockPos pos, BlockState state) {
+        super(ThingamajigsBlockEntities.CAR_WASH_BRUSH_BE.get(), pos, state);
+    }
+
+    public void updateBlock(){
+        this.setChanged();
+        if(this.getLevel() != null) {
+            BlockState bs2 = this.getLevel().getBlockState(this.getBlockPos());
+            this.getLevel().sendBlockUpdated(this.getBlockPos(), bs2, bs2, 3);
+        }
+    }
+
+    @Override
+    public ClientboundBlockEntityDataPacket getUpdatePacket() {
+        return ClientboundBlockEntityDataPacket.create(this);
+    }
+
+    @Override
+    public void handleUpdateTag(CompoundTag tag) {
+        this.load(tag);
+    }
+
+    @Override
+    public CompoundTag getUpdateTag() {
+        CompoundTag compoundTag = new CompoundTag();
+        this.saveAdditional(compoundTag);
+        return compoundTag;
+    }
+
+    // only on client side as BE does not need server to show its blades spinning
+    public static void clientTick(Level slvl, BlockPos sbp, BlockState sbs, CarWashBrushBE carWashBrush){
+        if(sbs.getValue(BlockStateProperties.LIT)){
+            if(sbs.getBlock() instanceof ShortCarWashBrush){
+                if(carWashBrush.extensionAngle < 50.0f){
+                    carWashBrush.extensionAngle += 3.5f / (float) Util.getMillis() + 2.5f;
+                }
+                else{
+                    carWashBrush.extensionAngle = 50.0f;
+                }
+            }
+            else{
+                if(carWashBrush.extensionAngle < 80.0f){
+                    carWashBrush.extensionAngle += 3.5f / (float)Util.getMillis() + 2.5f;
+                }
+                else{
+                    carWashBrush.extensionAngle = 80.0f;
+                }
+            }
+            carWashBrush.yAngle += 5.0f;
+            if(carWashBrush.yAngle >= 360.0f || carWashBrush.yAngle <= -360.0f){
+                carWashBrush.yAngle = 0.0f;
+            }
+        }
+        else{
+            if(sbs.getBlock() instanceof ShortCarWashBrush){
+                if(carWashBrush.extensionAngle > 6.0f){
+                    carWashBrush.extensionAngle -= 1.2f;
+                }
+                else if(carWashBrush.extensionAngle < -6.0f){
+                    carWashBrush.extensionAngle += 1.2f;
+                }
+                else{
+                    carWashBrush.extensionAngle = 6.0f;
+                }
+            }
+            else{
+                if(carWashBrush.extensionAngle > 1.0f){
+                    carWashBrush.extensionAngle -= 1.2f;
+                }
+                else if(carWashBrush.extensionAngle < -1.0f){
+                    carWashBrush.extensionAngle += 1.2f;
+                }
+                else{
+                    carWashBrush.extensionAngle = 0.0f;
+                }
+            }
+
+            if(carWashBrush.yAngle != 0.0f){
+                if(carWashBrush.yAngle > 1.0f){
+                    carWashBrush.yAngle -= 1.2f;
+                }
+                else if(carWashBrush.yAngle < -1.0f){
+                    carWashBrush.yAngle += 1.2f;
+                }
+                else{
+                    carWashBrush.yAngle = 0.0f;
+                }
+            }
+        }
+    }
+
+    @Override
+    public AABB getRenderBoundingBox() {
+        return new AABB(this.getBlockPos().getX() - 2, this.getBlockPos().getY() - 2, this.getBlockPos().getZ() - 2,
+                this.getBlockPos().getX() + 2, this.getBlockPos().getY() + 2, this.getBlockPos().getZ() + 2);
+    }
+}

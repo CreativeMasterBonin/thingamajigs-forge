@@ -233,6 +233,7 @@ public class ThingamajigsBlockTagProvider extends BlockTagsProvider {
                 .add(ThingamajigsBlocks.RUNICSTONE_BLOCK.get())
                 .add(ThingamajigsBlocks.RUNICSTONE_BRICKS.get())
                 .add(ThingamajigsBlocks.EXPOSED_RUNICSTONE_BLOCK.get())
+                .add(ThingamajigsBlocks.DELUXE_CAT_TREE.get())
                 .replace(false)
         ;
         this.tag(BlockTags.DOORS)
@@ -272,6 +273,9 @@ public class ThingamajigsBlockTagProvider extends BlockTagsProvider {
                 .add(ThingamajigsBlocks.FRIDGE.get())
                 .add(ThingamajigsBlocks.SPRING.get())
                 .addTag(ThingamajigsTags.CHAIRS)
+                .add(ThingamajigsBlocks.WHITE_CUBE_SHELF.get())
+                .add(ThingamajigsBlocks.WHITE_SECTIONED_SHELF.get())
+                .add(ThingamajigsBlocks.SAFE.get())
                 .replace(false)
         ;
         this.tag(BlockTags.FENCE_GATES)
@@ -358,6 +362,7 @@ public class ThingamajigsBlockTagProvider extends BlockTagsProvider {
                 .add(ThingamajigsBlocks.RUNICSTONE_BRICKS.get())
                 .add(ThingamajigsBlocks.EXPOSED_RUNICSTONE_BLOCK.get())
                 .add(ThingamajigsBlocks.BARREL_KEG.get())
+                .add(ThingamajigsBlocks.SAFE.get())
                 .replace(false)
         ;
         this.tag(BlockTags.INFINIBURN_OVERWORLD)
@@ -404,6 +409,7 @@ public class ThingamajigsBlockTagProvider extends BlockTagsProvider {
 
         // tool level block needs tags
         this.tag(BlockTags.NEEDS_DIAMOND_TOOL)
+                .add(ThingamajigsBlocks.SAFE.get())
                 .add(ThingamajigsBlocks.STRANGE_STATUE.get())
                 .add(ThingamajigsBlocks.ANCIENT_BOOKSHELF.get())
                 .add(ThingamajigsBlocks.CRYSTAL_BLOCK.get())
@@ -432,6 +438,7 @@ public class ThingamajigsBlockTagProvider extends BlockTagsProvider {
                 .replace(false)
         ;
         this.tag(BlockTags.NEEDS_STONE_TOOL)
+                .add(ThingamajigsBlocks.DAUNTING_STATUE.get())
                 .add(ThingamajigsBlocks.BARBER_CHAIR.get())
                 .add(ThingamajigsBlocks.WALL_TV.get())
                 .add(ThingamajigsBlocks.BARBER_POLE.get())
@@ -518,6 +525,7 @@ public class ThingamajigsBlockTagProvider extends BlockTagsProvider {
                 .add(ThingamajigsBlocks.RUNICSTONE_BLOCK.get())
                 .add(ThingamajigsBlocks.RUNICSTONE_BRICKS.get())
                 .add(ThingamajigsBlocks.EXPOSED_RUNICSTONE_BLOCK.get())
+                .add(ThingamajigsBlocks.DELUXE_CAT_TREE.get())
                 .replace(false)
         ;
         this.tag(BlockTags.PIGLIN_REPELLENTS)
@@ -640,6 +648,7 @@ public class ThingamajigsBlockTagProvider extends BlockTagsProvider {
                 .add(ThingamajigsBlocks.CHARGED_VOLCANIC_STONE.get())
                 .add(ThingamajigsBlocks.BLACK_JOL.get())
                 .add(ThingamajigsBlocks.LOCKABLE_DOOR.get())
+                .add(ThingamajigsBlocks.SAFE.get())
                 .replace(false)
         ;
         this.tag(BlockTags.WOODEN_BUTTONS)
@@ -677,6 +686,10 @@ public class ThingamajigsBlockTagProvider extends BlockTagsProvider {
 
         // tools that break these blocks better than others (required tools)
         this.tag(BlockTags.MINEABLE_WITH_AXE)
+                .add(ThingamajigsBlocks.WHITE_SECTIONED_SHELF.get())
+                .add(ThingamajigsBlocks.WHITE_CUBE_SHELF.get())
+                .add(ThingamajigsBlocks.EASEL.get())
+                .add(ThingamajigsBlocks.DELUXE_CAT_TREE.get())
                 .add(ThingamajigsBlocks.CARDBOARD_BOX.get())
                 .add(ThingamajigsBlocks.POOL_TABLE.get())
                 .add(ThingamajigsBlocks.STRING_BASS.get())
@@ -820,6 +833,12 @@ public class ThingamajigsBlockTagProvider extends BlockTagsProvider {
         ;
 
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE)
+                .add(ThingamajigsBlocks.DECORATIONAL_BUCKET.get())
+                .add(ThingamajigsBlocks.EASEL.get())
+                .add(ThingamajigsBlocks.AIR_STATION.get())
+                .add(ThingamajigsBlocks.RUBBER_DUCK.get())
+                .add(ThingamajigsBlocks.WHITE_SECTIONED_SHELF.get())
+                .add(ThingamajigsBlocks.WHITE_CUBE_SHELF.get())
                 .add(ThingamajigsBlocks.CARDBOARD_BOX.get())
                 .add(ThingamajigsBlocks.FUNDEVICE_GAME_CONSOLE.get())
                 .add(ThingamajigsBlocks.GOLDME_CONSOLE.get())
@@ -1355,6 +1374,15 @@ public class ThingamajigsBlockTagProvider extends BlockTagsProvider {
                 .add(ThingamajigsBlocks.PHONE_GROUP_SELECTOR.get())
                 .add(ThingamajigsBlocks.PHONE_AXIS_SWITCH.get())
                 .add(ThingamajigsBlocks.PHONE_AXIS_SWITCH_RELAY.get())
+                .add(ThingamajigsBlocks.OLD_MICROWAVE_TRANSMITTER_OPAQUE.get())
+                .add(ThingamajigsBlocks.OLD_MICROWAVE_REFLECTOR_ROUNDED.get())
+                .add(ThingamajigsBlocks.OLD_MICROWAVE_REFLECTOR_ROUNDED_OPAQUE.get())
+                .add(ThingamajigsBlocks.SAFE.get())
+                .add(ThingamajigsBlocks.CAKE_DISPLAY_CASE.get())
+                .add(ThingamajigsBlocks.CELL_TOWER_AMPLIFIER.get())
+                .add(ThingamajigsBlocks.FANCY_GAS_PUMP.get())
+                .add(ThingamajigsBlocks.DELUXE_ARCADE_MACHINE.get())
+                .add(ThingamajigsBlocks.DAUNTING_STATUE.get())
                 .replace(false)
         ;
     }

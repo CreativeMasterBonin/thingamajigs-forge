@@ -1,11 +1,12 @@
 {
+	"format_version": "1.9.0",
 	"credit": "Made with Blockbench",
-    "ambientocclusion": false,
+	"ambientocclusion": false,
 	"textures": {
-		"0": "thingamajigs:block/parts/blueytosh_dt",
+		"0": "thingamajigs:block/parts/blueydows_retcon",
 		"2": "thingamajigs:block/parts/blueytosh_keyboard_on",
-		"3": "thingamajigs:block/parts/blueytosh_logo",
-		"particle": "thingamajigs:block/parts/blueytosh_logo"
+		"3": "thingamajigs:block/parts/blueydows_logo",
+		"particle": "thingamajigs:block/parts/blueydows_logo"
 	},
 	"elements": [
 		{

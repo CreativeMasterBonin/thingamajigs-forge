@@ -1204,7 +1204,7 @@ public class ThingamajigsBlocks {
     public static final RegistryObject<Block> CAR_WASH_MITTER_CURTAIN = registerBlock("car_wash_mitter_curtain",
             () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.of().sound(SoundType.LANTERN).noCollission()), 0);
     public static final RegistryObject<Block> CAR_WASH_MIXED_BRUSH = registerBlock("car_wash_mixed_brush",
-            () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.of().sound(SoundType.LANTERN).noCollission()), 0);
+            () -> new ShortCarWashBrush(BlockBehaviour.Properties.of().sound(SoundType.LANTERN).noCollission()), 0);
     public static final RegistryObject<Block> CAR_WASH_SIGNAGE = registerBlock("car_wash_signage",
             () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.of().sound(SoundType.LANTERN).noCollission()), 0);
     public static final RegistryObject<Block> CAR_WASH_SIGNAL = registerBlock("car_wash_signal",
@@ -1220,11 +1220,11 @@ public class ThingamajigsBlocks {
     public static final RegistryObject<Block> CAR_WASH_TRIFOAMER = registerBlock("car_wash_trifoamer",
             () -> new CarWashTriFoamSprayer(BlockBehaviour.Properties.of()), 0);
     public static final RegistryObject<Block> CAR_WASH_BLUE_BRUSH = registerBlock("car_wash_blue_brush",
-            () -> new DoubleTallDecorationBlock(BlockBehaviour.Properties.of().noCollission()), 0);
+            () -> new CarWashBrush(BlockBehaviour.Properties.of().noCollission()), 0);
     public static final RegistryObject<Block> CAR_WASH_RED_BRUSH = registerBlock("car_wash_red_brush",
-            () -> new DoubleTallDecorationBlock(BlockBehaviour.Properties.of().noCollission()), 0);
+            () -> new CarWashBrush(BlockBehaviour.Properties.of().noCollission()), 0);
     public static final RegistryObject<Block> CAR_WASH_YELLOW_BRUSH = registerBlock("car_wash_yellow_brush",
-            () -> new DoubleTallDecorationBlock(BlockBehaviour.Properties.of().noCollission()), 0);
+            () -> new CarWashBrush(BlockBehaviour.Properties.of().noCollission()), 0);
     public static final RegistryObject<Block> CAR_WASH_TIRE_SCRUBBER = registerBlock("car_wash_tire_scrubber",
             () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.of().noCollission()), 0);
 

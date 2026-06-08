@@ -1,11 +1,9 @@
 package net.rk.thingamajigs.entity;
 
+import com.mojang.logging.LogUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.ItemTags;
@@ -25,17 +23,17 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.common.ForgeHooks;
 import net.rk.thingamajigs.block.ThingamajigsBlocks;
 import net.rk.thingamajigs.item.ThingamajigsItems;
 
 public class InfiMoveCart extends AbstractMinecart {
-    private static final EntityDataAccessor<Boolean> FUELED =
-            SynchedEntityData.defineId(InfiMoveCart.class, EntityDataSerializers.BOOLEAN);
     private int fuel;
     private final int maxFuel = 32767; // sure!
     public double xPush;
     public double zPush;
     public double lerpedYaw = 0.0f;
+    public float partialTick = 0.0f;
 
     protected InfiMoveCart(EntityType<?> et, Level lvl) {
         super(et, lvl);
@@ -72,8 +70,12 @@ public class InfiMoveCart extends AbstractMinecart {
 
     @Override
     public void tick() {
-        double oldYaw = yRotO;
         super.tick();
+        double oldYaw = yRotO;
+        this.partialTick++;
+        if(this.partialTick > 60.0f){
+            this.partialTick = 0.0f;
+        }
 
         // get the blocks we need that are around this entity
         BlockState bsAbove = this.level().getBlockState(this.blockPosition().above());
@@ -89,7 +91,6 @@ public class InfiMoveCart extends AbstractMinecart {
         }
         else if (bsAbove.is(Blocks.LIME_CONCRETE) || bsAbove.is(Blocks.GREEN_CONCRETE) || bsAbove.is(Blocks.LIME_WOOL) || bsAbove.is(Blocks.GREEN_WOOL)) {
             this.fuel = maxFuel;
-            setHasFuel(true);
             if(this.getDeltaMovement().x <= 0.0D){
                 this.xPush = 1.0D;
             }
@@ -99,7 +100,6 @@ public class InfiMoveCart extends AbstractMinecart {
         }
         else if (bsBelow.is(Blocks.LIME_CONCRETE) || bsBelow.is(Blocks.GREEN_CONCRETE) || bsBelow.is(Blocks.LIME_WOOL) || bsBelow.is(Blocks.GREEN_WOOL)) {
             this.fuel = maxFuel;
-            setHasFuel(true);
             if(this.getDeltaMovement().x >= -0.00001D){
                 this.xPush = 1.0D;
             }
@@ -124,14 +124,14 @@ public class InfiMoveCart extends AbstractMinecart {
                 this.zPush = 0.0D;
             }
 
-            this.setHasFuel(this.fuel > 0);
-
             if(getDeltaMovement().y > 0 || getDeltaMovement().y < 0){
                 this.setDeltaMovement(getDeltaMovement().x,getDeltaMovement().y / 1.5D,getDeltaMovement().z);
             }
         }
 
-        if((rail.getBlock() instanceof BaseRailBlock) && this.hasFuel()){
+        boolean movingAtAll = (getDeltaMovement().x > 0D || getDeltaMovement().x < 0D) || (getDeltaMovement().z > 0D || getDeltaMovement().z < 0D);
+
+        if((rail.getBlock() instanceof BaseRailBlock) && movingAtAll){
             if (this.tickCount % 4 == 0) {
                 this.level().addParticle(ParticleTypes.END_ROD,
                         this.getX(), this.getY() + 0.2D, this.getZ(),
@@ -146,12 +146,6 @@ public class InfiMoveCart extends AbstractMinecart {
 
         lerpedYaw = Mth.lerp(tickCount,yRotO,oldYaw);
         yRotO = (float) lerpedYaw;
-    }
-
-    @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(FUELED, false);
     }
 
     @Override
@@ -201,7 +195,7 @@ public class InfiMoveCart extends AbstractMinecart {
     }
 
     // better ingredients, better furnace minecart, NOT SAYING THE LAST PART
-    private static final Ingredient INGREDIENTS = Ingredient.of(
+    public static final Ingredient INGREDIENTS = Ingredient.of(
             Items.COAL_BLOCK,
             Items.COAL,
             Items.CHARCOAL,
@@ -232,16 +226,23 @@ public class InfiMoveCart extends AbstractMinecart {
         boolean wtrapdoors = itemstack.is(ItemTags.WOODEN_TRAPDOORS);
         boolean wp = itemstack.is(ItemTags.WOODEN_PRESSURE_PLATES);
 
-        if ((INGREDIENTS.test(itemstack) || flagIsLogsThatBurn || flagIsSigns || wd || wb || ws || wstairs || wtrapdoors || wp) && this.fuel <= maxFuel) {
-            if (!p.getAbilities().instabuild) {
-                itemstack.shrink(1); // shrink it
-                p.swing(ih);
+        try{
+            if ((INGREDIENTS.test(itemstack) || flagIsLogsThatBurn || flagIsSigns || wd || wb || ws || wstairs || wtrapdoors || wp) && this.fuel <= maxFuel && ForgeHooks.getBurnTime(itemstack,null) > 0) {
+                if (!p.getAbilities().instabuild) {
+                    p.playSound(SoundEvents.ITEM_FRAME_ADD_ITEM,0.9f,0.98f);
+                    itemstack.shrink(1); // shrink it
+                    p.swing(ih);
+                }
+                this.fuel = this.maxFuel; // the 32bit limit, hehe, also FREE fuel! infinite fuel time.
             }
-            this.fuel = this.maxFuel; // the 32bit limit, hehe, also FREE fuel! infinite fuel time.
+            if (this.fuel > 0) {
+                this.xPush = this.getX() - p.getX();
+                this.zPush = this.getZ() - p.getZ();
+            }
         }
-        if (this.fuel > 0) {
-            this.xPush = this.getX() - p.getX();
-            this.zPush = this.getZ() - p.getZ();
+        catch (Exception e){
+            LogUtils.getLogger().error(e.getLocalizedMessage());
+            return InteractionResult.FAIL;
         }
         return InteractionResult.CONSUME;
     }
@@ -260,14 +261,6 @@ public class InfiMoveCart extends AbstractMinecart {
         this.xPush = ctread.getDouble("PushX");
         this.zPush = ctread.getDouble("PushZ");
         this.fuel = ctread.getShort("Fuel");
-    }
-
-    protected boolean hasFuel() {
-        return this.entityData.get(FUELED);
-    }
-
-    protected void setHasFuel(boolean p_38577_) {
-        this.entityData.set(FUELED, p_38577_);
     }
 
     @Override
@@ -292,6 +285,11 @@ public class InfiMoveCart extends AbstractMinecart {
 
     @Override
     public BlockState getDefaultDisplayBlockState() {
-        return ThingamajigsBlocks.REFINED_THINGAMAJIG_BLOCK.get().defaultBlockState().trySetValue(RedstoneLampBlock.LIT,true);
+        if(this.fuel != 0){
+            return ThingamajigsBlocks.REFINED_THINGAMAJIG_BLOCK.get().defaultBlockState().trySetValue(RedstoneLampBlock.LIT,true);
+        }
+        else{
+            return ThingamajigsBlocks.REFINED_THINGAMAJIG_BLOCK.get().defaultBlockState().trySetValue(RedstoneLampBlock.LIT,false);
+        }
     }
 }
