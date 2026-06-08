@@ -12,6 +12,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -33,13 +34,15 @@ public class ThingamajigsCustomLeavesBlock extends Block implements SimpleWaterl
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
     public static final IntegerProperty DISTANCE = IntegerProperty.create("distance", 1, 12);
+    public static final BooleanProperty SNOWY = BlockStateProperties.SNOWY;
 
     public ThingamajigsCustomLeavesBlock(Properties p) {
         super(p.mapColor(MapColor.PLANT).strength(0.2f).randomTicks());
         this.registerDefaultState(this.stateDefinition.any()
                 .setValue(DISTANCE, 12)
                 .setValue(PERSISTENT, false)
-                .setValue(WATERLOGGED, false));
+                .setValue(WATERLOGGED, false)
+                .setValue(SNOWY,false));
     }
 
     @SuppressWarnings("deprecated")
@@ -154,12 +157,24 @@ public class ThingamajigsCustomLeavesBlock extends Block implements SimpleWaterl
     }
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(DISTANCE, PERSISTENT, WATERLOGGED);
+        builder.add(DISTANCE, PERSISTENT, WATERLOGGED,SNOWY);
     }
 
     public BlockState getStateForPlacement(BlockPlaceContext bpc) {
         FluidState fluidstate = bpc.getLevel().getFluidState(bpc.getClickedPos());
         BlockState blockstate = this.defaultBlockState().setValue(PERSISTENT,true).setValue(WATERLOGGED,fluidstate.getType() == Fluids.WATER);
         return updateDistanceV(blockstate, bpc.getLevel(), bpc.getClickedPos());
+    }
+
+    @Override
+    public void neighborChanged(BlockState state, Level level, BlockPos pos, Block neighborBlock, BlockPos neighborPos, boolean movedByPiston) {
+        if((level.getBlockState(pos.above()).is(Blocks.SNOW) || level.getBlockState(pos.above()).is(Blocks.SNOW_BLOCK) || level.getBlockState(pos.above()).is(Blocks.POWDER_SNOW)) && !state.getValue(SNOWY)){
+            level.setBlock(pos,state.setValue(SNOWY,true),3);
+            return;
+        }
+        else if(!(level.getBlockState(pos.above()).is(Blocks.SNOW) || level.getBlockState(pos.above()).is(Blocks.SNOW_BLOCK) || level.getBlockState(pos.above()).is(Blocks.POWDER_SNOW)) && state.getValue(SNOWY)){
+            level.setBlock(pos,state.setValue(SNOWY,false),3);
+            return;
+        }
     }
 }

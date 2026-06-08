@@ -582,11 +582,15 @@ public class Thingamajigs {
             event.accept(ThingamajigsBlocks.PHONE_AXIS_SWITCH_RELAY.get().asItem());
             event.accept(ThingamajigsBlocks.PHONE_CROSSBAR.get().asItem());
             event.accept(ThingamajigsBlocks.PHONE_GROUP_SELECTOR.get().asItem());
+            event.accept(ThingamajigsBlocks.CELL_TOWER_AMPLIFIER.get().asItem());
             event.accept(ThingamajigsBlocks.CELL_MULTI_ANGLED_TRANSMITTER.get().asItem());
             event.accept(ThingamajigsBlocks.CELL_MULTI_TRANSMITTER.get().asItem());
             event.accept(ThingamajigsBlocks.CELL_TRANSMITTER.get().asItem());
             event.accept(ThingamajigsBlocks.CELL_MICROWAVE_TRANSMITTER.get().asItem());
             event.accept(ThingamajigsBlocks.OLD_MICROWAVE_TRANSMITTER.get().asItem());
+            event.accept(ThingamajigsBlocks.OLD_MICROWAVE_TRANSMITTER_OPAQUE.get().asItem());
+            event.accept(ThingamajigsBlocks.OLD_MICROWAVE_REFLECTOR_ROUNDED.get().asItem());
+            event.accept(ThingamajigsBlocks.OLD_MICROWAVE_REFLECTOR_ROUNDED_OPAQUE.get().asItem());
             // dark stone
             event.accept(ThingamajigsBlocks.DARKENED_STONE.get().asItem());
             event.accept(ThingamajigsBlocks.GRADIENT_DARKENED_STONE.get().asItem());
@@ -702,6 +706,7 @@ public class Thingamajigs {
             // arcade machines
             event.accept(ThingamajigsBlocks.ARCADE_MACHINE.get().asItem());
             event.accept(ThingamajigsBlocks.ARCADE_MACHINE_OPENABLE.get().asItem());
+            event.accept(ThingamajigsBlocks.DELUXE_ARCADE_MACHINE.get().asItem());
             event.accept(ThingamajigsBlocks.BASKETBALL_MACHINE.get().asItem());
             event.accept(ThingamajigsBlocks.PINBALL_MACHINE.get().asItem());
             event.accept(ThingamajigsBlocks.LIGHTUP_MACHINE.get().asItem());
@@ -771,6 +776,8 @@ public class Thingamajigs {
             event.accept(ThingamajigsBlocks.PAYPHONE_SEETHROUGH.get().asItem());
             event.accept(ThingamajigsBlocks.CAMPING_FUEL_CAN.get().asItem());
             event.accept(ThingamajigsBlocks.GAS_PUMP.get().asItem());
+            event.accept(ThingamajigsBlocks.FANCY_GAS_PUMP.get().asItem());
+            event.accept(ThingamajigsBlocks.AIR_STATION.get().asItem());
             event.accept(ThingamajigsBlocks.NEWSPAPER_DISPENSER.get().asItem());
             event.accept(ThingamajigsBlocks.RESTAURANT_TRASH_CAN.get().asItem());
             event.accept(ThingamajigsBlocks.DUMPSTER.get().asItem());
@@ -921,6 +928,7 @@ public class Thingamajigs {
             event.accept(ThingamajigsBlocks.DOME_SECURITY_CAMERA.get().asItem());
             event.accept(ThingamajigsBlocks.CHAINLINK_FENCE.get().asItem());
             event.accept(ThingamajigsBlocks.SECURITY_METAL_DETECTOR.get().asItem());
+            event.accept(ThingamajigsBlocks.SAFE.get().asItem());
             // water management
             event.accept(ThingamajigsBlocks.CULVERT.get().asItem());
             event.accept(ThingamajigsBlocks.DIRT_CULVERT.get().asItem());
@@ -959,6 +967,7 @@ public class Thingamajigs {
             event.accept(ThingamajigsBlocks.AQUARIUM.get().asItem());
             event.accept(ThingamajigsBlocks.DOG_HOUSE.get().asItem());
             event.accept(ThingamajigsBlocks.CAT_TREE.get().asItem());
+            event.accept(ThingamajigsBlocks.DELUXE_CAT_TREE.get().asItem());
             event.accept(ThingamajigsBlocks.LITTER_BOX.get().asItem());
             event.accept(ThingamajigsBlocks.HOTTUB.get().asItem());
             event.accept(ThingamajigsBlocks.MAILBOX.get().asItem());
@@ -1014,6 +1023,9 @@ public class Thingamajigs {
             event.accept(ThingamajigsBlocks.PRISMARINE_TABLE.get().asItem());
             event.accept(ThingamajigsBlocks.PURPUR_TABLE.get().asItem());
             event.accept(ThingamajigsBlocks.SCULK_TABLE.get().asItem());
+            // shelving
+            event.accept(ThingamajigsBlocks.WHITE_CUBE_SHELF.get().asItem());
+            event.accept(ThingamajigsBlocks.WHITE_SECTIONED_SHELF.get().asItem());
             event.accept(ThingamajigsBlocks.TRIPLE_SHELF.get().asItem());
             // chairs
             event.accept(ThingamajigsBlocks.BARBER_CHAIR.get().asItem());
@@ -1096,6 +1108,7 @@ public class Thingamajigs {
             event.accept(ThingamajigsBlocks.TOILET_PAPER.get().asItem());
             event.accept(ThingamajigsBlocks.TISSUE_BOX.get().asItem());
             // Toys & Kids Stuff
+            event.accept(ThingamajigsBlocks.RUBBER_DUCK.get().asItem());
             event.accept(ThingamajigsBlocks.TOY_BOX.get().asItem());
             event.accept(ThingamajigsBlocks.WOOD_DUCK.get().asItem());
             event.accept(ThingamajigsBlocks.WOOD_CAR.get().asItem());
@@ -1157,6 +1170,7 @@ public class Thingamajigs {
             event.accept(ThingamajigsBlocks.BLUE_STRING_LIGHTS.get().asItem());
             // Food Related
             event.accept(ThingamajigsBlocks.FOOD_COOLER.get().asItem());
+            event.accept(ThingamajigsBlocks.CAKE_DISPLAY_CASE.get().asItem());
             event.accept(ThingamajigsBlocks.WINE_BOTTLE.get().asItem());
             event.accept(ThingamajigsBlocks.ROAST_TURKEY.get().asItem());
             event.accept(ThingamajigsBlocks.PIZZA.get().asItem());
@@ -1182,7 +1196,7 @@ public class Thingamajigs {
             event.accept(ThingamajigsItems.STRANGE_STATUE.get());
             event.accept(ThingamajigsBlocks.DUCK_STATUE.get().asItem());
             event.accept(ThingamajigsBlocks.VALIANT_STATUE.get().asItem());
-            // put copper statue here
+            event.accept(ThingamajigsBlocks.DAUNTING_STATUE.get().asItem());
             //
             event.accept(ThingamajigsBlocks.TRI_CANDLE_HOLDER_BLOCK.get().asItem());
             event.accept(ThingamajigsBlocks.REINDEER_WALL_HEAD.get().asItem());

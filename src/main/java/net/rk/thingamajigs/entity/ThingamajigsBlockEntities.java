@@ -130,6 +130,17 @@ ThingamajigsBlocks.TRIPLE_SHELF.get(),ThingamajigsBlocks.TOY_BOX.get()
                     )
                     .build(null));
 
+    public static final Supplier<BlockEntityType<DecorationalBucketBE>> DECORATIONAL_BUCKET_BE = BLOCK_ENTITIES.register(
+            "decorational_bucket_be",() -> BlockEntityType.Builder.of(DecorationalBucketBE::new,
+                            ThingamajigsBlocks.DECORATIONAL_BUCKET.get())
+                    .build(null));
+
+    public static final Supplier<BlockEntityType<FancyStorageDecorationBE>> FANCY_STORAGE_DECORATION_BE = BLOCK_ENTITIES.register(
+            "fancy_storage_decoration_be",() -> BlockEntityType.Builder.of(FancyStorageDecorationBE::new,
+                            ThingamajigsBlocks.WHITE_CUBE_SHELF.get(),ThingamajigsBlocks.WHITE_SECTIONED_SHELF.get(),
+                            ThingamajigsBlocks.SAFE.get())
+                    .build(null));
+
     public static void register(IEventBus eventBus){
         BLOCK_ENTITIES.register(eventBus);
     }

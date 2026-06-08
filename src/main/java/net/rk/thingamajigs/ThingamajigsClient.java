@@ -330,7 +330,9 @@ public class ThingamajigsClient {
             BlockEntityRenderers.register(ThingamajigsBlockEntities.ANIMATED_DEER_BE.get(),AnimatedDeerBERenderer::new);
             // 1.8.3
             BlockEntityRenderers.register(ThingamajigsBlockEntities.FOOTBALL_GOAL.get(),FootballGoalRenderer::new);
-            //
+            // 1.8.5
+            BlockEntityRenderers.register(ThingamajigsBlockEntities.FANCY_STORAGE_DECORATION_BE.get(),FancyStorageDecorationBERenderer::new);
+            BlockEntityRenderers.register(ThingamajigsBlockEntities.DECORATIONAL_BUCKET_BE.get(),DecorationalBucketBERenderer::new);
         }
         catch(Exception blockEntityRendererError){
             logErrorInternal(blockEntityRendererError);

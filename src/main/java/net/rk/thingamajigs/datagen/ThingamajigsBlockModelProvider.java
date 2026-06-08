@@ -182,6 +182,7 @@ public class ThingamajigsBlockModelProvider extends BlockModelProvider {
         signModelBuilder(ThingamajigsBlocks.VIDEO_IN_PROGRESS_SIGN, "text_signs", "video_in_progress","back_slightly_bigger_rectangle");
         signModelBuilder(ThingamajigsBlocks.NO_STARING_PRIVATE_PROPERTY_SIGN, "text_signs", "no_staring_private_property","back_slightly_bigger_rectangle");
 
+        allSidedBlockCustomDirectory("thingamajigs:block/snowy_rubber_leaves","thingamajigs:block/snowy_rubber_leaves","cutout_mipped");
     }
 
     private BlockModelBuilder cakeBlock(RegistryObject<Block> block, String cakeBottom, String cakeTop, String cakeSide){
@@ -231,6 +232,18 @@ public class ThingamajigsBlockModelProvider extends BlockModelProvider {
         return withExistingParent(block.getId().getPath(),
                 new ResourceLocation("minecraft:block/cube_all"))
                 .texture("all", new ResourceLocation(textureLocation));
+    }
+
+    private BlockModelBuilder allSidedBlockWithRenderType(RegistryObject<Block> block, String textureLocation, String renderType){
+        return withExistingParent(block.getId().getPath(),
+                new ResourceLocation("minecraft:block/cube_all"))
+                .texture("all", new ResourceLocation(textureLocation)).renderType(renderType);
+    }
+
+    private BlockModelBuilder allSidedBlockCustomDirectory(String id, String textureLocation, String renderType){
+        return withExistingParent(id,
+                new ResourceLocation("minecraft:block/cube_all"))
+                .texture("all", new ResourceLocation(textureLocation)).renderType(renderType);
     }
 
     @NotNull

@@ -159,6 +159,28 @@ public class ThingamajigsItemModelProvider extends ItemModelProvider {
         fromModelMod(ThingamajigsBlocks.PHONE_GROUP_SELECTOR.get(),"block/phone_group_selector");
         fromModelMod(ThingamajigsBlocks.PHONE_AXIS_SWITCH.get(),"block/phone_axis_switch");
         fromModelMod(ThingamajigsBlocks.PHONE_AXIS_SWITCH_RELAY.get(),"block/phone_axis_switch_relay");
+        fromModelMod(ThingamajigsBlocks.RUBBER_LEAVES.get(),"block/rubber_leaves");
+        // 1.8.5
+        fromModelMod(ThingamajigsBlocks.DELUXE_CAT_TREE.get(),"block/deluxe_cat_tree");
+        fromModelMod(ThingamajigsBlocks.CLAW_MACHINE.get(),"block/claw_machine");
+        fromModelMod(ThingamajigsBlocks.OLD_MICROWAVE_TRANSMITTER.get(),"block/old_microwave_reflector");
+        fromModelMod(ThingamajigsBlocks.OLD_MICROWAVE_TRANSMITTER_OPAQUE.get(),"block/old_microwave_reflector_opaque");
+        fromModelMod(ThingamajigsBlocks.OLD_MICROWAVE_REFLECTOR_ROUNDED.get(),"block/old_microwave_reflector_rounded");
+        fromModelMod(ThingamajigsBlocks.OLD_MICROWAVE_REFLECTOR_ROUNDED_OPAQUE.get(),"block/old_microwave_reflector_rounded_opaque");
+        fromModelMod(ThingamajigsBlocks.DECORATIONAL_BUCKET.get(),"block/decorational_bucket");
+        fromModelMod(ThingamajigsBlocks.EASEL.get(),"item/easel_all");
+        fromModelMod(ThingamajigsBlocks.PORTABLE_DISH_WASHER.get(),"block/portable_dishwasher");
+        fromModelMod(ThingamajigsBlocks.WHITE_CUBE_SHELF.get(),"block/white_cube_shelf");
+        fromModelMod(ThingamajigsBlocks.WHITE_SECTIONED_SHELF.get(),"block/white_sectioned_shelf");
+        fromModelMod(ThingamajigsBlocks.RUBBER_DUCK.get(),"block/rubber_duck");
+        fromModelMod(ThingamajigsBlocks.AIR_STATION.get(),"block/air_station");
+        fromModelMod(ThingamajigsBlocks.SAFE.get(),"block/safe_closed");
+        fromModelMod(ThingamajigsBlocks.CAKE_DISPLAY_CASE.get(),"block/cake_display_case_empty");
+        fromModelMod(ThingamajigsBlocks.CELL_TOWER_AMPLIFIER.get(),"block/cell_tower_amplifier");
+        fromModelMod(ThingamajigsBlocks.FANCY_GAS_PUMP.get(),"block/fancy_gas_pump");
+        fromModelMod(ThingamajigsBlocks.DELUXE_ARCADE_MACHINE.get(),"item/deluxe_arcade_machine_held");
+        fromModelMod(ThingamajigsBlocks.CEILING_FAN.get(),"block/ceiling_fan");
+        fromModelMod(ThingamajigsBlocks.DAUNTING_STATUE.get(),"block/statue/daunting_statue");
     }
 
     // flat 2D facing player model

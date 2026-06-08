@@ -26,6 +26,7 @@ public class ThingamajigsRecipeProvider extends RecipeProvider implements ICondi
 
     @Override
     protected void buildRecipes(Consumer<FinishedRecipe> frc) {
+        Consumer<FinishedRecipe> rc = frc;
         ShapelessRecipeBuilder.shapeless(
                         RecipeCategory.MISC, ThingamajigsItems.GRAY_PUMPKIN_SEEDS.get(), 1)
                 .requires(Items.PUMPKIN_SEEDS)
@@ -1786,6 +1787,128 @@ public class ThingamajigsRecipeProvider extends RecipeProvider implements ICondi
                 .requires(ThingamajigsItems.PHONE_COMPONENT.get())
                 .unlockedBy("has_thingy",has(ThingamajigsItems.PHONE_COMPONENT.get()))
                 .save(frc);
+
+        // 1.8.5
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ThingamajigsBlocks.DELUXE_CAT_TREE.get().asItem(),1)
+                .requires(ThingamajigsBlocks.CAT_TREE.get().asItem())
+                .requires(Items.BLACK_WOOL)
+                .requires(ItemTags.PLANKS)
+                .requires(Items.STRING)
+                .unlockedBy("has_thingy",has(ThingamajigsBlocks.CAT_TREE.get().asItem()))
+                .save(rc);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ThingamajigsBlocks.OLD_MICROWAVE_TRANSMITTER_OPAQUE.get().asItem(),1)
+                .requires(ThingamajigsBlocks.OLD_MICROWAVE_TRANSMITTER.get().asItem())
+                .requires(Items.WHITE_BANNER)
+                .requires(Items.IRON_INGOT)
+                .unlockedBy("has_thingy",has(ThingamajigsBlocks.OLD_MICROWAVE_TRANSMITTER.get().asItem()))
+                .save(rc);
+        stonecutterAny(ThingamajigsBlocks.OLD_MICROWAVE_REFLECTOR_ROUNDED.get().asItem(),
+                Ingredient.of(ThingamajigsBlocks.OLD_MICROWAVE_TRANSMITTER.get().asItem()),
+                ThingamajigsBlocks.OLD_MICROWAVE_REFLECTOR_ROUNDED.get().asItem(),1)
+                .unlockedBy("has_thingy",InventoryChangeTrigger.TriggerInstance
+                        .hasItems(ThingamajigsBlocks.OLD_MICROWAVE_TRANSMITTER.get().asItem()))
+                .save(rc);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ThingamajigsBlocks.OLD_MICROWAVE_REFLECTOR_ROUNDED_OPAQUE.get().asItem(),1)
+                .requires(ThingamajigsBlocks.OLD_MICROWAVE_REFLECTOR_ROUNDED.get().asItem())
+                .requires(Items.WHITE_BANNER)
+                .requires(Items.IRON_INGOT)
+                .unlockedBy("has_thingy",has(ThingamajigsBlocks.OLD_MICROWAVE_REFLECTOR_ROUNDED.get().asItem()))
+                .save(rc);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ThingamajigsBlocks.DECORATIONAL_BUCKET.get().asItem(),1)
+                .requires(ThingamajigsItems.THINGAMAJIG.get())
+                .requires(Items.BUCKET)
+                .unlockedBy("has_thingy",has(Items.BUCKET))
+                .group("vanilla_plus")
+                .save(rc);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ThingamajigsBlocks.EASEL.get().asItem(),1)
+                .requires(ThingamajigsItems.MISC_COMPONENT.get())
+                .requires(Items.MAP)
+                .requires(ItemTags.PLANKS)
+                .requires(Items.STICK)
+                .requires(Items.STICK)
+                .requires(Items.STICK)
+                .requires(Tags.Items.DYES)
+                .unlockedBy("has_thingy",has(ThingamajigsItems.MISC_COMPONENT.get()))
+                .save(rc);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ThingamajigsBlocks.WHITE_CUBE_SHELF.get().asItem(),3)
+                .requires(Items.PAPER)
+                .requires(Items.PAPER)
+                .requires(Items.STONE)
+                .requires(ItemTags.PLANKS)
+                .requires(ThingamajigsItems.RUBBER.get())
+                .unlockedBy("has_thingy",has(ThingamajigsItems.RUBBER.get()))
+                .save(rc);
+        stonecutterAny(ThingamajigsBlocks.WHITE_CUBE_SHELF.get().asItem(),
+                Ingredient.of(ThingamajigsBlocks.WHITE_CUBE_SHELF.get().asItem()),
+                ThingamajigsBlocks.WHITE_SECTIONED_SHELF.get().asItem(),1)
+                .unlockedBy("has_thingy",InventoryChangeTrigger.TriggerInstance
+                        .hasItems(ThingamajigsBlocks.WHITE_CUBE_SHELF.get().asItem()))
+                .save(rc);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ThingamajigsBlocks.RUBBER_DUCK.get().asItem(),4)
+                .requires(ThingamajigsItems.RUBBER.get())
+                .requires(ThingamajigsItems.RUBBER.get())
+                .requires(ThingamajigsItems.RUBBER.get())
+                .requires(Items.YELLOW_DYE)
+                .requires(Items.YELLOW_DYE)
+                .requires(ThingamajigsItems.TOY_COMPONENT.get())
+                .unlockedBy("has_thingy",has(ThingamajigsItems.RUBBER.get()))
+                .save(rc);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ThingamajigsBlocks.AIR_STATION.get().asItem(),1)
+                .requires(ThingamajigsItems.COMPUTER_COMPONENT.get())
+                .requires(ThingamajigsItems.INFRASTRUCTURE_COMPONENT.get())
+                .requires(Items.IRON_BLOCK)
+                .requires(ThingamajigsBlocks.SHOP_VACUUM.get().asItem())
+                .requires(ThingamajigsBlocks.AIRDUCT_VENT.get().asItem())
+                .unlockedBy("has_thingy",has(ThingamajigsItems.INFRASTRUCTURE_COMPONENT.get()))
+                .save(rc);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ThingamajigsBlocks.SAFE.get().asItem(),1)
+                .requires(ThingamajigsItems.MISC_COMPONENT.get())
+                .requires(ThingamajigsItems.HOME_COMPONENT.get())
+                .requires(ThingamajigsTags.CONCRETES)
+                .requires(ThingamajigsBlocks.CONCRETE_BRICKS.get().asItem())
+                .requires(Items.NETHERITE_INGOT)
+                .unlockedBy("has_thingy",has(ThingamajigsItems.HOME_COMPONENT.get()))
+                .save(rc);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ThingamajigsBlocks.CAKE_DISPLAY_CASE.get().asItem(),1)
+                .requires(ThingamajigsItems.MISC_COMPONENT.get())
+                .requires(Items.WHITE_DYE)
+                .requires(Items.STICK)
+                .requires(ItemTags.WOODEN_SLABS)
+                .requires(Items.SUGAR)
+                .requires(Items.GLASS)
+                .unlockedBy("has_thingy",has(ThingamajigsItems.MISC_COMPONENT.get()))
+                .save(rc);
+        stonecutterAny(ThingamajigsBlocks.CELL_TOWER_AMPLIFIER.get().asItem(),
+                Ingredient.of(ThingamajigsItems.PHONE_COMPONENT.get()),
+                ThingamajigsBlocks.CELL_TOWER_AMPLIFIER.get().asItem(),1)
+                .unlockedBy("has_thingy",has(ThingamajigsItems.PHONE_COMPONENT.get()))
+                .save(rc);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS,ThingamajigsBlocks.FANCY_GAS_PUMP.get(),4)
+                .requires(ThingamajigsItems.COMPUTER_COMPONENT.get())
+                .requires(ThingamajigsBlocks.GAS_PUMP.get().asItem())
+                .requires(ThingamajigsItems.RUBBER.get())
+                .requires(Tags.Items.DYES)
+                .requires(Items.BRUSH)
+                .requires(ThingamajigsBlocks.TRASH_CAN.get())
+                .unlockedBy("has_thingy",has(ThingamajigsBlocks.GAS_PUMP.get().asItem()))
+                .save(rc);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS,ThingamajigsBlocks.DELUXE_ARCADE_MACHINE.get(),1)
+                .requires(ThingamajigsItems.ARCADE_COMPONENT.get())
+                .requires(ThingamajigsTags.BASIC_ARCADE_MACHINES)
+                .requires(Items.IRON_INGOT)
+                .requires(Tags.Items.GLASS_PANES)
+                .requires(Tags.Items.DYES)
+                .requires(ThingamajigsItems.RUBBER.get())
+                .unlockedBy("has_thingy",has(ThingamajigsBlocks.ARCADE_MACHINE.get().asItem()))
+                .save(rc);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ThingamajigsBlocks.DAUNTING_STATUE.get().asItem(),1)
+                .requires(Items.COPPER_INGOT)
+                .requires(Items.OBSERVER)
+                .requires(Items.SPYGLASS)
+                .requires(Items.HONEYCOMB)
+                .requires(ThingamajigsItems.MISC_COMPONENT.get())
+                .unlockedBy("has_thingy",has(ThingamajigsItems.MISC_COMPONENT.get()))
+                .save(rc);
     }
 
     public static RecipeBuilder stonecutterAny(Item requiredItem, Ingredient inputItem, Item result, int amt){

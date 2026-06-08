@@ -47,6 +47,7 @@ public class ThingamajigsPaintingTagsProvider extends TagsProvider<PaintingVaria
                 .add(ThingamajigsPaintings.THE_CHARS.getKey())
                 .add(ThingamajigsPaintings.CROSSING.getKey())
                 .add(ThingamajigsPaintings.LOVELY.getKey())
+                .add(ThingamajigsPaintings.MANSION.getKey())
                 .replace(false)
         ;
     }

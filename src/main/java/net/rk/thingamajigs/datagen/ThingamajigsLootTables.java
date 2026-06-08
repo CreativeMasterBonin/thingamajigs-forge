@@ -3,18 +3,17 @@ package net.rk.thingamajigs.datagen;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.data.loot.packs.VanillaBlockLoot;
+import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
+import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.block.state.properties.SlabType;
-import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.entries.AlternativesEntry;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
-import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.*;
@@ -22,6 +21,8 @@ import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.rk.thingamajigs.Thingamajigs;
+import net.rk.thingamajigs.block.DoubleHalfRotatedDecoration;
+import net.rk.thingamajigs.block.Easel;
 import net.rk.thingamajigs.block.ThingamajigsBlocks;
 import net.rk.thingamajigs.item.ThingamajigsItems;
 import net.rk.thingamajigs.xtrablock.CheeseBlock;
@@ -1605,8 +1606,29 @@ public class ThingamajigsLootTables extends VanillaBlockLoot {
         this.dropSelf(ThingamajigsBlocks.PHONE_AXIS_SWITCH.get());
         this.dropSelf(ThingamajigsBlocks.PHONE_AXIS_SWITCH_RELAY.get());
 
+        // 1.8.5
+        this.dropSelf(ThingamajigsBlocks.DELUXE_CAT_TREE.get());
+        this.dropSelf(ThingamajigsBlocks.OLD_MICROWAVE_TRANSMITTER_OPAQUE.get());
+        this.dropSelf(ThingamajigsBlocks.OLD_MICROWAVE_REFLECTOR_ROUNDED.get());
+        this.dropSelf(ThingamajigsBlocks.OLD_MICROWAVE_REFLECTOR_ROUNDED_OPAQUE.get());
+        this.dropSelf(ThingamajigsBlocks.DECORATIONAL_BUCKET.get());
+        this.add(ThingamajigsBlocks.EASEL.get(), block -> this.singularPropertyCondition(block, Easel.HALF,DoubleBlockHalf.LOWER));
+        this.dropSelf(ThingamajigsBlocks.WHITE_CUBE_SHELF.get());
+        this.dropSelf(ThingamajigsBlocks.WHITE_SECTIONED_SHELF.get());
+        this.dropSelf(ThingamajigsBlocks.RUBBER_DUCK.get());
+        this.dropSelf(ThingamajigsBlocks.AIR_STATION.get());
+        this.dropSelf(ThingamajigsBlocks.SAFE.get());
+        this.dropSelf(ThingamajigsBlocks.CAKE_DISPLAY_CASE.get());
+        this.dropSelf(ThingamajigsBlocks.CELL_TOWER_AMPLIFIER.get());
+        this.dropSelf(ThingamajigsBlocks.FANCY_GAS_PUMP.get());
+        this.add(ThingamajigsBlocks.DELUXE_ARCADE_MACHINE.get(), block -> this.singularPropertyCondition(block,
+                DoubleHalfRotatedDecoration.HALF,DoubleBlockHalf.LOWER));
+        this.dropSelf(ThingamajigsBlocks.DAUNTING_STATUE.get());
 
-        // old end
+
+
+
+
         this.add(ThingamajigsBlocks.WHITE_ROAD_MARKING.get(),noDrop());
         this.add(ThingamajigsBlocks.YELLOW_ROAD_MARKING.get(),noDrop());
         this.add(ThingamajigsBlocks.BLUE_ROAD_MARKING.get(),noDrop());
@@ -1779,6 +1801,17 @@ public class ThingamajigsLootTables extends VanillaBlockLoot {
                 thing -> this.createStemDrops(thing, ThingamajigsItems.PINK_PUMPKIN_SEEDS.get()));
         this.add(ThingamajigsBlocks.ATTATCHED_PINK_PUMPKIN_STEM.get(),
                 thing -> this.createAttachedStemDrops(thing, ThingamajigsItems.PINK_PUMPKIN_SEEDS.get()));
+    }
+
+    // from loot tables
+    public <T extends Comparable<T> & StringRepresentable> LootTable.Builder singularPropertyCondition(Block block, Property<T> property, T value) {
+        return LootTable.lootTable().withPool(
+                this.applyExplosionCondition(block,LootPool.lootPool()
+                        .setRolls(ConstantValue.exactly(1.0f))
+                        .add(LootItem.lootTableItem(block)
+                                .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
+                                        .setProperties(StatePropertiesPredicate.Builder.properties()
+                                                .hasProperty(property,value))))));
     }
 
     // why is everything secret?

@@ -15,9 +15,11 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.properties.AttachFace;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
+import net.minecraftforge.client.model.generators.VariantBlockStateBuilder;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -26,6 +28,7 @@ import net.rk.thingamajigs.block.SidewalkLayer;
 import net.rk.thingamajigs.block.ThingamajigsBlocks;
 import net.rk.thingamajigs.block.custom.ThingamajigsDecorativeBlock;
 import net.rk.thingamajigs.block.custom.blocks.ToggledStateBlock;
+import net.rk.thingamajigs.block.custom.specialblocks.ThingamajigsCustomLeavesBlock;
 
 public class ThingamajigsBlockStateProvider extends BlockStateProvider {
     public ThingamajigsBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
@@ -53,7 +56,6 @@ public class ThingamajigsBlockStateProvider extends BlockStateProvider {
         blockItem(ThingamajigsBlocks.STRIPPED_RUBBER_LOG);
         blockItem(ThingamajigsBlocks.STRIPPED_RUBBER_WOOD);
         blockWithItem(ThingamajigsBlocks.RUBBER_PLANKS);
-        leavesBlock(ThingamajigsBlocks.RUBBER_LEAVES);
         saplingBlock(ThingamajigsBlocks.RUBBER_SAPLING);
 
         slabBlock((SlabBlock)ThingamajigsBlocks.RUBBER_WOOD_SLAB.get(),
@@ -99,6 +101,7 @@ public class ThingamajigsBlockStateProvider extends BlockStateProvider {
         rotatedThingamajigsDecoration(ThingamajigsBlocks.PHONE_GROUP_SELECTOR.get(),"thingamajigs:block/phone_group_selector");
         rotatedThingamajigsDecoration(ThingamajigsBlocks.PHONE_AXIS_SWITCH.get(),"thingamajigs:block/phone_axis_switch");
         rotatedThingamajigsDecoration(ThingamajigsBlocks.PHONE_AXIS_SWITCH_RELAY.get(),"thingamajigs:block/phone_axis_switch_relay");
+
     }
 
     // ?
@@ -165,27 +168,48 @@ public class ThingamajigsBlockStateProvider extends BlockStateProvider {
 
 
     // tutor stuff kj thx
+    // 2026 updated - publicize methods
 
-    private void saplingBlock(RegistryObject<Block> blockRegistryObject) {
+    public void saplingBlock(RegistryObject<Block> blockRegistryObject) {
         simpleBlock(blockRegistryObject.get(),
                 models().cross(ForgeRegistries.BLOCKS.getKey(blockRegistryObject.get()).getPath(),
                         blockTexture(blockRegistryObject.get())).renderType("cutout"));
     }
 
-    private void leavesBlock(RegistryObject<Block> blockRegistryObject) {
+    public void leavesBlock(RegistryObject<Block> blockRegistryObject) {
         simpleBlockWithItem(blockRegistryObject.get(),
                 models().singleTexture(ForgeRegistries.BLOCKS.getKey(blockRegistryObject.get()).getPath(),
                         new ResourceLocation("minecraft:block/leaves"),
                         "all", blockTexture(blockRegistryObject.get())).renderType("cutout"));
     }
 
-    private void blockItem(RegistryObject<Block> blockRegistryObject) {
+    // FIX: thinks there are two models when data-gen is ran?
+    public void snowSupportingLeavesBlock(RegistryObject<Block> block, String leaves, String snowyLeaves){
+        this.getVariantBuilder(block.get()).forAllStatesExcept(blockState -> {
+            ModelFile leavesFile = new ModelFile.UncheckedModelFile(leaves);
+            ModelFile snowyLeavesFile = new ModelFile.UncheckedModelFile(snowyLeaves);
+            ModelFile finFile = null;
+
+            if(blockState.getValue(ThingamajigsCustomLeavesBlock.SNOWY)){
+                finFile = snowyLeavesFile;
+            }
+            else if(!blockState.getValue(ThingamajigsCustomLeavesBlock.SNOWY)){
+                finFile = leavesFile;
+            }
+
+            return ConfiguredModel.builder().modelFile(finFile).build();
+        }, ThingamajigsCustomLeavesBlock.DISTANCE,ThingamajigsCustomLeavesBlock.PERSISTENT,ThingamajigsCustomLeavesBlock.WATERLOGGED);
+
+        this.blockItem(block);
+    }
+
+    public void blockItem(RegistryObject<Block> blockRegistryObject) {
         simpleBlockItem(blockRegistryObject.get(),
                 new ModelFile.UncheckedModelFile("thingamajigs:block/"
                         + ForgeRegistries.BLOCKS.getKey(blockRegistryObject.get()).getPath()));
     }
 
-    private void blockWithItem(RegistryObject<Block> blockRegistryObject) {
+    public void blockWithItem(RegistryObject<Block> blockRegistryObject) {
         simpleBlockWithItem(blockRegistryObject.get(),cubeAll(blockRegistryObject.get()));
     }
 }

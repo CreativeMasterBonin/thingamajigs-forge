@@ -23,6 +23,9 @@ public class ThingamajigsTags {
     public static final TagKey<PaintingVariant> THINGAMAJIGS_PAINTING = thingamajigsPaintingVariantTag("thingamajigs_painting");
     public static final TagKey<Item> BOWLING_BALLS = thingamajigsItemTag("bowling_balls");
 
+    public static final TagKey<Item> CONCRETES = thingamajigsItemTag("concretes");
+    public static final TagKey<Item> BASIC_ARCADE_MACHINES = thingamajigsItemTag("basic_arcade_machines");
+
     // 1.7.7 tags
     public static final TagKey<Item> TABLES_ITEM = thingamajigsItemTag("tables");
     //public static final TagKey<Block> POLES = thingamajigsBlockTag("poles");

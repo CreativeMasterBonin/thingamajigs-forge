@@ -1,18 +1,69 @@
 {
   "variants": {
-    "facing=east": {
+    "facing=east,channel=0": {
       "model": "thingamajigs:oversized/uhd_tv",
       "y": 90
     },
-    "facing=north": {
+    "facing=north,channel=0": {
       "model": "thingamajigs:oversized/uhd_tv"
     },
-    "facing=south": {
+    "facing=south,channel=0": {
       "model": "thingamajigs:oversized/uhd_tv",
       "y": 180
     },
-    "facing=west": {
+    "facing=west,channel=0": {
       "model": "thingamajigs:oversized/uhd_tv",
+      "y": 270
+    },
+    
+
+    "facing=east,channel=1": {
+      "model": "thingamajigs:oversized/uhd_tv_plants",
+      "y": 90
+    },
+    "facing=north,channel=1": {
+      "model": "thingamajigs:oversized/uhd_tv_plants"
+    },
+    "facing=south,channel=1": {
+      "model": "thingamajigs:oversized/uhd_tv_plants",
+      "y": 180
+    },
+    "facing=west,channel=1": {
+      "model": "thingamajigs:oversized/uhd_tv_plants",
+      "y": 270
+    },
+
+
+    "facing=east,channel=2": {
+      "model": "thingamajigs:oversized/uhd_tv_color_bars_animation",
+      "y": 90
+    },
+    "facing=north,channel=2": {
+      "model": "thingamajigs:oversized/uhd_tv_color_bars_animation"
+    },
+    "facing=south,channel=2": {
+      "model": "thingamajigs:oversized/uhd_tv_color_bars_animation",
+      "y": 180
+    },
+    "facing=west,channel=2": {
+      "model": "thingamajigs:oversized/uhd_tv_color_bars_animation",
+      "y": 270
+    },
+
+
+    "facing=east,channel=3": {
+      "model": "thingamajigs:oversized/uhd_tv_stuff",
+      "y": 90
+    },
+    "facing=north,channel=3": {
+      "model": "thingamajigs:oversized/uhd_tv_stuff"
+    },
+    "facing=south,channel=3": {
+      "model": "thingamajigs:oversized/uhd_tv_stuff",
+      "y": 180
+    },
+    "facing=west,channel=3": {
+      "model": "thingamajigs:oversized/uhd_tv_stuff",
       "y": 270
     }
   }
