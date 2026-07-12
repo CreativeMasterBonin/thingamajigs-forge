@@ -1909,6 +1909,41 @@ public class ThingamajigsRecipeProvider extends RecipeProvider implements ICondi
                 .requires(ThingamajigsItems.MISC_COMPONENT.get())
                 .unlockedBy("has_thingy",has(ThingamajigsItems.MISC_COMPONENT.get()))
                 .save(rc);
+        // 1.8.6-1.8.7
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ThingamajigsBlocks.GRAB_BAR.get().asItem(),3)
+                .requires(ThingamajigsBlocks.STRAIGHT_HORIZONTAL_POLE.get().asItem())
+                .requires(Items.IRON_INGOT)
+                .requires(ThingamajigsItems.HEALTH_COMPONENT.get())
+                .unlockedBy("has_thingy",has(ThingamajigsBlocks.STRAIGHT_HORIZONTAL_POLE.get().asItem()))
+                .save(rc);
+        stonecutterAny(ThingamajigsBlocks.URINAL.get().asItem(),
+                Ingredient.of(ThingamajigsBlocks.TOILET.get().asItem()),
+                ThingamajigsBlocks.URINAL.get().asItem(),1)
+                .unlockedBy("has_thingy",has(ThingamajigsBlocks.TOILET.get().asItem()))
+                .save(rc);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ThingamajigsBlocks.TUBE_MAN_DECO.get().asItem(),1)
+                .requires(ItemTags.WOOL)
+                .requires(ItemTags.WOOL)
+                .requires(ThingamajigsBlocks.AIR_STATION.get())
+                .requires(ThingamajigsItems.MISC_COMPONENT.get())
+                .unlockedBy("has_thingy",has(ThingamajigsItems.MISC_COMPONENT.get()))
+                .save(rc);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ThingamajigsBlocks.PIZZA_VENDING_MACHINE.get().asItem(),1)
+                .requires(ThingamajigsBlocks.RED_VENDING_MACHINE.get().asItem())
+                .requires(Items.RED_CONCRETE)
+                .requires(ThingamajigsItems.APPLIANCE_COMPONENT.get())
+                .requires(ThingamajigsItems.MISC_COMPONENT.get())
+                .requires(ThingamajigsBlocks.PIZZA_BOX.get().asItem())
+                .unlockedBy("has_thingy",has(ThingamajigsBlocks.PIZZA_BOX.get().asItem()))
+                .save(rc);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ThingamajigsBlocks.ICECREAM_VENDING_MACHINE.get().asItem(),1)
+                .requires(ThingamajigsBlocks.BLUE_VENDING_MACHINE.get().asItem())
+                .requires(Items.BLUE_CONCRETE)
+                .requires(ThingamajigsItems.APPLIANCE_COMPONENT.get())
+                .requires(ThingamajigsItems.MISC_COMPONENT.get())
+                .requires(Items.POWDER_SNOW_BUCKET)
+                .unlockedBy("has_thingy",has(Items.POWDER_SNOW_BUCKET))
+                .save(rc);
     }
 
     public static RecipeBuilder stonecutterAny(Item requiredItem, Ingredient inputItem, Item result, int amt){

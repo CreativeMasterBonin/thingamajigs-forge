@@ -337,6 +337,8 @@ public class ThingamajigsClient {
             BlockEntityRenderers.register(ThingamajigsBlockEntities.FANCY_STORAGE_DECORATION_BE.get(),FancyStorageDecorationBERenderer::new);
             BlockEntityRenderers.register(ThingamajigsBlockEntities.DECORATIONAL_BUCKET_BE.get(),DecorationalBucketBERenderer::new);
             //BlockEntityRenderers.register(ThingamajigsBlockEntities.CAR_WASH_BRUSH_BE.get(),CarWashBrushBERenderer::new);
+            // 1.8.6
+            BlockEntityRenderers.register(ThingamajigsBlockEntities.TUBE_MAN_DECO_BE.get(),TubeManDecoBERenderer::new);
         }
         catch(Exception blockEntityRendererError){
             logErrorInternal(blockEntityRendererError);

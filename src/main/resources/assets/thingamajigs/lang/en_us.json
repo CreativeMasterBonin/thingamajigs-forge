@@ -1624,10 +1624,16 @@
   "block.thingamajigs.fancy_gas_pump": "Fancy Gas Pump",
   "block.thingamajigs.deluxe_arcade_machine": "Deluxe Arcade Machine",
   "block.thingamajigs.daunting_statue": "Daunting Statue",
+  "block.thingamajigs.grab_bar": "Grab Bar",
+  "block.thingamajigs.urinal": "Urinal",
+  "block.thingamajigs.tube_man": "Tube Man",
+  "block.thingamajigs.pizza_vending_machine": "Pizza Vending Machine",
+  "block.thingamajigs.icecream_vending_machine": "Ice Cream Vending Machine",
 
 
-
-
+  "generic.thingamajigs.vending_machine.desc": "Insert a payement method to get something in return",
+  "block.thingamajigs.urinal.desc": "Use an axe to switch pipe placement, and shears to change design",
+  "block.thingamajigs.tube_man.desc": "Use an axe to rotate and dyes to color it; Shift-right click to inflate and deflate",
   "block.thingamajigs.safe.desc": "Sturdy and tough to break; explosions nullified when locked",
   "blockEntities.thingamajigs.fancy_storage_decoration.white_sectioned_shelf.name": "White Sectioned Shelf",
   "blockEntities.thingamajigs.fancy_storage_decoration.white_cube_shelf.name": "White Cube Shelf",

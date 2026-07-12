@@ -209,6 +209,7 @@ public class ThingamajigsBlockTagProvider extends BlockTagsProvider {
                 .replace(false)
         ;
         this.tag(BlockTags.DAMPENS_VIBRATIONS)
+                .add(ThingamajigsBlocks.TUBE_MAN_DECO.get())
                 .add(ThingamajigsBlocks.MYSTERIOUS_PILLAR.get())
                 .add(ThingamajigsBlocks.REFINED_THINGAMAJIG_BLOCK.get())
                 .add(ThingamajigsBlocks.MINIGOLF_GRASS_BLOCK.get())
@@ -263,6 +264,7 @@ public class ThingamajigsBlockTagProvider extends BlockTagsProvider {
                 .replace(false)
         ;
         this.tag(BlockTags.FEATURES_CANNOT_REPLACE)
+                .add(ThingamajigsBlocks.TUBE_MAN_DECO.get())
                 .add(ThingamajigsBlocks.MYSTERIOUS_PILLAR.get())
                 .add(ThingamajigsBlocks.REFINED_THINGAMAJIG_BLOCK.get())
                 .add(ThingamajigsBlocks.MAILBOX.get())
@@ -312,6 +314,7 @@ public class ThingamajigsBlockTagProvider extends BlockTagsProvider {
                 .replace(false)
         ;
         this.tag(BlockTags.HOGLIN_REPELLENTS)
+                .add(ThingamajigsBlocks.TUBE_MAN_DECO.get())
                 .add(ThingamajigsBlocks.MYSTERIOUS_PILLAR.get())
                 .add(ThingamajigsBlocks.REFINED_THINGAMAJIG_BLOCK.get())
                 .add(ThingamajigsBlocks.COFFIN.get())
@@ -341,6 +344,10 @@ public class ThingamajigsBlockTagProvider extends BlockTagsProvider {
                 .replace(false)
         ;
         this.tag(BlockTags.IMPERMEABLE)
+                .add(ThingamajigsBlocks.URINAL.get())
+                .add(ThingamajigsBlocks.PIZZA_VENDING_MACHINE.get())
+                .add(ThingamajigsBlocks.ICECREAM_VENDING_MACHINE.get())
+                .add(ThingamajigsBlocks.TUBE_MAN_DECO.get())
                 .add(ThingamajigsBlocks.MYSTERIOUS_PILLAR.get())
                 .add(ThingamajigsBlocks.REFINED_THINGAMAJIG_BLOCK.get())
                 .add(ThingamajigsBlocks.GRATE.get())
@@ -505,6 +512,7 @@ public class ThingamajigsBlockTagProvider extends BlockTagsProvider {
         ;
 
         this.tag(BlockTags.OCCLUDES_VIBRATION_SIGNALS)
+                .add(ThingamajigsBlocks.TUBE_MAN_DECO.get())
                 .add(ThingamajigsBlocks.MYSTERIOUS_PILLAR.get())
                 .add(ThingamajigsBlocks.REFINED_THINGAMAJIG_BLOCK.get())
                 .add(ThingamajigsBlocks.VELVET_ROPE_FENCE.get())
@@ -529,6 +537,7 @@ public class ThingamajigsBlockTagProvider extends BlockTagsProvider {
                 .replace(false)
         ;
         this.tag(BlockTags.PIGLIN_REPELLENTS)
+                .add(ThingamajigsBlocks.TUBE_MAN_DECO.get())
                 .add(ThingamajigsBlocks.MYSTERIOUS_PILLAR.get())
                 .add(ThingamajigsBlocks.REFINED_THINGAMAJIG_BLOCK.get())
                 .add(ThingamajigsBlocks.COFFIN.get())
@@ -617,6 +626,7 @@ public class ThingamajigsBlockTagProvider extends BlockTagsProvider {
                 .replace(false)
         ;
         this.tag(BlockTags.SWORD_EFFICIENT)
+                .add(ThingamajigsBlocks.TUBE_MAN_DECO.get())
                 .add(ThingamajigsBlocks.TOWEL_STACK.get())
                 .add(ThingamajigsBlocks.BULBY_FLOWER.get())
                 .add(ThingamajigsBlocks.DROOPY_FLOWER.get())
@@ -1383,6 +1393,11 @@ public class ThingamajigsBlockTagProvider extends BlockTagsProvider {
                 .add(ThingamajigsBlocks.FANCY_GAS_PUMP.get())
                 .add(ThingamajigsBlocks.DELUXE_ARCADE_MACHINE.get())
                 .add(ThingamajigsBlocks.DAUNTING_STATUE.get())
+                .add(ThingamajigsBlocks.TUBE_MAN_DECO.get())
+                .add(ThingamajigsBlocks.GRAB_BAR.get())
+                .add(ThingamajigsBlocks.URINAL.get())
+                .add(ThingamajigsBlocks.PIZZA_VENDING_MACHINE.get())
+                .add(ThingamajigsBlocks.ICECREAM_VENDING_MACHINE.get())
                 .replace(false)
         ;
     }

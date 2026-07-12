@@ -147,6 +147,11 @@ ThingamajigsBlocks.TRIPLE_SHELF.get(),ThingamajigsBlocks.TOY_BOX.get()
                             ThingamajigsBlocks.CAR_WASH_YELLOW_BRUSH.get(),ThingamajigsBlocks.CAR_WASH_MIXED_BRUSH.get())
                     .build(null));
 
+    public static final Supplier<BlockEntityType<TubeManDecoBE>> TUBE_MAN_DECO_BE = BLOCK_ENTITIES.register(
+            "tube_man_deco_be", () -> BlockEntityType.Builder.of(TubeManDecoBE::new,
+                    ThingamajigsBlocks.TUBE_MAN_DECO.get())
+                    .build(null));
+
     public static void register(IEventBus eventBus){
         BLOCK_ENTITIES.register(eventBus);
     }

@@ -1,0 +1,216 @@
+package net.rk.thingamajigs.block;
+
+import net.minecraft.ChatFormatting;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.DustParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.util.FastColor;
+import net.minecraft.util.Mth;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.AbstractArrow;
+import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.item.DyeItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockAndTintGetter;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.BooleanOp;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.common.Tags;
+import net.rk.thingamajigs.entity.customblock.TubeManDecoBE;
+import net.rk.thingamajigs.events.ThingamajigsSoundEvents;
+import net.rk.thingamajigs.misc.ThingamajigsCalcStuffs;
+import org.jetbrains.annotations.Nullable;
+import org.joml.Vector3f;
+
+import java.util.List;
+
+public class TubeManDeco extends BaseEntityBlock implements SimpleWaterloggedBlock,UseWithoutItemSupport {
+    public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
+    public static final BooleanProperty TOGGLED = BlockStateProperties.ENABLED;
+    public static final VoxelShape BASE_ALL = Shapes.join(
+            Block.box(2, 0, 2, 14, 2, 14),
+            Block.box(7, 2, 7, 9, 8, 9), BooleanOp.OR);
+
+    public TubeManDeco(Properties p) {
+        super(p.strength(0.25f,0.5f).sound(SoundType.WOOL).mapColor(MapColor.COLOR_BLUE)
+                .noOcclusion().pushReaction(PushReaction.DESTROY).instrument(NoteBlockInstrument.BANJO));
+        this.registerDefaultState(this.defaultBlockState().setValue(WATERLOGGED,false).setValue(TOGGLED,false));
+    }
+
+    @Override
+    public VoxelShape getCollisionShape(BlockState p_60572_, BlockGetter p_60573_, BlockPos p_60574_, CollisionContext p_60575_) {
+        return BASE_ALL;
+    }
+
+    @Override
+    public VoxelShape getInteractionShape(BlockState state, BlockGetter level, BlockPos pos) {
+        return Shapes.block();
+    }
+
+    @Override
+    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        return context.isHoldingItem(ThingamajigsBlocks.TUBE_MAN_DECO.get().asItem()) ? Shapes.block() : BASE_ALL;
+    }
+
+    @Override
+    public RenderShape getRenderShape(BlockState state) {
+        return RenderShape.INVISIBLE;
+    }
+
+    @Nullable
+    @Override
+    public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
+        return new TubeManDecoBE(blockPos,blockState);
+    }
+
+    @Override
+    public boolean shouldDisplayFluidOverlay(BlockState state, BlockAndTintGetter world, BlockPos pos, FluidState fluidstate) {
+        return state.getValue(WATERLOGGED);
+    }
+
+    @Override
+    public void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        super.createBlockStateDefinition(builder);
+        builder.add(TOGGLED,WATERLOGGED);
+    }
+
+    @Override
+    public FluidState getFluidState(BlockState bs) {
+        return bs.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(bs);
+    }
+
+    @Override
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        FluidState fluidstate = context.getLevel().getFluidState(context.getClickedPos());
+        return this.defaultBlockState().setValue(WATERLOGGED, fluidstate.getType() == Fluids.WATER).setValue(TOGGLED,false);
+    }
+
+    @Override
+    public void onProjectileHit(Level level, BlockState state, BlockHitResult hit, Projectile projectile) {
+        if(!level.isClientSide()){
+            if(projectile instanceof AbstractArrow && state.getValue(TOGGLED)){
+                level.destroyBlock(hit.getBlockPos(),true,null);
+                if(level instanceof ServerLevel serverLevel){
+                    serverLevel.sendParticles(ParticleTypes.POOF,hit.getBlockPos().getX() + 0.5D,
+                            hit.getBlockPos().getY() + 0.25D,hit.getBlockPos().getZ() + 0.5D,
+                            Mth.nextInt(serverLevel.getRandom(),4,11),0D,0D,0D,0.02D);
+                }
+                level.playSound(null,hit.getBlockPos(), ThingamajigsSoundEvents.POP.get(), SoundSource.BLOCKS,1.0f, ThingamajigsCalcStuffs.nextFloatBetweenInclusive(0.95f,1.0f));
+            }
+        }
+    }
+
+    @Override
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+        if(player.getItemInHand(hand).isEmpty()){
+            return useWithoutItem(state,level,pos,player,hitResult);
+        }
+        else{
+            if(level.isClientSide()){
+                if(player.getItemInHand(hand).is(ItemTags.AXES)){
+                    player.playSound(SoundEvents.WOOL_HIT,0.75f,ThingamajigsCalcStuffs.nextFloatBetweenInclusive(0.95f,1.1f));
+                    return InteractionResult.SUCCESS;
+                }
+                else if(player.getItemInHand(hand).is(Tags.Items.DYES)){
+                    player.playSound(SoundEvents.DYE_USE,0.75f,ThingamajigsCalcStuffs.nextFloatBetweenInclusive(0.95f,1.1f));
+                    return InteractionResult.SUCCESS;
+                }
+            }
+            else{
+                if(player.getItemInHand(hand).is(ItemTags.AXES)){
+                    TubeManDecoBE tubeMan = (TubeManDecoBE)level.getBlockEntity(pos);
+                    if(tubeMan != null){
+                        if(tubeMan.yAngle > 359.0f){
+                            tubeMan.yAngle = 0.0f;
+                        }
+                        else{
+                            tubeMan.yAngle += 90.0f;
+                        }
+                        // hurt item in hand
+                        if(player.getUsedItemHand() == InteractionHand.MAIN_HAND){
+                            player.getItemInHand(hand).hurtAndBreak(1,player,(handler) ->
+                                    player.broadcastBreakEvent(EquipmentSlot.MAINHAND));
+                        }
+                        else if(player.getUsedItemHand() == InteractionHand.OFF_HAND){
+                            player.getItemInHand(hand).hurtAndBreak(1,player,(handler) ->
+                                    player.broadcastBreakEvent(EquipmentSlot.OFFHAND));
+                        }
+                        tubeMan.updateBlock();
+                    }
+                    return InteractionResult.SUCCESS;
+                }
+                else if(player.getItemInHand(hand).getItem() instanceof DyeItem dyeItem){
+                    TubeManDecoBE tubeMan = (TubeManDecoBE)level.getBlockEntity(pos);
+                    if(tubeMan != null){
+                        if(tubeMan.color != dyeItem.getDyeColor()){
+                            tubeMan.color = dyeItem.getDyeColor();
+                            if(!player.getAbilities().instabuild){ // check for instabuild ability
+                                player.getItemInHand(hand).shrink(1);
+                            }
+                            int color = dyeItem.getDyeColor().getFireworkColor(); // use diffuse color
+                            int red = FastColor.ARGB32.red(color);
+                            int green = FastColor.ARGB32.green(color);
+                            int blue = FastColor.ARGB32.blue(color);
+                            if(level instanceof ServerLevel serverLevel){
+                                serverLevel.sendParticles(new DustParticleOptions(new Vector3f(red,green,blue),1.0f),
+                                        pos.getX() + 0.5D,pos.getY() + 0.4D,pos.getZ() + 0.5D,
+                                        4,
+                                        0D,0.5D,0D,0.25);
+                            }
+                            tubeMan.updateBlock();
+                            return InteractionResult.SUCCESS;
+                        }
+                    }
+                }
+            }
+            return InteractionResult.PASS;
+        }
+    }
+
+    @Override
+    public InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult){
+        if(level.isClientSide()){
+            if(player.isSecondaryUseActive()){
+                player.playSound(ThingamajigsSoundEvents.AIR.get(),1.0f,1.0f);
+                return InteractionResult.SUCCESS;
+            }
+        }
+        else{
+            if(player.isSecondaryUseActive()){
+                level.setBlock(pos,state.cycle(TOGGLED),3);
+                return InteractionResult.SUCCESS;
+            }
+        }
+        return InteractionResult.PASS;
+    }
+
+    @Override
+    public void appendHoverText(ItemStack p_49816_, @Nullable BlockGetter p_49817_, List<Component> tooltipComponents, TooltipFlag p_49819_) {
+        tooltipComponents.add(Component.translatable("block.thingamajigs.tube_man.desc").withStyle(ChatFormatting.GRAY));
+    }
+}

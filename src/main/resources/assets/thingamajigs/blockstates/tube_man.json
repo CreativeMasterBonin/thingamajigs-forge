@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "enabled=false": {
+      "model": "thingamajigs:bases/tube_man_components/tube_man_base_compressed"
+    },
+    "enabled=true": {
+      "model": "thingamajigs:bases/tube_man_components/tube_man_base"
+    }
+  }
+}

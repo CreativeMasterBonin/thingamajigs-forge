@@ -1606,29 +1606,7 @@ public class ThingamajigsLootTables extends VanillaBlockLoot {
         this.dropSelf(ThingamajigsBlocks.PHONE_AXIS_SWITCH.get());
         this.dropSelf(ThingamajigsBlocks.PHONE_AXIS_SWITCH_RELAY.get());
 
-        // 1.8.5
-        this.dropSelf(ThingamajigsBlocks.DELUXE_CAT_TREE.get());
-        this.dropSelf(ThingamajigsBlocks.OLD_MICROWAVE_TRANSMITTER_OPAQUE.get());
-        this.dropSelf(ThingamajigsBlocks.OLD_MICROWAVE_REFLECTOR_ROUNDED.get());
-        this.dropSelf(ThingamajigsBlocks.OLD_MICROWAVE_REFLECTOR_ROUNDED_OPAQUE.get());
-        this.dropSelf(ThingamajigsBlocks.DECORATIONAL_BUCKET.get());
-        this.add(ThingamajigsBlocks.EASEL.get(), block -> this.singularPropertyCondition(block, Easel.HALF,DoubleBlockHalf.LOWER));
-        this.dropSelf(ThingamajigsBlocks.WHITE_CUBE_SHELF.get());
-        this.dropSelf(ThingamajigsBlocks.WHITE_SECTIONED_SHELF.get());
-        this.dropSelf(ThingamajigsBlocks.RUBBER_DUCK.get());
-        this.dropSelf(ThingamajigsBlocks.AIR_STATION.get());
-        this.dropSelf(ThingamajigsBlocks.SAFE.get());
-        this.dropSelf(ThingamajigsBlocks.CAKE_DISPLAY_CASE.get());
-        this.dropSelf(ThingamajigsBlocks.CELL_TOWER_AMPLIFIER.get());
-        this.dropSelf(ThingamajigsBlocks.FANCY_GAS_PUMP.get());
-        this.add(ThingamajigsBlocks.DELUXE_ARCADE_MACHINE.get(), block -> this.singularPropertyCondition(block,
-                DoubleHalfRotatedDecoration.HALF,DoubleBlockHalf.LOWER));
-        this.dropSelf(ThingamajigsBlocks.DAUNTING_STATUE.get());
-
-
-
-
-
+        // older updates loot tables
         this.add(ThingamajigsBlocks.WHITE_ROAD_MARKING.get(),noDrop());
         this.add(ThingamajigsBlocks.YELLOW_ROAD_MARKING.get(),noDrop());
         this.add(ThingamajigsBlocks.BLUE_ROAD_MARKING.get(),noDrop());
@@ -1801,6 +1779,32 @@ public class ThingamajigsLootTables extends VanillaBlockLoot {
                 thing -> this.createStemDrops(thing, ThingamajigsItems.PINK_PUMPKIN_SEEDS.get()));
         this.add(ThingamajigsBlocks.ATTATCHED_PINK_PUMPKIN_STEM.get(),
                 thing -> this.createAttachedStemDrops(thing, ThingamajigsItems.PINK_PUMPKIN_SEEDS.get()));
+
+        // 1.8.5
+        this.dropSelf(ThingamajigsBlocks.DELUXE_CAT_TREE.get());
+        this.dropSelf(ThingamajigsBlocks.OLD_MICROWAVE_TRANSMITTER_OPAQUE.get());
+        this.dropSelf(ThingamajigsBlocks.OLD_MICROWAVE_REFLECTOR_ROUNDED.get());
+        this.dropSelf(ThingamajigsBlocks.OLD_MICROWAVE_REFLECTOR_ROUNDED_OPAQUE.get());
+        this.dropSelf(ThingamajigsBlocks.DECORATIONAL_BUCKET.get());
+        this.add(ThingamajigsBlocks.EASEL.get(), block -> this.singularPropertyCondition(block, Easel.HALF,DoubleBlockHalf.LOWER));
+        this.dropSelf(ThingamajigsBlocks.WHITE_CUBE_SHELF.get());
+        this.dropSelf(ThingamajigsBlocks.WHITE_SECTIONED_SHELF.get());
+        this.dropSelf(ThingamajigsBlocks.RUBBER_DUCK.get());
+        this.dropSelf(ThingamajigsBlocks.AIR_STATION.get());
+        this.dropSelf(ThingamajigsBlocks.SAFE.get());
+        this.dropSelf(ThingamajigsBlocks.CAKE_DISPLAY_CASE.get());
+        this.dropSelf(ThingamajigsBlocks.CELL_TOWER_AMPLIFIER.get());
+        this.dropSelf(ThingamajigsBlocks.FANCY_GAS_PUMP.get());
+        this.add(ThingamajigsBlocks.DELUXE_ARCADE_MACHINE.get(), block -> this.singularPropertyCondition(block,
+                DoubleHalfRotatedDecoration.HALF,DoubleBlockHalf.LOWER));
+        this.dropSelf(ThingamajigsBlocks.DAUNTING_STATUE.get());
+
+        // 1.8.6-1.8.7
+        this.dropSelf(ThingamajigsBlocks.TUBE_MAN_DECO.get());
+        this.dropSelf(ThingamajigsBlocks.GRAB_BAR.get());
+        this.dropSelf(ThingamajigsBlocks.URINAL.get());
+        this.dropSelf(ThingamajigsBlocks.PIZZA_VENDING_MACHINE.get());
+        this.dropSelf(ThingamajigsBlocks.ICECREAM_VENDING_MACHINE.get());
     }
 
     // from loot tables

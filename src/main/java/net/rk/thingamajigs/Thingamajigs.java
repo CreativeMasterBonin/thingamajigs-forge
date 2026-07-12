@@ -728,6 +728,10 @@ public class Thingamajigs {
             event.accept(ThingamajigsBlocks.MALE_BATHROOM_SIGN.get().asItem());
             event.accept(ThingamajigsBlocks.FEMALE_BATHROOM_SIGN.get().asItem());
             event.accept(ThingamajigsBlocks.BOTH_BATHROOM_SIGN.get().asItem());
+            // commercial bathroom
+            event.accept(ThingamajigsBlocks.URINAL.get().asItem());
+            event.accept(ThingamajigsBlocks.GRAB_BAR.get().asItem());
+            // continue commercial use
             event.accept(ThingamajigsBlocks.BARBER_POLE.get().asItem());
             event.accept(ThingamajigsBlocks.BARBER_HAIR_DRYER.get().asItem());
             event.accept(ThingamajigsBlocks.CHANGE_MACHINE.get().asItem());
@@ -741,6 +745,8 @@ public class Thingamajigs {
             event.accept(ThingamajigsBlocks.BLUE_SODA_MACHINE.get().asItem());
             event.accept(ThingamajigsBlocks.RED_VENDING_MACHINE.get().asItem());
             event.accept(ThingamajigsBlocks.BLUE_VENDING_MACHINE.get().asItem());
+            event.accept(ThingamajigsBlocks.PIZZA_VENDING_MACHINE.get().asItem());
+            event.accept(ThingamajigsBlocks.ICECREAM_VENDING_MACHINE.get().asItem());
             event.accept(ThingamajigsBlocks.CEILING_FAN.get().asItem());
             event.accept(ThingamajigsBlocks.OPEN_SIGN.get().asItem());
             event.accept(ThingamajigsBlocks.OPEN_SIGN_ALT.get().asItem());
@@ -1143,6 +1149,7 @@ public class Thingamajigs {
             event.accept(ThingamajigsBlocks.STANDARD_GRAVESTONE.get().asItem());
             event.accept(ThingamajigsBlocks.PLACARD_GRAVESTONE.get().asItem());
             // Other
+            event.accept(ThingamajigsBlocks.TUBE_MAN_DECO.get().asItem());
             event.accept(ThingamajigsItems.UMBRELLA.get().asItem());
             event.accept(ThingamajigsBlocks.CHIMNEY.get().asItem());
             event.accept(ThingamajigsItems.ANIMATED_ICE_RINK.get().asItem());

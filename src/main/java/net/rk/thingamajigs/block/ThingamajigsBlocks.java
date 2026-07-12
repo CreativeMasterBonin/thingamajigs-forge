@@ -8,7 +8,11 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -21,6 +25,7 @@ import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -197,9 +202,73 @@ public class ThingamajigsBlocks {
     public static final RegistryObject<Block> BLUEYBOX = registerBlock("blueybox",
             () -> new BlueyBoxBlock(BlockBehaviour.Properties.of().sound(SoundType.NETHERITE_BLOCK).lightLevel(s -> 12)), 0);
     public static final RegistryObject<Block> BLUE_SODA_MACHINE = registerBlock("blue_soda_machine",
-            () -> new DoubleTallDecorationBlock(BlockBehaviour.Properties.of().sound(SoundType.LANTERN).lightLevel(s -> 12)), 0);
+            () -> new DoubleTallDecorationBlock(BlockBehaviour.Properties.of().sound(SoundType.LANTERN).lightLevel(s -> 12)){
+                @Override
+                public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult blockHit) {
+                    if(player.getItemInHand(hand).isEmpty()){
+                        return InteractionResult.PASS;
+                    }
+                    else{
+                        if(level.isClientSide()){
+                            if(player.getItemInHand(hand).is(Items.EMERALD) || player.getItemInHand(hand).is(ThingamajigsItems.MONEY.get()) || player.getItemInHand(hand).is(ThingamajigsItems.COIN.get())){
+                                player.playSound(SoundEvents.MOOSHROOM_MILK_SUSPICIOUSLY,0.5f,1.0f);
+                                return InteractionResult.SUCCESS;
+                            }
+                        }
+                        else{
+                            if(player.getItemInHand(hand).is(Items.EMERALD) || player.getItemInHand(hand).is(ThingamajigsItems.MONEY.get()) || player.getItemInHand(hand).is(ThingamajigsItems.COIN.get())){
+                                player.getItemInHand(hand).shrink(1);
+                                ItemEntity item = new ItemEntity(level,
+                                        pos.getX(),pos.getY(),pos.getZ(),
+                                        new ItemStack(Items.MILK_BUCKET),
+                                        0D,0.1D,0D);
+                                level.addFreshEntity(item);
+                                return InteractionResult.SUCCESS;
+                            }
+                        }
+                    }
+                    return InteractionResult.PASS;
+                }
+
+                @Override
+                public void appendHoverText(ItemStack p_49816_, @org.jetbrains.annotations.Nullable BlockGetter p_49817_, List<Component> t, TooltipFlag p_49819_) {
+                    t.add(Component.translatable("generic.thingamajigs.vending_machine.desc").withStyle(ChatFormatting.GRAY));
+                }
+            }, 0);
     public static final RegistryObject<Block> RED_SODA_MACHINE = registerBlock("red_soda_machine",
-            () -> new DoubleTallDecorationBlock(BlockBehaviour.Properties.of().sound(SoundType.LANTERN).lightLevel(s -> 12)), 0);
+            () -> new DoubleTallDecorationBlock(BlockBehaviour.Properties.of().sound(SoundType.LANTERN).lightLevel(s -> 12)){
+                @Override
+                public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult blockHit) {
+                    if(player.getItemInHand(hand).isEmpty()){
+                        return InteractionResult.PASS;
+                    }
+                    else{
+                        if(level.isClientSide()){
+                            if(player.getItemInHand(hand).is(Items.EMERALD) || player.getItemInHand(hand).is(ThingamajigsItems.MONEY.get()) || player.getItemInHand(hand).is(ThingamajigsItems.COIN.get())){
+                                player.playSound(SoundEvents.HONEY_BLOCK_FALL,0.5f,1.0f);
+                                return InteractionResult.SUCCESS;
+                            }
+                        }
+                        else{
+                            if(player.getItemInHand(hand).is(Items.EMERALD) || player.getItemInHand(hand).is(ThingamajigsItems.MONEY.get()) || player.getItemInHand(hand).is(ThingamajigsItems.COIN.get())){
+                                player.getItemInHand(hand).shrink(1);
+                                ItemEntity item = new ItemEntity(level,
+                                        pos.getX(),pos.getY(),pos.getZ(),
+                                        new ItemStack(Items.HONEY_BOTTLE),
+                                        0D,0.1D,0D);
+                                level.addFreshEntity(item);
+                                return InteractionResult.SUCCESS;
+                            }
+                        }
+                    }
+                    return InteractionResult.PASS;
+                }
+
+                @Override
+                public void appendHoverText(ItemStack p_49816_, @org.jetbrains.annotations.Nullable BlockGetter p_49817_, List<Component> t, TooltipFlag p_49819_) {
+                    t.add(Component.translatable("generic.thingamajigs.vending_machine.desc").withStyle(ChatFormatting.GRAY));
+                }
+            }, 0);
     public static final RegistryObject<Block> CASH_REGISTER = registerBlock("cash_register",
             () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.of().sound(SoundType.NETHERITE_BLOCK).lightLevel(s -> 5)){
                 public static final VoxelShape NORTH = Stream.of(
@@ -253,9 +322,63 @@ public class ThingamajigsBlocks {
                 }
             }, 0);
     public static final RegistryObject<Block> BLUE_VENDING_MACHINE = registerBlock("blue_vending_machine",
-            () -> new VendingMachine(BlockBehaviour.Properties.of().sound(SoundType.LANTERN).lightLevel(s -> 12)), 0);
+            () -> new VendingMachine(BlockBehaviour.Properties.of().sound(SoundType.LANTERN).lightLevel(s -> 12)){
+                @Override
+                public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult blockHit) {
+                    if(player.getItemInHand(hand).isEmpty()){
+                        return InteractionResult.PASS;
+                    }
+                    else{
+                        if(level.isClientSide()){
+                            if(player.getItemInHand(hand).is(Items.EMERALD) || player.getItemInHand(hand).is(ThingamajigsItems.MONEY.get()) || player.getItemInHand(hand).is(ThingamajigsItems.COIN.get())){
+                                player.playSound(SoundEvents.ITEM_FRAME_REMOVE_ITEM,0.5f,1.0f);
+                                return InteractionResult.SUCCESS;
+                            }
+                        }
+                        else{
+                            if(player.getItemInHand(hand).is(Items.EMERALD) || player.getItemInHand(hand).is(ThingamajigsItems.MONEY.get()) || player.getItemInHand(hand).is(ThingamajigsItems.COIN.get())){
+                                player.getItemInHand(hand).shrink(1);
+                                ItemEntity item = new ItemEntity(level,
+                                        pos.getX(),pos.getY(),pos.getZ(),
+                                        new ItemStack(Items.BAKED_POTATO),
+                                        0D,0.1D,0D);
+                                level.addFreshEntity(item);
+                                return InteractionResult.SUCCESS;
+                            }
+                        }
+                    }
+                    return InteractionResult.PASS;
+                }
+            }, 0);
     public static final RegistryObject<Block> RED_VENDING_MACHINE = registerBlock("red_vending_machine",
-            () -> new VendingMachine(BlockBehaviour.Properties.of().sound(SoundType.LANTERN).lightLevel(s -> 12)), 0);
+            () -> new VendingMachine(BlockBehaviour.Properties.of().sound(SoundType.LANTERN).lightLevel(s -> 12)){
+                @Override
+                public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult blockHit) {
+                    if(player.getItemInHand(hand).isEmpty()){
+                        return InteractionResult.PASS;
+                    }
+                    else{
+                        if(level.isClientSide()){
+                            if(player.getItemInHand(hand).is(Items.EMERALD) || player.getItemInHand(hand).is(ThingamajigsItems.MONEY.get()) || player.getItemInHand(hand).is(ThingamajigsItems.COIN.get())){
+                                player.playSound(SoundEvents.ITEM_FRAME_REMOVE_ITEM,0.5f,1.0f);
+                                return InteractionResult.SUCCESS;
+                            }
+                        }
+                        else{
+                            if(player.getItemInHand(hand).is(Items.EMERALD) || player.getItemInHand(hand).is(ThingamajigsItems.MONEY.get()) || player.getItemInHand(hand).is(ThingamajigsItems.COIN.get())){
+                                player.getItemInHand(hand).shrink(1);
+                                ItemEntity item = new ItemEntity(level,
+                                        pos.getX(),pos.getY(),pos.getZ(),
+                                        new ItemStack(Items.APPLE),
+                                        0D,0.1D,0D);
+                                level.addFreshEntity(item);
+                                return InteractionResult.SUCCESS;
+                            }
+                        }
+                    }
+                    return InteractionResult.PASS;
+                }
+            }, 0);
     public static final RegistryObject<Block> COFFEE_MACHINE = registerBlock("coffee_machine",
             () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.of().sound(SoundType.LANTERN)), 0);
     public static final RegistryObject<Block> PAYPHONE = registerBlock("payphone",
@@ -5213,6 +5336,17 @@ public class ThingamajigsBlocks {
     public static final RegistryObject<Block> DAUNTING_STATUE = registerBlock("daunting_statue",
             () -> new DauntingStatue(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_ORANGE)));
 
+    // 1.8.6-1.8.7
+    public static final RegistryObject<Block> GRAB_BAR = registerBlock("grab_bar",
+            () -> new GrabBar(BlockBehaviour.Properties.of()));
+    public static final RegistryObject<Block> URINAL = registerBlock("urinal",
+            () -> new Urinal(BlockBehaviour.Properties.of()));
+    public static final RegistryObject<Block> TUBE_MAN_DECO = registerBlock("tube_man",
+            () -> new TubeManDeco(BlockBehaviour.Properties.of()));
+    public static final RegistryObject<Block> PIZZA_VENDING_MACHINE = registerBlock("pizza_vending_machine",
+            () -> new PizzaVendingMachine(BlockBehaviour.Properties.of()));
+    public static final RegistryObject<Block> ICECREAM_VENDING_MACHINE = registerBlock("icecream_vending_machine",
+            () -> new IceCreamVendingMachine(BlockBehaviour.Properties.of()));
 
 
     //requality

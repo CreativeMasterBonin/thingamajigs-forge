@@ -191,10 +191,22 @@ public class ThingamajigsItemModelProvider extends ItemModelProvider {
         fromModelMod(ThingamajigsBlocks.BLUEYDOWS_LAPTOP.get(),"block/laptop/blueydows_laptop");
         fromModelMod(ThingamajigsBlocks.BLUEYTOSH_LAPTOP.get(),"block/laptop/blueytosh_laptop");
         fromModelMod(ThingamajigsBlocks.BLUEYTOSH_LAPTOP_OLD.get(),"block/laptop/blueytosh_laptop_old");
+
+        fromModelMod(ThingamajigsBlocks.TOILET.get(),"block/toilets/toilet_full");
+
+        // 1.8.6-1.8.7
+        fromModelMod(ThingamajigsBlocks.TUBE_MAN_DECO.get(),"bases/tube_man_components/tube_man_base_compressed");
+        fromModelMod(ThingamajigsBlocks.GRAB_BAR.get(),"block/grab_bar/hand_bar_unconnected");
+        fromModelMod(ThingamajigsBlocks.URINAL.get(),"block/toilets/urinal");
+        fromModelMod(ThingamajigsBlocks.BLUEYBOX.get(),"block/blueybox");
+    }
+
+    private ItemModelBuilder fromModelModItem(Item item, String source){
+        return withExistingParent(item.toString(),
+                new ResourceLocation("thingamajigs",source));
     }
 
     // flat 2D facing player model
-
     private ItemModelBuilder defaultSimple(RegistryObject<Item> item){
         return withExistingParent(item.getId().getPath(),
                 new ResourceLocation("item/generated")).texture("layer0",
