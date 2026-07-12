@@ -5349,6 +5349,7 @@ public class ThingamajigsBlocks {
             () -> new IceCreamVendingMachine(BlockBehaviour.Properties.of()));
 
 
+
     //requality
     // end of blocks list
 
