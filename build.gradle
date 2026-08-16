@@ -8,7 +8,7 @@ plugins {
 
 apply plugin: 'org.spongepowered.mixin'
 
-version = new String(mc_version)  + '-' + new String(thingamajigs_ver)
+version = new String(thingamajigs_ver) + '-forge-' + new String(mc_version)
 group = 'net.rk.thingamajigs'
 
 base{
