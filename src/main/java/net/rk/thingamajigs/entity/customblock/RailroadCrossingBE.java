@@ -45,8 +45,8 @@ public class RailroadCrossingBE extends BlockEntity{
 
     public static void serverTick(Level slvl, BlockPos sbp, BlockState sbs, RailroadCrossingBE rrcbe){
         ++rrcbe.ticks;
-        if(slvl.getBlockState(sbp).getBlock() == ThingamajigsBlocks.RAILROAD_CROSSING.get()){
-            if(slvl.getBlockState(sbp).getValue(RailroadCrossing.ON) == true){
+        if(slvl.getBlockState(sbp).getBlock() instanceof RailroadCrossing railroadCrossing){
+            if(slvl.getBlockState(sbp).getValue(RailroadCrossing.ON)){
                 if(rrcbe.armAngle > rrcbe.endArmAngle){
                     rrcbe.armAngle = Mth.rotLerp(0.05f,rrcbe.armAngle,rrcbe.armAngle - 0.15f); //0.01f;
                     // rrcbe.armAngle -= 0.01f;

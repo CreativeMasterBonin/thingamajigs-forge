@@ -9,6 +9,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.phys.AABB;
+import net.rk.thingamajigs.block.CarWashBrush;
 import net.rk.thingamajigs.block.ShortCarWashBrush;
 import net.rk.thingamajigs.entity.ThingamajigsBlockEntities;
 
@@ -47,63 +48,66 @@ public class CarWashBrushBE extends BlockEntity {
 
     // only on client side as BE does not need server to show its blades spinning
     public static void clientTick(Level slvl, BlockPos sbp, BlockState sbs, CarWashBrushBE carWashBrush){
-        if(sbs.getValue(BlockStateProperties.LIT)){
-            if(sbs.getBlock() instanceof ShortCarWashBrush){
-                if(carWashBrush.extensionAngle < 50.0f){
-                    carWashBrush.extensionAngle += 3.5f / (float) Util.getMillis() + 2.5f;
+        // disabled math as it isn't used right now
+        if(sbs.getBlock() instanceof CarWashBrush){
+            /*if(sbs.getValue()){
+                if(sbs.getBlock() instanceof ShortCarWashBrush){
+                    if(carWashBrush.extensionAngle < 50.0f){
+                        carWashBrush.extensionAngle += 3.5f / (float) Util.getMillis() + 2.5f;
+                    }
+                    else{
+                        carWashBrush.extensionAngle = 50.0f;
+                    }
                 }
                 else{
-                    carWashBrush.extensionAngle = 50.0f;
+                    if(carWashBrush.extensionAngle < 80.0f){
+                        carWashBrush.extensionAngle += 3.5f / (float)Util.getMillis() + 2.5f;
+                    }
+                    else{
+                        carWashBrush.extensionAngle = 80.0f;
+                    }
                 }
-            }
-            else{
-                if(carWashBrush.extensionAngle < 80.0f){
-                    carWashBrush.extensionAngle += 3.5f / (float)Util.getMillis() + 2.5f;
-                }
-                else{
-                    carWashBrush.extensionAngle = 80.0f;
-                }
-            }
-            carWashBrush.yAngle += 5.0f;
-            if(carWashBrush.yAngle >= 360.0f || carWashBrush.yAngle <= -360.0f){
-                carWashBrush.yAngle = 0.0f;
-            }
-        }
-        else{
-            if(sbs.getBlock() instanceof ShortCarWashBrush){
-                if(carWashBrush.extensionAngle > 6.0f){
-                    carWashBrush.extensionAngle -= 1.2f;
-                }
-                else if(carWashBrush.extensionAngle < -6.0f){
-                    carWashBrush.extensionAngle += 1.2f;
-                }
-                else{
-                    carWashBrush.extensionAngle = 6.0f;
-                }
-            }
-            else{
-                if(carWashBrush.extensionAngle > 1.0f){
-                    carWashBrush.extensionAngle -= 1.2f;
-                }
-                else if(carWashBrush.extensionAngle < -1.0f){
-                    carWashBrush.extensionAngle += 1.2f;
-                }
-                else{
-                    carWashBrush.extensionAngle = 0.0f;
-                }
-            }
-
-            if(carWashBrush.yAngle != 0.0f){
-                if(carWashBrush.yAngle > 1.0f){
-                    carWashBrush.yAngle -= 1.2f;
-                }
-                else if(carWashBrush.yAngle < -1.0f){
-                    carWashBrush.yAngle += 1.2f;
-                }
-                else{
+                carWashBrush.yAngle += 5.0f;
+                if(carWashBrush.yAngle >= 360.0f || carWashBrush.yAngle <= -360.0f){
                     carWashBrush.yAngle = 0.0f;
                 }
             }
+            else{
+                if(sbs.getBlock() instanceof ShortCarWashBrush){
+                    if(carWashBrush.extensionAngle > 6.0f){
+                        carWashBrush.extensionAngle -= 1.2f;
+                    }
+                    else if(carWashBrush.extensionAngle < -6.0f){
+                        carWashBrush.extensionAngle += 1.2f;
+                    }
+                    else{
+                        carWashBrush.extensionAngle = 6.0f;
+                    }
+                }
+                else{
+                    if(carWashBrush.extensionAngle > 1.0f){
+                        carWashBrush.extensionAngle -= 1.2f;
+                    }
+                    else if(carWashBrush.extensionAngle < -1.0f){
+                        carWashBrush.extensionAngle += 1.2f;
+                    }
+                    else{
+                        carWashBrush.extensionAngle = 0.0f;
+                    }
+                }
+
+                if(carWashBrush.yAngle != 0.0f){
+                    if(carWashBrush.yAngle > 1.0f){
+                        carWashBrush.yAngle -= 1.2f;
+                    }
+                    else if(carWashBrush.yAngle < -1.0f){
+                        carWashBrush.yAngle += 1.2f;
+                    }
+                    else{
+                        carWashBrush.yAngle = 0.0f;
+                    }
+                }
+            }*/
         }
     }
 

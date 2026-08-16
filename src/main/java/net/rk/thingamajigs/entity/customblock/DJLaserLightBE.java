@@ -53,94 +53,99 @@ public class DJLaserLightBE extends BlockEntity {
 
     public static void clientTick(Level lvl, BlockPos bp, BlockState bs, DJLaserLightBE be){
         ++be.ticks;
-        if(!be.getLevel().hasNearbyAlivePlayer((double)bp.getX() + 0.5, (double)bp.getY() + 0.5, (double)bp.getZ() + 0.5, 32)){
-            be.hidePose = true;
+        if(be.ticks > 32767){
+            be.ticks = 0;
         }
-        else{
-            be.hidePose = !bs.getValue(DJLaserLight.ON);
-            if(be.useCustomColor){
-                if(be.randomlyGenerateColor){
-                    if(be.getLevel().getRandom().nextInt(40) == 0){
-                        be.generateRandomColor();
-                    }
-                }
-                else{
-                    be.customColor[0] = be.red;
-                    be.customColor[1] = be.green;
-                    be.customColor[2] = be.blue;
-                }
-                be.diffuseCol = be.customColor;
+        if(bs.getBlock() instanceof DJLaserLight){
+            if(!be.getLevel().hasNearbyAlivePlayer((double)bp.getX() + 0.5, (double)bp.getY() + 0.5, (double)bp.getZ() + 0.5, 32)){
+                be.hidePose = true;
             }
             else{
-                if(be.color == 0){
-                    be.diffuseCol = DyeColor.WHITE.getTextureDiffuseColors();
-                }
-                else if(be.color == 1){
-                    be.diffuseCol = DyeColor.LIGHT_GRAY.getTextureDiffuseColors();
-                }
-                else if(be.color == 2){
-                    be.diffuseCol = DyeColor.GRAY.getTextureDiffuseColors();
-                }
-                else if(be.color == 3){
-                    be.diffuseCol = DyeColor.BLACK.getTextureDiffuseColors();
-                }
-                else if(be.color == 4){
-                    be.diffuseCol = DyeColor.BROWN.getTextureDiffuseColors();
-                }
-                else if(be.color == 5){
-                    be.diffuseCol = DyeColor.RED.getTextureDiffuseColors();
-                }
-                else if(be.color == 6){
-                    be.diffuseCol = DyeColor.ORANGE.getTextureDiffuseColors();
-                }
-                else if(be.color == 7){
-                    be.diffuseCol = DyeColor.YELLOW.getTextureDiffuseColors();
-                }
-                else if(be.color == 8){
-                    be.diffuseCol = DyeColor.LIME.getTextureDiffuseColors();
-                }
-                else if(be.color == 9){
-                    be.diffuseCol = DyeColor.GREEN.getTextureDiffuseColors();
-                }
-                else if(be.color == 10){
-                    be.diffuseCol = DyeColor.CYAN.getTextureDiffuseColors();
-                }
-                else if(be.color == 11){
-                    be.diffuseCol = DyeColor.LIGHT_BLUE.getTextureDiffuseColors();
-                }
-                else if(be.color == 12){
-                    be.diffuseCol = DyeColor.BLUE.getTextureDiffuseColors();
-                }
-                else if(be.color == 13){
-                    be.diffuseCol = DyeColor.PURPLE.getTextureDiffuseColors();
-                }
-                else if(be.color == 14){
-                    be.diffuseCol = DyeColor.MAGENTA.getTextureDiffuseColors();
-                }
-                else if(be.color == 15){
-                    be.diffuseCol = DyeColor.PINK.getTextureDiffuseColors();
+                be.hidePose = !bs.getValue(DJLaserLight.ON);
+                if(be.useCustomColor){
+                    if(be.randomlyGenerateColor){
+                        if(be.getLevel().getRandom().nextInt(40) == 0){
+                            be.generateRandomColor();
+                        }
+                    }
+                    else{
+                        be.customColor[0] = be.red;
+                        be.customColor[1] = be.green;
+                        be.customColor[2] = be.blue;
+                    }
+                    be.diffuseCol = be.customColor;
                 }
                 else{
-                    be.diffuseCol = DyeColor.WHITE.getTextureDiffuseColors();
+                    if(be.color == 0){
+                        be.diffuseCol = DyeColor.WHITE.getTextureDiffuseColors();
+                    }
+                    else if(be.color == 1){
+                        be.diffuseCol = DyeColor.LIGHT_GRAY.getTextureDiffuseColors();
+                    }
+                    else if(be.color == 2){
+                        be.diffuseCol = DyeColor.GRAY.getTextureDiffuseColors();
+                    }
+                    else if(be.color == 3){
+                        be.diffuseCol = DyeColor.BLACK.getTextureDiffuseColors();
+                    }
+                    else if(be.color == 4){
+                        be.diffuseCol = DyeColor.BROWN.getTextureDiffuseColors();
+                    }
+                    else if(be.color == 5){
+                        be.diffuseCol = DyeColor.RED.getTextureDiffuseColors();
+                    }
+                    else if(be.color == 6){
+                        be.diffuseCol = DyeColor.ORANGE.getTextureDiffuseColors();
+                    }
+                    else if(be.color == 7){
+                        be.diffuseCol = DyeColor.YELLOW.getTextureDiffuseColors();
+                    }
+                    else if(be.color == 8){
+                        be.diffuseCol = DyeColor.LIME.getTextureDiffuseColors();
+                    }
+                    else if(be.color == 9){
+                        be.diffuseCol = DyeColor.GREEN.getTextureDiffuseColors();
+                    }
+                    else if(be.color == 10){
+                        be.diffuseCol = DyeColor.CYAN.getTextureDiffuseColors();
+                    }
+                    else if(be.color == 11){
+                        be.diffuseCol = DyeColor.LIGHT_BLUE.getTextureDiffuseColors();
+                    }
+                    else if(be.color == 12){
+                        be.diffuseCol = DyeColor.BLUE.getTextureDiffuseColors();
+                    }
+                    else if(be.color == 13){
+                        be.diffuseCol = DyeColor.PURPLE.getTextureDiffuseColors();
+                    }
+                    else if(be.color == 14){
+                        be.diffuseCol = DyeColor.MAGENTA.getTextureDiffuseColors();
+                    }
+                    else if(be.color == 15){
+                        be.diffuseCol = DyeColor.PINK.getTextureDiffuseColors();
+                    }
+                    else{
+                        be.diffuseCol = DyeColor.WHITE.getTextureDiffuseColors();
+                    }
                 }
-            }
 
-            switch(bs.getValue(DJLaserLight.FACING)){
-                case NORTH ->{
-                    be.angle = 0;
-                    return;
-                }
-                case SOUTH ->{
-                    be.angle = 180;
-                    return;
-                }
-                case EAST ->{
-                    be.angle = 90;
-                    return;
-                }
-                case WEST ->{
-                    be.angle = 270;
-                    return;
+                switch(bs.getValue(DJLaserLight.FACING)){
+                    case NORTH ->{
+                        be.angle = 0;
+                        return;
+                    }
+                    case SOUTH ->{
+                        be.angle = 180;
+                        return;
+                    }
+                    case EAST ->{
+                        be.angle = 90;
+                        return;
+                    }
+                    case WEST ->{
+                        be.angle = 270;
+                        return;
+                    }
                 }
             }
         }
@@ -218,6 +223,9 @@ public class DJLaserLightBE extends BlockEntity {
 
     public static void serverTick(Level slvl, BlockPos sbp, BlockState sbs, DJLaserLightBE sbe){
         ++sbe.ticks;
+        if(sbe.ticks > 32767){
+            sbe.ticks = 0;
+        }
     }
 
     @Override
