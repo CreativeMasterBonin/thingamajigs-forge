@@ -1805,6 +1805,9 @@ public class ThingamajigsLootTables extends VanillaBlockLoot {
         this.dropSelf(ThingamajigsBlocks.URINAL.get());
         this.dropSelf(ThingamajigsBlocks.PIZZA_VENDING_MACHINE.get());
         this.dropSelf(ThingamajigsBlocks.ICECREAM_VENDING_MACHINE.get());
+        // 1.8.9
+        this.dropSelf(ThingamajigsBlocks.ELECTRIC_HOSPITAL_BED.get());
+        this.dropSelf(ThingamajigsBlocks.PHONE_STEP_SELECTORS_GROUP.get());
     }
 
     // from loot tables

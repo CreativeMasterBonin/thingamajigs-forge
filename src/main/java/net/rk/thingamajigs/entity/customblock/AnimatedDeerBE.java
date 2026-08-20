@@ -9,6 +9,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.phys.AABB;
 import net.rk.thingamajigs.block.AnimatedDeer;
 import net.rk.thingamajigs.entity.ThingamajigsBlockEntities;
 
@@ -21,6 +22,12 @@ public class AnimatedDeerBE extends BlockEntity{
     public float gearAngle = 0.0f;
     public boolean showAntlers = false;
     public boolean alternateMovement = false;
+    public float offsetAngle = 0.0f;
+    public float partialTickDivider = 1935.0f;
+
+    public float getPartialTickDivider(){
+        return partialTickDivider;
+    }
 
     public AnimatedDeerBE(BlockPos pos, BlockState blockState) {
         super(ThingamajigsBlockEntities.ANIMATED_DEER_BE.get(), pos, blockState);
@@ -56,19 +63,39 @@ public class AnimatedDeerBE extends BlockEntity{
     public void saveAdditional(CompoundTag tag) {
         super.saveAdditional(tag);
         tag.putFloat("y_angle",yAngle);
+        tag.putFloat("offset_angle",offsetAngle);
         tag.putBoolean("custom",custom);
-        tag.putFloat("head_angle",headAngle);
         tag.putBoolean("show_antlers",showAntlers);
         tag.putBoolean("alternate_movement",alternateMovement);
+        tag.putFloat("partial_tick_divider",partialTickDivider);
     }
 
     @Override
     public void load(CompoundTag tag) {
-        yAngle = tag.getFloat("y_angle");
-        custom = tag.getBoolean("custom");
-        headAngle = tag.getFloat("head_angle");
-        showAntlers = tag.getBoolean("show_antlers");
-        alternateMovement = tag.getBoolean("alternate_movement");
+        if(tag.contains("y_angle")){
+            yAngle = tag.getFloat("y_angle");
+        }
+        if(tag.contains("offset_angle")){
+            offsetAngle = tag.getFloat("offset_angle");
+        }
+        if(tag.contains("custom")){
+            custom = tag.getBoolean("custom");
+        }
+        if(tag.contains("show_antlers")){
+            showAntlers = tag.getBoolean("show_antlers");
+        }
+        if(tag.contains("alternate_movement")){
+            alternateMovement = tag.getBoolean("alternate_movement");
+        }
+        if(tag.contains("partial_tick_divider")){
+            partialTickDivider = Mth.clamp(tag.getFloat("partial_tick_divider"),1.0f,Float.MAX_VALUE);
+        }
+    }
+
+    @Override
+    public AABB getRenderBoundingBox(){
+        return new AABB(this.getBlockPos().getX() - 2, this.getBlockPos().getY() - 1, this.getBlockPos().getZ() - 2,
+                this.getBlockPos().getX() + 2, this.getBlockPos().getY() + 1, this.getBlockPos().getZ() + 2);
     }
 
     @Override
@@ -80,7 +107,7 @@ public class AnimatedDeerBE extends BlockEntity{
     public static void serverTick(Level slvl, BlockPos sbp, BlockState sbs, AnimatedDeerBE sbe){
         ++sbe.ticks;
         if(sbs.getBlock() instanceof AnimatedDeer){
-            if(sbs.getValue(BlockStateProperties.ENABLED)){
+            /*if(sbs.getValue(BlockStateProperties.ENABLED)){
                 float f = Mth.sin(sbe.ticks / 72.0f) / 2.0f;
                 sbe.headAngle = (f + 0.35f) * -1.0f;
                 sbe.gearAngle += 0.02f;
@@ -90,7 +117,7 @@ public class AnimatedDeerBE extends BlockEntity{
                     sbe.headAngle -= 0.1f;
                 }
                 sbe.gearAngle = 0.0f;
-            }
+            }*/
         }
         if(sbe.ticks > 32767){
             sbe.ticks = 0;
@@ -100,7 +127,7 @@ public class AnimatedDeerBE extends BlockEntity{
     public static void clientTick(Level lvl, BlockPos bp, BlockState bs, AnimatedDeerBE be){
         ++be.ticks;
         if(bs.getBlock() instanceof AnimatedDeer){
-            if(bs.getValue(BlockStateProperties.ENABLED)){
+            /*if(bs.getValue(BlockStateProperties.ENABLED)){
                 float f = Mth.sin(be.ticks / 72.0f) / 2.0f;
                 be.headAngle = (f + 0.35f) * -1.0f;
                 be.gearAngle += 0.02f;
@@ -110,7 +137,7 @@ public class AnimatedDeerBE extends BlockEntity{
                     be.headAngle -= 0.1f;
                 }
                 be.gearAngle = 0.0f;
-            }
+            }*/
         }
         if(be.ticks > 32767){
             be.ticks = 0;

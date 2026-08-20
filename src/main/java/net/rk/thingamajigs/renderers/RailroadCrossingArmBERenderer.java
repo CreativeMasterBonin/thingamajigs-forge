@@ -1,13 +1,16 @@
 package net.rk.thingamajigs.renderers;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.Util;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
+import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
 import net.rk.thingamajigs.entity.customblock.RailroadCrossingBE;
 import net.rk.thingamajigs.entity.models.RRArmModel;
+import net.rk.thingamajigs.misc.ThingamajigsCalcStuffs;
 
 public class RailroadCrossingArmBERenderer implements BlockEntityRenderer<RailroadCrossingBE>{
     public RailroadCrossingArmBERenderer(BlockEntityRendererProvider.Context berpContext){
@@ -23,6 +26,7 @@ public class RailroadCrossingArmBERenderer implements BlockEntityRenderer<Railro
         poseStack.translate(0.5f,-0.5f,0.5f);
 
         this.model.setupAnim(railroadCrossingBE);
+        this.model.getGate().xRot = railroadCrossingBE.armAngle * -1;
         this.model.renderToBuffer(poseStack,multiBufferSource.getBuffer(RenderType.entityTranslucent(RRArmModel.LAYER_LOCATION.getModel())),i,i1,1.0f,1.0f,1.0f,1.0f);
         poseStack.popPose();
     }

@@ -58,7 +58,7 @@ public class RRArmModel extends Model{
         barrier.zScale = rcbe.armLength;
         barrier.z = rcbe.armGateOffsetZ;
         main.yRot = rcbe.yAngle;
-        gate.xRot = rcbe.armAngle * -1;
+        //gate.xRot = rcbe.armAngle * -1;
         main.zRot = 0;
         main.xRot = 3.14555111f;
     }

@@ -2,6 +2,7 @@ package net.rk.thingamajigs.entity.models;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import net.minecraft.Util;
 import net.minecraft.client.model.Model;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
@@ -75,16 +76,16 @@ public class AnimatedDeerModel extends Model {
         return LayerDefinition.create(meshdefinition, 64, 64);
     }
 
-    public void setupAnim(AnimatedDeerBE blockEntity){
-        this.main.xRot = 0.0f;
+    public void setupAnim(AnimatedDeerBE blockEntity,float angle){
+        //this.main.xRot = 0.0f;
 
-        this.neck.xRot = blockEntity.headAngle;
-        this.head.xRot = 0.231f;
+        this.neck.xRot = angle; //blockEntity.headAngle * (Util.getMillis() / 100000.0f);
+        /*this.head.xRot = 0.231f;
         this.neck.yRot = 0.0f;
         this.motor.zRot = 0.0f;
 
         this.gear.xRot = blockEntity.gearAngle;
-        this.rod.xRot = blockEntity.headAngle / 4.3571f * -1.0f;
+        this.rod.xRot = blockEntity.headAngle / 4.3571f * -1.0f;*/
     }
 
     public void setupAnimAlt(AnimatedDeerBE blockEntity){

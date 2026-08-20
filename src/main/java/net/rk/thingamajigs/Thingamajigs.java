@@ -581,6 +581,7 @@ public class Thingamajigs {
             event.accept(ThingamajigsBlocks.PHONE_SWITCHER.get().asItem());
             event.accept(ThingamajigsBlocks.PHONE_AXIS_SWITCH.get().asItem());
             event.accept(ThingamajigsBlocks.PHONE_AXIS_SWITCH_RELAY.get().asItem());
+            event.accept(ThingamajigsBlocks.PHONE_STEP_SELECTORS_GROUP.get().asItem());
             event.accept(ThingamajigsBlocks.PHONE_CROSSBAR.get().asItem());
             event.accept(ThingamajigsBlocks.PHONE_GROUP_SELECTOR.get().asItem());
             event.accept(ThingamajigsBlocks.CELL_TOWER_AMPLIFIER.get().asItem());
@@ -1129,6 +1130,7 @@ public class Thingamajigs {
             // Hospital and Health
             event.accept(ThingamajigsBlocks.HOSPITAL_COVER.get().asItem());
             event.accept(ThingamajigsBlocks.HOSPITAL_BED.get().asItem());
+            event.accept(ThingamajigsBlocks.ELECTRIC_HOSPITAL_BED.get().asItem());
             event.accept(ThingamajigsBlocks.HOSPITAL_COMPUTER.get().asItem());
             event.accept(ThingamajigsBlocks.HEART_MONITOR.get().asItem());
             event.accept(ThingamajigsBlocks.IV.get().asItem());

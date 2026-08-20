@@ -199,6 +199,11 @@ public class ThingamajigsItemModelProvider extends ItemModelProvider {
         fromModelMod(ThingamajigsBlocks.GRAB_BAR.get(),"block/grab_bar/hand_bar_unconnected");
         fromModelMod(ThingamajigsBlocks.URINAL.get(),"block/toilets/urinal");
         fromModelMod(ThingamajigsBlocks.BLUEYBOX.get(),"block/blueybox");
+        // 1.8.9
+        fromModelMod(ThingamajigsBlocks.HOSPITAL_BED.get(),"block/hospital_bed");
+        fromModelMod(ThingamajigsBlocks.MINIGOLF_FLAG.get(),"block/minigolf_flags/red_minigolf_flag");
+        fromModelMod(ThingamajigsBlocks.ELECTRIC_HOSPITAL_BED.get(),"block/electric_hospital_bed");
+        fromModelMod(ThingamajigsBlocks.PHONE_STEP_SELECTORS_GROUP.get(),"block/phone_step_selectors_group");
     }
 
     private ItemModelBuilder fromModelModItem(Item item, String source){

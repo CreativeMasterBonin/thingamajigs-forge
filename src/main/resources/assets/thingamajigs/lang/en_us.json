@@ -1629,8 +1629,12 @@
   "block.thingamajigs.tube_man": "Tube Man",
   "block.thingamajigs.pizza_vending_machine": "Pizza Vending Machine",
   "block.thingamajigs.icecream_vending_machine": "Ice Cream Vending Machine",
+  "block.thingamajigs.phone_step_selectors_group": "Phone Step-Selectors Group",
+  "block.thingamajigs.electric_hospital_bed": "Electric Hospital Bed",
 
-
+  "block.thingamajigs.thermometer.desc": "Changes to hot or cold depending on biome temperature",
+  "block.thingamajigs.curved_monitor.desc": "Right-click with shears or axes to toggle keyboard visibility",
+  "block.thingamajigs.round_clothes_rack.desc": "Shift-right-click to toggle visibility of clothes",
   "generic.thingamajigs.vending_machine.desc": "Insert a payement method to get something in return",
   "block.thingamajigs.urinal.desc": "Use an axe to switch pipe placement, and shears to change design",
   "block.thingamajigs.tube_man.desc": "Use an axe to rotate and dyes to color it; Shift-right click to inflate and deflate",

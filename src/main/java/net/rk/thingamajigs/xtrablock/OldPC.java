@@ -41,14 +41,14 @@ public class OldPC extends ThingamajigsDecorativeBlock {
         // MUST BEE SERVER-SIDE ONLY to work! at least for blocks
         if (!level.isClientSide) {
             if(player.getAbilities().mayBuild){
-                if(itemstack.getItem() == Items.DANGER_POTTERY_SHERD){
+                if(itemstack.getItem() == Items.DANGER_POTTERY_SHERD && itemstack.getDisplayName().getString().contains("Old PC")){
                     player.displayClientMessage(Component.translatable("block.thingamajigs.old_pc.use"), true);
                     changed = true;
                     if(getDateJoke()){
                         level.playSound(null,blockPos,SoundEvents.VEX_AMBIENT,SoundSource.BLOCKS,1.0f,0.5f);
-                        level.setBlock(blockPos, Blocks.AIR.defaultBlockState(), 2);
+                        level.setBlock(blockPos,Blocks.AIR.defaultBlockState(),2);
                         level.updateNeighborsAt(blockPos,this);
-                        PrimedTnt primedtnt = new PrimedTnt(level,blockPos.getX(),blockPos.getY(),blockPos.getZ(),player);
+                        PrimedTnt primedtnt = new PrimedTnt(level,blockPos.getX() + 0.5D,blockPos.getY(),blockPos.getZ() + 0.5D,player);
                         int i = primedtnt.getFuse();
                         primedtnt.setFuse((short)(level.random.nextInt(i / 4) + i / 8));
                         level.addFreshEntity(primedtnt);

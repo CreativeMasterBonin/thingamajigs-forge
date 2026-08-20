@@ -1944,6 +1944,23 @@ public class ThingamajigsRecipeProvider extends RecipeProvider implements ICondi
                 .requires(Items.POWDER_SNOW_BUCKET)
                 .unlockedBy("has_thingy",has(Items.POWDER_SNOW_BUCKET))
                 .save(rc);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ThingamajigsBlocks.ELECTRIC_HOSPITAL_BED.get().asItem(),1)
+                .requires(ThingamajigsBlocks.HOSPITAL_BED.get().asItem())
+                .requires(Items.BLUE_WOOL)
+                .requires(Items.BLUE_WOOL)
+                .requires(Items.IRON_INGOT)
+                .requires(Items.REDSTONE)
+                .requires(ThingamajigsItems.COMPUTER_COMPONENT.get().asItem())
+                .unlockedBy("has_thingy",has(ThingamajigsBlocks.HOSPITAL_BED.get().asItem()))
+                .save(rc);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ThingamajigsBlocks.PHONE_STEP_SELECTORS_GROUP.get().asItem(),1)
+                .requires(ThingamajigsBlocks.PHONE_GROUP_SELECTOR.get().asItem())
+                .requires(Items.REPEATER)
+                .requires(Items.LEVER)
+                .requires(Items.LEVER)
+                .requires(Items.REDSTONE)
+                .unlockedBy("has_thingy",has(ThingamajigsBlocks.PHONE_GROUP_SELECTOR.get().asItem()))
+                .save(rc);
     }
 
     public static RecipeBuilder stonecutterAny(Item requiredItem, Ingredient inputItem, Item result, int amt){

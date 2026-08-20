@@ -4,6 +4,7 @@ package net.rk.thingamajigs.renderers;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
+import net.minecraft.Util;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
@@ -158,7 +159,7 @@ public class DJLaserLightBERenderer implements BlockEntityRenderer<DJLaserLightB
         float f4 = pColors[1];
         float f5 = pColors[2];
 
-        float ftick = (float)beTicks;
+        float ftick = (float)beTicks + pPartialTick;
 
         beAngle = beAngle + 180;
 

@@ -169,7 +169,7 @@ public class ThingamajigsBEWLR extends BlockEntityWithoutLevelRenderer {
         else if(itemStack.is(ThingamajigsItems.ANIMATED_DEER.get())){
             poseStack.pushPose();
             VertexConsumer vc = mbs.getBuffer(RenderType.entityCutout(ANIMATED_DEER_LOC.getModel()));
-            this.animatedDeerModel.setupAnim(animatedDeerBE);
+            this.animatedDeerModel.setupAnim(animatedDeerBE,0.0f);
             this.animatedDeerModel.main.render(poseStack,vc,
                     i,i1,1.0f,1.0f,1.0f,1.0f);
             poseStack.popPose();

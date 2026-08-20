@@ -422,7 +422,7 @@ public class ThingamajigsBlocks {
     public static final RegistryObject<Block> SATELLITE_DISH = registerBlock("satellite_dish",
             () -> new SatelliteBlock(BlockBehaviour.Properties.of().sound(SoundType.METAL)), 0);
     public static final RegistryObject<Block> ANTENNA = registerBlock("antenna",
-            () -> new DoubleTallDecorationBlock(BlockBehaviour.Properties.of().sound(SoundType.METAL)), 0);
+            () -> new Antenna(BlockBehaviour.Properties.of().sound(SoundType.METAL)));
     public static final RegistryObject<Block> BLUEYTOSH_LAPTOP = registerBlock("blueytosh_laptop",
             () -> new BlueydlaptopBlock(BlockBehaviour.Properties.of().sound(SoundType.METAL).noCollission()), 0);
     public static final RegistryObject<Block> BLUEYTOSH_LAPTOP_OLD = registerBlock("blueytosh_laptop_old",
@@ -450,7 +450,7 @@ public class ThingamajigsBlocks {
     public static final RegistryObject<Block> SHOPPING_CART = registerBlock("shopping_cart",
             () -> new Wheelbarrow(BlockBehaviour.Properties.of().sound(SoundType.METAL)), 0);
     public static final RegistryObject<Block> MINIGOLF_FLAG = registerBlock("minigolf_flag",
-            () -> new DoubleTallDecorationBlock(BlockBehaviour.Properties.of().sound(SoundType.METAL).noCollission()), 0);
+            () -> new MinigolfFlag(BlockBehaviour.Properties.of()));
     public static final RegistryObject<Block> OVEN = registerBlock("oven",
             () -> new Oven(BlockBehaviour.Properties.of().sound(SoundType.METAL)), 0);
     public static final RegistryObject<Block> ICECREAM_MACHINE = registerBlock("icecream_machine",
@@ -485,11 +485,44 @@ public class ThingamajigsBlocks {
     public static final RegistryObject<Block> CELL_MICROWAVE_TRANSMITTER = registerBlock("microwave_transmitter",
             () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.of().sound(SoundType.METAL)), 0);
     public static final RegistryObject<Block> CELL_TRANSMITTER = registerBlock("cell_transmitter",
-            () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.of().sound(SoundType.METAL)), 0);
+            () -> new CelltowerComponent(BlockBehaviour.Properties.of().sound(SoundType.METAL)){
+                @Override
+                public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+                    switch(state.getValue(FACING)){
+                        case NORTH -> {return NORTH_SINGULAR_ANTENNA;}
+                        case SOUTH -> {return SOUTH_SINGULAR_ANTENNA;}
+                        case EAST -> {return EAST_SINGULAR_ANTENNA;}
+                        case WEST -> {return WEST_SINGULAR_ANTENNA;}
+                        default -> {return Shapes.block();}
+                    }
+                }
+            });
     public static final RegistryObject<Block> CELL_MULTI_TRANSMITTER = registerBlock("cell_multi_transmitter",
-            () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.of().sound(SoundType.METAL)), 0);
+            () -> new CelltowerComponent(BlockBehaviour.Properties.of().sound(SoundType.METAL)){
+                @Override
+                public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+                    switch(state.getValue(FACING)){
+                        case NORTH -> {return N_MULTI_ANGLE_ALL;}
+                        case SOUTH -> {return S_MULTI_ANGLE_ALL;}
+                        case EAST -> {return E_MULTI_ANGLE_ALL;}
+                        case WEST -> {return W_MULTI_ANGLE_ALL;}
+                        default -> {return Shapes.block();}
+                    }
+                }
+            });
     public static final RegistryObject<Block> CELL_MULTI_ANGLED_TRANSMITTER = registerBlock("cell_multi_angled_transmitter",
-            () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.of().sound(SoundType.METAL)), 0);
+            () -> new CelltowerComponent(BlockBehaviour.Properties.of().sound(SoundType.METAL)){
+                @Override
+                public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+                    switch(state.getValue(FACING)){
+                        case NORTH -> {return NORTH_MULTI_ANGLE;}
+                        case SOUTH -> {return SOUTH_MULTI_ANGLE;}
+                        case EAST -> {return EAST_MULTI_ANGLE;}
+                        case WEST -> {return WEST_MULTI_ANGLE;}
+                        default -> {return Shapes.block();}
+                    }
+                }
+            });
     public static final RegistryObject<Block> OLD_MICROWAVE_TRANSMITTER = registerBlock("old_microwave_transmitter",
             () -> new MicrowaveTransmitter(BlockBehaviour.Properties.of().sound(SoundType.METAL)), 0);
     public static final RegistryObject<Block> STONE_TABLE = registerBlock("stone_table",
@@ -5347,7 +5380,26 @@ public class ThingamajigsBlocks {
             () -> new PizzaVendingMachine(BlockBehaviour.Properties.of()));
     public static final RegistryObject<Block> ICECREAM_VENDING_MACHINE = registerBlock("icecream_vending_machine",
             () -> new IceCreamVendingMachine(BlockBehaviour.Properties.of()));
-
+    // 1.8.9
+    public static final RegistryObject<Block> ELECTRIC_HOSPITAL_BED = registerBlock("electric_hospital_bed",
+            () -> new ElectricHospitalBed(BlockBehaviour.Properties.of()));
+    public static final RegistryObject<Block> PHONE_STEP_SELECTORS_GROUP = registerBlock("phone_step_selectors_group",
+            () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.of()){
+                public static final VoxelShape NORTH = Block.box(0, 0, 0, 16, 16, 10);
+                public static final VoxelShape EAST = Block.box(6, 0, 0, 16, 16, 16);
+                public static final VoxelShape SOUTH = Block.box(0, 0, 6, 16, 16, 16);
+                public static final VoxelShape WEST = Block.box(0, 0, 0, 10, 16, 16);
+                @Override
+                public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
+                    switch(state.getValue(FACING)){
+                        case NORTH: {return NORTH;}
+                        case SOUTH: {return SOUTH;}
+                        case EAST: {return EAST;}
+                        case WEST: {return WEST;}
+                        default: {return Shapes.block();}
+                    }
+                }
+            });
 
 
     //requality

@@ -26,3 +26,4 @@ workflows/*
 
 # Files from Forge MDK
 forge*changelog.txt
+.jar
