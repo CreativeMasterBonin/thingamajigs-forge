@@ -336,9 +336,10 @@ public class ThingamajigsClient {
             // 1.8.5
             BlockEntityRenderers.register(ThingamajigsBlockEntities.FANCY_STORAGE_DECORATION_BE.get(),FancyStorageDecorationBERenderer::new);
             BlockEntityRenderers.register(ThingamajigsBlockEntities.DECORATIONAL_BUCKET_BE.get(),DecorationalBucketBERenderer::new);
-            //BlockEntityRenderers.register(ThingamajigsBlockEntities.CAR_WASH_BRUSH_BE.get(),CarWashBrushBERenderer::new);
             // 1.8.6
             BlockEntityRenderers.register(ThingamajigsBlockEntities.TUBE_MAN_DECO_BE.get(),TubeManDecoBERenderer::new);
+            // 1.9.0
+            BlockEntityRenderers.register(ThingamajigsBlockEntities.CAR_WASH_BRUSH_BE.get(),CarWashBrushBERenderer::new);
         }
         catch(Exception blockEntityRendererError){
             logErrorInternal(blockEntityRendererError);
@@ -355,6 +356,9 @@ public class ThingamajigsClient {
         event.registerLayerDefinition(AnimatedIceRinkModel.ICE_RINK_ALL,AnimatedIceRinkModel::createBodyLayer);
         event.registerLayerDefinition(AnimatedDeerModel.LAYER_LOCATION,AnimatedDeerModel::createBodyLayer);
         event.registerLayerDefinition(FootballGoalModel.LAYER_LOCATION,FootballGoalModel::createBodyLayer);
+        event.registerLayerDefinition(CarWashTallBrushModel.BLUE_BRUSH,CarWashTallBrushModel::createBodyLayer);
+        event.registerLayerDefinition(CarWashTallBrushModel.RED_BRUSH,CarWashTallBrushModel::createBodyLayer);
+        event.registerLayerDefinition(CarWashTallBrushModel.YELLOW_BRUSH,CarWashTallBrushModel::createBodyLayer);
         // model layers for entity models
         try{
             // entity without layer (should not be textured)

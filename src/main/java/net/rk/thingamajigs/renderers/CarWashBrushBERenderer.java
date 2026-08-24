@@ -3,204 +3,128 @@ package net.rk.thingamajigs.renderers;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import net.minecraft.Util;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.Sheets;
-import net.minecraft.client.renderer.block.BlockRenderDispatcher;
-import net.minecraft.client.renderer.block.ModelBlockRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.client.resources.model.ModelManager;
-import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.client.model.data.ModelData;
-import net.rk.thingamajigs.Thingamajigs;
-import net.rk.thingamajigs.ThingamajigsClient;
-import net.rk.thingamajigs.block.ShortCarWashBrush;
 import net.rk.thingamajigs.block.ThingamajigsBlocks;
 import net.rk.thingamajigs.entity.customblock.CarWashBrushBE;
+import net.rk.thingamajigs.entity.models.CarWashTallBrushModel;
 
-import java.util.Objects;
+import static net.rk.thingamajigs.entity.models.CarWashTallBrushModel.*;
 
 public class CarWashBrushBERenderer implements BlockEntityRenderer<CarWashBrushBE> {
-    private final Minecraft mc;
-    private BlockRenderDispatcher dispatcher;
-    private ModelBlockRenderer blockRenderer;
-    private ModelManager manager;
-
-
-    private ModelResourceLocation brushBase =
-            new ModelResourceLocation(new ResourceLocation(Thingamajigs.MOD_ID,
-                    ThingamajigsClient.carWashCustomModelBaseLocation + "spinning_brush_base"),null);
-    private ModelResourceLocation shortBrushBase =
-            new ModelResourceLocation(new ResourceLocation(Thingamajigs.MOD_ID,
-                    ThingamajigsClient.carWashCustomModelBaseLocation + "spinning_short_brush_base"),null);
-
-    private ModelResourceLocation mixedBrushBlade =
-            new ModelResourceLocation(new ResourceLocation(Thingamajigs.MOD_ID,
-                    ThingamajigsClient.carWashCustomModelBaseLocation + "spinning_mixed_brush_blade"),null);
-
-    private ModelResourceLocation blueBrushLongBlade =
-            new ModelResourceLocation(new ResourceLocation(Thingamajigs.MOD_ID,
-                    ThingamajigsClient.carWashCustomModelBaseLocation + "spinning_brush_long_blade"),null);
-    private ModelResourceLocation blueBrushMedBlade =
-            new ModelResourceLocation(new ResourceLocation(Thingamajigs.MOD_ID,
-                    ThingamajigsClient.carWashCustomModelBaseLocation + "spinning_brush_medium_blade"),null);
-    private ModelResourceLocation blueBrushShortBlade =
-            new ModelResourceLocation(new ResourceLocation(Thingamajigs.MOD_ID,
-                    ThingamajigsClient.carWashCustomModelBaseLocation + "spinning_brush_short_blade"),null);
-
-    private ModelResourceLocation redBrushLongBlade =
-            new ModelResourceLocation(new ResourceLocation(Thingamajigs.MOD_ID,
-                    ThingamajigsClient.carWashCustomModelBaseLocation + "spinning_red_brush_long_blade"),null);
-    private ModelResourceLocation redBrushMedBlade =
-            new ModelResourceLocation(new ResourceLocation(Thingamajigs.MOD_ID,
-                    ThingamajigsClient.carWashCustomModelBaseLocation + "spinning_red_brush_medium_blade"),null);
-    private ModelResourceLocation redBrushShortBlade =
-            new ModelResourceLocation(new ResourceLocation(Thingamajigs.MOD_ID,
-                    ThingamajigsClient.carWashCustomModelBaseLocation + "spinning_red_brush_short_blade"),null);
-
-    private ModelResourceLocation yellowBrushLongBlade =
-            new ModelResourceLocation(new ResourceLocation(Thingamajigs.MOD_ID,
-                    ThingamajigsClient.carWashCustomModelBaseLocation + "spinning_yellow_brush_long_blade"),null);
-    private ModelResourceLocation yellowBrushMedBlade =
-            new ModelResourceLocation(new ResourceLocation(Thingamajigs.MOD_ID,
-                    ThingamajigsClient.carWashCustomModelBaseLocation + "spinning_yellow_brush_medium_blade"),null);
-    private ModelResourceLocation yellowBrushShortBlade =
-            new ModelResourceLocation(new ResourceLocation(Thingamajigs.MOD_ID,
-                    ThingamajigsClient.carWashCustomModelBaseLocation + "spinning_yellow_brush_short_blade"),null);
+    public CarWashTallBrushModel tallBlueBrushModel;
+    public CarWashTallBrushModel tallRedBrushModel;
+    public CarWashTallBrushModel tallYellowBrushModel;
+    public static final ResourceLocation BLUE_BRUSH_ALL =
+            new ResourceLocation("thingamajigs:textures/entity/blue_car_wash_brush.png");
+    public static final ResourceLocation RED_BRUSH_ALL =
+            new ResourceLocation("thingamajigs:textures/entity/red_car_wash_brush.png");
+    public static final ResourceLocation YELLOW_BRUSH_ALL =
+            new ResourceLocation("thingamajigs:textures/entity/yellow_car_wash_brush.png");
 
     public CarWashBrushBERenderer(BlockEntityRendererProvider.Context ctx){
-        mc = Objects.requireNonNull(Minecraft.getInstance());
-        dispatcher = Objects.requireNonNull(mc.getBlockRenderer());
-        blockRenderer = mc.getBlockRenderer().getModelRenderer();
-        manager = Objects.requireNonNull(dispatcher.getBlockModelShaper().getModelManager());
+        tallBlueBrushModel = new CarWashTallBrushModel(ctx.bakeLayer(BLUE_BRUSH));
+        tallRedBrushModel = new CarWashTallBrushModel(ctx.bakeLayer(RED_BRUSH));
+        tallYellowBrushModel = new CarWashTallBrushModel(ctx.bakeLayer(YELLOW_BRUSH));
     }
 
     @Override
-    public void render(CarWashBrushBE carWashBrushBE, float v, PoseStack poseStack, MultiBufferSource buffer, int packedLight, int packedOverlay) {
+    public void render(CarWashBrushBE carWashBrushBE, float partialTick, PoseStack poseStack, MultiBufferSource buffer, int packedLight, int packedOverlay) {
         // render all sections
-        if(carWashBrushBE.getBlockState().getBlock() instanceof ShortCarWashBrush){
-            poseStack.pushPose();
-            poseStack.translate(0,0,0);
-            this.blockRenderer.renderModel(poseStack.last(), buffer.getBuffer(Sheets.solidBlockSheet()), null,
-                    manager.getModel(shortBrushBase), 1.0f, 1.0f, 1.0f,
-                    packedLight,
-                    OverlayTexture.NO_OVERLAY, ModelData.EMPTY, RenderType.solid());
-            poseStack.popPose();
-
-            for(int tinySection = 0; tinySection < 14; tinySection++){
-                renderOneShortCarBrushBladeForShortBrushVariant(carWashBrushBE,v,tinySection * 33.0f,poseStack,buffer,packedLight);
-            }
+        poseStack.pushPose();
+        float milliTick = partialTick * (Util.getMillis() / 36000.0f);
+        poseStack.rotateAround(Axis.ZP.rotationDegrees(180.0f),0.0f,0.0f,0.0f);
+        poseStack.translate(-1.0f,-4.0f,0.0f);
+        poseStack.scale(0.75f,0.95f,0.75f);
+        poseStack.translate(0.15f,1.0f,0.15f);
+        // top brushes
+        for(int brush =0;brush<14;brush++) {
+            renderOneCarBrushBlade(carWashBrushBE,milliTick,brush * 33.0f,poseStack,buffer,packedLight);
+            renderOneMedCarBrushBlade(carWashBrushBE,milliTick,brush * 33.0f,poseStack,buffer,packedLight);
+            renderOneShortCarBrushBlade(carWashBrushBE,milliTick,brush * 33.0f,poseStack,buffer,packedLight);
         }
-        else{
-            poseStack.pushPose();
-            poseStack.translate(0,0,0);
-            this.blockRenderer.renderModel(poseStack.last(), buffer.getBuffer(Sheets.solidBlockSheet()), null,
-                    manager.getModel(brushBase), 1.0f, 1.0f, 1.0f,
-                    packedLight,
-                    OverlayTexture.NO_OVERLAY, ModelData.EMPTY, RenderType.solid());
-            poseStack.popPose();
-            for(int bigSection = 0; bigSection < 14; bigSection++){
-                renderOneCarBrushBlade(carWashBrushBE,v,bigSection * 33.0f,poseStack,buffer,packedLight);
-            }
-            for(int medSection = 0; medSection < 14; medSection++){
-                renderOneMedCarBrushBlade(carWashBrushBE,v,medSection * -33.0f,poseStack,buffer,packedLight);
-            }
-            for(int tinySection = 0; tinySection < 14; tinySection++){
-                renderOneShortCarBrushBlade(carWashBrushBE,v,tinySection * 33.0f,poseStack,buffer,packedLight);
-            }
+        // bottom-brushes
+        poseStack.translate(0,-1,0);
+        for(int brush2=0;brush2<14;brush2++){
+            renderOneCarBrushBlade(carWashBrushBE,milliTick,brush2 * 33.0f,poseStack,buffer,packedLight);
+            renderOneMedCarBrushBlade(carWashBrushBE,milliTick,brush2 * 33.0f,poseStack,buffer,packedLight);
+            renderOneShortCarBrushBlade(carWashBrushBE,milliTick,brush2 * 33.0f,poseStack,buffer,packedLight);
         }
+        poseStack.popPose();
     }
+
 
     public void renderOneCarBrushBlade(CarWashBrushBE carWashBrushBE, float partialTick, float angle, PoseStack poseStack,MultiBufferSource buffer,int packedLight){
         poseStack.pushPose();
+        poseStack.translate(0f, CarWashBrushBE.yOffset + 0.25f, 0f);
         float t = angle + carWashBrushBE.yAngle + 1.0f + Util.getMillis() / 7.0f;
 
-        poseStack.rotateAround(Axis.YP.rotationDegrees(t),0.5f,0.5f,0.5f);
-        poseStack.rotateAround(Axis.XP.rotationDegrees(carWashBrushBE.extensionAngle),0.5f,2.0f,0.5f);
+        poseStack.rotateAround(Axis.YP.rotationDegrees(t),0.5f,carWashBrushBE.ymod,0.5f);
+        poseStack.rotateAround(Axis.XP.rotationDegrees(carWashBrushBE.extensionAngle),0.5f,carWashBrushBE.ymod,0.5f);
 
         if (carWashBrushBE.getBlockState().getBlock().equals(ThingamajigsBlocks.CAR_WASH_BLUE_BRUSH.get())) {
-            this.blockRenderer.renderModel(poseStack.last(), buffer.getBuffer(Sheets.solidBlockSheet()),null,
-                    manager.getModel(blueBrushLongBlade), 1.0f, 1.0f, 1.0f,
-                    packedLight,
-                    OverlayTexture.NO_OVERLAY, ModelData.EMPTY, RenderType.solid());
+            tallBlueBrushModel.setup(carWashBrushBE);
+            tallBlueBrushModel.brush_piece.render(poseStack,buffer.getBuffer(RenderType.entitySolid(BLUE_BRUSH_ALL)),packedLight,OverlayTexture.NO_OVERLAY);
         }
         else if(carWashBrushBE.getBlockState().getBlock().equals(ThingamajigsBlocks.CAR_WASH_RED_BRUSH.get())){
-            this.blockRenderer.renderModel(poseStack.last(), buffer.getBuffer(Sheets.solidBlockSheet()),null,
-                    manager.getModel(redBrushLongBlade), 1.0f, 1.0f, 1.0f,
-                    packedLight,
-                    OverlayTexture.NO_OVERLAY, ModelData.EMPTY, RenderType.solid());
+            tallRedBrushModel.setup(carWashBrushBE);
+            tallRedBrushModel.brush_piece.render(poseStack,buffer.getBuffer(RenderType.entitySolid(RED_BRUSH_ALL)),packedLight,OverlayTexture.NO_OVERLAY);
         }
         else{
-            this.blockRenderer.renderModel(poseStack.last(), buffer.getBuffer(Sheets.solidBlockSheet()),null,
-                    manager.getModel(yellowBrushLongBlade), 1.0f, 1.0f, 1.0f,
-                    packedLight,
-                    OverlayTexture.NO_OVERLAY, ModelData.EMPTY, RenderType.solid());
+            tallYellowBrushModel.setup(carWashBrushBE);
+            tallYellowBrushModel.brush_piece.render(poseStack,buffer.getBuffer(RenderType.entitySolid(YELLOW_BRUSH_ALL)),packedLight,OverlayTexture.NO_OVERLAY);
         }
         poseStack.popPose();
     }
 
     public void renderOneMedCarBrushBlade(CarWashBrushBE carWashBrushBE, float partialTick, float angle, PoseStack poseStack,MultiBufferSource buffer,int packedLight){
         poseStack.pushPose();
-        poseStack.translate(0,-0.55,0);
+        poseStack.translate(0,CarWashBrushBE.yOffset + 0.5f,0);
         float t = angle + carWashBrushBE.yAngle + 1.0f + Util.getMillis() / 6.0f;
-        poseStack.rotateAround(Axis.YP.rotationDegrees(t),0.5f,0.5f,0.5f);
-        poseStack.rotateAround(Axis.XP.rotationDegrees(carWashBrushBE.extensionAngle),0.5f,2.0f,0.5f);
+        poseStack.rotateAround(Axis.YP.rotationDegrees(t),0.5f,carWashBrushBE.ymod,0.5f);
+        poseStack.rotateAround(Axis.XP.rotationDegrees(carWashBrushBE.extensionAngle),0.5f,carWashBrushBE.ymod,0.5f);
 
         if (carWashBrushBE.getBlockState().getBlock().equals(ThingamajigsBlocks.CAR_WASH_BLUE_BRUSH.get())) {
-            this.blockRenderer.renderModel(poseStack.last(), buffer.getBuffer(Sheets.solidBlockSheet()),null,
-                    manager.getModel(blueBrushMedBlade), 1.0f, 1.0f, 1.0f,
-                    packedLight,
-                    OverlayTexture.NO_OVERLAY, ModelData.EMPTY, RenderType.solid());
+            tallBlueBrushModel.setup(carWashBrushBE);
+            tallBlueBrushModel.med_brush_piece.render(poseStack,buffer.getBuffer(RenderType.entitySolid(BLUE_BRUSH_ALL)),packedLight,OverlayTexture.NO_OVERLAY);
         }
         else if(carWashBrushBE.getBlockState().getBlock().equals(ThingamajigsBlocks.CAR_WASH_RED_BRUSH.get())){
-            this.blockRenderer.renderModel(poseStack.last(), buffer.getBuffer(Sheets.solidBlockSheet()),null,
-                    manager.getModel(redBrushMedBlade), 1.0f, 1.0f, 1.0f,
-                    packedLight,
-                    OverlayTexture.NO_OVERLAY, ModelData.EMPTY, RenderType.solid());
+            tallRedBrushModel.setup(carWashBrushBE);
+            tallRedBrushModel.med_brush_piece.render(poseStack,buffer.getBuffer(RenderType.entitySolid(RED_BRUSH_ALL)),packedLight,OverlayTexture.NO_OVERLAY);
         }
         else{
-            this.blockRenderer.renderModel(poseStack.last(), buffer.getBuffer(Sheets.solidBlockSheet()),null,
-                    manager.getModel(yellowBrushMedBlade), 1.0f, 1.0f, 1.0f,
-                    packedLight,
-                    OverlayTexture.NO_OVERLAY, ModelData.EMPTY, RenderType.solid());
+            tallYellowBrushModel.setup(carWashBrushBE);
+            tallYellowBrushModel.med_brush_piece.render(poseStack,buffer.getBuffer(RenderType.entitySolid(YELLOW_BRUSH_ALL)),packedLight,OverlayTexture.NO_OVERLAY);
         }
-
         poseStack.popPose();
     }
 
     public void renderOneShortCarBrushBlade(CarWashBrushBE carWashBrushBE, float partialTick, float angle, PoseStack poseStack,MultiBufferSource buffer,int packedLight){
         poseStack.pushPose();
-        poseStack.translate(0,-1.15,0);
+        poseStack.translate(0,CarWashBrushBE.yOffset + 0.75f,0);
 
         float t = angle + carWashBrushBE.yAngle + 1.0f + Util.getMillis() / 5.0f;
-        poseStack.rotateAround(Axis.YP.rotationDegrees(t),0.5f,0.5f,0.5f);
-        poseStack.rotateAround(Axis.XP.rotationDegrees(carWashBrushBE.extensionAngle),0.5f,2.0f,0.5f);
+        poseStack.rotateAround(Axis.YP.rotationDegrees(t),0.5f,carWashBrushBE.ymod,0.5f);
+        poseStack.rotateAround(Axis.XP.rotationDegrees(carWashBrushBE.extensionAngle),0.5f,carWashBrushBE.ymod,0.5f);
 
         if (carWashBrushBE.getBlockState().getBlock().equals(ThingamajigsBlocks.CAR_WASH_BLUE_BRUSH.get())) {
-            this.blockRenderer.renderModel(poseStack.last(), buffer.getBuffer(Sheets.solidBlockSheet()),null,
-                    manager.getModel(blueBrushShortBlade), 1.0f, 1.0f, 1.0f,
-                    packedLight,
-                    OverlayTexture.NO_OVERLAY, ModelData.EMPTY, RenderType.solid());
+            tallBlueBrushModel.setup(carWashBrushBE);
+            tallBlueBrushModel.small_brush_piece.render(poseStack,buffer.getBuffer(RenderType.entitySolid(BLUE_BRUSH_ALL)),packedLight,OverlayTexture.NO_OVERLAY);
         }
         else if(carWashBrushBE.getBlockState().getBlock().equals(ThingamajigsBlocks.CAR_WASH_RED_BRUSH.get())){
-            this.blockRenderer.renderModel(poseStack.last(), buffer.getBuffer(Sheets.solidBlockSheet()),null,
-                    manager.getModel(redBrushShortBlade), 1.0f, 1.0f, 1.0f,
-                    packedLight,
-                    OverlayTexture.NO_OVERLAY, ModelData.EMPTY, RenderType.solid());
+            tallRedBrushModel.setup(carWashBrushBE);
+            tallRedBrushModel.small_brush_piece.render(poseStack,buffer.getBuffer(RenderType.entitySolid(RED_BRUSH_ALL)),packedLight,OverlayTexture.NO_OVERLAY);
         }
         else{
-            this.blockRenderer.renderModel(poseStack.last(), buffer.getBuffer(Sheets.solidBlockSheet()),null,
-                    manager.getModel(yellowBrushShortBlade), 1.0f, 1.0f, 1.0f,
-                    packedLight,
-                    OverlayTexture.NO_OVERLAY, ModelData.EMPTY, RenderType.solid());
+            tallYellowBrushModel.setup(carWashBrushBE);
+            tallYellowBrushModel.small_brush_piece.render(poseStack,buffer.getBuffer(RenderType.entitySolid(YELLOW_BRUSH_ALL)),packedLight,OverlayTexture.NO_OVERLAY);
         }
-
         poseStack.popPose();
     }
 
@@ -213,10 +137,7 @@ public class CarWashBrushBERenderer implements BlockEntityRenderer<CarWashBrushB
         poseStack.rotateAround(Axis.YP.rotationDegrees(t),0.5f,0.5f,0.5f);
         poseStack.rotateAround(Axis.XP.rotationDegrees(carWashBrushBE.extensionAngle),0.5f,2.0f,0.5f);
 
-        this.blockRenderer.renderModel(poseStack.last(), buffer.getBuffer(Sheets.solidBlockSheet()),null,
-                manager.getModel(mixedBrushBlade), 1.0f, 1.0f, 1.0f,
-                packedLight,
-                OverlayTexture.NO_OVERLAY, ModelData.EMPTY, RenderType.solid());
+
 
         poseStack.popPose();
     }
