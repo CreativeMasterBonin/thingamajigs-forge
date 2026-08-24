@@ -11,6 +11,7 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
+import net.rk.thingamajigs.block.CarWashBrush;
 import net.rk.thingamajigs.block.ThingamajigsBlocks;
 import net.rk.thingamajigs.entity.customblock.CarWashBrushBE;
 import net.rk.thingamajigs.entity.models.CarWashTallBrushModel;
@@ -39,22 +40,24 @@ public class CarWashBrushBERenderer implements BlockEntityRenderer<CarWashBrushB
         // render all sections
         poseStack.pushPose();
         float milliTick = partialTick * (Util.getMillis() / 36000.0f);
+        float smoothedYExtensionOffset = carWashBrushBE.yExtensionOffset * (Util.getMillis() / 326000.0f);
+
         poseStack.rotateAround(Axis.ZP.rotationDegrees(180.0f),0.0f,0.0f,0.0f);
         poseStack.translate(-1.0f,-4.0f,0.0f);
         poseStack.scale(0.75f,0.95f,0.75f);
-        poseStack.translate(0.15f,1.0f,0.15f);
-        // top brushes
-        for(int brush =0;brush<14;brush++) {
-            renderOneCarBrushBlade(carWashBrushBE,milliTick,brush * 33.0f,poseStack,buffer,packedLight);
-            renderOneMedCarBrushBlade(carWashBrushBE,milliTick,brush * 33.0f,poseStack,buffer,packedLight);
-            renderOneShortCarBrushBlade(carWashBrushBE,milliTick,brush * 33.0f,poseStack,buffer,packedLight);
+        poseStack.translate(0.16f,0.35f - smoothedYExtensionOffset,0.15f);
+        // bottom brushes
+        for(int brush =0;brush<33;brush++) {
+            renderOneCarBrushBlade(carWashBrushBE,milliTick,brush * 11.0f,poseStack,buffer,packedLight);
+            renderOneMedCarBrushBlade(carWashBrushBE,milliTick,brush * 11.0f,poseStack,buffer,packedLight);
+            renderOneShortCarBrushBlade(carWashBrushBE,milliTick,brush * 11.0f,poseStack,buffer,packedLight);
         }
-        // bottom-brushes
-        poseStack.translate(0,-1,0);
-        for(int brush2=0;brush2<14;brush2++){
-            renderOneCarBrushBlade(carWashBrushBE,milliTick,brush2 * 33.0f,poseStack,buffer,packedLight);
-            renderOneMedCarBrushBlade(carWashBrushBE,milliTick,brush2 * 33.0f,poseStack,buffer,packedLight);
-            renderOneShortCarBrushBlade(carWashBrushBE,milliTick,brush2 * 33.0f,poseStack,buffer,packedLight);
+        // top brushes
+        poseStack.translate(0,-0.53f - smoothedYExtensionOffset,0);
+        for(int brush2=0;brush2<33;brush2++){
+            renderOneCarBrushBlade(carWashBrushBE,milliTick,brush2 * 11.0f,poseStack,buffer,packedLight);
+            renderOneMedCarBrushBlade(carWashBrushBE,milliTick,brush2 * 11.0f,poseStack,buffer,packedLight);
+            renderOneShortCarBrushBlade(carWashBrushBE,milliTick,brush2 * 11.0f,poseStack,buffer,packedLight);
         }
         poseStack.popPose();
     }
