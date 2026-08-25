@@ -152,6 +152,11 @@ ThingamajigsBlocks.TRIPLE_SHELF.get(),ThingamajigsBlocks.TOY_BOX.get()
                     ThingamajigsBlocks.TUBE_MAN_DECO.get())
                     .build(null));
 
+    public static final Supplier<BlockEntityType<TireScrubberBE>> CAR_WASH_TIRE_SCRUBBER_BE = BLOCK_ENTITIES.register(
+            "car_wash_tire_scrubber_be",() -> BlockEntityType.Builder.of(TireScrubberBE::new,
+                            ThingamajigsBlocks.CAR_WASH_TIRE_SCRUBBER.get())
+                    .build(null));
+
     public static void register(IEventBus eventBus){
         BLOCK_ENTITIES.register(eventBus);
     }

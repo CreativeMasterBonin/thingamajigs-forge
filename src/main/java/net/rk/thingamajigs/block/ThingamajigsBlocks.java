@@ -1382,7 +1382,7 @@ public class ThingamajigsBlocks {
     public static final RegistryObject<Block> CAR_WASH_YELLOW_BRUSH = registerBlock("car_wash_yellow_brush",
             () -> new CarWashBrush(BlockBehaviour.Properties.of().noCollission()), 0);
     public static final RegistryObject<Block> CAR_WASH_TIRE_SCRUBBER = registerBlock("car_wash_tire_scrubber",
-            () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.of().noCollission()), 0);
+            () -> new TireScrubber(BlockBehaviour.Properties.of()));
 
 
     // Utility Decorative Blocks

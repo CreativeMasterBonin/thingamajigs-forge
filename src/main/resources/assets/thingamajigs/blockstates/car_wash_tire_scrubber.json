@@ -1,18 +1,33 @@
 {
   "variants": {
-    "facing=east": {
+    "facing=east,lit=false": {
       "model": "thingamajigs:block/tire_scrubber",
       "y": 90
     },
-    "facing=north": {
+    "facing=north,lit=false": {
       "model": "thingamajigs:block/tire_scrubber"
     },
-    "facing=south": {
+    "facing=south,lit=false": {
       "model": "thingamajigs:block/tire_scrubber",
       "y": 180
     },
-    "facing=west": {
+    "facing=west,lit=false": {
       "model": "thingamajigs:block/tire_scrubber",
+      "y": 270
+    },
+    "facing=east,lit=true": {
+      "model": "thingamajigs:bases/car_wash_components/tire_scrubber_base",
+      "y": 90
+    },
+    "facing=north,lit=true": {
+      "model": "thingamajigs:bases/car_wash_components/tire_scrubber_base"
+    },
+    "facing=south,lit=true": {
+      "model": "thingamajigs:bases/car_wash_components/tire_scrubber_base",
+      "y": 180
+    },
+    "facing=west,lit=true": {
+      "model": "thingamajigs:bases/car_wash_components/tire_scrubber_base",
       "y": 270
     }
   }

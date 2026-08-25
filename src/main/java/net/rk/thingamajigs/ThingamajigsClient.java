@@ -340,6 +340,7 @@ public class ThingamajigsClient {
             BlockEntityRenderers.register(ThingamajigsBlockEntities.TUBE_MAN_DECO_BE.get(),TubeManDecoBERenderer::new);
             // 1.9.0
             BlockEntityRenderers.register(ThingamajigsBlockEntities.CAR_WASH_BRUSH_BE.get(),CarWashBrushBERenderer::new);
+            BlockEntityRenderers.register(ThingamajigsBlockEntities.CAR_WASH_TIRE_SCRUBBER_BE.get(),TireScrubberBERenderer::new);
         }
         catch(Exception blockEntityRendererError){
             logErrorInternal(blockEntityRendererError);
@@ -360,6 +361,7 @@ public class ThingamajigsClient {
         event.registerLayerDefinition(CarWashTallBrushModel.RED_BRUSH,CarWashTallBrushModel::createBodyLayer);
         event.registerLayerDefinition(CarWashTallBrushModel.YELLOW_BRUSH,CarWashTallBrushModel::createBodyLayer);
         event.registerLayerDefinition(CarWashMixedBrushModel.MIXED_BRUSH,CarWashMixedBrushModel::createBodyLayer);
+        event.registerLayerDefinition(TireScrubbers.TIRE_SCRUBBER,TireScrubbers::createBodyLayer);
         // model layers for entity models
         try{
             // entity without layer (should not be textured)
