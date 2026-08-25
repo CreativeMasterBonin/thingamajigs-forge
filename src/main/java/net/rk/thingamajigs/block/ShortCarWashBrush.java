@@ -11,7 +11,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 import java.util.stream.Stream;
 
-public class ShortCarWashBrush extends Block {
+public class ShortCarWashBrush extends CarWashBrush {
     public static final VoxelShape SHORT_ALL = Stream.of(
             Block.box(5, 0, 5, 11, 1, 11),
             Block.box(7, 1, 7, 9, 18, 9),

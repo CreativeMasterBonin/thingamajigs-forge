@@ -359,6 +359,7 @@ public class ThingamajigsClient {
         event.registerLayerDefinition(CarWashTallBrushModel.BLUE_BRUSH,CarWashTallBrushModel::createBodyLayer);
         event.registerLayerDefinition(CarWashTallBrushModel.RED_BRUSH,CarWashTallBrushModel::createBodyLayer);
         event.registerLayerDefinition(CarWashTallBrushModel.YELLOW_BRUSH,CarWashTallBrushModel::createBodyLayer);
+        event.registerLayerDefinition(CarWashMixedBrushModel.MIXED_BRUSH,CarWashMixedBrushModel::createBodyLayer);
         // model layers for entity models
         try{
             // entity without layer (should not be textured)
@@ -372,31 +373,5 @@ public class ThingamajigsClient {
         catch (Exception entityRendererError){
             logErrorInternal(entityRendererError);
         }
-    }
-
-    public static final String carWashCustomModelBaseLocation = "bases/car_wash_components/";
-    public static final String blockLocation = "block/";
-    /*public static ModelResourceLocation ceilingFanBlade = new ModelResourceLocation(new ResourceLocation(Thingamajigs.MOD_ID,
-            blockLocation + "ceiling_fan_blade"),null);
-    public static ModelResourceLocation ceilingFanConnector = new ModelResourceLocation(new ResourceLocation(Thingamajigs.MOD_ID,
-            blockLocation + "ceiling_fan_connector"),null);*/
-
-    public static void addModels(ModelEvent.RegisterAdditional event){
-        event.register(new ResourceLocation(Thingamajigs.MOD_ID,carWashCustomModelBaseLocation + "mitter_curtain_base"));
-        event.register(new ResourceLocation(Thingamajigs.MOD_ID,carWashCustomModelBaseLocation + "mitter_curtain"));
-        event.register(new ResourceLocation(Thingamajigs.MOD_ID,carWashCustomModelBaseLocation + "spinning_brush_base"));
-        event.register(new ResourceLocation(Thingamajigs.MOD_ID,carWashCustomModelBaseLocation + "spinning_brush_long_blade"));
-        event.register(new ResourceLocation(Thingamajigs.MOD_ID,carWashCustomModelBaseLocation + "spinning_brush_medium_blade"));
-        event.register(new ResourceLocation(Thingamajigs.MOD_ID,carWashCustomModelBaseLocation + "spinning_brush_short_blade"));
-        event.register(new ResourceLocation(Thingamajigs.MOD_ID,carWashCustomModelBaseLocation + "spinning_mixed_brush_blade"));
-        event.register(new ResourceLocation(Thingamajigs.MOD_ID,carWashCustomModelBaseLocation + "spinning_red_brush_long_blade"));
-        event.register(new ResourceLocation(Thingamajigs.MOD_ID,carWashCustomModelBaseLocation + "spinning_red_brush_medium_blade"));
-        event.register(new ResourceLocation(Thingamajigs.MOD_ID,carWashCustomModelBaseLocation + "spinning_red_brush_short_blade"));
-        event.register(new ResourceLocation(Thingamajigs.MOD_ID,carWashCustomModelBaseLocation + "spinning_short_brush_base"));
-        event.register(new ResourceLocation(Thingamajigs.MOD_ID,carWashCustomModelBaseLocation + "spinning_yellow_brush_long_blade"));
-        event.register(new ResourceLocation(Thingamajigs.MOD_ID,carWashCustomModelBaseLocation + "spinning_yellow_brush_medium_blade"));
-        event.register(new ResourceLocation(Thingamajigs.MOD_ID,carWashCustomModelBaseLocation + "spinning_yellow_brush_short_blade"));
-        event.register(new ResourceLocation(Thingamajigs.MOD_ID,carWashCustomModelBaseLocation + "tire_scrubber_base"));
-        event.register(new ResourceLocation(Thingamajigs.MOD_ID,carWashCustomModelBaseLocation + "tire_scrubber_blade"));
     }
 }
