@@ -10,7 +10,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.rk.thingamajigs.block.custom.blocks.ToggledStateBlock;
 
 public class SaltTank extends ToggledStateBlock {
-    public static final VoxelShape BLOCK_SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 32.0D, 16.0D);
+    public static final VoxelShape BLOCK_SHAPE = Block.box(0, 0, 0, 16, 26, 16);
 
     public SaltTank(Properties p) {
         super(p);
