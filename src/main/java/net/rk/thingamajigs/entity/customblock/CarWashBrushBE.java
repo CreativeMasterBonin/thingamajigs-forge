@@ -23,6 +23,9 @@ public class CarWashBrushBE extends BlockEntity {
     public float initialxoffset = 7.0f;
     public float initialzoffset = -2.0f;
 
+    public static float normalYOffsetTarget = -0.17f;
+    public static float normalConstantTargetAmt = 1.0f;
+
     public CarWashBrushBE(BlockPos pos, BlockState state) {
         super(ThingamajigsBlockEntities.CAR_WASH_BRUSH_BE.get(), pos, state);
     }
@@ -100,15 +103,20 @@ public class CarWashBrushBE extends BlockEntity {
                     }
                 }
             }
-            else{
+            else{ // normal car wash brushes
                 if(state.getValue(CarWashBrush.LIT)){
-                    if(carWashBrush.yExtensionOffset >= -0.25f){
-                        carWashBrush.yExtensionOffset -= 0.01f;
+                    if(carWashBrush.yExtensionOffset > normalYOffsetTarget){
+                        carWashBrush.yExtensionOffset -= 0.15f;
+                        carWashBrush.updateBlock();
+                    }
+                    // enforce offset
+                    if(carWashBrush.yExtensionOffset < normalYOffsetTarget){
+                        carWashBrush.yExtensionOffset = normalYOffsetTarget;
                         carWashBrush.updateBlock();
                     }
 
                     if(carWashBrush.extensionAngle < 80.0f){
-                        carWashBrush.extensionAngle += 3.5f / (float)Util.getMillis() + 2.5f;
+                        carWashBrush.extensionAngle += normalConstantTargetAmt;
                         carWashBrush.updateBlock();
                     }
                     else{
@@ -181,14 +189,20 @@ public class CarWashBrushBE extends BlockEntity {
                     }
                 }
             }
-            else{
+            else{// normal car wash brushes
                 if(state.getValue(CarWashBrush.LIT)){
-                    if(carWashBrush.yExtensionOffset >= -0.25f){
-                        carWashBrush.yExtensionOffset -= 0.01f;
+                    if(carWashBrush.yExtensionOffset > normalYOffsetTarget){
+                        carWashBrush.yExtensionOffset -= 0.15f;
+                    }
+
+                    // enforce offset
+                    if(carWashBrush.yExtensionOffset < normalYOffsetTarget){
+                        carWashBrush.yExtensionOffset = normalYOffsetTarget;
+                        carWashBrush.updateBlock();
                     }
 
                     if(carWashBrush.extensionAngle < 80.0f){
-                        carWashBrush.extensionAngle += 3.5f / (float)Util.getMillis() + 2.5f;
+                        carWashBrush.extensionAngle += normalConstantTargetAmt;
                     }
                     else{
                         carWashBrush.extensionAngle = 80.0f;

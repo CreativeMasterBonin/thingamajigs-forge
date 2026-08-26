@@ -1567,7 +1567,29 @@ public class ThingamajigsBlocks {
     public static final RegistryObject<Block> LIGHTED_CHRISTMAS_TREE = registerBlock("lighted_christmas_tree",
             () -> new ChristmasTree(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.AZALEA_LEAVES).noOcclusion().strength(1.25F,10F).lightLevel(s -> 10)), 0);
     public static final RegistryObject<Block> SMALL_CHRISTMAS_TREE = registerBlock("small_christmas_tree",
-            () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.AZALEA_LEAVES).noOcclusion().strength(1.15F,8F).lightLevel(s -> 7)), 0);
+            () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.AZALEA_LEAVES).noOcclusion().strength(1.15F,8F).lightLevel(s -> 7)){
+                    public static final VoxelShape ALL = Stream.of(
+                            Block.box(6, 0, 6, 10, 4, 10),
+                            Block.box(6, 0, 6, 10, 4, 6.5),
+                            Block.box(9.5, 0, 6, 10, 4, 10),
+                            Block.box(6, 0, 9.5, 10, 4, 10),
+                            Block.box(6, 0, 6, 6.5, 4, 10),
+                            Block.box(6, 0, 6, 10, 0, 10),
+                            Block.box(6.5, 3, 6.5, 9.5, 3, 9.5),
+                            Block.box(7.2, 3, 7.2, 8.7, 17, 8.7),
+                            Block.box(6, 15, 6, 10, 16, 10),
+                            Block.box(4, 11, 4, 12, 12, 12),
+                            Block.box(3, 9, 3, 13, 10, 13),
+                            Block.box(2, 7, 2, 14, 8, 14),
+                            Block.box(7, 17, 7, 9, 18, 9),
+                            Block.box(5, 13, 5, 11, 14, 11)
+                    ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+
+                @Override
+                public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext ctx) {
+                    return ALL;
+                }
+            });
     public static final RegistryObject<Block> CHRISTMAS_FIREPLACE = registerBlock("christmas_fireplace",
             () -> new DoubleTallDecorationBlock(BlockBehaviour.Properties.copy(Blocks.BRICKS)), 0);
     public static final RegistryObject<Block> SLEIGH = registerBlock("sleigh",
@@ -1597,7 +1619,42 @@ public class ThingamajigsBlocks {
     public static final RegistryObject<Block> REINDEER_WALL_HEAD = registerBlock("reindeer_wall_head",
             () -> new ReindeerWallHead(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)), 0);
     public static final RegistryObject<Block> GAS_HEATER = registerBlock("gas_heater",
-            () -> new DoubleTallDecorationBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)), 0);
+            () -> new DoubleTallDecorationBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)){
+                public static final VoxelShape NORTH = Stream.of(
+                        Block.box(0, 0, 0, 16, 28, 16),
+                        Block.box(6, 28, 6, 10, 32, 16),
+                        Block.box(5, 28, 7, 6, 29, 15),
+                        Block.box(10, 28, 7, 11, 29, 15)
+                ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+                public static final VoxelShape EAST = Stream.of(
+                        Block.box(0, 0, 0, 16, 28, 16),
+                        Block.box(0, 28, 6, 10, 32, 10),
+                        Block.box(1, 28, 5, 9, 29, 6),
+                        Block.box(1, 28, 10, 9, 29, 11)
+                ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+                public static final VoxelShape SOUTH = Stream.of(
+                        Block.box(0, 0, 0, 16, 28, 16),
+                        Block.box(6, 28, 0, 10, 32, 10),
+                        Block.box(10, 28, 1, 11, 29, 9),
+                        Block.box(5, 28, 1, 6, 29, 9)
+                ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+                public static final VoxelShape WEST = Stream.of(
+                        Block.box(0, 0, 0, 16, 28, 16),
+                        Block.box(6, 28, 6, 16, 32, 10),
+                        Block.box(7, 28, 10, 15, 29, 11),
+                        Block.box(7, 28, 5, 15, 29, 6)
+                ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+                @Override
+                public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext ctx) {
+                    switch (state.getValue(FACING)){
+                        case NORTH -> {return NORTH;}
+                        case SOUTH -> {return SOUTH;}
+                        case EAST -> {return EAST;}
+                        case WEST -> {return WEST;}
+                        default -> {return DoubleTallDecorationBlock.BLOCK_SHAPE;}
+                    }
+                }
+            });
     public static final RegistryObject<Block> AC_THERMOSTAT = registerBlock("ac_thermostat",
             () -> new AcThermostat(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)), 0);
     public static final RegistryObject<Block> BLUEY_DESKTOP_COMPUTER = registerBlock("bluey_desktop_computer",

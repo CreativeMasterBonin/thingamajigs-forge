@@ -52,7 +52,7 @@ public class CarWashBrushBERenderer implements BlockEntityRenderer<CarWashBrushB
         }
         else{
             float milliTick = partialTick * (Util.getMillis() / 36000.0f);
-            float smoothedYExtensionOffset = carWashBrushBE.yExtensionOffset * (Util.getMillis() / 326000.0f);
+            float smoothedYExtensionOffset = carWashBrushBE.yExtensionOffset;
 
             poseStack.rotateAround(Axis.ZP.rotationDegrees(180.0f),0.0f,0.0f,0.0f);
             poseStack.translate(-1.0f,-4.0f,0.0f);
