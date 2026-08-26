@@ -25,20 +25,60 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.BooleanOp;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.ticks.TickPriority;
 import net.rk.thingamajigs.entity.customblock.TireScrubberBE;
 import net.rk.thingamajigs.misc.ThingamajigsCalcStuffs;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.stream.Stream;
 
 public class TireScrubber extends BaseEntityBlock implements SimpleWaterloggedBlock {
     public static BooleanProperty LIT = BlockStateProperties.LIT;
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
+    public static final VoxelShape NORTHSOUTH = Stream.of(
+            Block.box(-8, 5, 7, 24, 7, 9),
+            Block.box(-10, 0, 7, -8, 10, 9),
+            Block.box(24, 0, 7, 26, 10, 9)
+    ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+    public static final VoxelShape EASTWEST = Stream.of(
+            Block.box(7, 5, -8, 9, 7, 24),
+            Block.box(7, 0, -10, 9, 10, -8),
+            Block.box(7, 0, 24, 9, 10, 26)
+    ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+
     public TireScrubber(Properties p) {
         super(p.noCollission().sound(SoundType.LANTERN).noOcclusion());
         this.registerDefaultState(this.defaultBlockState().setValue(LIT,false)
                 .setValue(FACING,Direction.NORTH).setValue(WATERLOGGED,false));
+    }
+
+    @Override
+    public VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext ctx) {
+        switch(state.getValue(FACING)){
+            case NORTH,SOUTH -> {return NORTHSOUTH;}
+            case EAST,WEST -> {return EASTWEST;}
+            default -> {return Shapes.block();}
+        }
+    }
+
+    @Override
+    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext ctx) {
+        if(ctx.isHoldingItem(ThingamajigsBlocks.CAR_WASH_TIRE_SCRUBBER.get().asItem())){
+            return Shapes.block();
+        }
+        else{
+            switch(state.getValue(FACING)){
+                case NORTH,SOUTH -> {return NORTHSOUTH;}
+                case EAST,WEST -> {return EASTWEST;}
+                default -> {return Shapes.block();}
+            }
+        }
     }
 
     @Override
@@ -68,9 +108,10 @@ public class TireScrubber extends BaseEntityBlock implements SimpleWaterloggedBl
         return true;
     }
 
-    @Override
+    /*@Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         ItemStack handStack = player.getItemInHand(hand);
+        // unfortunately this does nothing as the rotation variable this was supposed to affect is not working
         if(level.isClientSide()){
             if(handStack.is(Items.RABBIT_FOOT) || handStack.is(Items.RABBIT_HIDE) || handStack.isEmpty()){
                 player.playSound(SoundEvents.ITEM_FRAME_ROTATE_ITEM,0.75f,
@@ -105,7 +146,7 @@ public class TireScrubber extends BaseEntityBlock implements SimpleWaterloggedBl
             }
         }
         return InteractionResult.PASS;
-    }
+    }*/
 
     @Override
     public void neighborChanged(BlockState state, Level level, BlockPos pos, Block p_60512_, BlockPos p_60513_, boolean p_60514_) {
@@ -134,7 +175,7 @@ public class TireScrubber extends BaseEntityBlock implements SimpleWaterloggedBl
         builder.add(LIT,FACING,WATERLOGGED);
     }
 
-    @javax.annotation.Nullable
+    @Nullable
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         FluidState fluidstate = context.getLevel().getFluidState(context.getClickedPos());

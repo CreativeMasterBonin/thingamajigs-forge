@@ -71,7 +71,7 @@ public class CarWashBrush extends BaseEntityBlock {
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
         return createTickerHelper(blockEntityType, ThingamajigsBlockEntities.CAR_WASH_BRUSH_BE.get(),
-                level.isClientSide ? CarWashBrushBE::clientTick : CarWashBrushBE::serverTick);
+                level.isClientSide() ? null : CarWashBrushBE::serverTick);
     }
 
     @Override
@@ -81,7 +81,7 @@ public class CarWashBrush extends BaseEntityBlock {
 
     @Override
     public void neighborChanged(BlockState state, Level level, BlockPos pos, Block p_60512_, BlockPos p_60513_, boolean p_60514_) {
-        if (!level.isClientSide) {
+        if (!level.isClientSide()) {
             boolean isLit = state.getValue(LIT);
             if (isLit != level.hasNeighborSignal(pos)) {
                 if (isLit) {

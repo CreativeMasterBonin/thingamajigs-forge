@@ -83,32 +83,20 @@ public class CarWashBrushBE extends BlockEntity {
                 }
                 else{
                     if(carWashBrush.extensionAngle > -8.0f){
-                        carWashBrush.extensionAngle -= 1.0f;
-                        carWashBrush.updateBlock();
-                    }
-                    else if(carWashBrush.extensionAngle < -8.0f){
-                        carWashBrush.extensionAngle += 1.0f;
+                        carWashBrush.extensionAngle -= 2.0f;
                         carWashBrush.updateBlock();
                     }
                     else{
-                        carWashBrush.extensionAngle = -8.0f;
-                        carWashBrush.updateBlock();
+                        if(carWashBrush.extensionAngle != -8.0f){
+                            carWashBrush.extensionAngle = -8.0f;
+                            carWashBrush.updateBlock();
+                        }
                     }
 
                     // correct angle
                     if(carWashBrush.yAngle != 0.0f){
-                        if(carWashBrush.yAngle > 1.0f){
-                            carWashBrush.yAngle -= 1.2f;
-                            carWashBrush.updateBlock();
-                        }
-                        else if(carWashBrush.yAngle < -1.0f){
-                            carWashBrush.yAngle += 1.2f;
-                            carWashBrush.updateBlock();
-                        }
-                        else{
-                            carWashBrush.yAngle = 0.0f;
-                            carWashBrush.updateBlock();
-                        }
+                        carWashBrush.yAngle = 0.0f;
+                        carWashBrush.updateBlock();
                     }
                 }
             }
@@ -181,10 +169,7 @@ public class CarWashBrushBE extends BlockEntity {
                 }
                 else{
                     if(carWashBrush.extensionAngle > -8.0f){
-                        carWashBrush.extensionAngle -= 1.0f;
-                    }
-                    else if(carWashBrush.extensionAngle < -8.0f){
-                        carWashBrush.extensionAngle += 1.0f;
+                        carWashBrush.extensionAngle -= 0.99f;
                     }
                     else{
                         carWashBrush.extensionAngle = -8.0f;
@@ -192,15 +177,7 @@ public class CarWashBrushBE extends BlockEntity {
 
                     // correct angle
                     if(carWashBrush.yAngle != 0.0f){
-                        if(carWashBrush.yAngle > 1.0f){
-                            carWashBrush.yAngle -= 1.2f;
-                        }
-                        else if(carWashBrush.yAngle < -1.0f){
-                            carWashBrush.yAngle += 1.2f;
-                        }
-                        else{
-                            carWashBrush.yAngle = 0.0f;
-                        }
+                        carWashBrush.yAngle = 0.0f;
                     }
                 }
             }
@@ -246,7 +223,6 @@ public class CarWashBrushBE extends BlockEntity {
                     }
                 }
             }
-            carWashBrush.updateBlock();
         }
     }
 

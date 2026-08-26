@@ -12,16 +12,13 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
-import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.FoliageColor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraftforge.client.ConfigScreenHandler;
 import net.minecraftforge.client.event.EntityRenderersEvent;
-import net.minecraftforge.client.event.ModelEvent;
 import net.minecraftforge.client.event.RegisterColorHandlersEvent;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -341,6 +338,8 @@ public class ThingamajigsClient {
             // 1.9.0
             BlockEntityRenderers.register(ThingamajigsBlockEntities.CAR_WASH_BRUSH_BE.get(),CarWashBrushBERenderer::new);
             BlockEntityRenderers.register(ThingamajigsBlockEntities.CAR_WASH_TIRE_SCRUBBER_BE.get(),TireScrubberBERenderer::new);
+            BlockEntityRenderers.register(ThingamajigsBlockEntities.CAR_WASH_MITTER_CURTAIN_BE.get(),MitterCurtainBERenderer::new);
+            BlockEntityRenderers.register(ThingamajigsBlockEntities.CEILING_FAN_BE.get(),CeilingFanBERenderer::new);
         }
         catch(Exception blockEntityRendererError){
             logErrorInternal(blockEntityRendererError);
@@ -362,6 +361,8 @@ public class ThingamajigsClient {
         event.registerLayerDefinition(CarWashTallBrushModel.YELLOW_BRUSH,CarWashTallBrushModel::createBodyLayer);
         event.registerLayerDefinition(CarWashMixedBrushModel.MIXED_BRUSH,CarWashMixedBrushModel::createBodyLayer);
         event.registerLayerDefinition(TireScrubbers.TIRE_SCRUBBER,TireScrubbers::createBodyLayer);
+        event.registerLayerDefinition(MitterCurtainModel.MITTER_CURTAIN,MitterCurtainModel::createBodyLayer);
+        event.registerLayerDefinition(CeilingFanBlades.CEILING_FAN_BLADES,CeilingFanBlades::createBodyLayer);
         // model layers for entity models
         try{
             // entity without layer (should not be textured)

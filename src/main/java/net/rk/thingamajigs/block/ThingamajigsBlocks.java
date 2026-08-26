@@ -1358,7 +1358,7 @@ public class ThingamajigsBlocks {
     public static final RegistryObject<Block> CAR_WASH_DRYER = registerBlock("car_wash_dryer",
             () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.of().sound(SoundType.LANTERN).noCollission()), 0);
     public static final RegistryObject<Block> CAR_WASH_MITTER_CURTAIN = registerBlock("car_wash_mitter_curtain",
-            () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.of().sound(SoundType.LANTERN).noCollission()), 0);
+            () -> new MitterCurtain(BlockBehaviour.Properties.of().sound(SoundType.LANTERN)));
     public static final RegistryObject<Block> CAR_WASH_MIXED_BRUSH = registerBlock("car_wash_mixed_brush",
             () -> new ShortCarWashBrush(BlockBehaviour.Properties.of().sound(SoundType.LANTERN).noCollission()), 0);
     public static final RegistryObject<Block> CAR_WASH_SIGNAGE = registerBlock("car_wash_signage",

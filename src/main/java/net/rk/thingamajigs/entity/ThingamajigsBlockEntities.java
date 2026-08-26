@@ -157,6 +157,16 @@ ThingamajigsBlocks.TRIPLE_SHELF.get(),ThingamajigsBlocks.TOY_BOX.get()
                             ThingamajigsBlocks.CAR_WASH_TIRE_SCRUBBER.get())
                     .build(null));
 
+    public static final Supplier<BlockEntityType<MitterCurtainBE>> CAR_WASH_MITTER_CURTAIN_BE = BLOCK_ENTITIES.register(
+            "car_wash_mitter_curtain_be",() -> BlockEntityType.Builder.of(MitterCurtainBE::new,
+                            ThingamajigsBlocks.CAR_WASH_MITTER_CURTAIN.get())
+                    .build(null));
+
+    public static final Supplier<BlockEntityType<CeilingFanBE>> CEILING_FAN_BE = BLOCK_ENTITIES.register(
+            "ceiling_fan_be",() -> BlockEntityType.Builder.of(CeilingFanBE::new,
+                            ThingamajigsBlocks.CEILING_FAN.get())
+                    .build(null));
+
     public static void register(IEventBus eventBus){
         BLOCK_ENTITIES.register(eventBus);
     }

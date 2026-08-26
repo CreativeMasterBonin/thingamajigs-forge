@@ -9,6 +9,7 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
 import net.rk.thingamajigs.block.TireScrubber;
 import net.rk.thingamajigs.entity.customblock.TireScrubberBE;
@@ -49,17 +50,10 @@ public class TireScrubberBERenderer implements BlockEntityRenderer<TireScrubberB
                         poseStack.rotateAround(Axis.YP.rotationDegrees(-90.0f),0.5f,0.5f,0.5f);
                     }
                     tireScrubbers.setup(tireScrubberBE);
-                    if(tireScrubberBE.speedAddition >= 10.0f){
-                        tireScrubbers.centerturnpoint.xRot = (Util.getMillis() / 128.0f);
-                    }
-                    else if(tireScrubberBE.speedAddition <= 5.0f && tireScrubberBE.speedAddition > 1.1f){
-                        tireScrubbers.centerturnpoint.xRot = (Util.getMillis() / 256.0f);
-                    }
-                    else{
-                        tireScrubbers.centerturnpoint.xRot = (Util.getMillis() / 384.0f);
-                    }
+                    // calculate desired speed of brush
+                    tireScrubbers.centerturnpoint.xRot = (Util.getMillis() / 120.0f);
                     // correct y pos as it is offset normally
-                    poseStack.translate(0D,-1.15D,0D);
+                    poseStack.translate(0D,-1.17D,0D);
                     // render everything
                     tireScrubbers.renderToBuffer(poseStack,multiBufferSource.getBuffer(RenderType.entitySolid(TIRE_SCRUBBER_ALL)),
                             packedLight,packedOverlay,1.0f,1.0f,1.0f,1.0f);

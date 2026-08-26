@@ -6,24 +6,26 @@ import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.BaseEntityBlock;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.RenderShape;
-import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -31,39 +33,48 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.ticks.TickPriority;
 import net.minecraftforge.common.Tags;
-import net.rk.thingamajigs.entity.customblock.CeilingFanBE;
+import net.rk.thingamajigs.entity.customblock.MitterCurtainBE;
 import net.rk.thingamajigs.misc.ThingamajigsCalcStuffs;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.stream.Stream;
 
-public class CeilingFan extends BaseEntityBlock {
-    public static final BooleanProperty LIT = BlockStateProperties.LIT;
-
-    public static final VoxelShape OLD_ALL = Stream.of(
-            Block.box(3, 15, 3, 13, 16, 13),
-            Block.box(6, 11, 6, 10, 15, 10),
-            Block.box(5.5, 5, 5.5, 10.5, 10, 10.5),
-            Block.box(5, 3, 5, 11, 5, 11),
-            Block.box(7.5, 10, 7.5, 8.5, 11, 8.5)
-    ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+public class MitterCurtain extends BaseEntityBlock implements SimpleWaterloggedBlock {
+    public static BooleanProperty LIT = BlockStateProperties.LIT;
+    public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final VoxelShape ALL = Stream.of(
-            Block.box(3, 15, 3, 13, 16, 13),
-            Block.box(5, 13, 5, 11, 15, 11),
-            Block.box(7, 6, 7, 9, 13, 9),
-            Block.box(6, 2, 6, 10, 6, 10)
+            Block.box(0, 14, 0, 16, 15, 16),
+            Block.box(0, 0, 0, 16, 14, 1),
+            Block.box(15, 0, 1, 16, 14, 16),
+            Block.box(0, 0, 15, 16, 14, 16),
+            Block.box(0, 0, 1, 1, 14, 15),
+            Block.box(1, 15, 1, 15, 16, 15)
     ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
 
-    public CeilingFan(Properties properties) {
-        super(properties.strength(1.5F).sound(SoundType.LANTERN));
-        this.registerDefaultState(this.defaultBlockState().setValue(LIT,false));
+    public MitterCurtain(Properties p) {
+        super(p.sound(SoundType.METAL));
     }
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> list, TooltipFlag flag) {
-        list.add(Component.translatable("block.thingamajigs.ceiling_fan.desc")
+        list.add(Component.translatable("block.thingamajigs.mitter_curtain.desc")
                 .withStyle(ChatFormatting.GRAY));
+    }
+
+    @Override
+    public VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext ctx) {
+        return ALL;
+    }
+
+    @Override
+    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext ctx) {
+        if(ctx.isHoldingItem(ThingamajigsBlocks.CAR_WASH_MITTER_CURTAIN.get().asItem())){
+            return Shapes.block();
+        }
+        else{
+            return ALL;
+        }
     }
 
     @Override
@@ -71,56 +82,58 @@ public class CeilingFan extends BaseEntityBlock {
         return RenderShape.MODEL;
     }
 
-    @Override
-    public VoxelShape getShape(BlockState state, BlockGetter lvl, BlockPos pos, CollisionContext ctx) {
-        return ALL;
-    }
-
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
-        return new CeilingFanBE(blockPos,blockState);
+        return new MitterCurtainBE(blockPos,blockState);
     }
 
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+        ItemStack handStack = player.getItemInHand(hand);
         if(level.isClientSide()){
-            if(player.getItemInHand(hand).isEmpty()){
-                if(level.getBlockState(pos).hasProperty(LIT)){
-                    player.playSound(SoundEvents.ITEM_FRAME_ROTATE_ITEM,0.75f, ThingamajigsCalcStuffs.nextFloatBetweenInclusive(0.97f,1.1f));
-                    return InteractionResult.SUCCESS;
-                }
-            }
-            else if(player.getItemInHand(hand).is(Tags.Items.SHEARS)){
-                CeilingFanBE ceilingFan = (CeilingFanBE)level.getBlockEntity(pos);
-                if(ceilingFan instanceof CeilingFanBE){
-                    if (ceilingFan.reversed) {
-                        player.playSound(SoundEvents.CHERRY_WOOD_BUTTON_CLICK_OFF,0.5f,1.0f);
-                    }
-                    else {
-                        player.playSound(SoundEvents.CHERRY_WOOD_BUTTON_CLICK_ON,0.5f,1.0f);
-                    }
-                    return InteractionResult.SUCCESS;
-                }
+            if(handStack.is(ItemTags.AXES) || handStack.is(Tags.Items.SHEARS) || handStack.is(Tags.Items.DUSTS) || handStack.is(Tags.Items.GEMS)){
+                player.playSound(SoundEvents.ITEM_FRAME_ROTATE_ITEM,0.7f, ThingamajigsCalcStuffs.nextFloatBetweenInclusive(0.95f,1.1f));
+                return InteractionResult.SUCCESS;
             }
         }
         else{
-            if(player.getItemInHand(hand).isEmpty()){
-                if(level.getBlockState(pos).hasProperty(LIT)) {
-                    level.setBlock(pos,state.cycle(LIT),3);
+            if(handStack.is(ItemTags.AXES) || handStack.is(Tags.Items.SHEARS)){
+                MitterCurtainBE mitterCurtain = (MitterCurtainBE)level.getBlockEntity(pos);
+                if(mitterCurtain instanceof MitterCurtainBE){
+                    mitterCurtain.horizontal = !mitterCurtain.horizontal;
+                    mitterCurtain.updateBlock();
                     return InteractionResult.SUCCESS;
                 }
             }
-            else if(player.getItemInHand(hand).is(Tags.Items.SHEARS)){
-                CeilingFanBE ceilingFan = (CeilingFanBE)level.getBlockEntity(pos);
-                if(ceilingFan instanceof CeilingFanBE){
-                    ceilingFan.reversed = !ceilingFan.reversed;
-                    ceilingFan.updateBlock();
+            else if(handStack.is(Tags.Items.DUSTS)){
+                MitterCurtainBE mitterCurtain = (MitterCurtainBE)level.getBlockEntity(pos);
+                if(mitterCurtain instanceof MitterCurtainBE){
+                    mitterCurtain.yAngle -= 5.0f;
+                    mitterCurtain.updateBlock();
+                    return InteractionResult.SUCCESS;
+                }
+            }
+            else if (handStack.is(Tags.Items.GEMS)) {
+                MitterCurtainBE mitterCurtain = (MitterCurtainBE)level.getBlockEntity(pos);
+                if(mitterCurtain instanceof MitterCurtainBE){
+                    mitterCurtain.yAngle += 5.0f;
+                    mitterCurtain.updateBlock();
                     return InteractionResult.SUCCESS;
                 }
             }
         }
         return InteractionResult.PASS;
+    }
+
+    @Override
+    public FluidState getFluidState(BlockState bs) {
+        return bs.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(bs);
+    }
+
+    @Override
+    public boolean isValidSpawn(BlockState state, BlockGetter level, BlockPos pos, SpawnPlacements.Type type, EntityType<?> entityType) {
+        return false;
     }
 
     @Override
@@ -152,12 +165,14 @@ public class CeilingFan extends BaseEntityBlock {
     @Override
     public void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         super.createBlockStateDefinition(builder);
-        builder.add(LIT);
+        builder.add(LIT,WATERLOGGED);
     }
 
     @Nullable
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
-        return this.defaultBlockState().setValue(LIT, context.getLevel().hasNeighborSignal(context.getClickedPos()));
+        FluidState fluidstate = context.getLevel().getFluidState(context.getClickedPos());
+        return this.defaultBlockState().setValue(LIT, context.getLevel().hasNeighborSignal(context.getClickedPos()))
+                .setValue(WATERLOGGED, fluidstate.getType() == Fluids.WATER);
     }
 }

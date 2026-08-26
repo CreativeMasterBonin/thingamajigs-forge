@@ -11,6 +11,7 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.rk.thingamajigs.entity.customblock.CurvedMonitorBE;
+import net.rk.thingamajigs.misc.ThingamajigsCalcStuffs;
 import net.rk.thingamajigs.xtrablock.CurvedMonitor;
 
 public class CurvedMonitorModel extends Model{
@@ -49,7 +50,7 @@ public class CurvedMonitorModel extends Model{
     }
 
     public void setupAnim(CurvedMonitorBE cmbe){
-        if(cmbe.customAngle){
+        /*if(cmbe.customAngle){
             screen.yRot = cmbe.yAngle;
         }
         else{
@@ -65,7 +66,35 @@ public class CurvedMonitorModel extends Model{
             else if (cmbe.getBlockState().getValue(CurvedMonitor.FACING) == Direction.WEST){
                 screen.yRot = -1.57000000f;
             }
+        }*/
+        if(cmbe.customAngle){
+            screen.yRot = ThingamajigsCalcStuffs.degreesToRadians(cmbe.yAngle);
+            screen.x = 0.0f;
+            screen.z = 0.0f;
         }
+        else{
+            if(cmbe.getBlockState().getValue(CurvedMonitor.FACING) == Direction.NORTH){
+                screen.yRot = ThingamajigsCalcStuffs.degreesToRadians(180);
+                screen.x = 2.0f;
+                screen.z = 4.0f;
+            }
+            else if (cmbe.getBlockState().getValue(CurvedMonitor.FACING) == Direction.SOUTH) {
+                screen.yRot = ThingamajigsCalcStuffs.degreesToRadians(0);
+                screen.x = 2.0f;
+                screen.z = 0.0f;
+            }
+            else if (cmbe.getBlockState().getValue(CurvedMonitor.FACING) == Direction.EAST) {
+                screen.yRot = ThingamajigsCalcStuffs.degreesToRadians(90);
+                screen.x = 0.0f;
+                screen.z = 2.0f;
+            }
+            else if (cmbe.getBlockState().getValue(CurvedMonitor.FACING) == Direction.WEST){
+                screen.yRot = ThingamajigsCalcStuffs.degreesToRadians(270);
+                screen.x = 4.0f;
+                screen.z = 2.0f;
+            }
+        }
+
         screen.zRot = 0;
         screen.xRot = 3.14555111f;
         keys.visible = !cmbe.hideKeyboard;

@@ -1632,6 +1632,8 @@
   "block.thingamajigs.phone_step_selectors_group": "Phone Step-Selectors Group",
   "block.thingamajigs.electric_hospital_bed": "Electric Hospital Bed",
 
+  "block.thingamajigs.ceiling_fan.desc": "Use Shears to change direction, and right click to toggle on/off",
+  "block.thingamajigs.mitter_curtain.desc": "Use Axes/Shears to swap curtain direction and use dusts/gems to rotate curtains",
   "block.thingamajigs.thermometer.desc": "Changes to hot or cold depending on biome temperature",
   "block.thingamajigs.curved_monitor.desc": "Right-click with shears or axes to toggle keyboard visibility",
   "block.thingamajigs.round_clothes_rack.desc": "Shift-right-click to toggle visibility of clothes",
