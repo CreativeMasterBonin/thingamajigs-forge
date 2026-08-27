@@ -790,9 +790,9 @@ public class ThingamajigsBlocks {
     public static final RegistryObject<Block> FOOD_PROCESSOR = registerBlock("food_processor",
             () -> new Blender(BlockBehaviour.Properties.copy(Blocks.STONE).sound(SoundType.STONE).strength(1F,1F)), 0);
     public static final RegistryObject<Block> INSTANT_POT = registerBlock("instant_pot",
-            () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.of().sound(SoundType.LANTERN).strength(1.1F,2.5F)), 0);
+            () -> new KitchenAppliance(BlockBehaviour.Properties.of().sound(SoundType.LANTERN).strength(1.1F,2.5F)));
     public static final RegistryObject<Block> RICE_COOKER = registerBlock("rice_cooker",
-            () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.of().sound(SoundType.LANTERN).strength(1.05F,1.5F)), 0);
+            () -> new KitchenAppliance(BlockBehaviour.Properties.of().sound(SoundType.LANTERN).strength(1.05F,1.5F)));
     public static final RegistryObject<Block> SLOW_COOKER = registerBlock("slow_cooker",
             () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.of().sound(SoundType.LANTERN).strength(1F,1.25F)){
                 public static final VoxelShape NORTHSOUTH = Stream.of(
@@ -868,7 +868,7 @@ public class ThingamajigsBlocks {
                 }
             });
     public static final RegistryObject<Block> BREAD_MACHINE = registerBlock("bread_machine",
-            () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.of().sound(SoundType.LANTERN).strength(1F,1F)), 0);
+            () -> new KitchenAppliance(BlockBehaviour.Properties.of().sound(SoundType.LANTERN).strength(1F,1F)));
     public static final RegistryObject<Block> ICE_CREAM_MAKER = registerBlock("ice_cream_maker",
             () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.of().sound(SoundType.LANTERN).strength(1F,1F)), 0);
     public static final RegistryObject<Block> YOGURT_MAKER = registerBlock("yogurt_maker",
@@ -876,7 +876,7 @@ public class ThingamajigsBlocks {
     public static final RegistryObject<Block> COFFEE_GRINDER = registerBlock("coffee_grinder",
             () -> new Blender(BlockBehaviour.Properties.of().sound(SoundType.LANTERN).strength(1F,1F)), 0);
     public static final RegistryObject<Block> PANINI_MAKER = registerBlock("panini_maker",
-            () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.of().sound(SoundType.LANTERN).strength(1F,1F)), 0);
+            () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.of().sound(SoundType.LANTERN).strength(1F,1F)));
     public static final RegistryObject<Block> FOOD_DEHYDRATOR = registerBlock("food_dehydrator",
             () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.of().sound(SoundType.LANTERN).strength(1F,1F)), 0);
     public static final RegistryObject<Block> KITCHEN_SINK = registerBlock("kitchen_sink",
@@ -1998,13 +1998,53 @@ public class ThingamajigsBlocks {
                 }
             });
     public static final RegistryObject<Block> CHRISTMAS_FIREPLACE = registerBlock("christmas_fireplace",
-            () -> new DoubleTallDecorationBlock(BlockBehaviour.Properties.copy(Blocks.BRICKS)));
+            () -> new WideFireplace(BlockBehaviour.Properties.copy(Blocks.BRICKS)));
     public static final RegistryObject<Block> SLEIGH = registerBlock("sleigh",
             () -> new Wheelbarrow(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
     public static final RegistryObject<Block> SNOWMAN_BLUEMAN_STATUE = registerBlock("blueman_snowman",
             () -> new BluemanStatueNoToggle(BlockBehaviour.Properties.copy(Blocks.SNOW_BLOCK)));
     public static final RegistryObject<Block> PRESENT_PILE = registerBlock("present_pile",
-            () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).noCollission().sound(SoundType.WOOL).strength(1.0F,2.0F)));
+            () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).noCollission().sound(SoundType.WOOL).strength(1.0F,2.0F)){
+                public static final VoxelShape NORTH = Stream.of(
+                        Block.box(9, 0, 2, 14, 5, 7),
+                        Block.box(2, 0, 2, 7, 5, 7),
+                        Block.box(1, 0, 9, 6, 5, 14),
+                        Block.box(8, 0, 9, 13, 5, 14),
+                        Block.box(5, 5, 6, 10, 10, 11)
+                ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+                public static final VoxelShape EAST = Stream.of(
+                        Block.box(9, 0, 9, 14, 5, 14),
+                        Block.box(9, 0, 2, 14, 5, 7),
+                        Block.box(2, 0, 1, 7, 5, 6),
+                        Block.box(2, 0, 8, 7, 5, 13),
+                        Block.box(5, 5, 5, 10, 10, 10)
+                ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+                public static final VoxelShape SOUTH = Stream.of(
+                        Block.box(2, 0, 9, 7, 5, 14),
+                        Block.box(9, 0, 9, 14, 5, 14),
+                        Block.box(10, 0, 2, 15, 5, 7),
+                        Block.box(3, 0, 2, 8, 5, 7),
+                        Block.box(6, 5, 5, 11, 10, 10)
+                ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+                public static final VoxelShape WEST = Stream.of(
+                        Block.box(2, 0, 2, 7, 5, 7),
+                        Block.box(2, 0, 9, 7, 5, 14),
+                        Block.box(9, 0, 10, 14, 5, 15),
+                        Block.box(9, 0, 3, 14, 5, 8),
+                        Block.box(6, 5, 6, 11, 10, 11)
+                ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+
+                @Override
+                public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext ctx) {
+                    switch (state.getValue(FACING)){
+                        case NORTH ->{return NORTH;}
+                        case SOUTH ->{return SOUTH;}
+                        case EAST ->{return EAST;}
+                        case WEST ->{return WEST;}
+                        default -> {return Shapes.block();}
+                    }
+                }
+            });
     public static final RegistryObject<Block> NUTCRACKER = registerBlock("nutcracker",
             () -> new Nutcracker(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
     public static final RegistryObject<Block> GINGERBREAD_HOUSE = registerBlock("gingerbread_house",
@@ -4122,7 +4162,7 @@ public class ThingamajigsBlocks {
 
     // 1.7.6
     public static final RegistryObject<Block> AIR_FRYER = registerBlock("air_fryer",
-            () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN)
+            () -> new KitchenAppliance(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN)
                     .sound(SoundType.LANTERN)));
 
     public static final RegistryObject<Block> WATER_DISPENSER = registerBlock("water_dispenser",
