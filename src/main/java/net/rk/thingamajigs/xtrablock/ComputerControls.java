@@ -16,9 +16,8 @@ public class ComputerControls extends ThingamajigsDecorativeBlock {
         super(properties.strength(0.5F,1F).sound(SoundType.LANTERN));
     }
 
-    @SuppressWarnings("deprecated")
     @Override
-    public VoxelShape getShape(BlockState p_60555_, BlockGetter p_60556_, BlockPos p_60557_, CollisionContext p_60558_) {
+    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext ctx) {
         return CCSHAPE;
     }
 }

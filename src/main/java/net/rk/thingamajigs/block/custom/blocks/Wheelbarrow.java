@@ -347,6 +347,219 @@ public class Wheelbarrow extends ThingamajigsDecorativeBlock {
             Block.box(0, 1, 14, 1, 6, 16)
     ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
 
+    public static final VoxelShape NORTH_SHOPPING_CART_MOVER = Stream.of(
+            Block.box(0, 5, -8, 16, 21, 24),
+            Block.box(3, 21, 20, 4, 29, 21),
+            Block.box(2, 28, 19, 5, 32, 22),
+            Block.box(-5, 6, -9, 21, 10, -5),
+            Block.box(19.5, 5, -15.5, 23.5, 9, -7.5),
+            Block.box(-5, 2, -3, 0, 8, -1),
+            Block.box(-7, 1.8, -2.6999999999999993, -4, 3.8, -1.1999999999999993),
+            Block.box(-8, 0, -4, -6, 4, 0),
+            Block.box(-7, 1.8, 17.3, -4, 3.8, 18.8),
+            Block.box(-8, 0, 16, -6, 4, 20),
+            Block.box(20, 1.8, -2.6999999999999993, 23, 3.8, -1.1999999999999993),
+            Block.box(22, 0, -4, 24, 4, 0),
+            Block.box(20, 1.8, 17.3, 23, 3.8, 18.8),
+            Block.box(22, 0, 16, 24, 4, 20),
+            Block.box(0, 16, 24, 2, 21, 26),
+            Block.box(14, 16, 24, 16, 21, 26),
+            Block.box(1, 19, 26, 15, 21, 28),
+            Block.box(16, 2, -3, 21, 8, -1),
+            Block.box(-5, 2, 17, 0, 8, 19),
+            Block.box(16, 2, 17, 21, 8, 19),
+            Block.box(-7.5, 5, -15.5, -3.5, 9, -7.5)
+    ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+    public static final VoxelShape EAST_SHOPPING_CART_MOVER = Stream.of(
+            Block.box(-8, 5, 0, 24, 21, 16),
+            Block.box(-5, 21, 3, -4, 29, 4),
+            Block.box(-6, 28, 2, -3, 32, 5),
+            Block.box(21, 6, -5, 25, 10, 21),
+            Block.box(23.5, 5, 19.5, 31.5, 9, 23.5),
+            Block.box(17, 2, -5, 19, 8, 0),
+            Block.box(17.2, 1.8, -7, 18.7, 3.8, -4),
+            Block.box(16, 0, -8, 20, 4, -6),
+            Block.box(-2.8000000000000007, 1.8, -7, -1.3000000000000007, 3.8, -4),
+            Block.box(-4, 0, -8, 0, 4, -6),
+            Block.box(17.2, 1.8, 20, 18.7, 3.8, 23),
+            Block.box(16, 0, 22, 20, 4, 24),
+            Block.box(-2.8000000000000007, 1.8, 20, -1.3000000000000007, 3.8, 23),
+            Block.box(-4, 0, 22, 0, 4, 24),
+            Block.box(-10, 16, 0, -8, 21, 2),
+            Block.box(-10, 16, 14, -8, 21, 16),
+            Block.box(-12, 19, 1, -10, 21, 15),
+            Block.box(17, 2, 16, 19, 8, 21),
+            Block.box(-3, 2, -5, -1, 8, 0),
+            Block.box(-3, 2, 16, -1, 8, 21),
+            Block.box(23.5, 5, -7.5, 31.5, 9, -3.5)
+    ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+    public static final VoxelShape SOUTH_SHOPPING_CART_MOVER = Stream.of(
+            Block.box(0, 5, -8, 16, 21, 24),
+            Block.box(12, 21, -5, 13, 29, -4),
+            Block.box(11, 28, -6, 14, 32, -3),
+            Block.box(-5, 6, 21, 21, 10, 25),
+            Block.box(-7.5, 5, 23.5, -3.5, 9, 31.5),
+            Block.box(16, 2, 17, 21, 8, 19),
+            Block.box(20, 1.8, 17.2, 23, 3.8, 18.7),
+            Block.box(22, 0, 16, 24, 4, 20),
+            Block.box(20, 1.8, -2.8000000000000007, 23, 3.8, -1.3000000000000007),
+            Block.box(22, 0, -4, 24, 4, 0),
+            Block.box(-7, 1.8, 17.2, -4, 3.8, 18.7),
+            Block.box(-8, 0, 16, -6, 4, 20),
+            Block.box(-7, 1.8, -2.8000000000000007, -4, 3.8, -1.3000000000000007),
+            Block.box(-8, 0, -4, -6, 4, 0),
+            Block.box(14, 16, -10, 16, 21, -8),
+            Block.box(0, 16, -10, 2, 21, -8),
+            Block.box(1, 19, -12, 15, 21, -10),
+            Block.box(-5, 2, 17, 0, 8, 19),
+            Block.box(16, 2, -3, 21, 8, -1),
+            Block.box(-5, 2, -3, 0, 8, -1),
+            Block.box(19.5, 5, 23.5, 23.5, 9, 31.5)
+    ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+    public static final VoxelShape WEST_SHOPPING_CART_MOVER = Stream.of(
+            Block.box(-8, 5, 0, 24, 21, 16),
+            Block.box(20, 21, 12, 21, 29, 13),
+            Block.box(19, 28, 11, 22, 32, 14),
+            Block.box(-9, 6, -5, -5, 10, 21),
+            Block.box(-15.5, 5, -7.5, -7.5, 9, -3.5),
+            Block.box(-3, 2, 16, -1, 8, 21),
+            Block.box(-2.6999999999999993, 1.8, 20, -1.1999999999999993, 3.8, 23),
+            Block.box(-4, 0, 22, 0, 4, 24),
+            Block.box(17.3, 1.8, 20, 18.8, 3.8, 23),
+            Block.box(16, 0, 22, 20, 4, 24),
+            Block.box(-2.6999999999999993, 1.8, -7, -1.1999999999999993, 3.8, -4),
+            Block.box(-4, 0, -8, 0, 4, -6),
+            Block.box(17.3, 1.8, -7, 18.8, 3.8, -4),
+            Block.box(16, 0, -8, 20, 4, -6),
+            Block.box(24, 16, 14, 26, 21, 16),
+            Block.box(24, 16, 0, 26, 21, 2),
+            Block.box(26, 19, 1, 28, 21, 15),
+            Block.box(-3, 2, -5, -1, 8, 0),
+            Block.box(17, 2, 16, 19, 8, 21),
+            Block.box(17, 2, -5, 19, 8, 0),
+            Block.box(-15.5, 5, 19.5, -7.5, 9, 23.5)
+    ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+    public static final VoxelShape NORTH_SHOPPING_CART = Stream.of(
+            Block.box(2, 15, 20, 3, 17, 23),
+            Block.box(1, 7, -4, 15, 15, -3),
+            Block.box(1, 7, 19, 15, 15, 20),
+            Block.box(0, 7, -3, 1, 15, 19),
+            Block.box(15, 7, -3, 16, 15, 19),
+            Block.box(1, 6, -3, 15, 7, 19),
+            Block.box(13, 15, 20, 14, 17, 23),
+            Block.box(1, 16.8, 22.3, 15, 19.1, 24.5),
+            Block.box(0, 15, -4, 1, 16, 20),
+            Block.box(15, 15, -4, 16, 16, 20),
+            Block.box(1, 15, -4, 15, 16, -3),
+            Block.box(1, 15, 19, 15, 16, 20),
+            Block.box(0, 6, -4, 1, 7, 20),
+            Block.box(15, 6, -4, 16, 7, 20),
+            Block.box(1, 6, -4, 15, 7, -3),
+            Block.box(1, 6, 19, 15, 7, 20),
+            Block.box(2, 0, -1, 3, 3, 2),
+            Block.box(0, 0, -1, 1, 3, 2),
+            Block.box(1, 1, 0, 2, 6, 1),
+            Block.box(15, 0, -1, 16, 3, 2),
+            Block.box(13, 0, -1, 14, 3, 2),
+            Block.box(14, 1, 0, 15, 6, 1),
+            Block.box(2, 0, 14, 3, 3, 17),
+            Block.box(0, 0, 14, 1, 3, 17),
+            Block.box(1, 1, 15, 2, 6, 16),
+            Block.box(15, 0, 14, 16, 3, 17),
+            Block.box(13, 0, 14, 14, 3, 17),
+            Block.box(14, 1, 15, 15, 6, 16)
+    ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+    public static final VoxelShape EAST_SHOPPING_CART = Stream.of(
+            Block.box(-7, 15, 2, -4, 17, 3),
+            Block.box(19, 7, 1, 20, 15, 15),
+            Block.box(-4, 7, 1, -3, 15, 15),
+            Block.box(-3, 7, 0, 19, 15, 1),
+            Block.box(-3, 7, 15, 19, 15, 16),
+            Block.box(-3, 6, 1, 19, 7, 15),
+            Block.box(-7, 15, 13, -4, 17, 14),
+            Block.box(-8.5, 16.8, 1, -6.300000000000001, 19.1, 15),
+            Block.box(-4, 15, 0, 20, 16, 1),
+            Block.box(-4, 15, 15, 20, 16, 16),
+            Block.box(19, 15, 1, 20, 16, 15),
+            Block.box(-4, 15, 1, -3, 16, 15),
+            Block.box(-4, 6, 0, 20, 7, 1),
+            Block.box(-4, 6, 15, 20, 7, 16),
+            Block.box(19, 6, 1, 20, 7, 15),
+            Block.box(-4, 6, 1, -3, 7, 15),
+            Block.box(14, 0, 2, 17, 3, 3),
+            Block.box(14, 0, 0, 17, 3, 1),
+            Block.box(15, 1, 1, 16, 6, 2),
+            Block.box(14, 0, 15, 17, 3, 16),
+            Block.box(14, 0, 13, 17, 3, 14),
+            Block.box(15, 1, 14, 16, 6, 15),
+            Block.box(-1, 0, 2, 2, 3, 3),
+            Block.box(-1, 0, 0, 2, 3, 1),
+            Block.box(0, 1, 1, 1, 6, 2),
+            Block.box(-1, 0, 15, 2, 3, 16),
+            Block.box(-1, 0, 13, 2, 3, 14),
+            Block.box(0, 1, 14, 1, 6, 15)
+    ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+    public static final VoxelShape SOUTH_SHOPPING_CART = Stream.of(
+            Block.box(13, 15, -7, 14, 17, -4),
+            Block.box(1, 7, 19, 15, 15, 20),
+            Block.box(1, 7, -4, 15, 15, -3),
+            Block.box(15, 7, -3, 16, 15, 19),
+            Block.box(0, 7, -3, 1, 15, 19),
+            Block.box(1, 6, -3, 15, 7, 19),
+            Block.box(2, 15, -7, 3, 17, -4),
+            Block.box(1, 16.8, -8.5, 15, 19.1, -6.300000000000001),
+            Block.box(15, 15, -4, 16, 16, 20),
+            Block.box(0, 15, -4, 1, 16, 20),
+            Block.box(1, 15, 19, 15, 16, 20),
+            Block.box(1, 15, -4, 15, 16, -3),
+            Block.box(15, 6, -4, 16, 7, 20),
+            Block.box(0, 6, -4, 1, 7, 20),
+            Block.box(1, 6, 19, 15, 7, 20),
+            Block.box(1, 6, -4, 15, 7, -3),
+            Block.box(13, 0, 14, 14, 3, 17),
+            Block.box(15, 0, 14, 16, 3, 17),
+            Block.box(14, 1, 15, 15, 6, 16),
+            Block.box(0, 0, 14, 1, 3, 17),
+            Block.box(2, 0, 14, 3, 3, 17),
+            Block.box(1, 1, 15, 2, 6, 16),
+            Block.box(13, 0, -1, 14, 3, 2),
+            Block.box(15, 0, -1, 16, 3, 2),
+            Block.box(14, 1, 0, 15, 6, 1),
+            Block.box(0, 0, -1, 1, 3, 2),
+            Block.box(2, 0, -1, 3, 3, 2),
+            Block.box(1, 1, 0, 2, 6, 1)
+    ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+    public static final VoxelShape WEST_SHOPPING_CART = Stream.of(
+            Block.box(20, 15, 13, 23, 17, 14),
+            Block.box(-4, 7, 1, -3, 15, 15),
+            Block.box(19, 7, 1, 20, 15, 15),
+            Block.box(-3, 7, 15, 19, 15, 16),
+            Block.box(-3, 7, 0, 19, 15, 1),
+            Block.box(-3, 6, 1, 19, 7, 15),
+            Block.box(20, 15, 2, 23, 17, 3),
+            Block.box(22.3, 16.8, 1, 24.5, 19.1, 15),
+            Block.box(-4, 15, 15, 20, 16, 16),
+            Block.box(-4, 15, 0, 20, 16, 1),
+            Block.box(-4, 15, 1, -3, 16, 15),
+            Block.box(19, 15, 1, 20, 16, 15),
+            Block.box(-4, 6, 15, 20, 7, 16),
+            Block.box(-4, 6, 0, 20, 7, 1),
+            Block.box(-4, 6, 1, -3, 7, 15),
+            Block.box(19, 6, 1, 20, 7, 15),
+            Block.box(-1, 0, 13, 2, 3, 14),
+            Block.box(-1, 0, 15, 2, 3, 16),
+            Block.box(0, 1, 14, 1, 6, 15),
+            Block.box(-1, 0, 0, 2, 3, 1),
+            Block.box(-1, 0, 2, 2, 3, 3),
+            Block.box(0, 1, 1, 1, 6, 2),
+            Block.box(14, 0, 13, 17, 3, 14),
+            Block.box(14, 0, 15, 17, 3, 16),
+            Block.box(15, 1, 14, 16, 6, 15),
+            Block.box(14, 0, 0, 17, 3, 1),
+            Block.box(14, 0, 2, 17, 3, 3),
+            Block.box(15, 1, 1, 16, 6, 2)
+    ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+
 
     public Wheelbarrow(Properties properties) {
         super(properties.strength(1F,32F));
@@ -363,7 +576,7 @@ public class Wheelbarrow extends ThingamajigsDecorativeBlock {
                 case WEST -> {return WEST_WHEELBARROW;}
                 default -> {return Shapes.block();}
             }
-        } else if (state.is(ThingamajigsBlocks.LAWN_MOWER.get())) {
+        }else if (state.is(ThingamajigsBlocks.LAWN_MOWER.get())) {
             switch (state.getValue(FACING)){
                 case NORTH -> {return NORTH_LAWN_MOWER;}
                 case SOUTH -> {return SOUTH_LAWN_MOWER;}
@@ -371,12 +584,28 @@ public class Wheelbarrow extends ThingamajigsDecorativeBlock {
                 case WEST -> {return WEST_LAWN_MOWER;}
                 default -> {return Shapes.block();}
             }
-        } else if (state.is(ThingamajigsBlocks.SLEIGH.get())) {
+        }else if (state.is(ThingamajigsBlocks.SLEIGH.get())) {
             switch (state.getValue(FACING)){
                 case NORTH -> {return NORTH_SLEIGH;}
                 case SOUTH -> {return SOUTH_SLEIGH;}
                 case EAST -> {return EAST_SLEIGH;}
                 case WEST -> {return WEST_SLEIGH;}
+                default -> {return Shapes.block();}
+            }
+        }else if (state.is(ThingamajigsBlocks.SHOPPING_CART_MOVER.get())) {
+            switch (state.getValue(FACING)){
+                case NORTH -> {return NORTH_SHOPPING_CART_MOVER;}
+                case SOUTH -> {return SOUTH_SHOPPING_CART_MOVER;}
+                case EAST -> {return EAST_SHOPPING_CART_MOVER;}
+                case WEST -> {return WEST_SHOPPING_CART_MOVER;}
+                default -> {return Shapes.block();}
+            }
+        }else if (state.is(ThingamajigsBlocks.SHOPPING_CART.get())) {
+            switch (state.getValue(FACING)){
+                case NORTH -> {return NORTH_SHOPPING_CART;}
+                case SOUTH -> {return SOUTH_SHOPPING_CART;}
+                case EAST -> {return EAST_SHOPPING_CART;}
+                case WEST -> {return WEST_SHOPPING_CART;}
                 default -> {return Shapes.block();}
             }
         } else{

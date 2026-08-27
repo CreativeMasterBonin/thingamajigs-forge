@@ -105,7 +105,8 @@ public class ThingamajigsClient {
         );
         rchEvent.register((itemStack,i) -> ThingamajigsColors.getColorFromList(7),
                 ThingamajigsItems.LIGHT_BLUE_BALLOON_BLOCK_ITEM.get(),
-                ThingamajigsBlocks.LIGHT_BLUE_GLOW_BLOCK.get().asItem()
+                ThingamajigsBlocks.LIGHT_BLUE_GLOW_BLOCK.get().asItem(),
+                ThingamajigsBlocks.COFFEE_MACHINE.get().asItem()
         );
         rchEvent.register((itemStack,i) -> ThingamajigsColors.getColorFromList(8),
                 ThingamajigsItems.BLUE_BALLOON_BLOCK_ITEM.get(),
@@ -137,7 +138,8 @@ public class ThingamajigsClient {
         rchEvent.register((blockState,tintGetter,blockPos,i) ->
                         tintGetter != null && blockPos != null ?
                                 BiomeColors.getAverageWaterColor(tintGetter,blockPos) : FoliageColor.getDefaultColor(),
-                ThingamajigsBlocks.COLORED_GLASS.get()
+                ThingamajigsBlocks.COLORED_GLASS.get(),
+                ThingamajigsBlocks.COFFEE_MACHINE.get() // 1.9.0 fix no color water
         );
 
         rchEvent.register((blockState,tintGetter,blockPos,i) ->
