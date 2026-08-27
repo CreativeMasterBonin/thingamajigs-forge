@@ -116,8 +116,38 @@ public class KitchenAppliance extends ThingamajigsDecorativeBlock {
             Block.box(1, 1, 1, 15, 1, 15)
     ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
 
-
-
+    public static final VoxelShape NORTH_STOVE_HOOD = Stream.of(
+            Block.box(-6, 9, -3, 22, 13, -1),
+            Block.box(14, 11, 3, 16, 12, 13),
+            Block.box(0, 11, 0, 16, 12, 3),
+            Block.box(0, 11, 13, 16, 12, 16),
+            Block.box(0, 11, 3, 2, 12, 13),
+            Block.box(-4, 12, -2, 20, 16, 18)
+    ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+    public static final VoxelShape EAST_STOVE_HOOD = Stream.of(
+            Block.box(17, 9, -6, 19, 13, 22),
+            Block.box(3, 11, 14, 13, 12, 16),
+            Block.box(13, 11, 0, 16, 12, 16),
+            Block.box(0, 11, 0, 3, 12, 16),
+            Block.box(3, 11, 0, 13, 12, 2),
+            Block.box(-2, 12, -4, 18, 16, 20)
+    ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+    public static final VoxelShape SOUTH_STOVE_HOOD = Stream.of(
+            Block.box(-6, 9, 17, 22, 13, 19),
+            Block.box(0, 11, 3, 2, 12, 13),
+            Block.box(0, 11, 13, 16, 12, 16),
+            Block.box(0, 11, 0, 16, 12, 3),
+            Block.box(14, 11, 3, 16, 12, 13),
+            Block.box(-4, 12, -2, 20, 16, 18)
+    ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+    public static final VoxelShape WEST_STOVE_HOOD = Stream.of(
+            Block.box(-3, 9, -6, -1, 13, 22),
+            Block.box(3, 11, 0, 13, 12, 2),
+            Block.box(0, 11, 0, 3, 12, 16),
+            Block.box(13, 11, 0, 16, 12, 16),
+            Block.box(3, 11, 14, 13, 12, 16),
+            Block.box(-2, 12, -4, 18, 16, 20)
+    ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
 
 
     public KitchenAppliance(Properties properties) {
@@ -146,6 +176,15 @@ public class KitchenAppliance extends ThingamajigsDecorativeBlock {
                 case SOUTH -> {return S_AIR_FRYER;}
                 case EAST -> {return E_AIR_FRYER;}
                 case WEST -> {return W_AIR_FRYER;}
+                default -> {return Shapes.block();}
+            }
+        }
+        else if(state.is(ThingamajigsBlocks.STOVE_HOOD.get())){
+            switch (direction){
+                case NORTH -> {return NORTH_STOVE_HOOD;}
+                case SOUTH -> {return SOUTH_STOVE_HOOD;}
+                case EAST -> {return EAST_STOVE_HOOD;}
+                case WEST -> {return WEST_STOVE_HOOD;}
                 default -> {return Shapes.block();}
             }
         }

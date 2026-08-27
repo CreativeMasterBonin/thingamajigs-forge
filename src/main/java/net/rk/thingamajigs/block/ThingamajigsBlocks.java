@@ -436,9 +436,9 @@ public class ThingamajigsBlocks {
     public static final RegistryObject<Block> WHEELBARROW = registerBlock("wheelbarrow",
             () -> new Wheelbarrow(BlockBehaviour.Properties.of().sound(SoundType.METAL)), 0);
     public static final RegistryObject<Block> STOVE_HOOD = registerBlock("stove_hood",
-            () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.of().sound(SoundType.METAL).lightLevel(s -> 5).noCollission()), 0);
+            () -> new KitchenAppliance(BlockBehaviour.Properties.of().sound(SoundType.METAL).lightLevel(s -> 5).noCollission()));
     public static final RegistryObject<Block> STOVE = registerBlock("stove",
-            () -> new Stove(BlockBehaviour.Properties.of().sound(SoundType.LANTERN)), 0);
+            () -> new Stove(BlockBehaviour.Properties.of().sound(SoundType.LANTERN)));
     public static final RegistryObject<Block> SOLAR_PANEL = registerBlock("solar_panel",
             () -> new DoubleTallDecorationBlock(BlockBehaviour.Properties.of().sound(SoundType.METAL)){
                 public static final VoxelShape ALL = Stream.of(
@@ -516,7 +516,7 @@ public class ThingamajigsBlocks {
             () -> new OpenSign(BlockBehaviour.Properties.of()
                     .lightLevel(openSignLitEmission(15))), 0);
     public static final RegistryObject<Block> RECYCLE_BIN = registerBlock("recycle_bin",
-            () -> new RecycleBin(BlockBehaviour.Properties.copy(Blocks.STONE).sound(SoundType.STONE).strength(1F,1F)), 0);
+            () -> new RecycleBin(BlockBehaviour.Properties.copy(Blocks.STONE).sound(SoundType.STONE).strength(1F,1F)));
     public static final RegistryObject<Block> SERVER_RACK = registerBlock("server_rack",
             () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.of().sound(SoundType.METAL)){
                 public static final VoxelShape NORTH = Stream.of(
