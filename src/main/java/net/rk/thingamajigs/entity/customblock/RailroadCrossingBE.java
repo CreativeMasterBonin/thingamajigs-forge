@@ -46,32 +46,36 @@ public class RailroadCrossingBE extends BlockEntity{
     public static void serverTick(Level slvl, BlockPos sbp, BlockState sbs, RailroadCrossingBE rrcbe){
         ++rrcbe.ticks;
         if(slvl.getBlockState(sbp).getBlock() instanceof RailroadCrossing railroadCrossing){
-            if(slvl.getBlockState(sbp).getValue(RailroadCrossing.ON)){
-                if(rrcbe.armAngle > rrcbe.endArmAngle){
-                    rrcbe.armAngle = Mth.rotLerp(0.05f,rrcbe.armAngle,rrcbe.armAngle - 0.15f); //0.01f;
-                    // rrcbe.armAngle -= 0.01f;
+            // make sure state has property
+            if(slvl.getBlockState(sbp).hasProperty(RailroadCrossing.ON)){
+                // get the property value
+                if(slvl.getBlockState(sbp).getValue(RailroadCrossing.ON)){
+                    if(rrcbe.armAngle > rrcbe.endArmAngle){
+                        rrcbe.armAngle = Mth.rotLerp(0.05f,rrcbe.armAngle,rrcbe.armAngle - 0.15f); //0.01f;
+                        // rrcbe.armAngle -= 0.01f;
 
-                    rrcbe.railroadCrossingArmState = RailroadCrossingArmState.MOVING;
-                    rrcbe.updateBlock();
-                }
-                else{
-                    if(rrcbe.railroadCrossingArmState != RailroadCrossingArmState.DOWN){
-                        rrcbe.railroadCrossingArmState = RailroadCrossingArmState.DOWN;
+                        rrcbe.railroadCrossingArmState = RailroadCrossingArmState.MOVING;
                         rrcbe.updateBlock();
                     }
-                }
-            }
-            else{
-                if(rrcbe.armAngle < rrcbe.startingArmAngle){
-                    rrcbe.armAngle = Mth.rotLerp(0.05f,rrcbe.armAngle,rrcbe.armAngle + 0.15f); //0.01f;
-                    //rrcbe.armAngle += 0.01f;
-                    rrcbe.railroadCrossingArmState = RailroadCrossingArmState.MOVING;
-                    rrcbe.updateBlock();
+                    else{
+                        if(rrcbe.railroadCrossingArmState != RailroadCrossingArmState.DOWN){
+                            rrcbe.railroadCrossingArmState = RailroadCrossingArmState.DOWN;
+                            rrcbe.updateBlock();
+                        }
+                    }
                 }
                 else{
-                    if(rrcbe.railroadCrossingArmState != RailroadCrossingArmState.UP){
-                        rrcbe.railroadCrossingArmState = RailroadCrossingArmState.UP;
+                    if(rrcbe.armAngle < rrcbe.startingArmAngle){
+                        rrcbe.armAngle = Mth.rotLerp(0.05f,rrcbe.armAngle,rrcbe.armAngle + 0.15f); //0.01f;
+                        //rrcbe.armAngle += 0.01f;
+                        rrcbe.railroadCrossingArmState = RailroadCrossingArmState.MOVING;
                         rrcbe.updateBlock();
+                    }
+                    else{
+                        if(rrcbe.railroadCrossingArmState != RailroadCrossingArmState.UP){
+                            rrcbe.railroadCrossingArmState = RailroadCrossingArmState.UP;
+                            rrcbe.updateBlock();
+                        }
                     }
                 }
             }

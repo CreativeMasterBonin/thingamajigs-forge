@@ -15,17 +15,147 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.phys.shapes.BooleanOp;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.ticks.TickPriority;
 import net.rk.thingamajigs.block.ThingamajigsBlocks;
 import net.rk.thingamajigs.tag.ThingamajigsTags;
+
+import java.util.stream.Stream;
 
 public class RailroadCrossingCantilever extends Block {
     public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
 
+    public static final VoxelShape NORTH_SOUTH = Stream.of(
+            Block.box(0, 0, 0, 16, 1, 16),
+            Block.box(0, 1, 0, 1, 15, 1),
+            Block.box(0, 15, 0, 16, 16, 1),
+            Block.box(0, 1, 15, 1, 15, 16),
+            Block.box(15, 1, 0, 16, 15, 1),
+            Block.box(15, 1, 15, 16, 15, 16),
+            Block.box(0, 15, 15, 16, 16, 16)
+    ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+
+    public static final VoxelShape EAST_WEST = Stream.of(
+            Block.box(0, 0, 0, 16, 1, 16),
+            Block.box(15, 1, 0, 16, 15, 1),
+            Block.box(15, 15, 0, 16, 16, 16),
+            Block.box(0, 1, 0, 1, 15, 1),
+            Block.box(15, 1, 15, 16, 15, 16),
+            Block.box(0, 1, 15, 1, 15, 16),
+            Block.box(0, 15, 0, 1, 16, 16)
+    ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+
+    // ending shapes
+    public static final VoxelShape NORTH_END = Stream.of(
+            Block.box(8, 0, 0, 16, 1, 16),
+            Block.box(7, 1, 0, 8, 15, 1),
+            Block.box(7, 15, 0, 16, 16, 1),
+            Block.box(7, 1, 15, 8, 15, 16),
+            Block.box(15, 1, 0, 16, 15, 1),
+            Block.box(15, 1, 15, 16, 15, 16),
+            Block.box(7, 15, 15, 16, 16, 16),
+            Block.box(7, 1, 7, 9, 16, 9),
+            Block.box(7, 0, 0, 8, 1, 16)
+    ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+
+    public static final VoxelShape EAST_END = Stream.of(
+            Block.box(0, 0, 8, 16, 1, 16),
+            Block.box(15, 1, 7, 16, 15, 8),
+            Block.box(15, 15, 7, 16, 16, 16),
+            Block.box(0, 1, 7, 1, 15, 8),
+            Block.box(15, 1, 15, 16, 15, 16),
+            Block.box(0, 1, 15, 1, 15, 16),
+            Block.box(0, 15, 7, 1, 16, 16),
+            Block.box(7, 1, 7, 9, 16, 9),
+            Block.box(0, 0, 7, 16, 1, 8)
+    ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+
+    public static final VoxelShape SOUTH_END = Stream.of(
+            Block.box(0, 0, 0, 8, 1, 16),
+            Block.box(8, 1, 15, 9, 15, 16),
+            Block.box(0, 15, 15, 9, 16, 16),
+            Block.box(8, 1, 0, 9, 15, 1),
+            Block.box(0, 1, 15, 1, 15, 16),
+            Block.box(0, 1, 0, 1, 15, 1),
+            Block.box(0, 15, 0, 9, 16, 1),
+            Block.box(7, 1, 7, 9, 16, 9),
+            Block.box(8, 0, 0, 9, 1, 16)
+    ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+
+    public static final VoxelShape WEST_END = Stream.of(
+            Block.box(0, 0, 0, 16, 1, 8),
+            Block.box(0, 1, 8, 1, 15, 9),
+            Block.box(0, 15, 0, 1, 16, 9),
+            Block.box(15, 1, 8, 16, 15, 9),
+            Block.box(0, 1, 0, 1, 15, 1),
+            Block.box(15, 1, 0, 16, 15, 1),
+            Block.box(15, 15, 0, 16, 16, 9),
+            Block.box(7, 1, 7, 9, 16, 9),
+            Block.box(0, 0, 8, 16, 1, 9)
+    ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+
     public RailroadCrossingCantilever(Properties p) {
         super(p.strength(1.1F,10F).noOcclusion());
         this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH).setValue(POWERED, false));
+    }
+
+    @Override
+    public VoxelShape getInteractionShape(BlockState state, BlockGetter level, BlockPos pos) {
+        return Shapes.block();
+    }
+
+    @Override
+    public VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext ctx) {
+        if(state.is(ThingamajigsBlocks.RR_CANTILEVER.get())){
+            switch (state.getValue(FACING)){
+                case NORTH,SOUTH -> {return NORTH_SOUTH;}
+                case EAST,WEST -> {return EAST_WEST;}
+            }
+        }
+        else if(state.is(ThingamajigsBlocks.RR_CANTILEVER_LIGHTS.get())){
+            switch (state.getValue(FACING)){
+                case NORTH,SOUTH -> {return NORTH_SOUTH;}
+                case EAST,WEST -> {return EAST_WEST;}
+            }
+        }
+        else if(state.is(ThingamajigsBlocks.RR_CANTILEVER_END.get())){
+            switch (state.getValue(FACING)){
+                case NORTH -> {return NORTH_END;}
+                case SOUTH -> {return SOUTH_END;}
+                case EAST -> {return EAST_END;}
+                case WEST -> {return WEST_END;}
+            }
+        }
+        return Shapes.block();
+    }
+
+    @Override
+    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext ctx) {
+        if(state.is(ThingamajigsBlocks.RR_CANTILEVER.get())){
+            switch (state.getValue(FACING)){
+                case NORTH,SOUTH -> {return NORTH_SOUTH;}
+                case EAST,WEST -> {return EAST_WEST;}
+            }
+        }
+        else if(state.is(ThingamajigsBlocks.RR_CANTILEVER_LIGHTS.get())){
+            switch (state.getValue(FACING)){
+                case NORTH,SOUTH -> {return NORTH_SOUTH;}
+                case EAST,WEST -> {return EAST_WEST;}
+            }
+        }
+        else if(state.is(ThingamajigsBlocks.RR_CANTILEVER_END.get())){
+            switch (state.getValue(FACING)){
+                case NORTH -> {return NORTH_END;}
+                case SOUTH -> {return SOUTH_END;}
+                case EAST -> {return EAST_END;}
+                case WEST -> {return WEST_END;}
+            }
+        }
+        return Shapes.block();
     }
 
     @Override

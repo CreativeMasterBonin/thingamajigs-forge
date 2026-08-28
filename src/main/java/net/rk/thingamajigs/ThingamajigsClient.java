@@ -342,6 +342,7 @@ public class ThingamajigsClient {
             BlockEntityRenderers.register(ThingamajigsBlockEntities.CAR_WASH_TIRE_SCRUBBER_BE.get(),TireScrubberBERenderer::new);
             BlockEntityRenderers.register(ThingamajigsBlockEntities.CAR_WASH_MITTER_CURTAIN_BE.get(),MitterCurtainBERenderer::new);
             BlockEntityRenderers.register(ThingamajigsBlockEntities.CEILING_FAN_BE.get(),CeilingFanBERenderer::new);
+            BlockEntityRenderers.register(ThingamajigsBlockEntities.STOP_GATE_BE.get(),StopGateBERenderer::new);
         }
         catch(Exception blockEntityRendererError){
             logErrorInternal(blockEntityRendererError);

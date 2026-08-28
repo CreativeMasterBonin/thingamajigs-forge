@@ -167,6 +167,11 @@ ThingamajigsBlocks.TRIPLE_SHELF.get(),ThingamajigsBlocks.TOY_BOX.get()
                             ThingamajigsBlocks.CEILING_FAN.get())
                     .build(null));
 
+    public static final Supplier<BlockEntityType<StopGateBE>> STOP_GATE_BE = BLOCK_ENTITIES.register(
+            "stop_gate_be",() -> BlockEntityType.Builder.of(StopGateBE::new,
+                            ThingamajigsBlocks.STOP_GATE.get())
+                    .build(null));
+
     public static void register(IEventBus eventBus){
         BLOCK_ENTITIES.register(eventBus);
     }
