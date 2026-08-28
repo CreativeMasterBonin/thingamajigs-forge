@@ -2,57 +2,62 @@ package net.rk.thingamajigs.renderers;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.Sheets;
-import net.minecraft.client.renderer.block.BlockModelShaper;
-import net.minecraft.client.renderer.block.BlockRenderDispatcher;
-import net.minecraft.client.renderer.block.ModelBlockRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
-import net.minecraft.client.resources.model.BakedModel;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.client.model.data.ModelData;
-import net.rk.thingamajigs.block.ThingamajigsBlocks;
-import net.rk.thingamajigs.block.TubeManDeco;
+import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.resources.ResourceLocation;
+import net.rk.thingamajigs.block.custom.blocks.StopGate;
 import net.rk.thingamajigs.entity.customblock.StopGateBE;
-
-import java.util.Objects;
+import net.rk.thingamajigs.entity.models.GateArmModel;
 
 @SuppressWarnings("deprecated,unused")
 public class StopGateBERenderer implements BlockEntityRenderer<StopGateBE>{
-    public final Minecraft mc;
-    private final BlockRenderDispatcher dispatcher;
-    private final ModelBlockRenderer blockRenderer;
-    private final BlockModelShaper blockModelShaper;
+    public GateArmModel gateArmModel;
+    public static final ResourceLocation GATE_ARM_ALL = new ResourceLocation("thingamajigs:textures/entity/gate_arm.png");
 
     public StopGateBERenderer(BlockEntityRendererProvider.Context ctx){
-        mc = Objects.requireNonNull(Minecraft.getInstance());
-        dispatcher = Objects.requireNonNull(mc.getBlockRenderer());
-        blockRenderer = Objects.requireNonNull(dispatcher.getModelRenderer());
-        blockModelShaper = Objects.requireNonNull(mc.getBlockRenderer().getBlockModelShaper());
+        gateArmModel = new GateArmModel(ctx.bakeLayer(GateArmModel.GATE_ARM));
     }
 
     @Override
-    public void render(StopGateBE stopGateBE, float partialTick, PoseStack poseStack, MultiBufferSource multiBufferSource, int packedLight, int packedOverlay) {
+    public void render(StopGateBE stopGateBE, float partialTick, PoseStack poseStack, MultiBufferSource buffer, int packedLight, int packedOverlay) {
         poseStack.pushPose();
-        BakedModel testRod = blockModelShaper.getBlockModel(Blocks.END_ROD.defaultBlockState());
-
-        poseStack.scale(2.0f,1.0f,1.0f);
-        poseStack.rotateAround(Axis.ZP.rotationDegrees(stopGateBE.gateAngle),0.5f,0.5f,0.5f);
-        poseStack.translate(0.15D,0D,0D);
-        this.blockRenderer.renderModel(poseStack.last(),multiBufferSource.getBuffer(Sheets.solidBlockSheet()),null,
-                testRod,
-                1.0f,1.0f,1.0f,packedLight,packedOverlay, ModelData.EMPTY, RenderType.solid());
-
+        // rotate arm up-down degrees
+        // rotate arm around based on direction
+        if(stopGateBE.getBlockState().hasProperty(StopGate.FACING)){
+            switch(stopGateBE.getBlockState().getValue(StopGate.FACING)){
+                case NORTH->{
+                    poseStack.rotateAround(Axis.ZP.rotationDegrees(stopGateBE.gateAngle * -1.0f),
+                            stopGateBE.northXRot,stopGateBE.northYRot,stopGateBE.northZRot);
+                    poseStack.rotateAround(Axis.YP.rotationDegrees(0),0.5f,0.5f,0.5f);
+                }
+                case SOUTH->{
+                    poseStack.rotateAround(Axis.ZP.rotationDegrees(stopGateBE.gateAngle),stopGateBE.southXRot,stopGateBE.southYRot,stopGateBE.southZRot);
+                    poseStack.rotateAround(Axis.YP.rotationDegrees(180),0.5f,0.5f,0.5f);
+                }
+                case EAST->{
+                    poseStack.rotateAround(Axis.XP.rotationDegrees(stopGateBE.gateAngle),stopGateBE.eastXRot,stopGateBE.eastYRot,stopGateBE.eastZRot);
+                    poseStack.rotateAround(Axis.YP.rotationDegrees(-90),0.5f,0.5f,0.5f);
+                }
+                case WEST->{
+                    poseStack.rotateAround(Axis.XP.rotationDegrees(stopGateBE.gateAngle * -1.0f),stopGateBE.westXRot,stopGateBE.westYRot,stopGateBE.westZRot);
+                    poseStack.rotateAround(Axis.YP.rotationDegrees(90),0.5f,0.5f,0.5f);
+                }
+            }
+        }
+        // move arm to position
+        poseStack.translate(stopGateBE.offsetX,stopGateBE.offsetY,stopGateBE.offsetZ);
+        // render the arm model
+        gateArmModel.gateArm.render(poseStack,buffer.getBuffer(RenderType.entitySolid(
+                GATE_ARM_ALL)),packedLight,OverlayTexture.NO_OVERLAY);
         poseStack.popPose();
     }
 
     @Override
-    public boolean shouldRender(StopGateBE stopGate, Vec3 vec) {
-        return true;
+    public int getViewDistance() {
+        return 64;
     }
 
     @Override

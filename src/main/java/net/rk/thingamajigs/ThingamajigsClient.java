@@ -366,6 +366,7 @@ public class ThingamajigsClient {
         event.registerLayerDefinition(TireScrubbers.TIRE_SCRUBBER,TireScrubbers::createBodyLayer);
         event.registerLayerDefinition(MitterCurtainModel.MITTER_CURTAIN,MitterCurtainModel::createBodyLayer);
         event.registerLayerDefinition(CeilingFanBlades.CEILING_FAN_BLADES,CeilingFanBlades::createBodyLayer);
+        event.registerLayerDefinition(GateArmModel.GATE_ARM,GateArmModel::createBodyLayer);
         // model layers for entity models
         try{
             // entity without layer (should not be textured)

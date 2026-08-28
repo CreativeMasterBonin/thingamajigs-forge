@@ -1,9 +1,13 @@
 package net.rk.thingamajigs.block.custom.blocks;
 
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -25,6 +29,7 @@ import net.rk.thingamajigs.entity.ThingamajigsBlockEntities;
 import net.rk.thingamajigs.entity.customblock.StopGateBE;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.stream.Stream;
 
 import static net.minecraft.core.Direction.*;
@@ -80,6 +85,12 @@ public class StopGate extends BaseEntityBlock {
     public StopGate(Properties p) {
         super(p.strength(1F,5F).sound(SoundType.LANTERN).noOcclusion());
         this.registerDefaultState(this.defaultBlockState().setValue(FACING,NORTH).setValue(LIT, false));
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> tooltipList, TooltipFlag flag) {
+        tooltipList.add(Component.translatable("block.thingamajigs.stop_gate.desc")
+                .withStyle(ChatFormatting.GRAY));
     }
 
     @Override
