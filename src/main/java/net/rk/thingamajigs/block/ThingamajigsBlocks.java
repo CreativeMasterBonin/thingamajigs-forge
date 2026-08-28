@@ -778,7 +778,7 @@ public class ThingamajigsBlocks {
     public static final RegistryObject<Block> DISHWASHER_WALL = registerBlock("dishwasher_wall",
             () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.of().sound(SoundType.METAL).strength(1F,10F)), 0);
     public static final RegistryObject<Block> OFFICE_PHONE = registerBlock("office_phone",
-            () -> new OfficePhone(BlockBehaviour.Properties.of().sound(SoundType.LANTERN).strength(1F,2F)), 0);
+            () -> new OfficePhone(BlockBehaviour.Properties.of().sound(SoundType.LANTERN).strength(1F,2F)));
     public static final RegistryObject<Block> PORTABLE_DISH_WASHER = registerBlock("portable_dish_washer",
             () -> new PortableDishwasher(BlockBehaviour.Properties.of().sound(SoundType.LANTERN).strength(0.95F,5F)), 0);
     public static final RegistryObject<Block> STANDING_VACUUM = registerBlock("vacuum_standing",
@@ -1096,7 +1096,7 @@ public class ThingamajigsBlocks {
                 }
             });
     public static final RegistryObject<Block> BABY_CARRIAGE = registerBlock("baby_carriage",
-            () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.copy(Blocks.STONE).sound(SoundType.CALCITE)), 0);
+            () -> new BabyCarriage(BlockBehaviour.Properties.copy(Blocks.STONE)));
     public static final RegistryObject<Block> CONVENIENCE_SHELF = registerBlock("convenience_shelf",
             () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.copy(Blocks.STONE).sound(SoundType.DEEPSLATE_BRICKS)), 0);
     public static final RegistryObject<Block> CREEPER_PLUSHY = registerBlock("creeper_plushy",
@@ -3710,7 +3710,7 @@ public class ThingamajigsBlocks {
     public static final RegistryObject<Block> CINDER_BLOCK_SLAB = registerBlock("cinder_block_slab",
             () -> new SlabBlock(BlockBehaviour.Properties.of().strength(1.25f,20f).sound(SoundType.DEEPSLATE_TILES)));
     public static final RegistryObject<Block> I_BEAM = registerBlock("i_beam",
-            () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.of()
+            () -> new IBeam(BlockBehaviour.Properties.of()
                     .strength(1f,12f).sound(SoundType.METAL)
                     .mapColor(MapColor.METAL).pushReaction(PushReaction.BLOCK)));
 

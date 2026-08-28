@@ -5,7 +5,12 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -20,13 +25,16 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.ticks.TickPriority;
+import net.minecraftforge.common.Tags;
 import net.rk.thingamajigs.entity.ThingamajigsBlockEntities;
 import net.rk.thingamajigs.entity.customblock.StopGateBE;
+import net.rk.thingamajigs.misc.ThingamajigsCalcStuffs;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -151,5 +159,26 @@ public class StopGate extends BaseEntityBlock {
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
         return createTickerHelper(blockEntityType, ThingamajigsBlockEntities.STOP_GATE_BE.get(),
                 level.isClientSide() ? null : StopGateBE::serverTick);
+    }
+
+    @Override
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+        if(level.isClientSide()){
+            if(player.getItemInHand(hand).is(ItemTags.AXES) || player.getItemInHand(hand).is(Tags.Items.SHEARS)){
+                player.playSound(SoundEvents.IRON_GOLEM_REPAIR,0.5f, ThingamajigsCalcStuffs.nextFloatBetweenInclusive(0.94f,1.0f));
+                return InteractionResult.SUCCESS;
+            }
+        }
+        else{
+            if(player.getItemInHand(hand).is(ItemTags.AXES) || player.getItemInHand(hand).is(Tags.Items.SHEARS)) {
+                StopGateBE stopGate = (StopGateBE) level.getBlockEntity(pos);
+                if (stopGate instanceof StopGateBE) {
+                    stopGate.inverse = !stopGate.inverse;
+                    stopGate.updateBlock();
+                    return InteractionResult.SUCCESS;
+                }
+            }
+        }
+        return InteractionResult.PASS;
     }
 }

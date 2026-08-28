@@ -204,6 +204,8 @@ public class ThingamajigsItemModelProvider extends ItemModelProvider {
         fromModelMod(ThingamajigsBlocks.MINIGOLF_FLAG.get(),"block/minigolf_flags/red_minigolf_flag");
         fromModelMod(ThingamajigsBlocks.ELECTRIC_HOSPITAL_BED.get(),"block/electric_hospital_bed");
         fromModelMod(ThingamajigsBlocks.PHONE_STEP_SELECTORS_GROUP.get(),"block/phone_step_selectors_group");
+        // 1.9.0
+        fromModelMod(ThingamajigsBlocks.STOP_GATE.get(),"block/stop_gate_off");
     }
 
     private ItemModelBuilder fromModelModItem(Item item, String source){

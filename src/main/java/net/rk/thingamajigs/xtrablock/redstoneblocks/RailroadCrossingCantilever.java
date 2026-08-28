@@ -135,24 +135,29 @@ public class RailroadCrossingCantilever extends Block {
 
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext ctx) {
-        if(state.is(ThingamajigsBlocks.RR_CANTILEVER.get())){
-            switch (state.getValue(FACING)){
-                case NORTH,SOUTH -> {return NORTH_SOUTH;}
-                case EAST,WEST -> {return EAST_WEST;}
-            }
+        if(ctx.isHoldingItem(ThingamajigsBlocks.RR_CANTILEVER.get().asItem()) || ctx.isHoldingItem(ThingamajigsBlocks.RR_CANTILEVER_LIGHTS.get().asItem()) || ctx.isHoldingItem(ThingamajigsBlocks.RR_CANTILEVER_END.get().asItem())){
+            return Shapes.block();
         }
-        else if(state.is(ThingamajigsBlocks.RR_CANTILEVER_LIGHTS.get())){
-            switch (state.getValue(FACING)){
-                case NORTH,SOUTH -> {return NORTH_SOUTH;}
-                case EAST,WEST -> {return EAST_WEST;}
+        else{
+            if(state.is(ThingamajigsBlocks.RR_CANTILEVER.get())){
+                switch (state.getValue(FACING)){
+                    case NORTH,SOUTH -> {return NORTH_SOUTH;}
+                    case EAST,WEST -> {return EAST_WEST;}
+                }
             }
-        }
-        else if(state.is(ThingamajigsBlocks.RR_CANTILEVER_END.get())){
-            switch (state.getValue(FACING)){
-                case NORTH -> {return NORTH_END;}
-                case SOUTH -> {return SOUTH_END;}
-                case EAST -> {return EAST_END;}
-                case WEST -> {return WEST_END;}
+            else if(state.is(ThingamajigsBlocks.RR_CANTILEVER_LIGHTS.get())){
+                switch (state.getValue(FACING)){
+                    case NORTH,SOUTH -> {return NORTH_SOUTH;}
+                    case EAST,WEST -> {return EAST_WEST;}
+                }
+            }
+            else if(state.is(ThingamajigsBlocks.RR_CANTILEVER_END.get())){
+                switch (state.getValue(FACING)){
+                    case NORTH -> {return NORTH_END;}
+                    case SOUTH -> {return SOUTH_END;}
+                    case EAST -> {return EAST_END;}
+                    case WEST -> {return WEST_END;}
+                }
             }
         }
         return Shapes.block();

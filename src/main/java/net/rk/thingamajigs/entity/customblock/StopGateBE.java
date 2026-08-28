@@ -64,20 +64,7 @@ public class StopGateBE extends BlockEntity {
     @Override
     public void saveAdditional(CompoundTag tag) {
         tag.putFloat("gate_angle",gateAngle);
-        /*tag.putFloat("northxrot",northXRot);
-        tag.putFloat("southxrot",southXRot);
-        tag.putFloat("eastxrot",eastXRot);
-        tag.putFloat("westxrot",westXRot);
-
-        tag.putFloat("northyrot",northYRot);
-        tag.putFloat("southyrot",southYRot);
-        tag.putFloat("eastyrot",eastYRot);
-        tag.putFloat("westyrot",westYRot);
-
-        tag.putFloat("northzrot",northZRot);
-        tag.putFloat("southzrot",southZRot);
-        tag.putFloat("eastzrot",eastZRot);
-        tag.putFloat("westzrot",westZRot);*/
+        tag.putBoolean("inverse",inverse);
     }
 
     @Override
@@ -85,47 +72,12 @@ public class StopGateBE extends BlockEntity {
         if(tag.contains("gate_angle")){
             gateAngle = tag.getFloat("gate_angle");
         }
-        /*if(tag.contains("northxrot")){
-            northXRot = tag.getFloat("northxrot");
+        if(tag.contains("inverse")){
+            inverse = tag.getBoolean("inverse");
         }
-        if(tag.contains("southxrot")){
-            southXRot = tag.getFloat("southxrot");
-        }
-        if(tag.contains("eastxrot")){
-            eastXRot = tag.getFloat("eastxrot");
-        }
-        if(tag.contains("westxrot")){
-            westXRot = tag.getFloat("westxrot");
-        }
-
-        if(tag.contains("northyrot")){
-            northYRot = tag.getFloat("northyrot");
-        }
-        if(tag.contains("southyrot")){
-            southYRot = tag.getFloat("southyrot");
-        }
-        if(tag.contains("eastyrot")){
-            eastYRot = tag.getFloat("eastyrot");
-        }
-        if(tag.contains("westyrot")){
-            westYRot = tag.getFloat("westyrot");
-        }
-
-        if(tag.contains("northzrot")){
-            northZRot = tag.getFloat("northzrot");
-        }
-        if(tag.contains("southzrot")){
-            southZRot = tag.getFloat("southzrot");
-        }
-        if(tag.contains("eastzrot")){
-            eastZRot = tag.getFloat("eastzrot");
-        }
-        if(tag.contains("westzrot")){
-            westZRot = tag.getFloat("westzrot");
-        }*/
     }
 
-    public static final float BOUNDING_BOX_RANGE = 3.5f;
+    public static final float BOUNDING_BOX_RANGE = 4.575f;
 
     @Override
     public AABB getRenderBoundingBox() {

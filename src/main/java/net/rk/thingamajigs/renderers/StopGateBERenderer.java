@@ -2,6 +2,7 @@ package net.rk.thingamajigs.renderers;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
+import net.minecraft.Util;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
@@ -25,24 +26,34 @@ public class StopGateBERenderer implements BlockEntityRenderer<StopGateBE>{
     public void render(StopGateBE stopGateBE, float partialTick, PoseStack poseStack, MultiBufferSource buffer, int packedLight, int packedOverlay) {
         poseStack.pushPose();
         // rotate arm up-down degrees
-        // rotate arm around based on direction
+        float negAngle = stopGateBE.gateAngle * -1.0f;
+        float posAngle = stopGateBE.gateAngle;
+
+        // invert offset by 90 degrees based on settings
+        if(stopGateBE.inverse){
+            negAngle = (stopGateBE.gateAngle + 90.0f) * -1.0f;
+            posAngle = stopGateBE.gateAngle + 90.0f;
+        }
+
+        // make sure direction state is on the block
         if(stopGateBE.getBlockState().hasProperty(StopGate.FACING)){
+            // rotate the pose based on direction
             switch(stopGateBE.getBlockState().getValue(StopGate.FACING)){
                 case NORTH->{
-                    poseStack.rotateAround(Axis.ZP.rotationDegrees(stopGateBE.gateAngle * -1.0f),
+                    poseStack.rotateAround(Axis.ZP.rotationDegrees(negAngle),
                             stopGateBE.northXRot,stopGateBE.northYRot,stopGateBE.northZRot);
                     poseStack.rotateAround(Axis.YP.rotationDegrees(0),0.5f,0.5f,0.5f);
                 }
                 case SOUTH->{
-                    poseStack.rotateAround(Axis.ZP.rotationDegrees(stopGateBE.gateAngle),stopGateBE.southXRot,stopGateBE.southYRot,stopGateBE.southZRot);
+                    poseStack.rotateAround(Axis.ZP.rotationDegrees(posAngle),stopGateBE.southXRot,stopGateBE.southYRot,stopGateBE.southZRot);
                     poseStack.rotateAround(Axis.YP.rotationDegrees(180),0.5f,0.5f,0.5f);
                 }
                 case EAST->{
-                    poseStack.rotateAround(Axis.XP.rotationDegrees(stopGateBE.gateAngle),stopGateBE.eastXRot,stopGateBE.eastYRot,stopGateBE.eastZRot);
+                    poseStack.rotateAround(Axis.XP.rotationDegrees(posAngle),stopGateBE.eastXRot,stopGateBE.eastYRot,stopGateBE.eastZRot);
                     poseStack.rotateAround(Axis.YP.rotationDegrees(-90),0.5f,0.5f,0.5f);
                 }
                 case WEST->{
-                    poseStack.rotateAround(Axis.XP.rotationDegrees(stopGateBE.gateAngle * -1.0f),stopGateBE.westXRot,stopGateBE.westYRot,stopGateBE.westZRot);
+                    poseStack.rotateAround(Axis.XP.rotationDegrees(negAngle),stopGateBE.westXRot,stopGateBE.westYRot,stopGateBE.westZRot);
                     poseStack.rotateAround(Axis.YP.rotationDegrees(90),0.5f,0.5f,0.5f);
                 }
             }
