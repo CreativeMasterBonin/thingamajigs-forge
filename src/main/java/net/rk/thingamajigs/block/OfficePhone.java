@@ -1,12 +1,19 @@
 package net.rk.thingamajigs.block;
 
+import io.netty.buffer.Unpooled;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.MenuProvider;
+import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -16,12 +23,17 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.network.NetworkHooks;
 import net.rk.thingamajigs.block.custom.ThingamajigsDecorativeBlock;
+import net.rk.thingamajigs.events.ThingamajigsSoundEvents;
+import net.rk.thingamajigs.screen.PhoneMenu;
 
+import java.util.Optional;
 import java.util.stream.Stream;
 
 public class OfficePhone extends ThingamajigsDecorativeBlock {
@@ -166,7 +178,7 @@ public class OfficePhone extends ThingamajigsDecorativeBlock {
     }
 
     @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+    public void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(FACING,WATERLOGGED);
     }
 
@@ -175,4 +187,47 @@ public class OfficePhone extends ThingamajigsDecorativeBlock {
         FluidState fluidstate = context.getLevel().getFluidState(context.getClickedPos());
         return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(WATERLOGGED, fluidstate.getType() == Fluids.WATER);
     }
+
+    @Override
+    public InteractionResult use(BlockState blockstate, Level world, BlockPos pos, Player entity, InteractionHand hand, BlockHitResult hit) {
+        if(world.isClientSide()){
+            if(entity.getItemInHand(hand).isEmpty()){
+                return InteractionResult.SUCCESS;
+            }
+        }
+        else{
+            if(entity.getItemInHand(hand).isEmpty()){
+                if (entity instanceof ServerPlayer player) {
+                    NetworkHooks.openScreen(player, new MenuProvider() {
+                        @Override
+                        public Component getDisplayName() {
+                            return Component.translatable("title.thingamajigs.phone")
+                                    .withStyle(ChatFormatting.WHITE);
+                        }
+                        @Override
+                        public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
+                            return new PhoneMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
+                        }
+                    }, pos);
+                    return InteractionResult.SUCCESS;
+                }
+            }
+        }
+        return InteractionResult.PASS;
+    }
+
+    /*@Override
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+        if(state.is(ThingamajigsBlocks.GENERAL_DIGITAL_PHONE.get())){
+
+        }
+        return InteractionResult.PASS;
+    }
+
+    public Optional<Vec3> relativeHitCoords(BlockHitResult result){
+        double x = result.getBlockPos().getX();
+        double y = result.getBlockPos().getY();
+        double z = result.getBlockPos().getZ();
+        return null;
+    }*/
 }

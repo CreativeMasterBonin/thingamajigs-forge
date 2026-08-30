@@ -1020,17 +1020,17 @@ public class ThingamajigsBlocks {
     public static final RegistryObject<Block> AIR_HOCKEY_TABLE = registerBlock("air_hockey_table",
             () -> new AirConditioner(BlockBehaviour.Properties.of().sound(SoundType.LANTERN)));
     public static final RegistryObject<Block> BUTTER_CHURNER = registerBlock("butter_churner",
-            () -> new DoubleTallDecorationBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)), 0);
+            () -> new DoubleTallDecorationBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
     public static final RegistryObject<Block> FIRE_ESCAPE_LADDER = registerBlock("fire_escape_ladder",
-            () -> new FireEscapeLadder(BlockBehaviour.Properties.of().noOcclusion()), 0);
+            () -> new FireEscapeLadder(BlockBehaviour.Properties.of().noOcclusion()));
     public static final RegistryObject<Block> CATWALK_CENTER = registerBlock("catwalk_center",
-            () -> new CatWalkCenter(BlockBehaviour.Properties.of()), 0);
+            () -> new CatWalkCenter(BlockBehaviour.Properties.of()));
     public static final RegistryObject<Block> CATWALK = registerBlock("catwalk",
-            () -> new CatWalk(BlockBehaviour.Properties.of()), 0);
+            () -> new CatWalk(BlockBehaviour.Properties.of()));
     public static final RegistryObject<Block> MYSTERIOUS_ONE_COUCH = registerBlock("mysterious_couch",
-            () -> new LoveCouch(BlockBehaviour.Properties.copy(Blocks.WHITE_WOOL)), 0);
+            () -> new LoveCouch(BlockBehaviour.Properties.copy(Blocks.WHITE_WOOL)));
     public static final RegistryObject<Block> GENERAL_DIGITAL_PHONE = registerBlock("general_digital_phone",
-            () -> new OfficePhone(BlockBehaviour.Properties.copy(Blocks.SNOW_BLOCK)), 0);
+            () -> new OfficePhone(BlockBehaviour.Properties.copy(Blocks.SNOW_BLOCK)));
     public static final RegistryObject<Block> ZOMBIE_PLUSHIE = registerBlock("zombie_plushie",
             () -> new ReindeerPlushy(BlockBehaviour.Properties.copy(Blocks.SNOW_BLOCK).sound(SoundType.WOOL)));
     public static final RegistryObject<Block> STEVE_PLUSHY = registerBlock("steve_plushy",
@@ -1046,37 +1046,37 @@ public class ThingamajigsBlocks {
     public static final RegistryObject<Block> SHOPPING_BASKET_PILE = registerBlock("shopping_basket_pile",
             () -> new ShoppingBasket(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.25F)));
     public static final RegistryObject<Block> BLUEYSNAP_CONSOLE = registerBlock("blueysnap_console",
-            () -> new Blueysnapblock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1F)), 0);
+            () -> new Blueysnapblock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1F)));
     public static final RegistryObject<Block> BLUEYSNAP_BASE = registerBlock("blueysnap_base",
-            () -> new Blueysnapblock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1F)), 0);
+            () -> new Blueysnapblock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1F)));
     public static final RegistryObject<Block> BEAKER = registerBlock("beaker",
-            () -> new SmallGlassStorageThing(BlockBehaviour.Properties.copy(Blocks.GLASS)), 0);
+            () -> new SmallGlassStorageThing(BlockBehaviour.Properties.copy(Blocks.GLASS)));
     public static final RegistryObject<Block> FLASK = registerBlock("flask",
-            () -> new SmallGlassStorageThing(BlockBehaviour.Properties.copy(Blocks.GLASS)), 0);
+            () -> new SmallGlassStorageThing(BlockBehaviour.Properties.copy(Blocks.GLASS)));
     public static final RegistryObject<Block> MICROSCOPE = registerBlock("microscope",
-            () -> new StandMixer(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1F)), 0);
+            () -> new StandMixer(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1F)));
     public static final RegistryObject<Block> OLD_WOODEN_PHONE = registerBlock("old_wooden_phone",
             () -> new OldWoodenPhone(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
     public static final RegistryObject<Block> BATHTUB_NOZZLE = registerBlock("bathtub_nozzle",
-            () -> new BathtubNozzle(BlockBehaviour.Properties.copy(Blocks.STONE)), 0);
+            () -> new BathtubNozzle(BlockBehaviour.Properties.copy(Blocks.STONE)));
     public static final RegistryObject<Block> GARDEN_HOSE = registerBlock("garden_hose",
-            () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.copy(Blocks.STONE).sound(SoundType.CALCITE).noCollission()), 0);
+            () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.copy(Blocks.STONE).sound(SoundType.CALCITE).noCollission()));
     public static final RegistryObject<Block> WOOD_DUCK = registerBlock("wood_duck",
-            () -> new ReindeerPlushy(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).noCollission()), 0);
+            () -> new ReindeerPlushy(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).noCollission()));
     public static final RegistryObject<Block> WOOD_CAR = registerBlock("wood_car",
-            () -> new ReindeerPlushy(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).noCollission()), 0);
+            () -> new ReindeerPlushy(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).noCollission()));
     public static final RegistryObject<Block> PHONE_SWITCHER = registerBlock("phone_switcher",
-            () -> new PhoneSwitcher(BlockBehaviour.Properties.of()), 0);
+            () -> new PhoneSwitcher(BlockBehaviour.Properties.of()));
     public static final RegistryObject<Block> HOTDOG_ROTATOR = registerBlock("hotdog_rotator",
-            () -> new HotdogRotator(BlockBehaviour.Properties.of()), 0);
+            () -> new HotdogRotator(BlockBehaviour.Properties.of()));
     public static final RegistryObject<Block> LAWN_MOWER = registerBlock("lawn_mower",
-            () -> new Wheelbarrow(BlockBehaviour.Properties.of()), 0);
+            () -> new Wheelbarrow(BlockBehaviour.Properties.of()));
     public static final RegistryObject<Block> DIVING_BOARD = registerBlock("diving_board",
-            () -> new DivingBoard(BlockBehaviour.Properties.of()), 0);
+            () -> new DivingBoard(BlockBehaviour.Properties.of()));
     public static final RegistryObject<Block> WATER_SLIDE = registerBlock("water_slide",
             () -> new WaterSlide(BlockBehaviour.Properties.of()));
     public static final RegistryObject<Block> SLUSHY_MACHINE = registerBlock("slushy_machine",
-            () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.of().sound(SoundType.LANTERN).strength(1F,2F)), 0);
+            () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.of().sound(SoundType.LANTERN).strength(1F,2F)));
     public static final RegistryObject<Block> TOY_BOX = registerBlock("toy_box",
             () -> new StorageDecoration(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.WOOD),"blockEntities.storage_decoration.toy_box.name"){
 
@@ -1106,26 +1106,26 @@ public class ThingamajigsBlocks {
 
     // Start Features 1.19.3+
     public static final RegistryObject<Block> FEATURED_CORDLESS_PHONE = registerBlock("featured_cordless_phone",
-            () -> new CordlessPhoneBase(BlockBehaviour.Properties.copy(Blocks.STONE).sound(SoundType.LANTERN)), 0);
+            () -> new CordlessPhoneBase(BlockBehaviour.Properties.copy(Blocks.STONE).sound(SoundType.LANTERN)));
     public static final RegistryObject<Block> SMARTPHONE = registerBlock("smartphone",
-            () -> new MobilePhone(BlockBehaviour.Properties.copy(Blocks.STONE).sound(SoundType.CALCITE)), 0);
+            () -> new MobilePhone(BlockBehaviour.Properties.copy(Blocks.STONE).sound(SoundType.CALCITE)));
     public static final RegistryObject<Block> POOPSHELF = registerBlock("poopshelf",
-            () -> new PoopBookshelf(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)), 0);
+            () -> new PoopBookshelf(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
 
     public static final RegistryObject<Block> FULL_POOP_BLOCK = registerBlock("full_poop_block",
-            () -> new FullPoopBlock(BlockBehaviour.Properties.copy(Blocks.MOSS_BLOCK)), 0);
+            () -> new FullPoopBlock(BlockBehaviour.Properties.copy(Blocks.MOSS_BLOCK)));
     //
     public static final RegistryObject<Block> FIRE_DETECTOR = registerBlock("fire_detector",
-            () -> new FireDetector(BlockBehaviour.Properties.of()), 0);
+            () -> new FireDetector(BlockBehaviour.Properties.of()));
 
     public static final RegistryObject<Block> FIRE_EXTINGUISHER = registerBlock("fire_extinguisher",
-            () -> new FireExtinguisher(BlockBehaviour.Properties.of()), 0);
+            () -> new FireExtinguisher(BlockBehaviour.Properties.of()));
 
     public static final RegistryObject<Block> HISTORIAN_BOOKSHELF = registerBlock("historian_bookshelf",
-            () -> new CustomBookshelf(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)), 0);
+            () -> new CustomBookshelf(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
     //
     public static final RegistryObject<Block> CHECKBOARD_WOOL = registerBlock("checkerboard_wool",
-            () -> new CheckerboardWool(BlockBehaviour.Properties.copy(Blocks.WHITE_WOOL).mapColor(MapColor.TERRACOTTA_WHITE)), 0);
+            () -> new CheckerboardWool(BlockBehaviour.Properties.copy(Blocks.WHITE_WOOL).mapColor(MapColor.TERRACOTTA_WHITE)));
     //
     public static final RegistryObject<Block> STONE_PILLAR = registerBlock("stone_pillar",
             () -> new ConnectingVerticalPillarBlock(BlockBehaviour.Properties.copy(Blocks.STONE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)), 0);

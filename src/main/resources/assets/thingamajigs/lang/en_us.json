@@ -1243,7 +1243,7 @@
 
   "button.thingamajigs.phone_button": "ThingamajigsPhoneButton",
   "button.thingamajigs.empty": "ThingamajigsEmptyPhoneButton",
-  "title.thingamajigs.phone": "§fMobile Phone",
+  "title.thingamajigs.phone": "Mobile Phone",
   "thingamajigs.block_not_yet_working.desc": "Note that this block is not yet working, and may corrupt your world.",
   "thingamajigs.component_can_create.desc": "Can Be Used To Craft: ",
   "thingamajigs.component.infrastructure": "Infrastructure/Construction Decorations and Blocks",

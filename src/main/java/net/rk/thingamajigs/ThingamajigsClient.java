@@ -1,6 +1,9 @@
 package net.rk.thingamajigs;
 
 import com.mojang.logging.LogUtils;
+import com.mojang.text2speech.Narrator;
+import net.minecraft.SharedConstants;
+import net.minecraft.client.GameNarrator;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.model.geom.ModelLayers;
@@ -20,6 +23,9 @@ import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraftforge.client.ConfigScreenHandler;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterColorHandlersEvent;
+import net.minecraftforge.event.GameShuttingDownEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.rk.thingamajigs.block.ThingamajigsBlocks;
@@ -37,6 +43,40 @@ import org.slf4j.Logger;
 @SuppressWarnings("deprecated")
 public class ThingamajigsClient {
     private static final Logger LOGGERV3 = LogUtils.getLogger();
+    public static final GameNarrator thingamajigsNarrator = new GameNarrator(Minecraft.getInstance()){
+        public final Narrator narrator = Narrator.getNarrator();
+
+        @Override
+        public void sayNow(String text) {
+            debugLogSpeech(text);
+            if(narrator.active()){
+                narrator.clear();
+            }
+            if(!text.isEmpty() && !text.isBlank()){
+                this.say(Component.literal(text));
+            }
+        }
+
+        public void debugLogSpeech(String text){
+            if(SharedConstants.IS_RUNNING_IN_IDE){
+                if(text.isEmpty() || text.isBlank()){
+                    LOGGERV3.debug("[Thingamajigs Narrator] - Empty text but method was called");
+                }
+                else{
+                    LOGGERV3.debug("[Thingamajigs Narrator] - Narrator said string: " + text);
+                }
+            }
+        }
+
+        public void say(Component textComponent){
+            String str = textComponent.getString();
+            debugLogSpeech(str);
+            if(!str.isBlank() && !str.isEmpty() && narrator.active()){
+                narrator.say(str,true);
+            }
+        }
+    };
+
     private static void logErrorInternal(Exception e){
         LOGGERV3.error("Thingamajigs encountered and error: Exception goes as follows: {}", e.getMessage());
     }
@@ -247,6 +287,12 @@ public class ThingamajigsClient {
                 ThingamajigsBlocks.PINK_PUMPKIN_STEM.get(),
                 ThingamajigsBlocks.PINK_GLOW_BLOCK.get()
         );
+    }
+
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
+    public static void close(GameShuttingDownEvent event){
+        thingamajigsNarrator.clear();
+        thingamajigsNarrator.destroy();
     }
 
     public static void setupClient(final FMLClientSetupEvent event){

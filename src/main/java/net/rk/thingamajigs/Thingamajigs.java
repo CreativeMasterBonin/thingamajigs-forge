@@ -101,7 +101,6 @@ public class Thingamajigs {
             eventBus.addListener(ThingamajigsClient::setColors);
             eventBus.addListener(ThingamajigsClient::setItemColors);
             eventBus.addListener(ThingamajigsClient::layerSetup);
-            //eventBus.addListener(ThingamajigsClient::addModels); // 1.8.5 - currently broken
         }
 
         // finale mod registry

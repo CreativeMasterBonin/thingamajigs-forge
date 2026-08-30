@@ -12,6 +12,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.rk.thingamajigs.ThingamajigsClient;
 import net.rk.thingamajigs.network.ThingamajigsPacketHandler;
 import net.rk.thingamajigs.network.messages.PhoneUIButtonMessage;
 import net.rk.thingamajigs.screen.widget.PhoneEditBox;
@@ -161,6 +162,7 @@ public class PhoneUIScreen extends AbstractContainerScreen<PhoneMenu> {
             }
             ThingamajigsPacketHandler.INSTANCE.sendToServer(new PhoneUIButtonMessage(32, x, y, z,num));
             PhoneUIButtonMessage.handleButtonAction(entity, 32, x, y, z,num);
+            sayMessage(numberBox.getValue());
             numberBox.setValue("");
         }).bounds(this.leftPos + xSecondOffset - 16, this.topPos + yOffsetBottomRow + 94, button_size_x, button_size_y).build();
 
@@ -275,6 +277,12 @@ public class PhoneUIScreen extends AbstractContainerScreen<PhoneMenu> {
                 this.leftPos + xThirdOffset,
                 this.topPos + yOffsetBottomRow,
                 button_size_x, button_size_y).build();
+    }
+
+    public void sayMessage(String message){
+        if(entity.level().isClientSide()){
+            ThingamajigsClient.thingamajigsNarrator.sayNow(message);
+        }
     }
 }
 

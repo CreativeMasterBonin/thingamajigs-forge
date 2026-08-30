@@ -141,27 +141,23 @@ public class PhoneUIButtonMessage {
             if(!lvl.isClientSide){
                 // for fun numbers
                 if(buttonID == 32){
-                    if(sentNumber.equals("1111111111")){
+                    if(sentNumber.equals("1111111111")){ // not a number
                         playLocalOrServerSound(false,lvl,bp,ThingamajigsSoundEvents.PHONE_NOT_A_NUMBER.get());
                         return;
                     }
-                    else if(sentNumber.equals("2307771234")){
+                    else if(sentNumber.equals("2307771234")){ // song maybe
                         playLocalOrServerSound(false,lvl,bp,ThingamajigsSoundEvents.PHONE_SONG_MAYBE.get());
                         return;
                     }
-                    else if(sentNumber.equals("5712226788")){
+                    else if(sentNumber.equals("5712226788")){ // birds perhaps
                         playLocalOrServerSound(false,lvl,bp,ThingamajigsSoundEvents.PHONE_BIRDS_PERHAPS.get());
                         return;
                     }
-                    else if(sentNumber.equals("3897043333")){
+                    else if(sentNumber.equals("3897043333")){ // explode
                         playLocalOrServerSound(false,lvl,bp,SoundEvents.GENERIC_EXPLODE);
                         return;
                     }
-                    else if(sentNumber.equals("0005551234")){
-                        playLocalOrServerSound(false,lvl,bp,ThingamajigsSoundEvents.POOP.get());
-                        return;
-                    }
-                    else if(sentNumber.equals("7856552129")){
+                    else if(sentNumber.equals("7856552129")){ // play a random report
                         int tempRandomNum = (int)ThingamajigsCalcStuffs.nextDoubleBetweenInclusive(0,3);
                         switch(tempRandomNum){
                             case 0:
@@ -195,7 +191,7 @@ public class PhoneUIButtonMessage {
                         playLocalOrServerSound(false,lvl,bp,SoundEvents.FIRECHARGE_USE);
                         return;
                     }
-                    else if(areaCode.equals("911")
+                    else if(areaCode.equals("911") // emergency or other special codes
                             || areaCode.equals("811")
                             || areaCode.equals("711")
                             || areaCode.equals("611")
@@ -206,12 +202,21 @@ public class PhoneUIButtonMessage {
                         playLocalOrServerSound(false,lvl,bp,ThingamajigsSoundEvents.CODE.get());
                         return;
                     }
-                    else if(sentNumber.equals("") || sentNumber.isEmpty() || sentNumber.isBlank() || sentNumber.equals("-1")){
+                    else if(areaCode.equals("000")){ // operators only
+                        if(sentNumber.equals("0005551234")){ // poop
+                            playLocalOrServerSound(false,lvl,bp,ThingamajigsSoundEvents.POOP.get());
+                        }
+                        else if(sentNumber.equals("0000000000")){
+
+                        }
+                        return;
+                    }
+                    else if(sentNumber.equals("") || sentNumber.isEmpty() || sentNumber.isBlank() || sentNumber.equals("-1")){ // call is not a valid one
                         playLocalOrServerSound(false,lvl,bp,ThingamajigsSoundEvents.PHONE_INCOMPLETE_CALL.get());
                         return;
                     }
                     else{
-                        playLocalOrServerSound(false,lvl,bp,ThingamajigsSoundEvents.PHONE_NO_SERVICE.get());
+                        playLocalOrServerSound(false,lvl,bp,ThingamajigsSoundEvents.PHONE_NO_SERVICE.get()); // call is valid but the line is inactive or unused
                         return;
                     }
                 }
@@ -265,10 +270,10 @@ public class PhoneUIButtonMessage {
         SoundSource ss1 = SoundSource.PLAYERS;
         //
         if(local){
-            l.playLocalSound(p,event,ss1,1.0f,1.0f,false);
+            l.playLocalSound(p,event,ss1,0.5f,1.0f,false);
         }
         else{
-            l.playSound(null,p,event,ss1,1.0f,1.0f);
+            l.playSound(null,p,event,ss1,0.5f,1.0f);
         }
     }
 

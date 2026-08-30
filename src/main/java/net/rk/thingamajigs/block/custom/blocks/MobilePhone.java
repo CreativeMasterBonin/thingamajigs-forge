@@ -1,6 +1,7 @@
 package net.rk.thingamajigs.block.custom.blocks;
 
 import io.netty.buffer.Unpooled;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.FriendlyByteBuf;
@@ -29,6 +30,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.network.NetworkHooks;
+import net.rk.thingamajigs.block.ThingamajigsBlocks;
 import net.rk.thingamajigs.block.custom.ThingamajigsDecorativeBlock;
 import net.rk.thingamajigs.events.ThingamajigsSoundEvents;
 import net.rk.thingamajigs.screen.PhoneMenu;
@@ -63,35 +65,32 @@ public class MobilePhone extends ThingamajigsDecorativeBlock {
 
     @Override
     public InteractionResult use(BlockState blockstate, Level world, BlockPos pos, Player entity, InteractionHand hand, BlockHitResult hit) {
-        super.use(blockstate, world, pos, entity, hand, hit);
-        float vol = 0.75F;
-        float pitch = 1.0F;
-
-        try{
-            if(!world.isClientSide){
-                world.playSound(null,pos, ThingamajigsSoundEvents.MOBILE_BEEP.get(), SoundSource.BLOCKS,vol,pitch);
-            }
-
-            if (entity instanceof ServerPlayer player) {
-                NetworkHooks.openScreen(player, new MenuProvider() {
-                    @Override
-                    public Component getDisplayName() {
-                        return Component.translatable("title.thingamajigs.phone");
-                    }
-
-                    @Override
-                    public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
-                        return new PhoneMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
-                    }
-                }, pos);
-                return InteractionResult.SUCCESS;
+        if(blockstate.is(ThingamajigsBlocks.MOBILE_PHONE.get())){
+            if(world.isClientSide()){
+                if(entity.getItemInHand(hand).isEmpty()){
+                    entity.playSound(ThingamajigsSoundEvents.MOBILE_BEEP.get(),0.5f,1.0f);
+                    return InteractionResult.SUCCESS;
+                }
             }
             else{
-                return InteractionResult.PASS;
+                if(entity.getItemInHand(hand).isEmpty()){
+                    if (entity instanceof ServerPlayer player) {
+                        NetworkHooks.openScreen(player, new MenuProvider() {
+                            @Override
+                            public Component getDisplayName() {
+                                return Component.translatable("title.thingamajigs.phone")
+                                        .withStyle(ChatFormatting.WHITE);
+                            }
+                            @Override
+                            public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
+                                return new PhoneMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
+                            }
+                        }, pos);
+                        return InteractionResult.SUCCESS;
+                    }
+                }
             }
         }
-        catch (Exception e){
-            return InteractionResult.FAIL;
-        }
+        return InteractionResult.PASS;
     }
 }
