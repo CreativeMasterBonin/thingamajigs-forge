@@ -23,9 +23,6 @@ import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraftforge.client.ConfigScreenHandler;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterColorHandlersEvent;
-import net.minecraftforge.event.GameShuttingDownEvent;
-import net.minecraftforge.eventbus.api.EventPriority;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.rk.thingamajigs.block.ThingamajigsBlocks;
@@ -58,12 +55,12 @@ public class ThingamajigsClient {
         }
 
         public void debugLogSpeech(String text){
-            if(SharedConstants.IS_RUNNING_IN_IDE){
+            if(SharedConstants.IS_RUNNING_IN_IDE || LogUtils.getLogger().isDebugEnabled()){
                 if(text.isEmpty() || text.isBlank()){
-                    LOGGERV3.debug("[Thingamajigs Narrator] - Empty text but method was called");
+                    LogUtils.getLogger().debug("Thingamajigs narrator says nothing - Empty text but method was called");
                 }
                 else{
-                    LOGGERV3.debug("[Thingamajigs Narrator] - Narrator said string: " + text);
+                    LogUtils.getLogger().debug("Thingamajigs Narrator said: {}", text);
                 }
             }
         }
@@ -287,12 +284,6 @@ public class ThingamajigsClient {
                 ThingamajigsBlocks.PINK_PUMPKIN_STEM.get(),
                 ThingamajigsBlocks.PINK_GLOW_BLOCK.get()
         );
-    }
-
-    @SubscribeEvent(priority = EventPriority.HIGHEST)
-    public static void close(GameShuttingDownEvent event){
-        thingamajigsNarrator.clear();
-        thingamajigsNarrator.destroy();
     }
 
     public static void setupClient(final FMLClientSetupEvent event){

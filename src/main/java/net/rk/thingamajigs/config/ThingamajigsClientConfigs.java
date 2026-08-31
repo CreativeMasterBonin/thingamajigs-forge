@@ -9,6 +9,7 @@ public class ThingamajigsClientConfigs {
         public final ForgeConfigSpec.BooleanValue blueTabs;
         public final ForgeConfigSpec.IntValue configOffsetX;
         public final ForgeConfigSpec.IntValue configOffsetY;
+        public final ForgeConfigSpec.BooleanValue allowTalkingTTSMessages;
 
         Client(ForgeConfigSpec.Builder builder){
             builder.comment(" Thingamajigs Client Config");
@@ -31,6 +32,10 @@ public class ThingamajigsClientConfigs {
                     .comment(" The y offset of the custom config screen (default is -110)")
                     .comment(" DO NOT CHANGE IF YOU DON'T KNOW WHAT YOU ARE DOING!")
                     .defineInRange("configOffsetY",-110,-300,300);
+
+            this.allowTalkingTTSMessages = builder
+                    .comment(" Enables the text=to-speech plugin for certain features, such as the phone")
+                    .define("allowTextToSpeechMessages",false);
         }
     }
 
@@ -48,6 +53,8 @@ public class ThingamajigsClientConfigs {
     public static void setConfigOffsetY(int offsetY){
         CLIENT.configOffsetY.set(offsetY);
     }
+
+    public static void setAllowTTSMessages(boolean newValue){CLIENT.allowTalkingTTSMessages.set(newValue);}
 
     public static void saveConfig(){
         CPSECCLIENT.save();

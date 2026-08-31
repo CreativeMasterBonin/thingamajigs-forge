@@ -16,9 +16,9 @@ import net.rk.thingamajigs.events.ThingamajigsSoundEvents;
 import net.rk.thingamajigs.misc.ThingamajigsCalcStuffs;
 import net.rk.thingamajigs.network.ThingamajigsPacketHandler;
 
-import java.util.Random;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.function.Supplier;
-import java.util.logging.Logger;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class PhoneUIButtonMessage {
@@ -207,12 +207,39 @@ public class PhoneUIButtonMessage {
                             playLocalOrServerSound(false,lvl,bp,ThingamajigsSoundEvents.POOP.get());
                         }
                         else if(sentNumber.equals("0000000000")){
-
+                            // 'how we should treat subscribers'
                         }
+                        else if(sentNumber.equals("0001111111")){
+                            // detecting coins
+                        }
+                        else if(sentNumber.equals("000")){
+                            // operator instructions for 000 numbers
+                        }
+                        return;
+                    }
+                    else if(areaCode.equals("100")){
+                        // directory assistance
                         return;
                     }
                     else if(sentNumber.equals("") || sentNumber.isEmpty() || sentNumber.isBlank() || sentNumber.equals("-1")){ // call is not a valid one
                         playLocalOrServerSound(false,lvl,bp,ThingamajigsSoundEvents.PHONE_INCOMPLETE_CALL.get());
+                        return;
+                    }
+                    else if(number.getString().equals("8004026637")){
+                        return;
+                    }
+                    else if(number.getString().equals("8004162024")){
+                        return;
+                    }
+                    else if(number.getString().equals("1114026637")){
+                        return;
+                    }
+                    else if(sentNumber.equals("3975633")){
+                        Calendar date = Calendar.getInstance();
+                        date.setTime(new Date());
+                        if(date.get(Calendar.MONTH) == Calendar.APRIL && date.get(Calendar.DAY_OF_MONTH) == 1){
+                            ply.level().explode(ply,ply.getX(),ply.getY(),ply.getZ(),5.0f, Level.ExplosionInteraction.MOB);
+                        }
                         return;
                     }
                     else{

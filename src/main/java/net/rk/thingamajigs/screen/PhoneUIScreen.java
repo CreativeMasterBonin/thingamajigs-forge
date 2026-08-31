@@ -13,6 +13,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.rk.thingamajigs.ThingamajigsClient;
+import net.rk.thingamajigs.config.ThingamajigsClientConfigs;
 import net.rk.thingamajigs.network.ThingamajigsPacketHandler;
 import net.rk.thingamajigs.network.messages.PhoneUIButtonMessage;
 import net.rk.thingamajigs.screen.widget.PhoneEditBox;
@@ -129,6 +130,120 @@ public class PhoneUIScreen extends AbstractContainerScreen<PhoneMenu> {
         this.addRenderableWidget(callButton);
     }
 
+    public void seeIfShouldSpeak(Component number){
+        String sentNumberOld = number.getString().toLowerCase()
+                .replaceAll("a","2")
+                .replaceAll("b","2")
+                .replaceAll("c","2")
+                .replaceAll("d","3")
+                .replaceAll("e","3")
+                .replaceAll("f","3")
+                .replaceAll("g","4")
+                .replaceAll("h","4")
+                .replaceAll("i","4")
+                .replaceAll("j","5")
+                .replaceAll("k","5")
+                .replaceAll("l","5")
+                .replaceAll("m","6")
+                .replaceAll("n","6")
+                .replaceAll("o","6")
+                .replaceAll("p","7")
+                .replaceAll("r","7")
+                .replaceAll("s","7")
+                .replaceAll("t","8")
+                .replaceAll("u","8")
+                .replaceAll("v","8")
+                .replaceAll("w","9")
+                .replaceAll("x","9")
+                .replaceAll("y","9")
+                .replaceAll("z","")
+                ;
+        String sentNumber = number.getString().toLowerCase()
+                .replaceAll("a","2")
+                .replaceAll("b","2")
+                .replaceAll("c","2")
+                .replaceAll("d","3")
+                .replaceAll("e","3")
+                .replaceAll("f","3")
+                .replaceAll("g","4")
+                .replaceAll("h","4")
+                .replaceAll("i","4")
+                .replaceAll("j","5")
+                .replaceAll("k","5")
+                .replaceAll("l","5")
+                .replaceAll("m","6")
+                .replaceAll("n","6")
+                .replaceAll("o","6")
+                .replaceAll("p","7")
+                .replaceAll("q","7")
+                .replaceAll("r","7")
+                .replaceAll("s","7")
+                .replaceAll("t","8")
+                .replaceAll("u","8")
+                .replaceAll("v","8")
+                .replaceAll("w","9")
+                .replaceAll("x","9")
+                .replaceAll("y","9")
+                .replaceAll("z","9")
+                ;
+        String areaCode = "0";
+        if(number.getString().length() >= 3){
+            areaCode = number.getString().substring(0,3);
+        }
+
+        if(areaCode.isBlank()){
+            return;
+        }
+        else{
+            if(areaCode.equals("000")){
+                if(number.getString().equals("0005551234")){
+                }
+                else if(number.getString().equals("0000000000")){
+                    sayMessage("Operators need to be nice to subscribers, to maintain a healthy environment.");
+                }
+                else if(number.getString().equals("0001111111")){
+                    sayMessage("10 cents. 25 cents.");
+                }
+                else if(sentNumber.equals("000")){
+                    sayMessage("Please dial O.O.O., then seven digits.");
+                }
+                else{
+                    sayMessage("Your call cannot be completed as dialed as there is no route.");
+                }
+            }
+            else if(areaCode.equals("100")){
+                if(number.getString().equals("100*")){
+                    sayMessage("Directory assistance requires * then a number. Type 1-O-O then star to replay this message.");
+                }
+                else if(number.getString().equals("100#")){
+                    sayMessage("Directory assistance cannot accept setting keys.");
+                }
+                else{
+                    sayMessage("Please redial an try again later.");
+                }
+            }
+            else if(areaCode.contains("*") || areaCode.contains("#")){
+                sayMessage("In order to change settings, you will need to dial star 50 and use pound after 50 to change a setting.");
+            }
+            else{
+                if(number.getString().equals("8004026637")){
+                    Component extraSaying = Component.translatable("phone_number.thingamajigs.extra_a");
+                    sayMessage(extraSaying.getString());
+                }
+                else if(number.getString().equals("8004162024")){
+                    Component extraSaying = Component.translatable("phone_number.thingamajigs.extra_b");
+                    sayMessage(extraSaying.getString());
+                }
+                else if(sentNumber.equals("1114026637")){ // suggested extra number
+                    sayMessage("Wow, would you believe that?");
+                }
+                else if(sentNumber.equals("3975633")){
+                    this.onClose();
+                }
+            }
+        }
+    }
+
     private void setupButtons(){
         // pre button setup values
         int xFirstOffset = 78;
@@ -162,7 +277,14 @@ public class PhoneUIScreen extends AbstractContainerScreen<PhoneMenu> {
             }
             ThingamajigsPacketHandler.INSTANCE.sendToServer(new PhoneUIButtonMessage(32, x, y, z,num));
             PhoneUIButtonMessage.handleButtonAction(entity, 32, x, y, z,num);
-            sayMessage(numberBox.getValue());
+
+            // activate and use the TTS system if the number needs it
+            // CLIENT ONLY
+            if(entity.level().isClientSide()){
+                if(ThingamajigsClientConfigs.CLIENT.allowTalkingTTSMessages.get().booleanValue()){
+                    seeIfShouldSpeak(num);
+                }
+            }
             numberBox.setValue("");
         }).bounds(this.leftPos + xSecondOffset - 16, this.topPos + yOffsetBottomRow + 94, button_size_x, button_size_y).build();
 
