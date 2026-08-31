@@ -55,7 +55,7 @@ public class ThingamajigsClient {
         }
 
         public void debugLogSpeech(String text){
-            if(SharedConstants.IS_RUNNING_IN_IDE || LogUtils.getLogger().isDebugEnabled()){
+            if(SharedConstants.IS_RUNNING_IN_IDE){
                 if(text.isEmpty() || text.isBlank()){
                     LogUtils.getLogger().debug("Thingamajigs narrator says nothing - Empty text but method was called");
                 }

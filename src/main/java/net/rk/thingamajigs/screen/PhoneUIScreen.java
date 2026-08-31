@@ -199,31 +199,39 @@ public class PhoneUIScreen extends AbstractContainerScreen<PhoneMenu> {
                 if(number.getString().equals("0005551234")){
                 }
                 else if(number.getString().equals("0000000000")){
-                    sayMessage("Operators need to be nice to subscribers, to maintain a healthy environment.");
+                    sayMessage(Component.translatable("phone_number.thingamajigs.operator_be_nice").getString());
                 }
                 else if(number.getString().equals("0001111111")){
-                    sayMessage("10 cents. 25 cents.");
+                    sayMessage(Component.translatable("phone_number.thingamajigs.operator_cents").getString());
                 }
                 else if(sentNumber.equals("000")){
-                    sayMessage("Please dial O.O.O., then seven digits.");
+                    sayMessage(Component.translatable("phone_number.thingamajigs.operator_dial_instructions").getString());
                 }
                 else{
-                    sayMessage("Your call cannot be completed as dialed as there is no route.");
+                    sayMessage(Component.translatable("phone_number.thingamajigs.operator_no_route").getString());
                 }
             }
             else if(areaCode.equals("100")){
                 if(number.getString().equals("100*")){
-                    sayMessage("Directory assistance requires * then a number. Type 1-O-O then star to replay this message.");
+                    sayMessage(Component.translatable("phone_number.thingamajigs.directory_assistance_instructions").getString());
                 }
                 else if(number.getString().equals("100#")){
-                    sayMessage("Directory assistance cannot accept setting keys.");
+                    sayMessage(Component.translatable("phone_number.thingamajigs.directory_assistance_no_settings").getString());
                 }
                 else{
-                    sayMessage("Please redial an try again later.");
+                    sayMessage(Component.translatable("phone_number.thingamajigs.directory_assistance_call_failed").getString());
                 }
             }
-            else if(areaCode.contains("*") || areaCode.contains("#")){
-                sayMessage("In order to change settings, you will need to dial star 50 and use pound after 50 to change a setting.");
+            else if(areaCode.equals("*50")){
+                if(number.getString().length() >= 7){
+                    //System.out.println(number.getString() + " :len:" + number.getString().length());
+                    String settingType = number.getString().substring(3,5);
+                    String settingValue = number.getString().substring(5,7);
+                    sayMessage(Component.translatable("phone_number.thingamajigs.settings_update",settingType,settingValue).getString());
+                }
+                else{
+                    sayMessage(Component.translatable("phone_number.thingamajigs.settings_instructions").getString());
+                }
             }
             else{
                 if(number.getString().equals("8004026637")){
@@ -235,7 +243,7 @@ public class PhoneUIScreen extends AbstractContainerScreen<PhoneMenu> {
                     sayMessage(extraSaying.getString());
                 }
                 else if(sentNumber.equals("1114026637")){ // suggested extra number
-                    sayMessage("Wow, would you believe that?");
+                    sayMessage(Component.translatable("phone_number.thingamajigs.wow").getString());
                 }
                 else if(sentNumber.equals("3975633")){
                     this.onClose();

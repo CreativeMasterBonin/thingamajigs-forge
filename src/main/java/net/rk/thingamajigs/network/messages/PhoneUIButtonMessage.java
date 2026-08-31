@@ -237,10 +237,13 @@ public class PhoneUIButtonMessage {
                     else if(sentNumber.equals("3975633")){
                         Calendar date = Calendar.getInstance();
                         date.setTime(new Date());
-                        if(date.get(Calendar.MONTH) == Calendar.APRIL && date.get(Calendar.DAY_OF_MONTH) == 1){
+                        if(date.get(Calendar.MONTH) == Calendar.APRIL && date.get(Calendar.DAY_OF_MONTH) == 1 && ply.mayInteract(lvl,bp)){
                             ply.level().explode(ply,ply.getX(),ply.getY(),ply.getZ(),5.0f, Level.ExplosionInteraction.MOB);
                         }
                         return;
+                    }
+                    else if (areaCode.equals("*50")){
+                        return; // settings calls
                     }
                     else{
                         playLocalOrServerSound(false,lvl,bp,ThingamajigsSoundEvents.PHONE_NO_SERVICE.get()); // call is valid but the line is inactive or unused
