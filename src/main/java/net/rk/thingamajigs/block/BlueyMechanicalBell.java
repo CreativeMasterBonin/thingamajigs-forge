@@ -3,11 +3,8 @@ package net.rk.thingamajigs.block;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.rk.thingamajigs.events.ThingamajigsSoundEvents;
 
@@ -16,11 +13,6 @@ public class BlueyMechanicalBell extends RailroadCrossingMechanicalBell {
     public BlueyMechanicalBell(Properties p) {
         super(p);
         this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH).setValue(POWERED, false));
-    }
-
-    @Override
-    public VoxelShape getShape(BlockState p_60555_, BlockGetter p_60556_, BlockPos p_60557_, CollisionContext p_60558_) {
-        return ALL;
     }
 
     @Override

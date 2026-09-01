@@ -2,12 +2,9 @@ package net.rk.thingamajigs.xtrablock;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.BooleanOp;
-import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.rk.thingamajigs.block.RailroadCrossingElectronicBell;
@@ -27,12 +24,6 @@ public class EBellOne extends RailroadCrossingElectronicBell {
     public EBellOne(Properties p) {
         super(p);
         this.registerDefaultState(this.defaultBlockState().setValue(POWERED, false));
-    }
-
-    @SuppressWarnings("deprecated")
-    @Override
-    public VoxelShape getShape(BlockState p_60555_, BlockGetter p_60556_, BlockPos p_60557_, CollisionContext p_60558_) {
-        return ALL;
     }
 
     @Override

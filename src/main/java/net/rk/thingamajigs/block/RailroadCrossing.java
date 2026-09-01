@@ -8,6 +8,8 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -32,11 +34,14 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.BooleanOp;
+import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.network.NetworkHooks;
 import net.rk.thingamajigs.entity.ThingamajigsBlockEntities;
 import net.rk.thingamajigs.entity.customblock.RailroadCrossingBE;
+import net.rk.thingamajigs.misc.ThingamajigsCalcStuffs;
 import net.rk.thingamajigs.screen.RailroadCrossingArmMenu;
 import org.jetbrains.annotations.Nullable;
 
@@ -58,6 +63,11 @@ public class RailroadCrossing extends BaseEntityBlock {
     public RailroadCrossing(Properties p){
         super(p.noOcclusion().sound(SoundType.LANTERN));
         this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH).setValue(ON, false));
+    }
+
+    @Override
+    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext ctx) {
+        return ALL;
     }
 
     @Override
@@ -123,37 +133,46 @@ public class RailroadCrossing extends BaseEntityBlock {
     // using
     @Override
     public InteractionResult use(BlockState bs, Level lvl, BlockPos bp, Player ply, InteractionHand h, BlockHitResult bhr) {
-        //return changeBE(lvl,bp,ply,h);
-        if(lvl.isClientSide){
+        if(lvl.isClientSide()){
+            if(ply.getItemInHand(h).isEmpty()){
+                ply.playSound(SoundEvents.HANGING_SIGN_HIT,0.5f, ThingamajigsCalcStuffs.nextFloatBetweenInclusive(0.95f,1.1f));
+            }
+            else if(ply.getItemInHand(h).is(ItemTags.AXES) || ply.getItemInHand(h).is(Tags.Items.SHEARS)){
+                ply.playSound(SoundEvents.IRON_GOLEM_REPAIR,0.5f, ThingamajigsCalcStuffs.nextFloatBetweenInclusive(0.98f,1.0f));
+            }
             return InteractionResult.SUCCESS;
         }
-        else{
-            try{
-                MenuProvider mp = new MenuProvider() {
-                    @Override
-                    public Component getDisplayName() {
-                        return Component.translatable("container.thingamajigs.railroad_crossing_arm.title")
-                                .withStyle(ChatFormatting.WHITE);
-                    }
-                    @Override
-                    public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
-                        return new RailroadCrossingArmMenu(id, inventory,
-                                new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(bp));
-                    }
-                };
+        else {
+            if (ply.getItemInHand(h).isEmpty() || !(ply.getItemInHand(h).is(ItemTags.AXES) && ply.getItemInHand(h).is(Tags.Items.SHEARS))) {
+                try {
+                    MenuProvider mp = new MenuProvider() {
+                        @Override
+                        public Component getDisplayName() {
+                            return Component.translatable("container.thingamajigs.railroad_crossing_arm.title")
+                                    .withStyle(ChatFormatting.WHITE);
+                        }
 
-                if (ply instanceof ServerPlayer player) {
-                    NetworkHooks.openScreen(player,mp,bp);
-                    return InteractionResult.SUCCESS;
+                        @Override
+                        public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
+                            return new RailroadCrossingArmMenu(id, inventory,
+                                    new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(bp));
+                        }
+                    };
+
+                    if (ply instanceof ServerPlayer player) {
+                        NetworkHooks.openScreen(player, mp, bp);
+                        return InteractionResult.SUCCESS;
+                    } else {
+                        return InteractionResult.PASS;
+                    }
+                } catch (Exception e) {
+                    Logger.getAnonymousLogger().warning("Railroad Crossing encountered an exception: " + e.getMessage());
+                    return InteractionResult.FAIL;
                 }
-                else{
-                    return InteractionResult.PASS;
-                }
-            }
-            catch (Exception e){
-                Logger.getAnonymousLogger().warning("Encountered an exception. Error is: " + e.getMessage());
-                return InteractionResult.FAIL;
+            } else {
+
             }
         }
+        return InteractionResult.PASS;
     }
 }

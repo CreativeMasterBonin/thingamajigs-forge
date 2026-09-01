@@ -17,19 +17,43 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.phys.shapes.BooleanOp;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.ticks.TickPriority;
 import net.rk.thingamajigs.config.ThingamajigsServerConfigs;
 import net.rk.thingamajigs.tag.ThingamajigsTags;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 public class RailroadCrossingElectronicBell extends Block {
     public static final BooleanProperty POWERED = BooleanProperty.create("powered");
     public static final int BELL_SPEED = 12; // how fast in ticks this bell will ring
 
+    public static final VoxelShape EBELL_ONE_ALL = Block.box(6, 0, 6, 10, 14, 10);
+    public static final VoxelShape EBELL_TWO_ALL = Stream.of(
+            Block.box(6, 0, 6, 10, 1, 10),
+            Block.box(5.5, 6, 5.5, 10.5, 12, 10.5),
+            Block.box(4, 12, 4, 12, 14, 12),
+            Block.box(7, 1, 7, 9, 6, 9)
+    ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+
     public RailroadCrossingElectronicBell(Properties p) {
         super(p.strength(1F,10F).sound(SoundType.LANTERN).noOcclusion().noCollission());
         this.registerDefaultState(this.defaultBlockState().setValue(POWERED, false));
+    }
+
+    @Override
+    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext ctx) {
+        if(state.is(ThingamajigsBlocks.EBELL_ONE.get())){
+            return EBELL_ONE_ALL;
+        }
+        else if(state.is(ThingamajigsBlocks.EBELL_TWO.get())){
+            return EBELL_TWO_ALL;
+        }
+        return Shapes.block();
     }
 
     @Override

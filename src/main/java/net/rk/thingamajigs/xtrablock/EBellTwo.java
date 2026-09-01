@@ -28,12 +28,6 @@ public class EBellTwo extends RailroadCrossingElectronicBell {
         this.registerDefaultState(this.defaultBlockState().setValue(POWERED, false));
     }
 
-    @SuppressWarnings("deprecated")
-    @Override
-    public VoxelShape getShape(BlockState p_60555_, BlockGetter p_60556_, BlockPos p_60557_, CollisionContext p_60558_) {
-        return ALL;
-    }
-
     @Override
     public boolean attemptToHorn(Level lp, BlockPos bp) {
         if (!lp.isClientSide) {
