@@ -1982,6 +1982,14 @@ public class ThingamajigsRecipeProvider extends RecipeProvider implements ICondi
                 .requires(ThingamajigsTags.CONCRETES)
                 .unlockedBy("has_thingy",has(ThingamajigsItems.THINGAMAJIG.get().asItem()))
                 .save(rc);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ThingamajigsItems.RENDERING_TOOL.get().asItem(),1)
+                .requires(ThingamajigsItems.THINGAMAJIG.get().asItem())
+                .requires(ThingamajigsItems.THINGAMAJIG.get().asItem())
+                .requires(ThingamajigsItems.THINGAMAJIG.get().asItem())
+                .requires(Tags.Items.GLASS_PANES)
+                .requires(Tags.Items.GLASS_TINTED)
+                .unlockedBy("has_thingy",has(ThingamajigsItems.THINGAMAJIG.get().asItem()))
+                .save(rc);
     }
 
     public static RecipeBuilder stonecutterAny(Item requiredItem, Ingredient inputItem, Item result, int amt){

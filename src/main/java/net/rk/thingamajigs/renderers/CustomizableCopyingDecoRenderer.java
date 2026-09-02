@@ -53,42 +53,48 @@ public class CustomizableCopyingDecoRenderer implements BlockEntityRenderer<Cust
             poseStack.rotateAround(Axis.ZP.rotationDegrees(Mth.wrapDegrees((float)customizableCopyingDecoBE.modelRotations.z)),0.5f,0.5f,0.5f);
             // translate the model
             // offset based on scale as scale will reposition visually where the model is
-            double offsetX2 = customizableCopyingDecoBE.modelOffsets.x + (customizableCopyingDecoBE.modelScale.x - 1.0f);
-            double offsetY2 = customizableCopyingDecoBE.modelOffsets.y + (customizableCopyingDecoBE.modelScale.y - 1.0f);
-            double offsetZ2 = customizableCopyingDecoBE.modelOffsets.z + (customizableCopyingDecoBE.modelScale.z - 1.0f);
+            double offsetX2 = customizableCopyingDecoBE.modelOffsets.x;
+            double offsetY2 = customizableCopyingDecoBE.modelOffsets.y;
+            double offsetZ2 = customizableCopyingDecoBE.modelOffsets.z;
             poseStack.translate(offsetX2,offsetY2,offsetZ2);
 
             // get model and render it
             BakedModel model = blockModelShaper.getBlockModel(customizableCopyingDecoBE.blockTypeToCopy);
 
             // render in proper mode
-            if(Objects.equals(customizableCopyingDecoBE.renderingMode, "solid")){
-                blockRenderer.renderModel(poseStack.last(),buffer.getBuffer(Sheets.solidBlockSheet()),
-                        null,
-                        model,
-                        1.0f,1.0f,1.0f,
-                        packedLight,packedOverlay,ModelData.EMPTY,RenderType.solid());
-            } else if (Objects.equals(customizableCopyingDecoBE.renderingMode,"cutout")) {
-                blockRenderer.renderModel(poseStack.last(),buffer.getBuffer(Sheets.cutoutBlockSheet()),
-                        null,
-                        model,
-                        1.0f,1.0f,1.0f,
-                        packedLight,packedOverlay,ModelData.EMPTY,RenderType.cutout());
-            }
-            else if (Objects.equals(customizableCopyingDecoBE.renderingMode,"translucent")) {
-                blockRenderer.renderModel(poseStack.last(),buffer.getBuffer(Sheets.translucentCullBlockSheet()),
-                        null,
-                        model,
-                        1.0f,1.0f,1.0f,
-                        packedLight,packedOverlay,ModelData.EMPTY,RenderType.translucent());
-            }
-            else{
-                // fail-safe render
-                blockRenderer.renderModel(poseStack.last(),buffer.getBuffer(Sheets.solidBlockSheet()),
-                        null,
-                        model,
-                        1.0f,1.0f,1.0f,
-                        packedLight,packedOverlay,ModelData.EMPTY,RenderType.solid());
+            switch (customizableCopyingDecoBE.renderingMode) {
+                case "solid" -> {
+                    blockRenderer.renderModel(poseStack.last(), buffer.getBuffer(Sheets.solidBlockSheet()),
+                            null,
+                            model,
+                            1.0f, 1.0f, 1.0f,
+                            packedLight, packedOverlay, ModelData.EMPTY, RenderType.solid());
+                    break;
+                }
+                case "cutout" -> {
+                    blockRenderer.renderModel(poseStack.last(), buffer.getBuffer(Sheets.cutoutBlockSheet()),
+                            null,
+                            model,
+                            1.0f, 1.0f, 1.0f,
+                            packedLight, packedOverlay, ModelData.EMPTY, RenderType.cutout());
+                    break;
+                }
+                case "translucent" -> {
+                    blockRenderer.renderModel(poseStack.last(), buffer.getBuffer(Sheets.translucentCullBlockSheet()),
+                            null,
+                            model,
+                            1.0f, 1.0f, 1.0f,
+                            packedLight, packedOverlay, ModelData.EMPTY, RenderType.translucent());
+                    break;
+                }
+                default -> {
+                    // fail-safe render
+                    blockRenderer.renderModel(poseStack.last(), buffer.getBuffer(Sheets.solidBlockSheet()),
+                            null,
+                            model,
+                            1.0f, 1.0f, 1.0f,
+                            packedLight, packedOverlay, ModelData.EMPTY, RenderType.solid());
+                }
             }
         }
         poseStack.popPose();

@@ -207,7 +207,8 @@ public class ThingamajigsItemModelProvider extends ItemModelProvider {
         // 1.9.0
         fromModelMod(ThingamajigsBlocks.STOP_GATE.get(),"block/stop_gate_off");
         fromModelMod(ThingamajigsBlocks.OLD_LEGENDARY_COMPUTER.get(),"block/old_legendary_computer");
-        simple(ThingamajigsItems.CUSTOMIZATION_TOOL);
+        handheld(ThingamajigsItems.CUSTOMIZATION_TOOL);
+        handheld(ThingamajigsItems.RENDERING_TOOL);
     }
 
     private ItemModelBuilder fromModelModItem(Item item, String source){

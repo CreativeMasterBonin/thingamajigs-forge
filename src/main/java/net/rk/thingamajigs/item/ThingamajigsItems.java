@@ -3,10 +3,7 @@ package net.rk.thingamajigs.item;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
-import net.minecraft.world.item.armortrim.TrimPatterns;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -19,7 +16,6 @@ import net.rk.thingamajigs.block.ThingamajigsBlocks;
 import net.rk.thingamajigs.item.bases.BaseGlob;
 import net.rk.thingamajigs.item.bases.ComponentBase;
 import net.rk.thingamajigs.item.custom.*;
-import net.rk.thingamajigs.legacy.*;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -476,6 +472,8 @@ public class ThingamajigsItems {
     // 1.9.0
     public static final RegistryObject<Item> CUSTOMIZATION_TOOL = ITEMS.register("customization_tool",
             () -> new CustomizationTool(new Item.Properties()));
+    public static final RegistryObject<Item> RENDERING_TOOL = ITEMS.register("rendering_tool",
+            () -> new RenderingTool(new Item.Properties()));
 
 
     public static void register(IEventBus eventBus){

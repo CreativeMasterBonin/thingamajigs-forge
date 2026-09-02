@@ -97,11 +97,7 @@ public class CustomizableCopyingDecoBE extends BlockEntity{
         }
 
         if(tag.contains("rendering_mode")){
-            String preliminaryRenderingMode = tag.getString("rendering_mode");
-            if(preliminaryRenderingMode.isBlank() || !preliminaryRenderingMode.equals("cutout") || !preliminaryRenderingMode.equals("translucent") || !preliminaryRenderingMode.equals("solid")){
-                preliminaryRenderingMode = ModelRenderingMode.SOLID.getSerializedName();
-            }
-            renderingMode = preliminaryRenderingMode;
+            renderingMode = tag.getString("rendering_mode");
         }
 
         // all model customs

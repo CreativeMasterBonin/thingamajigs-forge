@@ -4,14 +4,11 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -21,9 +18,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.client.model.data.ModelProperty;
-import net.minecraftforge.common.Tags;
 import net.rk.thingamajigs.entity.customblock.CustomizableCopyingDecoBE;
 import net.rk.thingamajigs.misc.ThingamajigsCalcStuffs;
 import org.jetbrains.annotations.Nullable;
@@ -38,6 +33,38 @@ public class CustomizableCopyingDeco extends BaseEntityBlock {
     }
 
     @Override
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+        ItemStack handStack = player.getItemInHand(hand);
+        if(level.isClientSide()){
+            if(!handStack.isEmpty()){
+                if(handStack.getItem() instanceof BlockItem blockItem){
+                    boolean isNotAir = blockItem.getBlock() instanceof AirBlock;
+                    if(!isNotAir && !(blockItem.getBlock() instanceof LiquidBlock) && !(blockItem.getBlock() instanceof EntityBlock)){
+                        player.playSound(SoundEvents.ITEM_FRAME_ADD_ITEM,0.7f, ThingamajigsCalcStuffs.nextFloatBetweenInclusive(0.97f,1.1f));
+                        return InteractionResult.SUCCESS;
+                    }
+                }
+            }
+        }
+        else{
+            if(!handStack.isEmpty()){
+                if(handStack.getItem() instanceof BlockItem blockItem){
+                    boolean isNotAir = blockItem.getBlock() instanceof AirBlock;
+                    if(!isNotAir && !(blockItem.getBlock() instanceof LiquidBlock) && !(blockItem.getBlock() instanceof EntityBlock)){
+                        CustomizableCopyingDecoBE customDeco = (CustomizableCopyingDecoBE)level.getBlockEntity(pos);
+                        if(customDeco instanceof CustomizableCopyingDecoBE){
+                            customDeco.blockTypeToCopy = blockItem.getBlock().defaultBlockState();
+                            customDeco.updateBlock();
+                        }
+                        return InteractionResult.SUCCESS;
+                    }
+                }
+            }
+        }
+        return InteractionResult.PASS;
+    }
+
+    /*@Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         ItemStack handStack = player.getItemInHand(hand);
         if(level.isClientSide()){
@@ -191,7 +218,7 @@ public class CustomizableCopyingDeco extends BaseEntityBlock {
             }
         }
         return InteractionResult.PASS;
-    }
+    }*/
 
     @Override
     public RenderShape getRenderShape(BlockState state) {

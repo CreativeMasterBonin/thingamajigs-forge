@@ -27,7 +27,157 @@ import java.util.Map;
 
 public class CustomizationTool extends Item {
     public int mode = 0;
+    public int renderMode = 0;
+    // each modifier mode is stored here
     public static final Map<String,Mode> NAMED_MODES = Map.of(
+            "rotate_x", new Mode("rotate_x") {
+                @Override
+                public void performModeTask(ItemStack stack, Level level, BlockPos pos, Player player) {
+                    CustomizableCopyingDecoBE customDeco = (CustomizableCopyingDecoBE)level.getBlockEntity(pos);
+                    if(customDeco instanceof CustomizableCopyingDecoBE){
+                        if(player.isShiftKeyDown()){
+                            customDeco.modelRotations = new Vec3(customDeco.modelRotations.x - 1f,customDeco.modelRotations.y,customDeco.modelRotations.z);
+                            customDeco.updateBlock();
+                        }
+                        else{
+                            customDeco.modelRotations = new Vec3(customDeco.modelRotations.x + 1f,customDeco.modelRotations.y,customDeco.modelRotations.z);
+                            customDeco.updateBlock();
+                        }
+                    }
+                }
+            },
+            "rotate_y", new Mode("rotate_y") {
+                @Override
+                public void performModeTask(ItemStack stack, Level level, BlockPos pos, Player player) {
+                    CustomizableCopyingDecoBE customDeco = (CustomizableCopyingDecoBE)level.getBlockEntity(pos);
+                    if(customDeco instanceof CustomizableCopyingDecoBE){
+                        if(player.isShiftKeyDown()){
+                            customDeco.modelRotations = new Vec3(customDeco.modelRotations.x,customDeco.modelRotations.y - 1f,customDeco.modelRotations.z);
+                            customDeco.updateBlock();
+                        }
+                        else{
+                            customDeco.modelRotations = new Vec3(customDeco.modelRotations.x,customDeco.modelRotations.y + 1f,customDeco.modelRotations.z);
+                            customDeco.updateBlock();
+                        }
+                    }
+                }
+            },
+            "rotate_z", new Mode("rotate_z") {
+                @Override
+                public void performModeTask(ItemStack stack, Level level, BlockPos pos, Player player) {
+                    CustomizableCopyingDecoBE customDeco = (CustomizableCopyingDecoBE)level.getBlockEntity(pos);
+                    if(customDeco instanceof CustomizableCopyingDecoBE){
+                        if(player.isShiftKeyDown()){
+                            customDeco.modelRotations = new Vec3(customDeco.modelRotations.x,customDeco.modelRotations.y,customDeco.modelRotations.z - 1f);
+                            customDeco.updateBlock();
+                        }
+                        else{
+                            customDeco.modelRotations = new Vec3(customDeco.modelRotations.x,customDeco.modelRotations.y,customDeco.modelRotations.z + 1f);
+                            customDeco.updateBlock();
+                        }
+                    }
+                }
+            },
+            "offset_x", new Mode("offset_x") {
+                @Override
+                public void performModeTask(ItemStack stack, Level level, BlockPos pos, Player player) {
+                    CustomizableCopyingDecoBE customDeco = (CustomizableCopyingDecoBE)level.getBlockEntity(pos);
+                    if(customDeco instanceof CustomizableCopyingDecoBE){
+                        if(player.isShiftKeyDown()){
+                            customDeco.modelOffsets = new Vec3(customDeco.modelOffsets.x - 0.5f,customDeco.modelOffsets.y,customDeco.modelOffsets.z);
+                            customDeco.updateBlock();
+                        }
+                        else{
+                            customDeco.modelOffsets = new Vec3(customDeco.modelOffsets.x + 0.5f,customDeco.modelOffsets.y,customDeco.modelOffsets.z);
+                            customDeco.updateBlock();
+                        }
+                    }
+                }
+            },
+            "offset_y", new Mode("offset_y") {
+                @Override
+                public void performModeTask(ItemStack stack, Level level, BlockPos pos, Player player) {
+                    CustomizableCopyingDecoBE customDeco = (CustomizableCopyingDecoBE)level.getBlockEntity(pos);
+                    if(customDeco instanceof CustomizableCopyingDecoBE){
+                        if(player.isShiftKeyDown()){
+                            customDeco.modelOffsets = new Vec3(customDeco.modelOffsets.x,customDeco.modelOffsets.y - 0.5f,customDeco.modelOffsets.z);
+                            customDeco.updateBlock();
+                        }
+                        else{
+                            customDeco.modelOffsets = new Vec3(customDeco.modelOffsets.x,customDeco.modelOffsets.y + 0.5f,customDeco.modelOffsets.z);
+                            customDeco.updateBlock();
+                        }
+                    }
+                }
+            },
+            "offset_z", new Mode("offset_z") {
+                @Override
+                public void performModeTask(ItemStack stack, Level level, BlockPos pos, Player player) {
+                    CustomizableCopyingDecoBE customDeco = (CustomizableCopyingDecoBE)level.getBlockEntity(pos);
+                    if(customDeco instanceof CustomizableCopyingDecoBE){
+                        if(player.isShiftKeyDown()){
+                            customDeco.modelOffsets = new Vec3(customDeco.modelOffsets.x,customDeco.modelOffsets.y,customDeco.modelOffsets.z - 0.5f);
+                            customDeco.updateBlock();
+                        }
+                        else{
+                            customDeco.modelOffsets = new Vec3(customDeco.modelOffsets.x,customDeco.modelOffsets.y,customDeco.modelOffsets.z + 0.5f);
+                            customDeco.updateBlock();
+                        }
+                    }
+                }
+            },
+            "scale_x", new Mode("scale_x") {
+                @Override
+                public void performModeTask(ItemStack stack, Level level, BlockPos pos, Player player) {
+                    CustomizableCopyingDecoBE customDeco = (CustomizableCopyingDecoBE)level.getBlockEntity(pos);
+                    if(customDeco instanceof CustomizableCopyingDecoBE){
+                        if(player.isShiftKeyDown()){
+                            customDeco.modelOffsets = new Vec3(customDeco.modelOffsets.x - 0.5f,customDeco.modelOffsets.y,customDeco.modelOffsets.z);
+                            customDeco.updateBlock();
+                        }
+                        else{
+                            customDeco.modelOffsets = new Vec3(customDeco.modelOffsets.x + 0.5f,customDeco.modelOffsets.y,customDeco.modelOffsets.z);
+                            customDeco.updateBlock();
+                        }
+                    }
+                }
+            },
+            "scale_y", new Mode("scale_y") {
+                @Override
+                public void performModeTask(ItemStack stack, Level level, BlockPos pos, Player player) {
+                    CustomizableCopyingDecoBE customDeco = (CustomizableCopyingDecoBE)level.getBlockEntity(pos);
+                    if(customDeco instanceof CustomizableCopyingDecoBE){
+                        if(player.isShiftKeyDown()){
+                            customDeco.modelOffsets = new Vec3(customDeco.modelOffsets.x,customDeco.modelOffsets.y - 0.5f,customDeco.modelOffsets.z);
+                            customDeco.updateBlock();
+                        }
+                        else{
+                            customDeco.modelOffsets = new Vec3(customDeco.modelOffsets.x,customDeco.modelOffsets.y + 0.5f,customDeco.modelOffsets.z);
+                            customDeco.updateBlock();
+                        }
+                    }
+                }
+            },
+            "scale_z", new Mode("scale_z") {
+                @Override
+                public void performModeTask(ItemStack stack, Level level, BlockPos pos, Player player) {
+                    CustomizableCopyingDecoBE customDeco = (CustomizableCopyingDecoBE)level.getBlockEntity(pos);
+                    if(customDeco instanceof CustomizableCopyingDecoBE){
+                        if(player.isShiftKeyDown()){
+                            customDeco.modelOffsets = new Vec3(customDeco.modelOffsets.x,customDeco.modelOffsets.y,customDeco.modelOffsets.z - 0.5f);
+                            customDeco.updateBlock();
+                        }
+                        else{
+                            customDeco.modelOffsets = new Vec3(customDeco.modelOffsets.x,customDeco.modelOffsets.y,customDeco.modelOffsets.z + 0.5f);
+                            customDeco.updateBlock();
+                        }
+                    }
+                }
+            }
+    );
+
+    // each render mode is stored here
+    public static final Map<String,Mode> NAMED_RENDER_MODES = Map.of(
             "solidify", new Mode("solidify") {
                 @Override
                 public void performModeTask(ItemStack stack, Level level, BlockPos pos, Player player) {
@@ -57,48 +207,6 @@ public class CustomizationTool extends Item {
                         customDeco.updateBlock();
                     }
                 }
-            },
-            "rotate_x", new Mode("rotate_x") {
-                @Override
-                public void performModeTask(ItemStack stack, Level level, BlockPos pos, Player player) {
-                    CustomizableCopyingDecoBE customDeco = (CustomizableCopyingDecoBE)level.getBlockEntity(pos);
-                    if(customDeco instanceof CustomizableCopyingDecoBE){
-                        if(player.isShiftKeyDown()){
-                            customDeco.modelRotations = new Vec3(customDeco.modelRotations.x - 0.5f,customDeco.modelRotations.y,customDeco.modelRotations.z);
-                        }
-                        else{
-                            customDeco.modelRotations = new Vec3(customDeco.modelRotations.x + 0.5f,customDeco.modelRotations.y,customDeco.modelRotations.z);
-                        }
-                    }
-                }
-            },
-            "rotate_y", new Mode("rotate_y") {
-                @Override
-                public void performModeTask(ItemStack stack, Level level, BlockPos pos, Player player) {
-                    CustomizableCopyingDecoBE customDeco = (CustomizableCopyingDecoBE)level.getBlockEntity(pos);
-                    if(customDeco instanceof CustomizableCopyingDecoBE){
-                        if(player.isShiftKeyDown()){
-                            customDeco.modelRotations = new Vec3(customDeco.modelRotations.x,customDeco.modelRotations.y - 0.5f,customDeco.modelRotations.z);
-                        }
-                        else{
-                            customDeco.modelRotations = new Vec3(customDeco.modelRotations.x,customDeco.modelRotations.y + 0.5f,customDeco.modelRotations.z);
-                        }
-                    }
-                }
-            },
-            "rotate_z", new Mode("rotate_z") {
-                @Override
-                public void performModeTask(ItemStack stack, Level level, BlockPos pos, Player player) {
-                    CustomizableCopyingDecoBE customDeco = (CustomizableCopyingDecoBE)level.getBlockEntity(pos);
-                    if(customDeco instanceof CustomizableCopyingDecoBE){
-                        if(player.isShiftKeyDown()){
-                            customDeco.modelRotations = new Vec3(customDeco.modelRotations.x,customDeco.modelRotations.y,customDeco.modelRotations.z - 0.5f);
-                        }
-                        else{
-                            customDeco.modelRotations = new Vec3(customDeco.modelRotations.x,customDeco.modelRotations.y,customDeco.modelRotations.z + 0.5f);
-                        }
-                    }
-                }
             }
     );
 
@@ -108,9 +216,10 @@ public class CustomizationTool extends Item {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
+        list.add(Component.translatable("item.thingamajigs.customization_tool.desc").withStyle(ChatFormatting.GRAY));
         if(stack.hasTag()){
             if(stack.getTag().contains("mode")){
-                list.add(Component.translatable("item.thingamajigs.customization_tool.mode",String.valueOf(mode))
+                list.add(Component.translatable("item.thingamajigs.customization_tool.mode",NAMED_MODES.values().stream().toList().get(mode).name)
                         .withStyle(ChatFormatting.GREEN));
             }
         }
@@ -120,7 +229,7 @@ public class CustomizationTool extends Item {
     public void onCraftedBy(ItemStack stack, Level level, Player player) {
         if(!stack.hasTag()){
             CompoundTag tag = new CompoundTag();
-            tag.putString("mode","solidify");
+            tag.putInt("mode",0);
             stack.setTag(tag);
             mode = 0;
         }
@@ -131,7 +240,7 @@ public class CustomizationTool extends Item {
         ItemStack stack = new ItemStack(this);
         if(!stack.hasTag()){
             CompoundTag tag = new CompoundTag();
-            tag.putString("mode","solidify");
+            tag.putInt("mode",0);
             stack.setTag(tag);
             mode = 0;
         }
@@ -193,6 +302,12 @@ public class CustomizationTool extends Item {
                     currentStack.setTag(tag);
                     return true;
                 }
+            }
+            else{
+                CompoundTag tag2 = new CompoundTag();
+                tag2.putInt("mode",0);
+                currentStack.setTag(tag2);
+                return true;
             }
         }
         return false;
