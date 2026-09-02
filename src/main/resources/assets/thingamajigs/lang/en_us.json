@@ -1631,6 +1631,7 @@
   "block.thingamajigs.icecream_vending_machine": "Ice Cream Vending Machine",
   "block.thingamajigs.phone_step_selectors_group": "Phone Step-Selectors Group",
   "block.thingamajigs.electric_hospital_bed": "Electric Hospital Bed",
+  "block.thingamajigs.old_legendary_computer": "Old Legendary Computer",
 
   "block.thingamajigs.stop_gate.desc": "Goes up with redstone power, click with axes/shears to invert this behavior",
   "block.thingamajigs.ceiling_fan.desc": "Use Shears to change direction, and right click to toggle on/off",
@@ -1680,8 +1681,7 @@
   "phone_number.thingamajigs.directory_assistance_call_failed": "Please redial an try again later.",
   "phone_number.thingamajigs.settings_instructions": "In order to change settings, you will need to dial star 50 and use pound after 50 to change a setting.",
   "phone_number.thingamajigs.extra_a": "What do skeletons have for dinner? Spare ribs!",
-  "phone_number.thingamajigs.extra_b": "We're sorry, the number you called is in a different dimension. ERROR CODE: SUGAR.",
-  "phone_number.thingamajigs.wow": "Wow, would you believe that?",
+  "phone_number.thingamajigs.extra_b": "We're sorry, the number you called is in a different dimension.",
   "phone_number.thingamajigs.settings_update": "Setting %s, now %s.",
   "desc.advancement.toilet_intro": "Sit on the toilet",
   "title.advancement.toilet_intro": "This Thing Stinks",
@@ -1728,6 +1728,8 @@
   "entry.thingamajigs.lava_lamp": "Lava Lamps",
   "entry.thingamajigs.clock": "Clocks",
   "entry.thingamajigs.vertical_rs_pole": "Vertical Redstone Pole",
+  "entry.thingamajigs.specialdecos": "Special Decos",
+  "entry.thingamajigs.phones": "Phones",
 
   "advancement.thingamajigs.get_treatise.title": "Thingamajigs' Treatise",
   "advancement.thingamajigs.get_treatise.desc": "Get the guidebook.",

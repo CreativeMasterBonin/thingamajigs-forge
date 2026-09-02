@@ -20,6 +20,14 @@
             "images": ["thingamajigs:textures/gui/rrcrossing.png"],
             "title": "Crossing Power Direction",
             "border": false
+        },
+        {
+            "type": "patchouli:text",
+            "text": "To customize the railroad crossing, a variety of items act as modifiers. Axes/Shears rotate around positively or use gems/dusts to rotate around the opposite direction. Dyes increase arm length, while bones increase the arm length; internally it is the opposite, but visually this is how it should be explained."
+        },
+        {
+            "type": "patchouli:text",
+            "text": "Rabbit hide increases the gate offset, and rabbit feet decrease the offset. The internal value works the same as the arm length value, it is the opposite of what the arm is visually looking like. The offset increases quickly with arm length, so some adjustment may be needed to keep the offset correct for the length of the arm specified."
         }
     ]
 }

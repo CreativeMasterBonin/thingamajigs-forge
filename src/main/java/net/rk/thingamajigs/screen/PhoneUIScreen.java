@@ -242,9 +242,6 @@ public class PhoneUIScreen extends AbstractContainerScreen<PhoneMenu> {
                     Component extraSaying = Component.translatable("phone_number.thingamajigs.extra_b");
                     sayMessage(extraSaying.getString());
                 }
-                else if(sentNumber.equals("1114026637")){ // suggested extra number
-                    sayMessage(Component.translatable("phone_number.thingamajigs.wow").getString());
-                }
                 else if(sentNumber.equals("3975633")){
                     this.onClose();
                 }

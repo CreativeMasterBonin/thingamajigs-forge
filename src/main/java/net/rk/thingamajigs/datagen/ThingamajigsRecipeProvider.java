@@ -1961,6 +1961,13 @@ public class ThingamajigsRecipeProvider extends RecipeProvider implements ICondi
                 .requires(Items.REDSTONE)
                 .unlockedBy("has_thingy",has(ThingamajigsBlocks.PHONE_GROUP_SELECTOR.get().asItem()))
                 .save(rc);
+        // 1.9.0
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ThingamajigsBlocks.OLD_LEGENDARY_COMPUTER.get().asItem(),1)
+                .requires(ThingamajigsBlocks.OLD_FLAT_COMPUTER.get().asItem())
+                .requires(ThingamajigsBlocks.BLUEYTOSH_STUDIO.get().asItem())
+                .requires(Items.CHISELED_BOOKSHELF)
+                .unlockedBy("has_thingy",has(ThingamajigsBlocks.OLD_FLAT_COMPUTER.get().asItem()))
+                .save(rc);
     }
 
     public static RecipeBuilder stonecutterAny(Item requiredItem, Ingredient inputItem, Item result, int amt){

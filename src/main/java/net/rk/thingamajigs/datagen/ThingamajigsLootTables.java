@@ -1808,6 +1808,8 @@ public class ThingamajigsLootTables extends VanillaBlockLoot {
         // 1.8.9
         this.dropSelf(ThingamajigsBlocks.ELECTRIC_HOSPITAL_BED.get());
         this.dropSelf(ThingamajigsBlocks.PHONE_STEP_SELECTORS_GROUP.get());
+        // 1.9.0
+        this.dropSelf(ThingamajigsBlocks.OLD_LEGENDARY_COMPUTER.get());
     }
 
     // from loot tables

@@ -231,9 +231,6 @@ public class PhoneUIButtonMessage {
                     else if(number.getString().equals("8004162024")){
                         return;
                     }
-                    else if(number.getString().equals("1114026637")){
-                        return;
-                    }
                     else if(sentNumber.equals("3975633")){
                         Calendar date = Calendar.getInstance();
                         date.setTime(new Date());

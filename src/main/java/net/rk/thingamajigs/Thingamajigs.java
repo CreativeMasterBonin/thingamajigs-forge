@@ -826,6 +826,7 @@ public class Thingamajigs {
             event.accept(ThingamajigsBlocks.RGB_PC_CONTROLS.get().asItem());
             event.accept(ThingamajigsBlocks.DVD_PLAYER.get().asItem());
             event.accept(ThingamajigsBlocks.VHS_PLAYER.get().asItem());
+            event.accept(ThingamajigsBlocks.OLD_LEGENDARY_COMPUTER.get().asItem());
             event.accept(ThingamajigsBlocks.CORNER_COMPUTER.get().asItem());
             event.accept(ThingamajigsBlocks.CORNER_COMPUTER_WM.get().asItem());
             event.accept(ThingamajigsBlocks.OLD_PC.get().asItem());

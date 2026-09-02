@@ -20,6 +20,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -133,6 +134,8 @@ public class RailroadCrossing extends BaseEntityBlock {
     // using
     @Override
     public InteractionResult use(BlockState bs, Level lvl, BlockPos bp, Player ply, InteractionHand h, BlockHitResult bhr) {
+        boolean isItemUsable = ply.getItemInHand(h).is(Tags.Items.GEMS) || ply.getItemInHand(h).is(Tags.Items.DUSTS) || ply.getItemInHand(h).is(ItemTags.AXES) || ply.getItemInHand(h).is(Tags.Items.SHEARS) || ply.getItemInHand(h).is(Tags.Items.DYES) || ply.getItemInHand(h).is(Tags.Items.BONES) || ply.getItemInHand(h).is(Items.RABBIT_FOOT) || ply.getItemInHand(h).is(Items.RABBIT_HIDE);
+
         if(lvl.isClientSide()){
             if(ply.getItemInHand(h).isEmpty()){
                 ply.playSound(SoundEvents.HANGING_SIGN_HIT,0.5f, ThingamajigsCalcStuffs.nextFloatBetweenInclusive(0.95f,1.1f));
@@ -140,10 +143,13 @@ public class RailroadCrossing extends BaseEntityBlock {
             else if(ply.getItemInHand(h).is(ItemTags.AXES) || ply.getItemInHand(h).is(Tags.Items.SHEARS)){
                 ply.playSound(SoundEvents.IRON_GOLEM_REPAIR,0.5f, ThingamajigsCalcStuffs.nextFloatBetweenInclusive(0.98f,1.0f));
             }
+            else if(ply.getItemInHand(h).is(Tags.Items.GEMS) || ply.getItemInHand(h).is(Tags.Items.DUSTS)){
+                ply.playSound(SoundEvents.IRON_GOLEM_REPAIR,0.5f, ThingamajigsCalcStuffs.nextFloatBetweenInclusive(0.91f,0.97f));
+            }
             return InteractionResult.SUCCESS;
         }
         else {
-            if (ply.getItemInHand(h).isEmpty() || !(ply.getItemInHand(h).is(ItemTags.AXES) && ply.getItemInHand(h).is(Tags.Items.SHEARS))) {
+            if (ply.getItemInHand(h).isEmpty() || !isItemUsable) {
                 try {
                     MenuProvider mp = new MenuProvider() {
                         @Override
@@ -169,8 +175,56 @@ public class RailroadCrossing extends BaseEntityBlock {
                     Logger.getAnonymousLogger().warning("Railroad Crossing encountered an exception: " + e.getMessage());
                     return InteractionResult.FAIL;
                 }
-            } else {
-
+            }
+            else{
+                if(ply.getItemInHand(h).is(ItemTags.AXES) || ply.getItemInHand(h).is(Tags.Items.SHEARS)) {
+                    RailroadCrossingBE arm = (RailroadCrossingBE)lvl.getBlockEntity(bp);
+                    if(arm instanceof RailroadCrossingBE){
+                        arm.yAngle += 5.0f;
+                        arm.updateBlock();
+                        return InteractionResult.SUCCESS;
+                    }
+                }
+                else if(ply.getItemInHand(h).is(Tags.Items.GEMS) || ply.getItemInHand(h).is(Tags.Items.DUSTS)){
+                    RailroadCrossingBE arm = (RailroadCrossingBE)lvl.getBlockEntity(bp);
+                    if(arm instanceof RailroadCrossingBE){
+                        arm.yAngle -= 5.0f;
+                        arm.updateBlock();
+                        return InteractionResult.SUCCESS;
+                    }
+                }
+                else if(ply.getItemInHand(h).is(Tags.Items.DYES)){
+                    RailroadCrossingBE arm = (RailroadCrossingBE)lvl.getBlockEntity(bp);
+                    if(arm instanceof RailroadCrossingBE){
+                        arm.armLength -= 0.5f;
+                        arm.updateBlock();
+                        return InteractionResult.SUCCESS;
+                    }
+                }
+                else if(ply.getItemInHand(h).is(Tags.Items.BONES)){
+                    RailroadCrossingBE arm = (RailroadCrossingBE)lvl.getBlockEntity(bp);
+                    if(arm instanceof RailroadCrossingBE){
+                        arm.armLength += 0.5f;
+                        arm.updateBlock();
+                        return InteractionResult.SUCCESS;
+                    }
+                }
+                else if(ply.getItemInHand(h).is(Items.RABBIT_HIDE)){
+                    RailroadCrossingBE arm = (RailroadCrossingBE)lvl.getBlockEntity(bp);
+                    if(arm instanceof RailroadCrossingBE){
+                        arm.armGateOffsetZ -= 0.5f;
+                        arm.updateBlock();
+                        return InteractionResult.SUCCESS;
+                    }
+                }
+                else if(ply.getItemInHand(h).is(Items.RABBIT_FOOT)){
+                    RailroadCrossingBE arm = (RailroadCrossingBE)lvl.getBlockEntity(bp);
+                    if(arm instanceof RailroadCrossingBE){
+                        arm.armGateOffsetZ += 0.5f;
+                        arm.updateBlock();
+                        return InteractionResult.SUCCESS;
+                    }
+                }
             }
         }
         return InteractionResult.PASS;

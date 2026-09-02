@@ -5942,7 +5942,9 @@ public class ThingamajigsBlocks {
                 }
             });
     // 1.9.0
-
+    public static final RegistryObject<Block> OLD_LEGENDARY_COMPUTER = registerBlock("old_legendary_computer",
+            () -> new UsableComputer(BlockBehaviour.Properties.of().strength(1f,10f)
+                    .sound(SoundType.LANTERN).mapColor(MapColor.TERRACOTTA_WHITE)));
 
 
     //requality

@@ -1,0 +1,23 @@
+{
+    "name": "entry.thingamajigs.phones",
+    "icon": "thingamajigs:featured_cordless_phone",
+    "category": "thingamajigs:decorations",
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "Note 'phones' here are in the context of electronics which allow two or more people to speak to each other using special equipment in a network of devices among other physics related properties of materials and of the air itself."
+        },
+        {
+            "type": "patchouli:text",
+            "text": "Thingamajigs adds phones which can 'call numbers'. In 1.9.0, text-to-speech provided by the game itself allows certain numbers to actually respond to you (you can enable this in the config, since by default nothing will be said)."
+        },
+        {
+            "type": "patchouli:text",
+            "text": "Accessibility text-to-speech is NOT affected by the secondary one running. Both text-to-speech narrators can run (and talk) at the same time. When the game is closed, the mod will do its best to disable and remove the text-to-speech object it is using to free memory, just like the game does."
+        },
+        {
+            "type": "patchouli:text",
+            "text": "Some older phones can call various fictional numbers, but the smartphone is too smart for that, so it does not use the primitive interface, its screen is blank. Even older phones do not have displays, so they do nothing."
+        }
+    ]
+}

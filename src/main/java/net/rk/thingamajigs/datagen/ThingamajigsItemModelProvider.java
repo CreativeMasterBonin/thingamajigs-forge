@@ -206,6 +206,7 @@ public class ThingamajigsItemModelProvider extends ItemModelProvider {
         fromModelMod(ThingamajigsBlocks.PHONE_STEP_SELECTORS_GROUP.get(),"block/phone_step_selectors_group");
         // 1.9.0
         fromModelMod(ThingamajigsBlocks.STOP_GATE.get(),"block/stop_gate_off");
+        fromModelMod(ThingamajigsBlocks.OLD_LEGENDARY_COMPUTER.get(),"block/old_legendary_computer");
     }
 
     private ItemModelBuilder fromModelModItem(Item item, String source){

@@ -15,7 +15,7 @@
         },
         {
             "type": "patchouli:text",
-            "text": "Due to a bug that cannot be fixed for the foreseeable future, all paintings are creative-only."
+            "text": "The Thingamajigs Painting item allows placement of Thingamajigs paintings, and is somewhat compatible with other painting mods that change painting behavior (you may not get the special item back, instead the vanilla one in some cases)."
         }
     ]
 }
