@@ -172,6 +172,11 @@ ThingamajigsBlocks.TRIPLE_SHELF.get(),ThingamajigsBlocks.TOY_BOX.get()
                             ThingamajigsBlocks.STOP_GATE.get())
                     .build(null));
 
+    public static final Supplier<BlockEntityType<CustomizableCopyingDecoBE>> CUSTOMIZABLE_COPYING_DECO_BE = BLOCK_ENTITIES.register(
+            "customizable_copying_deco_be",() -> BlockEntityType.Builder.of(CustomizableCopyingDecoBE::new,
+                            ThingamajigsBlocks.CUSTOMIZABLE_COPYING_DECO.get())
+                    .build(null));
+
     public static void register(IEventBus eventBus){
         BLOCK_ENTITIES.register(eventBus);
     }

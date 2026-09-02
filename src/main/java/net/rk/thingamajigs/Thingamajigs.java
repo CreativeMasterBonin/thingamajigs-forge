@@ -151,6 +151,8 @@ public class Thingamajigs {
             event.accept(ThingamajigsItems.HEALTH_COMPONENT);
             event.accept(ThingamajigsItems.TOY_COMPONENT);
             event.accept(ThingamajigsItems.MUSIC_COMPONENT);
+            // customizable items
+            event.accept(ThingamajigsBlocks.CUSTOMIZABLE_COPYING_DECO.get().asItem());
             // items continued
             event.accept(ThingamajigsItems.THINGAMAJIGS_PAINTING_ITEM);
             event.accept(ThingamajigsItems.POOP_HORN);

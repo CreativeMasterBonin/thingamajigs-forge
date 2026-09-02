@@ -14,7 +14,7 @@ import net.rk.thingamajigs.block.custom.ThingamajigsDecorativeBlock;
 
 import java.util.stream.Stream;
 
-public class CarnivalAwning extends ThingamajigsDecorativeBlock {
+public class Awning extends ThingamajigsDecorativeBlock {
     public static final VoxelShape HALF_TOP_SLAB = Block.box(0,8, 0,16,16,16);
     public static final VoxelShape NORTH = Stream.of(
             Block.box(0, 12, 9, 16, 15, 13),
@@ -53,7 +53,7 @@ public class CarnivalAwning extends ThingamajigsDecorativeBlock {
             Block.box(13, 14, 0, 15, 16, 16)
     ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
 
-    public CarnivalAwning(Properties properties) {
+    public Awning(Properties properties) {
         super(properties.strength(0.5F,0.25F).sound(SoundType.WOOL).noCollission());
         this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH).setValue(WATERLOGGED, false));
     }

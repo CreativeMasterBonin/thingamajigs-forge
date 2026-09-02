@@ -1810,6 +1810,7 @@ public class ThingamajigsLootTables extends VanillaBlockLoot {
         this.dropSelf(ThingamajigsBlocks.PHONE_STEP_SELECTORS_GROUP.get());
         // 1.9.0
         this.dropSelf(ThingamajigsBlocks.OLD_LEGENDARY_COMPUTER.get());
+        this.dropSelf(ThingamajigsBlocks.CUSTOMIZABLE_COPYING_DECO.get());
     }
 
     // from loot tables

@@ -1632,7 +1632,10 @@
   "block.thingamajigs.phone_step_selectors_group": "Phone Step-Selectors Group",
   "block.thingamajigs.electric_hospital_bed": "Electric Hospital Bed",
   "block.thingamajigs.old_legendary_computer": "Old Legendary Computer",
+  "block.thingamajigs.customizable_copying_deco": "Customizable Copying Deco",
 
+  "item.thingamajigs.customization_tool.mode": "Mode: %s",
+  "block.thingamajigs.customizable_copying_deco.desc": "Tools can change the scale, rotation and translation of the model rendered",
   "block.thingamajigs.stop_gate.desc": "Goes up with redstone power, click with axes/shears to invert this behavior",
   "block.thingamajigs.ceiling_fan.desc": "Use Shears to change direction, and right click to toggle on/off",
   "block.thingamajigs.mitter_curtain.desc": "Use Axes/Shears to swap curtain direction and use dusts/gems to rotate curtains",

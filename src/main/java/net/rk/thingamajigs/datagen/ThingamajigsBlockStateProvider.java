@@ -107,6 +107,7 @@ public class ThingamajigsBlockStateProvider extends BlockStateProvider {
         rotatedThingamajigsDecoration(ThingamajigsBlocks.PHONE_STEP_SELECTORS_GROUP.get(),"thingamajigs:block/phone_step_selectors_group");
         // 1.9.0
         rotatedThingamajigsDecoration(ThingamajigsBlocks.OLD_LEGENDARY_COMPUTER.get(),"thingamajigs:block/old_legendary_computer");
+        basicBlockItemWithCustomModelNoRotation(ThingamajigsBlocks.CUSTOMIZABLE_COPYING_DECO,"thingamajigs:block/customizable_copying_deco");
     }
 
     // ?
@@ -127,6 +128,19 @@ public class ThingamajigsBlockStateProvider extends BlockStateProvider {
                     .rotationY((int)facing.getOpposite().toYRot())
                     .uvLock(false)
                     .build();
+        });
+    }
+
+    public void basicBlockItemWithCustomModelNoRotation(RegistryObject<Block> block, String modelLocation){
+        blockItem(block);
+        getVariantBuilder(block.get()).forAllStates(state -> {
+            ModelFile only = new ModelFile(ResourceLocation.tryParse(modelLocation)) {
+                @Override
+                protected boolean exists() {
+                    return ResourceLocation.isValidResourceLocation(modelLocation);
+                }
+            };
+            return ConfiguredModel.builder().modelFile(only).build();
         });
     }
 

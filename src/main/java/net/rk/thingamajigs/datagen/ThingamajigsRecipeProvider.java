@@ -1968,6 +1968,20 @@ public class ThingamajigsRecipeProvider extends RecipeProvider implements ICondi
                 .requires(Items.CHISELED_BOOKSHELF)
                 .unlockedBy("has_thingy",has(ThingamajigsBlocks.OLD_FLAT_COMPUTER.get().asItem()))
                 .save(rc);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ThingamajigsBlocks.CUSTOMIZABLE_COPYING_DECO.get().asItem(),1)
+                .requires(ThingamajigsBlocks.NOT_QUITE_MENGER.get().asItem())
+                .requires(Items.SLIME_BALL)
+                .requires(Items.GLOW_ITEM_FRAME)
+                .unlockedBy("has_thingy",has(ThingamajigsBlocks.NOT_QUITE_MENGER.get().asItem()))
+                .save(rc);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ThingamajigsItems.CUSTOMIZATION_TOOL.get().asItem(),1)
+                .requires(ThingamajigsItems.THINGAMAJIG.get().asItem())
+                .requires(ThingamajigsItems.THINGAMAJIG.get().asItem())
+                .requires(ThingamajigsItems.THINGAMAJIG.get().asItem())
+                .requires(ItemTags.PICKAXES)
+                .requires(ThingamajigsTags.CONCRETES)
+                .unlockedBy("has_thingy",has(ThingamajigsItems.THINGAMAJIG.get().asItem()))
+                .save(rc);
     }
 
     public static RecipeBuilder stonecutterAny(Item requiredItem, Ingredient inputItem, Item result, int amt){

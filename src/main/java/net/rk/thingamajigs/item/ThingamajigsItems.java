@@ -473,6 +473,11 @@ public class ThingamajigsItems {
     public static final RegistryObject<Item> THINGAMAJIGS_PAINTING_ITEM = ITEMS.register("thingamajig_painting",
             () -> new ThingamajigsPaintingItem(new Item.Properties()));
 
+    // 1.9.0
+    public static final RegistryObject<Item> CUSTOMIZATION_TOOL = ITEMS.register("customization_tool",
+            () -> new CustomizationTool(new Item.Properties()));
+
+
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);
     }

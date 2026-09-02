@@ -986,25 +986,25 @@ public class ThingamajigsBlocks {
                 }
             });
     public static final RegistryObject<Block> HUMIDIFIER = registerBlock("humidifier",
-            () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.copy(Blocks.STONE).sound(SoundType.DEEPSLATE_TILES).strength(1F)), 0);
+            () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.copy(Blocks.STONE).sound(SoundType.DEEPSLATE_TILES).strength(1F)));
     public static final RegistryObject<Block> DEHUMIDIFIER = registerBlock("dehumidifier",
-            () -> new Dehumidifier(BlockBehaviour.Properties.copy(Blocks.STONE)), 0);
+            () -> new Dehumidifier(BlockBehaviour.Properties.copy(Blocks.STONE)));
     public static final RegistryObject<Block> AIR_PURIFIER = registerBlock("air_purifier",
-            () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.copy(Blocks.STONE).sound(SoundType.DEEPSLATE_TILES).strength(1F)), 0);
+            () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.copy(Blocks.STONE).sound(SoundType.DEEPSLATE_TILES).strength(1F)));
     public static final RegistryObject<Block> SPACE_HEATER = registerBlock("space_heater",
-            () -> new SpaceHeater(BlockBehaviour.Properties.of().sound(SoundType.DEEPSLATE_TILES).strength(1F).lightLevel(s -> 7)), 0);
+            () -> new SpaceHeater(BlockBehaviour.Properties.of().sound(SoundType.DEEPSLATE_TILES).strength(1F).lightLevel(s -> 7)));
     public static final RegistryObject<Block> CEILING_FAN = registerBlock("ceiling_fan",
-            () -> new CeilingFan(BlockBehaviour.Properties.copy(Blocks.STONE).sound(SoundType.DEEPSLATE).strength(1F,2F)), 0);
+            () -> new CeilingFan(BlockBehaviour.Properties.copy(Blocks.STONE).sound(SoundType.DEEPSLATE).strength(1F,2F)));
     public static final RegistryObject<Block> SMOKER_GRILL = registerBlock("smoker_grill",
-            () -> new SmokerGrill(BlockBehaviour.Properties.copy(Blocks.STONE).sound(SoundType.DEEPSLATE_BRICKS).strength(1.25F,2F).lightLevel(enabledLitBlockEmission(10))), 0);
+            () -> new SmokerGrill(BlockBehaviour.Properties.copy(Blocks.STONE).sound(SoundType.DEEPSLATE_BRICKS).strength(1.25F,2F).lightLevel(enabledLitBlockEmission(10))));
     public static final RegistryObject<Block> COTTON_CANDY_MAKER = registerBlock("cotton_candy_maker",
-            () -> new DoubleTallDecorationBlock(BlockBehaviour.Properties.of().sound(SoundType.LANTERN).strength(1F)), 0);
+            () -> new DoubleTallDecorationBlock(BlockBehaviour.Properties.of().sound(SoundType.LANTERN).strength(1F)));
     public static final RegistryObject<Block> CARNIVAL_AWNING = registerBlock("carnival_awning",
-            () -> new CarnivalAwning(BlockBehaviour.Properties.copy(Blocks.WHITE_WOOL)), 0);
+            () -> new Awning(BlockBehaviour.Properties.copy(Blocks.WHITE_WOOL)));
     public static final RegistryObject<Block> PORTA_POTTY = registerBlock("porta_potty",
-            () -> new PortaPotty(BlockBehaviour.Properties.copy(Blocks.WHITE_WOOL)), 0);
+            () -> new PortaPotty(BlockBehaviour.Properties.copy(Blocks.WHITE_WOOL)));
     public static final RegistryObject<Block> WARDEN_TROPHY = registerBlock("warden_trophy",
-            () -> new WardenTrophy(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)), 0);
+            () -> new WardenTrophy(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
 
     // Finale Update #1 Thingamajigs Features
     public static final RegistryObject<Block> FOOSBALL_TABLE = registerBlock("foosball_table",
@@ -5945,6 +5945,10 @@ public class ThingamajigsBlocks {
     public static final RegistryObject<Block> OLD_LEGENDARY_COMPUTER = registerBlock("old_legendary_computer",
             () -> new UsableComputer(BlockBehaviour.Properties.of().strength(1f,10f)
                     .sound(SoundType.LANTERN).mapColor(MapColor.TERRACOTTA_WHITE)));
+
+    public static final RegistryObject<Block> CUSTOMIZABLE_COPYING_DECO = registerBlock("customizable_copying_deco",
+            () -> new CustomizableCopyingDeco(BlockBehaviour.Properties.of().strength(0.75f)
+                    .sound(SoundType.STONE).mapColor(MapColor.STONE)));
 
 
     //requality

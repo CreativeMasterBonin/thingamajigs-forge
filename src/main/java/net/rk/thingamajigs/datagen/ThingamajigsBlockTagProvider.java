@@ -843,6 +843,7 @@ public class ThingamajigsBlockTagProvider extends BlockTagsProvider {
         ;
 
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE)
+                .add(ThingamajigsBlocks.CUSTOMIZABLE_COPYING_DECO.get())
                 .add(ThingamajigsBlocks.OLD_LEGENDARY_COMPUTER.get())
                 .add(ThingamajigsBlocks.ELECTRIC_HOSPITAL_BED.get())
                 .add(ThingamajigsBlocks.PHONE_STEP_SELECTORS_GROUP.get())
