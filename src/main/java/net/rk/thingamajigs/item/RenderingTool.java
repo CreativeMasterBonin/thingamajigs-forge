@@ -15,7 +15,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
-import net.rk.thingamajigs.item.bases.Mode;
 import net.rk.thingamajigs.misc.ThingamajigsCalcStuffs;
 import org.jetbrains.annotations.Nullable;
 
@@ -33,7 +32,7 @@ public class RenderingTool extends CustomizationTool{
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
         list.add(Component.translatable("item.thingamajigs.rendering_tool.desc").withStyle(ChatFormatting.GRAY));
         if(stack.hasTag()){
-            list.add(Component.translatable("item.thingamajigs.rendering_tool.mode",renderModesListified.get(stack.getTag().getInt(RENDER_MODE_TAG_NAME)).name)
+            list.add(Component.translatable("item.thingamajigs.rendering_tool.mode",grabRenderModeFromID(stack.getTag().getInt(RENDER_MODE_TAG_NAME)).name)
                     .withStyle(ChatFormatting.GREEN));
         }
     }
@@ -87,7 +86,7 @@ public class RenderingTool extends CustomizationTool{
         else{
             if(stack.hasTag()){// run the code that the Mode has
                 if(stack.getTag().contains(RENDER_MODE_TAG_NAME)){
-                    renderModesListified.get(stack.getTag().getInt(RENDER_MODE_TAG_NAME)).performModeTask(stack,level,pos,player);
+                    grabRenderModeFromID(stack.getTag().getInt(RENDER_MODE_TAG_NAME)).performModeTask(stack,level,pos,player);
                     return InteractionResult.SUCCESS;
                 }
             }
@@ -101,7 +100,7 @@ public class RenderingTool extends CustomizationTool{
             CompoundTag tag = currentStack.getOrCreateTag();
             if(currentStack.hasTag()){
                 if(currentStack.getTag().contains(RENDER_MODE_TAG_NAME)){
-                    if(currentStack.getTag().getInt(RENDER_MODE_TAG_NAME) >= renderModesListified.size() - 1){
+                    if(currentStack.getTag().getInt(RENDER_MODE_TAG_NAME) >= 2){
                         tag.putInt(RENDER_MODE_TAG_NAME,0);
                     }
                     else{

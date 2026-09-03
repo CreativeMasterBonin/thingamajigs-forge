@@ -1,4 +1,4 @@
-package net.rk.thingamajigs.item.bases;
+package net.rk.thingamajigs.item.bases.modes;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;

@@ -10,6 +10,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.rk.thingamajigs.Thingamajigs;
+import net.rk.thingamajigs.fluid.types.FryingOilFluidType;
 import net.rk.thingamajigs.fluid.types.PurifyingWaterFluidType;
 import net.rk.thingamajigs.fluid.types.SludgeFluidType;
 
@@ -32,10 +33,18 @@ public class ThingamajigsFluids {
            FLUID_TYPES.register("purifying_water",
                    () -> new PurifyingWaterFluidType(FluidType.Properties.create()));
 
+   public static final RegistryObject<FluidType> FRYING_OIL_TYPE =
+           FLUID_TYPES.register("frying_oil",
+                   () -> new FryingOilFluidType(FluidType.Properties.create()));
+
    // fluid setup
    public static final RegistryObject<FlowingFluid> SLUDGE = FLUIDS.register("sludge", SludgeFluid.Source::new);
    public static final RegistryObject<FlowingFluid> SLUDGE_FLOWING = FLUIDS.register("flowing_sludge", SludgeFluid.Flowing::new);
 
    public static final RegistryObject<FlowingFluid> PURIFYING_WATER = FLUIDS.register("purifying_water", PurifyingWaterFluid.Source::new);
    public static final RegistryObject<FlowingFluid> PURIFYING_WATER_FLOWING = FLUIDS.register("flowing_purifying_water", PurifyingWaterFluid.Flowing::new);
+
+   public static final RegistryObject<FlowingFluid> FRYING_OIL = FLUIDS.register("frying_oil", FryingOilFluid.Source::new);
+   public static final RegistryObject<FlowingFluid> FRYING_OIL_FLOWING = FLUIDS.register("flowing_frying_oil", FryingOilFluid.Flowing::new);
+
 }

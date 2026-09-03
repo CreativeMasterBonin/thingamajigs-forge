@@ -14,8 +14,11 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.client.resources.model.ModelManager;
 import net.minecraft.util.Mth;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.LiquidBlock;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.client.model.data.ModelData;
 import net.rk.thingamajigs.block.ThingamajigsBlocks;
@@ -67,6 +70,19 @@ public class CustomizableCopyingDecoRenderer implements BlockEntityRenderer<Cust
             else{
                 model = blockModelShaper.getBlockModel(customizableCopyingDecoBE.blockTypeToCopy);
             }
+
+            // no water is shown despite no crashes
+            /*attempt to render fluids
+            if(customizableCopyingDecoBE.getLevel() != null && customizableCopyingDecoBE.blockTypeToCopy.hasProperty(BlockStateProperties.WATERLOGGED)){
+                if(customizableCopyingDecoBE.blockTypeToCopy.getValue(BlockStateProperties.WATERLOGGED)){
+                    dispatcher.renderLiquid(customizableCopyingDecoBE.getBlockPos(),
+                            customizableCopyingDecoBE.getLevel(),
+                            buffer.getBuffer(RenderType.translucent()),
+                            Blocks.WATER.defaultBlockState(),
+                            Fluids.WATER.defaultFluidState());
+                }
+            }
+            move on from fluids if not waterlogged*/
 
             // render in proper mode
             switch (customizableCopyingDecoBE.renderingMode) {

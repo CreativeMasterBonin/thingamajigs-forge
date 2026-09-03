@@ -1,4 +1,4 @@
-package net.rk.thingamajigs.item.custom;
+package net.rk.thingamajigs.item;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
@@ -15,12 +15,12 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.logging.Logger;
 
-public class PurifyingWaterBucketItem extends BucketItem {
-    public PurifyingWaterBucketItem() {
-        super(ThingamajigsFluids.PURIFYING_WATER, new Item.Properties()
+public class FryingOilBucket extends BucketItem {
+    public FryingOilBucket() {
+        super(ThingamajigsFluids.FRYING_OIL, new Item.Properties()
                 .craftRemainder(Items.BUCKET)
                 .stacksTo(1)
-                .rarity(Rarity.EPIC));
+                .rarity(Rarity.COMMON));
     }
 
     @Override
@@ -48,15 +48,6 @@ public class PurifyingWaterBucketItem extends BucketItem {
         }
 
         if(!isAdAstraDim && !isThaumDim && !isTCDim && !isTFDim && !isAetherDim && !isCustomMCDimOrVanilla && !isRFToolsDim && !isMystcraftDim && !isPropamajooglesDim && !isThingamajigsDim && !isSnackimadoodlesDim){
-            /*if(isAdAstraDim){
-                p.sendSystemMessage(Component.literal("Detected unsupported dimension. Dimension is named: " + p.level().dimension().location()));
-                p.sendSystemMessage(Component.literal("WARNING! Ad Astra dimensions don't support this purifying water bucket item!"));
-            }
-            else{
-                p.sendSystemMessage(Component.literal("Detected unsupported dimension. Dimension is named: " + p.level().dimension().location()));
-                p.displayClientMessage(Component.literal("Cannot use this bucket item here."),true);
-            }
-            */
             return InteractionResultHolder.consume(p.getItemInHand(ih));
         }
         else{
@@ -65,7 +56,7 @@ public class PurifyingWaterBucketItem extends BucketItem {
                 return super.use(l, p, ih);
             }
             catch(Exception e){
-                Logger.getAnonymousLogger().info("Purifying Water bucket item cannot place fluid contained.");
+                Logger.getAnonymousLogger().info("Frying Oil bucket item cannot place fluid contained.");
                 return InteractionResultHolder.fail(p.getItemInHand(ih));
             }
         }
@@ -73,7 +64,7 @@ public class PurifyingWaterBucketItem extends BucketItem {
 
     @Override
     public void appendHoverText(ItemStack itemStack, @Nullable Level lvl, List<Component> componentList, TooltipFlag tf) {
-        componentList.add(Component.translatable("tooltip.thingamajigs.purifying_water_bucket")
+        componentList.add(Component.translatable("tooltip.thingamajigs.frying_oil_bucket")
                 .withStyle(ChatFormatting.GRAY));
         super.appendHoverText(itemStack, lvl, componentList, tf);
     }

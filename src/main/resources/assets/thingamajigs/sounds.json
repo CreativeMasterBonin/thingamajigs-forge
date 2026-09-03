@@ -621,5 +621,27 @@
         "stream": false
       }
     ]
+  },
+  "frying_one": {
+    "category": "block",
+    "attenuation_distance": 4,
+    "subtitle": "thingamajigs.subtitle.frying_one",
+    "sounds": [
+      {
+        "name": "thingamajigs:block/liquids/frying01",
+        "stream": false
+      }
+    ]
+  },
+  "frying_two": {
+    "category": "block",
+    "attenuation_distance": 4,
+    "subtitle": "thingamajigs.subtitle.frying_two",
+    "sounds": [
+      {
+        "name": "thingamajigs:block/liquids/frying02",
+        "stream": false
+      }
+    ]
   }
 }

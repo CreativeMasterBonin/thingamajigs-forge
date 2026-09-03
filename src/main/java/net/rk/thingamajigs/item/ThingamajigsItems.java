@@ -476,6 +476,8 @@ public class ThingamajigsItems {
             () -> new RenderingTool(new Item.Properties()));
     public static final RegistryObject<Item> RANDOMIZE_AND_RESET_TOOL = ITEMS.register("randomize_and_reset_tool",
             () -> new RandomizeAndResetTool(new Item.Properties()));
+    public static final RegistryObject<Item> FRYING_OIL_BUCKET = ITEMS.register("frying_oil_bucket", FryingOilBucket::new);
+
 
 
     public static void register(IEventBus eventBus){

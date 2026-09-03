@@ -91,6 +91,10 @@ public class ThingamajigsSoundEvents {
     // custom instrument sounds
     public static final RegistryObject<SoundEvent> LARGE_POOP = registerSoundEvent("large_poop");
 
+    // liquid sounds
+    public static final RegistryObject<SoundEvent> FRYING_ONE = registerSoundEvent("frying_one");
+    public static final RegistryObject<SoundEvent> FRYING_TWO = registerSoundEvent("frying_two");
+
     // variable range sound effects
     private static RegistryObject<SoundEvent> registerSoundEvent(String name){
         return SOUND_EVENTS.register(name,

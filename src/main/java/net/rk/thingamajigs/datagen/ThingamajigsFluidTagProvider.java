@@ -18,5 +18,6 @@ public class ThingamajigsFluidTagProvider extends FluidTagsProvider {
     protected void addTags(HolderLookup.Provider hlp) {
         this.tag(ThingamajigsTags.SLUDGE_TAG).add(ThingamajigsFluids.SLUDGE.get(), ThingamajigsFluids.SLUDGE_FLOWING.get());
         this.tag(ThingamajigsTags.PURIFIED_WATER_TAG).add(ThingamajigsFluids.PURIFYING_WATER.get(), ThingamajigsFluids.PURIFYING_WATER_FLOWING.get());
+        this.tag(ThingamajigsTags.FRYING_OIL).add(ThingamajigsFluids.FRYING_OIL.get(),ThingamajigsFluids.FRYING_OIL_FLOWING.get());
     }
 }

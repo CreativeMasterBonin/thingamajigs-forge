@@ -1,9 +1,13 @@
 package net.rk.thingamajigs.datagen;
 
 import net.minecraft.data.PackOutput;
+import net.minecraft.data.models.ItemModelGenerators;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
+import net.minecraftforge.client.model.ForgeItemModelShaper;
 import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -210,6 +214,12 @@ public class ThingamajigsItemModelProvider extends ItemModelProvider {
         handheld(ThingamajigsItems.CUSTOMIZATION_TOOL);
         handheld(ThingamajigsItems.RENDERING_TOOL);
         handheld(ThingamajigsItems.RANDOMIZE_AND_RESET_TOOL);
+        defaultCustomSimple(ThingamajigsBlocks.FRYING_OIL.get(),"animated/frying_oil_still"); // for items that may add block items that do not exist by default
+    }
+
+    private ItemModelBuilder fromModelForgeItem(Item item, String source, String fluidTexture){
+        return withExistingParent(item.toString(),
+                new ResourceLocation("forge",source)).texture("fluid",fluidTexture);
     }
 
     private ItemModelBuilder fromModelModItem(Item item, String source){

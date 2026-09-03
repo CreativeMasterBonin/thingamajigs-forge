@@ -41,8 +41,7 @@ public class ThingamajigsPaintingItem extends HangingEntityItem {
         list.add(Component.translatable("item.thingamajigs.thingamajig_painting.desc").withStyle(ChatFormatting.GRAY));
     }
 
-    // FIRST TRY WORKED - GANG! POG!
-    // exclusively places THINGAMAJIGS_PAINTING tagged paintings
+    // exclusively places 'THINGAMAJIGS_PAINTING' tagged paintings
     @Override
     public InteractionResult useOn(UseOnContext context) {
         BlockPos blockpos = context.getClickedPos();

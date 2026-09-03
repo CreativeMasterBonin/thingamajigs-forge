@@ -47,6 +47,7 @@ import net.rk.thingamajigs.entity.customblock.hangingblock.GreenHangingSignBlock
 import net.rk.thingamajigs.entity.customblock.hangingblock.GreenWallHangingSignBlock;
 import net.rk.thingamajigs.events.ThingamajigsSoundEvents;
 import net.rk.thingamajigs.events.ThingamajigsSoundTypes;
+import net.rk.thingamajigs.fluid.fluidblocks.FryingOilBlock;
 import net.rk.thingamajigs.fluid.fluidblocks.PurifyingWaterBlock;
 import net.rk.thingamajigs.fluid.fluidblocks.SludgeBlock;
 import net.rk.thingamajigs.interfacing.WeatheringCopperChair;
@@ -5950,6 +5951,8 @@ public class ThingamajigsBlocks {
             () -> new CustomizableCopyingDeco(BlockBehaviour.Properties.of().strength(0.75f)
                     .sound(SoundType.STONE).mapColor(MapColor.STONE)));
 
+    public static final RegistryObject<Block> FRYING_OIL = registerBlock("frying_oil",
+            () -> new FryingOilBlock());
 
     //requality
     // end of blocks list

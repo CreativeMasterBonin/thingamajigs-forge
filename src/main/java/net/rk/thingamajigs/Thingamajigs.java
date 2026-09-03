@@ -6,10 +6,14 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fluids.FluidInteractionRegistry;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
@@ -1569,6 +1573,55 @@ public class Thingamajigs {
     }
 
     private void setup(final FMLCommonSetupEvent event){
+        // frying oil does not like water since they don't mix, so sediment becomes a byproduct
+        FluidInteractionRegistry.addInteraction(ThingamajigsFluids.FRYING_OIL_TYPE.get(),
+                new FluidInteractionRegistry.InteractionInformation(ForgeMod.WATER_TYPE.get(),
+                fluidState -> Blocks.GRAVEL.defaultBlockState()
+        ));
+        // lava is significantly hotter than frying oil, but it turns the oil into a solid anyway
+        FluidInteractionRegistry.addInteraction(ThingamajigsFluids.FRYING_OIL_TYPE.get(),
+                new FluidInteractionRegistry.InteractionInformation(ForgeMod.LAVA_TYPE.get(),
+                        fluidState -> Blocks.COAL_BLOCK.defaultBlockState()));
 
+        // make glowing cheese
+        FluidInteractionRegistry.addInteraction(ThingamajigsFluids.PURIFYING_WATER_TYPE.get(), new FluidInteractionRegistry.InteractionInformation(
+                (level, currentPos, relativePos, currentState) -> level.getBlockState(currentPos.below()).is(Blocks.GLOWSTONE) && level.getBlockState(relativePos).is(ThingamajigsBlocks.CHEESE_BLOCK.get()),
+                ThingamajigsBlocks.GLOWING_CHEESE_BLOCK.get().defaultBlockState()
+        ));
+
+        // byproduct by mixing bad liquid with frying oil
+        FluidInteractionRegistry.addInteraction(ThingamajigsFluids.FRYING_OIL_TYPE.get(),
+                new FluidInteractionRegistry.InteractionInformation(ThingamajigsFluids.SLUDGE_TYPE.get(),
+                        fluidState -> ThingamajigsBlocks.BYPRODUCT.get().defaultBlockState()));
+
+        // purifying water is more powerful than frying oil, so it creates a cold byproduct
+        FluidInteractionRegistry.addInteraction(ThingamajigsFluids.FRYING_OIL_TYPE.get(),
+                new FluidInteractionRegistry.InteractionInformation(ThingamajigsFluids.PURIFYING_WATER_TYPE.get(),
+                        fluidState -> Blocks.PACKED_ICE.defaultBlockState()));
+
+        // sludge + purifying water = mud
+        FluidInteractionRegistry.addInteraction(ThingamajigsFluids.SLUDGE_TYPE.get(),
+                new FluidInteractionRegistry.InteractionInformation(ThingamajigsFluids.PURIFYING_WATER_TYPE.get(),
+                        fluidState -> Blocks.MUD.defaultBlockState()));
+
+        // sludge + lava = black terracotta
+        FluidInteractionRegistry.addInteraction(ThingamajigsFluids.SLUDGE_TYPE.get(),
+                new FluidInteractionRegistry.InteractionInformation(ForgeMod.LAVA_TYPE.get(),
+                        fluidState -> Blocks.BLACK_TERRACOTTA.defaultBlockState()));
+
+        // sludge + water = byproduct
+        FluidInteractionRegistry.addInteraction(ThingamajigsFluids.SLUDGE_TYPE.get(),
+                new FluidInteractionRegistry.InteractionInformation(ForgeMod.WATER_TYPE.get(),
+                        fluidState -> ThingamajigsBlocks.BYPRODUCT.get().defaultBlockState()));
+
+        // purifying water + lava = smooth quartz
+        FluidInteractionRegistry.addInteraction(ThingamajigsFluids.PURIFYING_WATER_TYPE.get(),
+                new FluidInteractionRegistry.InteractionInformation(ForgeMod.LAVA_TYPE.get(),
+                        fluidState -> Blocks.SMOOTH_QUARTZ.defaultBlockState()));
+
+        // purifying water + water = packed ice
+        FluidInteractionRegistry.addInteraction(ThingamajigsFluids.PURIFYING_WATER_TYPE.get(),
+                new FluidInteractionRegistry.InteractionInformation(ForgeMod.WATER_TYPE.get(),
+                        fluidState -> Blocks.PACKED_ICE.defaultBlockState()));
     }
 }

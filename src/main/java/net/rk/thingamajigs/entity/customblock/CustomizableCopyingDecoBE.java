@@ -22,7 +22,7 @@ import org.jetbrains.annotations.NotNull;
 import static net.minecraft.world.level.block.Block.UPDATE_CLIENTS;
 import static net.minecraft.world.level.block.Block.UPDATE_NEIGHBORS;
 
-public class CustomizableCopyingDecoBE extends BlockEntity{
+public class CustomizableCopyingDecoBE extends BlockEntity {
     public BlockState blockTypeToCopy = Blocks.AIR.defaultBlockState();
     public Vec3 modelRotations = new Vec3(0D,0D,0D);
     public Vec3 modelOffsets = new Vec3(0D,0D,0D);
