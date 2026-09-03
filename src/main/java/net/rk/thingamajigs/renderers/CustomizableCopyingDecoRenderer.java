@@ -18,6 +18,7 @@ import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.client.model.data.ModelData;
+import net.rk.thingamajigs.block.ThingamajigsBlocks;
 import net.rk.thingamajigs.entity.customblock.CustomizableCopyingDecoBE;
 
 import java.util.Objects;
@@ -41,7 +42,7 @@ public class CustomizableCopyingDecoRenderer implements BlockEntityRenderer<Cust
     public void render(CustomizableCopyingDecoBE customizableCopyingDecoBE, float partialTick, PoseStack poseStack, MultiBufferSource buffer, int packedLight, int packedOverlay) {
         poseStack.pushPose();
         // don't allow air, liquids or blockentity blocks to be rendered
-        if(!customizableCopyingDecoBE.blockTypeToCopy.isAir() && !(customizableCopyingDecoBE.blockTypeToCopy.getBlock() instanceof LiquidBlock) && !(customizableCopyingDecoBE.blockTypeToCopy.getBlock() instanceof EntityBlock)){
+        if(!(customizableCopyingDecoBE.blockTypeToCopy.getBlock() instanceof LiquidBlock) && !(customizableCopyingDecoBE.blockTypeToCopy.getBlock() instanceof EntityBlock)){
             // modify the model translations and such
             // scale the model
             poseStack.scale(Mth.clamp((float)customizableCopyingDecoBE.modelScale.x,0.01f,32.0f),
@@ -58,8 +59,14 @@ public class CustomizableCopyingDecoRenderer implements BlockEntityRenderer<Cust
             double offsetZ2 = customizableCopyingDecoBE.modelOffsets.z;
             poseStack.translate(offsetX2,offsetY2,offsetZ2);
 
+            BakedModel model;
             // get model and render it
-            BakedModel model = blockModelShaper.getBlockModel(customizableCopyingDecoBE.blockTypeToCopy);
+            if(customizableCopyingDecoBE.blockTypeToCopy.isAir()){
+                model = blockModelShaper.getBlockModel(ThingamajigsBlocks.CUSTOMIZABLE_COPYING_DECO.get().defaultBlockState());
+            }
+            else{
+                model = blockModelShaper.getBlockModel(customizableCopyingDecoBE.blockTypeToCopy);
+            }
 
             // render in proper mode
             switch (customizableCopyingDecoBE.renderingMode) {

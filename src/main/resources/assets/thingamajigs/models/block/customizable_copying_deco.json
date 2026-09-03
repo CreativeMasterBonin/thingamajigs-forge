@@ -2,11 +2,12 @@
 	"format_version": "1.9.0",
 	"credit": "CreativeMasterBonin",
 	"ambientocclusion": false,
-	"render_type": "cutout",
+	"render_type": "translucent",
 	"textures": {
 		"0": "thingamajigs:block/animated/techno_swirl",
 		"1": "thingamajigs:block/animated/green_lights",
 		"2": "thingamajigs:block/not_quite",
+		"3": "thingamajigs:block/colored_glass",
 		"particle": "thingamajigs:block/not_quite"
 	},
 	"elements": [
@@ -24,9 +25,9 @@
 				"down": {"uv": [0, 12, 4, 16], "texture": "#1"}
 			},
 			"forge_data": {
-                "block_light": 15,
-                "sky_light": 15
-            }
+				"block_light": 15,
+				"sky_light": 15
+			}
 		},
 		{
 			"name": "positivecube",
@@ -55,17 +56,31 @@
 				"up": {"uv": [0, 0, 16, 16], "texture": "#2"},
 				"down": {"uv": [0, 0, 16, 16], "texture": "#2"}
 			}
+		},
+		{
+			"name": "glasslayer",
+			"from": [5.5, 5.5, 5.5],
+			"to": [10.5, 10.5, 10.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 8]},
+			"faces": {
+				"north": {"uv": [10, 10, 15, 15], "texture": "#3"},
+				"east": {"uv": [10, 10, 15, 15], "texture": "#3"},
+				"south": {"uv": [10, 10, 15, 15], "texture": "#3"},
+				"west": {"uv": [10, 10, 15, 15], "texture": "#3"},
+				"up": {"uv": [10, 10, 15, 15], "texture": "#3"},
+				"down": {"uv": [10, 10, 15, 15], "texture": "#3"}
+			}
 		}
 	],
 	"display": {
 		"thirdperson_righthand": {
 			"rotation": [0, 135, 0],
-			"translation": [0, 0.25, 0.25],
+			"translation": [0, 0.5, 0.25],
 			"scale": [0.25, 0.25, 0.25]
 		},
 		"thirdperson_lefthand": {
 			"rotation": [0, 135, 0],
-			"translation": [0, 0.25, 0.25],
+			"translation": [0, 0.5, 0.25],
 			"scale": [0.25, 0.25, 0.25]
 		},
 		"firstperson_righthand": {
@@ -82,10 +97,10 @@
 		},
 		"gui": {
 			"rotation": [35, 135, 0],
-			"scale": [2, 2, 2]
+			"scale": [1.5, 1.5, 1.5]
 		},
 		"head": {
-			"translation": [0, 8.25, 0]
+			"translation": [0, 9.25, 0]
 		},
 		"fixed": {
 			"translation": [0, 0, -1.75],

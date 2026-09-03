@@ -33,10 +33,8 @@ public class RenderingTool extends CustomizationTool{
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
         list.add(Component.translatable("item.thingamajigs.rendering_tool.desc").withStyle(ChatFormatting.GRAY));
         if(stack.hasTag()){
-            if(stack.getTag().contains(RENDER_MODE_TAG_NAME)){
-                list.add(Component.translatable("item.thingamajigs.rendering_tool.mode",NAMED_RENDER_MODES.values().stream().toList().get(renderMode).name)
-                        .withStyle(ChatFormatting.GREEN));
-            }
+            list.add(Component.translatable("item.thingamajigs.rendering_tool.mode",renderModesListified.get(stack.getTag().getInt(RENDER_MODE_TAG_NAME)).name)
+                    .withStyle(ChatFormatting.GREEN));
         }
     }
 
@@ -69,7 +67,7 @@ public class RenderingTool extends CustomizationTool{
         BlockPos pos = context.getClickedPos();
         InteractionHand hand = context.getHand();
         ItemStack stack = context.getItemInHand();
-        if(level.isClientSide()){
+        if(level.isClientSide()){// play sounds for fun
             if(stack.hasTag()) {
                 if (stack.getTag().contains(RENDER_MODE_TAG_NAME)) {
                     if(level.getRandom().nextBoolean()){
@@ -87,9 +85,9 @@ public class RenderingTool extends CustomizationTool{
             }
         }
         else{
-            if(stack.hasTag()){
+            if(stack.hasTag()){// run the code that the Mode has
                 if(stack.getTag().contains(RENDER_MODE_TAG_NAME)){
-                    NAMED_RENDER_MODES.values().stream().toList().get(stack.getTag().getInt(RENDER_MODE_TAG_NAME)).performModeTask(stack,level,pos,player);
+                    renderModesListified.get(stack.getTag().getInt(RENDER_MODE_TAG_NAME)).performModeTask(stack,level,pos,player);
                     return InteractionResult.SUCCESS;
                 }
             }
@@ -102,10 +100,8 @@ public class RenderingTool extends CustomizationTool{
         if(action == ClickAction.SECONDARY){
             CompoundTag tag = currentStack.getOrCreateTag();
             if(currentStack.hasTag()){
-                List<Mode> modes = NAMED_RENDER_MODES.values().stream().toList();
-
                 if(currentStack.getTag().contains(RENDER_MODE_TAG_NAME)){
-                    if(currentStack.getTag().getInt(RENDER_MODE_TAG_NAME) >= modes.size() - 1){
+                    if(currentStack.getTag().getInt(RENDER_MODE_TAG_NAME) >= renderModesListified.size() - 1){
                         tag.putInt(RENDER_MODE_TAG_NAME,0);
                     }
                     else{

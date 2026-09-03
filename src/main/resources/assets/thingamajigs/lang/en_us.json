@@ -1636,6 +1636,8 @@
   "item.thingamajigs.customization_tool": "Customization Tool",
   "item.thingamajigs.rendering_tool": "Rendering Tool",
 
+  "entry.thingamajigs.customizable": "Customizable",
+  "mode_change.custom_deco.message": "Changed %s from %s to %s",
   "item.thingamajigs.customization_tool.desc": "Changes various parameters on the Custom Copy Deco, right click in inventory to change mode",
   "item.thingamajigs.rendering_tool.desc": "Changes the rendering mode on the Custom Copy Deco, right click in inventory to change mode",
   "item.thingamajigs.customization_tool.mode": "Mode: %s",
