@@ -209,6 +209,7 @@ public class ThingamajigsItemModelProvider extends ItemModelProvider {
         fromModelMod(ThingamajigsBlocks.OLD_LEGENDARY_COMPUTER.get(),"block/old_legendary_computer");
         handheld(ThingamajigsItems.CUSTOMIZATION_TOOL);
         handheld(ThingamajigsItems.RENDERING_TOOL);
+        handheld(ThingamajigsItems.RANDOMIZE_AND_RESET_TOOL);
     }
 
     private ItemModelBuilder fromModelModItem(Item item, String source){

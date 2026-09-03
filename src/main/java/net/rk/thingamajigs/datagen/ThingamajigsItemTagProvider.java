@@ -156,5 +156,11 @@ public class ThingamajigsItemTagProvider extends ItemTagsProvider {
                 .add(ThingamajigsBlocks.LIME_BOWLING_BALL.get().asItem())
                 .replace(false)
         ;
+        this.tag(ThingamajigsTags.GRASSES_FOR_CRAFTING)
+                .add(Items.SEAGRASS)
+                .add(Items.GRASS)
+                .add(Items.TALL_GRASS)
+                .replace(false)
+        ;
     }
 }

@@ -474,6 +474,8 @@ public class ThingamajigsItems {
             () -> new CustomizationTool(new Item.Properties()));
     public static final RegistryObject<Item> RENDERING_TOOL = ITEMS.register("rendering_tool",
             () -> new RenderingTool(new Item.Properties()));
+    public static final RegistryObject<Item> RANDOMIZE_AND_RESET_TOOL = ITEMS.register("randomize_and_reset_tool",
+            () -> new RandomizeAndResetTool(new Item.Properties()));
 
 
     public static void register(IEventBus eventBus){

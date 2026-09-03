@@ -1635,7 +1635,9 @@
   "block.thingamajigs.customizable_copying_deco": "Customizable Copying Deco",
   "item.thingamajigs.customization_tool": "Customization Tool",
   "item.thingamajigs.rendering_tool": "Rendering Tool",
+  "item.thingamajigs.randomize_and_reset_tool": "Randomize & Reset Tool",
 
+  "item.thingamajigs.randomize_and_reset_tool.desc": "Shift right click to reset all parameters on a Custom Copy Deco, and right click to randomize x and z offset like grass and flowers",
   "entry.thingamajigs.customizable": "Customizable",
   "mode_change.custom_deco.message": "Changed %s from %s to %s",
   "item.thingamajigs.customization_tool.desc": "Changes various parameters on the Custom Copy Deco, right click in inventory to change mode",

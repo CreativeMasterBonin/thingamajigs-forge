@@ -154,6 +154,7 @@ public class Thingamajigs {
             // customizable items
             event.accept(ThingamajigsItems.CUSTOMIZATION_TOOL.get().asItem());
             event.accept(ThingamajigsItems.RENDERING_TOOL.get().asItem());
+            event.accept(ThingamajigsItems.RANDOMIZE_AND_RESET_TOOL.get().asItem());
             event.accept(ThingamajigsBlocks.CUSTOMIZABLE_COPYING_DECO.get().asItem());
             // items continued
             event.accept(ThingamajigsItems.THINGAMAJIGS_PAINTING_ITEM);
