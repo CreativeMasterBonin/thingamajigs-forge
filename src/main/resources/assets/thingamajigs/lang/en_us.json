@@ -1643,6 +1643,8 @@
   "item.thingamajigs.frying_oil_bucket": "Frying Oil Bucket",
   "block.thingamajigs.fall_wreath": "Fall Wreath",
 
+  "entry.thingamajigs.car_wash_components": "Car Wash Components",
+  "entry.thingamajigs.computers": "Computers",
   "item.thingamajigs.randomize_and_reset_tool.rotate_when_resetting": "Rotate When Resetting: %s",
   "item.thingamajigs.randomize_and_reset_tool.desc": "Right click to randomize x and z offset like grass and flowers",
   "entry.thingamajigs.customizable": "Customizable",

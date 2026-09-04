@@ -1,0 +1,19 @@
+{
+  "name": "entry.thingamajigs.car_wash_components",
+  "icon": "thingamajigs:car_wash_mixed_brush",
+  "category": "thingamajigs:decorations",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Car washes can contain a number of types of components, including specialized automatic car washes, usually an all in one device with hookups to tanks and such. Tunnel car washes allow the driver to be dragged through a set of stationary devices, or even a hybrid of the two methods of car washes. All-in-all, car washes are very customizable."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "In Thingamajigs, car wash components come in a few colors and types. Before Thingamajigs 1.9.0, car wash components were very static, but in Thingamajigs 1.9.0, they have dynamically moving models, and some components can be customized slightly using other items."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Thingamajigs adds soap dispensers, sprayers, car wax dispensers, brushes, a mitter curtain, a signal, and tire scrubbers, among a few other things. Each component has a specialized purpose. Customize your car washes using these components in any way you like, then apply redstone to get the car wash working!"
+    }
+  ]
+}

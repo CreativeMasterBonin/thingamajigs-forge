@@ -15,17 +15,34 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.phys.shapes.BooleanOp;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.Random;
+import java.util.stream.Stream;
 
 public class CarWashTriFoamSprayer extends RedstoneLampBlock {
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
+    public static final VoxelShape ALL = Stream.of(
+            Block.box(0, 15, 0, 16, 16, 16),
+            Block.box(0, 0, 0, 16, 16, 1),
+            Block.box(0, 0, 15, 16, 16, 16),
+            Block.box(0, 0, 0, 1, 16, 16),
+            Block.box(15, 0, 0, 16, 16, 16)
+    ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
 
     public CarWashTriFoamSprayer(Properties p) {
-        super(p.strength(1F,20F).sound(SoundType.METAL).noOcclusion().noCollission());
+        super(p.strength(1F,20F).sound(SoundType.METAL).noOcclusion());
         this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH).setValue(LIT, false));
+    }
+
+    @Override
+    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext ctx) {
+        return ALL;
     }
 
     // from original Thingamajigs mod, ported and repaired for newer Forge versions
