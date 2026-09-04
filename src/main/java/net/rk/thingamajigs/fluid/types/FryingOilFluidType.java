@@ -9,8 +9,11 @@ import net.minecraft.client.renderer.FogRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.client.extensions.common.IClientFluidTypeExtensions;
 import net.minecraftforge.common.SoundActions;
 import net.minecraftforge.fluids.FluidStack;
@@ -23,7 +26,7 @@ import org.joml.Vector3f;
 import java.util.function.Consumer;
 
 public class FryingOilFluidType extends FluidType {
-    private final Vector3f fogColor = new Vector3f(1.0f,1.0f,0.0f);
+    private final Vector3f fogColor = new Vector3f(213f/255f,198f/255f,92f/255f);
 
     public FryingOilFluidType(Properties properties) {
         super(FluidType.Properties.create()
@@ -32,7 +35,7 @@ public class FryingOilFluidType extends FluidType {
                 .canExtinguish(false)
                 .supportsBoating(true)
                 .canHydrate(false)
-                .pathType(BlockPathTypes.WALKABLE)
+                .pathType(BlockPathTypes.DANGER_FIRE)
                 .adjacentPathType(BlockPathTypes.BLOCKED)
                 .viscosity(750)
                 .temperature(700)
@@ -52,12 +55,23 @@ public class FryingOilFluidType extends FluidType {
 
     @Override
     public double motionScale(Entity entity) {
-        return 0.005D;
+        return 0.005D; // it is slow to walk through burning oil
     }
 
     @Override
     public boolean canPushEntity(Entity entity) {
         return true;
+    }
+
+    @Override
+    public boolean canRideVehicleUnder(Entity vehicle, Entity rider) {
+        return true;
+    }
+
+    @Override
+    public void setItemMovement(ItemEntity entity) {
+        Vec3 vec3 = entity.getDeltaMovement();
+        entity.setDeltaMovement(vec3.x * (double)0.78F, vec3.y + (double)(vec3.y < (double)0.05F ? 5.0E-4F : 0.0F), vec3.z * (double)0.78F);
     }
 
     // init for fluid textures

@@ -2,11 +2,12 @@ package net.rk.thingamajigs.block;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.SpawnPlacements;
@@ -16,20 +17,21 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockAndTintGetter;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
+import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.client.model.data.ModelProperty;
-import net.minecraftforge.common.Tags;
 import net.rk.thingamajigs.entity.customblock.CustomizableCopyingDecoBE;
 import net.rk.thingamajigs.misc.ThingamajigsCalcStuffs;
 import org.jetbrains.annotations.Nullable;
@@ -40,7 +42,80 @@ public class CustomizableCopyingDeco extends BaseEntityBlock {
     public static final ModelProperty<BlockState> BLOCKSTATE_ID = new ModelProperty<>();
 
     public CustomizableCopyingDeco(Properties p) {
-        super(p.noOcclusion().noCollission().pushReaction(PushReaction.BLOCK).instrument(NoteBlockInstrument.BIT));
+        super(p.noOcclusion().pushReaction(PushReaction.BLOCK).instrument(NoteBlockInstrument.BIT));
+    }
+
+    @Override
+    public float getFriction(BlockState state, LevelReader level, BlockPos pos, @Nullable Entity entity) {
+        CustomizableCopyingDecoBE customDeco = (CustomizableCopyingDecoBE)level.getBlockEntity(pos);
+        // attempt to change the friction for this block to the copied type of block
+        if(customDeco instanceof CustomizableCopyingDecoBE){
+            return customDeco.blockTypeToCopy.getFriction(level,pos,entity);
+        }
+        return 0.6f; // just return the default if nothing else works
+    }
+
+    @Override
+    public VoxelShape getVisualShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext ctx) {
+        return Shapes.block();
+    }
+
+    @Override
+    public VoxelShape getBlockSupportShape(BlockState state, BlockGetter level, BlockPos pos) {
+        return Shapes.block();
+    }
+
+    @Override
+    public VoxelShape getInteractionShape(BlockState state, BlockGetter level, BlockPos pos) {
+        return Shapes.block();
+    }
+
+    @Override
+    public VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext ctx) {
+        /*CustomizableCopyingDecoBE customDeco = (CustomizableCopyingDecoBE)level.getBlockEntity(pos);
+        if(customDeco instanceof CustomizableCopyingDecoBE){
+            return customDeco.blockTypeToCopy.getCollisionShape(level,pos,ctx);
+        }*/
+        return Shapes.empty();
+    }
+
+    @Override
+    public float getShadeBrightness(BlockState state, BlockGetter level, BlockPos pos) {
+        CustomizableCopyingDecoBE customDeco = (CustomizableCopyingDecoBE)level.getBlockEntity(pos);
+        if(customDeco instanceof CustomizableCopyingDecoBE){
+            return customDeco.blockTypeToCopy.getShadeBrightness(level,pos);
+        }
+        return 0.2f;
+    }
+
+    @Override
+    public boolean isCollisionShapeFullBlock(BlockState state, BlockGetter level, BlockPos pos) {
+        return true;
+    }
+
+    @Override
+    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext ctx) {
+        return Shapes.block();
+    }
+
+    @Override
+    public boolean canSurvive(BlockState state, LevelReader reader, BlockPos pos) {
+        return true;
+    }
+
+    @Override
+    public boolean canBeReplaced(BlockState state, Fluid fluid) {
+        return false;
+    }
+
+    @Override
+    public boolean canBeReplaced(BlockState state, BlockPlaceContext ctx) {
+        return false;
+    }
+
+    @Override
+    public BlockState updateShape(BlockState state, Direction dir, BlockState state2, LevelAccessor accessor, BlockPos pos, BlockPos pos2) {
+        return state;
     }
 
     @Override

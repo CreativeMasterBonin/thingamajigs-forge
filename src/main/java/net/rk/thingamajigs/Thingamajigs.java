@@ -1584,10 +1584,10 @@ public class Thingamajigs {
                         fluidState -> Blocks.COAL_BLOCK.defaultBlockState()));
 
         // make glowing cheese
-        FluidInteractionRegistry.addInteraction(ThingamajigsFluids.PURIFYING_WATER_TYPE.get(), new FluidInteractionRegistry.InteractionInformation(
+        /*FluidInteractionRegistry.addInteraction(ThingamajigsFluids.PURIFYING_WATER_TYPE.get(), new FluidInteractionRegistry.InteractionInformation(
                 (level, currentPos, relativePos, currentState) -> level.getBlockState(currentPos.below()).is(Blocks.GLOWSTONE) && level.getBlockState(relativePos).is(ThingamajigsBlocks.CHEESE_BLOCK.get()),
                 ThingamajigsBlocks.GLOWING_CHEESE_BLOCK.get().defaultBlockState()
-        ));
+        ));*/
 
         // byproduct by mixing bad liquid with frying oil
         FluidInteractionRegistry.addInteraction(ThingamajigsFluids.FRYING_OIL_TYPE.get(),

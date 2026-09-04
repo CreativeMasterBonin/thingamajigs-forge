@@ -2,6 +2,7 @@ package net.rk.thingamajigs.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -29,6 +30,11 @@ public class DoubleTallDecorationBlock extends Block {
     public DoubleTallDecorationBlock(Properties properties){
         super(properties.strength(1.25F,10F).noOcclusion());
         this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH).setValue(WATERLOGGED, false));
+    }
+
+    @Override
+    public boolean collisionExtendsVertically(BlockState state, BlockGetter level, BlockPos pos, Entity collidingEntity) {
+        return true;
     }
 
     @Override

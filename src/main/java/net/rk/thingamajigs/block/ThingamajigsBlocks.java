@@ -70,7 +70,7 @@ import java.util.function.Supplier;
 import java.util.function.ToIntFunction;
 import java.util.stream.Stream;
 
-@SuppressWarnings("deprecated")
+@SuppressWarnings({"deprecated","unused"})
 public class ThingamajigsBlocks {
     // Blocks WOOOOO!
 
