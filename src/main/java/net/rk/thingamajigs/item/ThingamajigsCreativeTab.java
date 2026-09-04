@@ -13,6 +13,7 @@ import net.minecraftforge.registries.RegistryObject;
 import net.rk.thingamajigs.Thingamajigs;
 import net.rk.thingamajigs.block.ThingamajigsBlocks;
 
+@SuppressWarnings("removal")
 @Mod.EventBusSubscriber(modid = Thingamajigs.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ThingamajigsCreativeTab {
     public static final DeferredRegister<CreativeModeTab> CMTS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Thingamajigs.MOD_ID);

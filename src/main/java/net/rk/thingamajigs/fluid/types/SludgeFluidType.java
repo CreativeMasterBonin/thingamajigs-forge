@@ -19,6 +19,7 @@ import org.joml.Vector3f;
 
 import java.util.function.Consumer;
 
+@SuppressWarnings("deprecated,removal")
 public class SludgeFluidType extends FluidType {
     private final float RED = 130f / 255f;
     private final float GREEN = 85f / 255f;

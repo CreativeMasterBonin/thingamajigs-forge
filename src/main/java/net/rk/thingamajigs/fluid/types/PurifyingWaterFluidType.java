@@ -18,6 +18,7 @@ import org.joml.Vector3f;
 
 import java.util.function.Consumer;
 
+@SuppressWarnings("deprecated,removal")
 public class PurifyingWaterFluidType extends FluidType {
     private final float RED = 35f / 255f;
     private final float GREEN = 230f / 255f;

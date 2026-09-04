@@ -22,6 +22,7 @@ import java.util.HashMap;
 
 import static org.lwjgl.glfw.GLFW.*;
 
+@SuppressWarnings("removal")
 public class PhoneUIScreen extends AbstractContainerScreen<PhoneMenu> {
     private final static HashMap<String, Object> guistate = PhoneMenu.guistate;
     private final Level world;

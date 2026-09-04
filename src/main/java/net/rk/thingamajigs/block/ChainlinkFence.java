@@ -2,6 +2,7 @@ package net.rk.thingamajigs.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
@@ -28,6 +29,11 @@ public class ChainlinkFence extends Block implements SimpleWaterloggedBlock {
 
     public ChainlinkFence(Properties p) {
         super(p.strength(2F,50F).sound(SoundType.CHAIN).noOcclusion());
+    }
+
+    @Override
+    public boolean collisionExtendsVertically(BlockState state, BlockGetter level, BlockPos pos, Entity collidingEntity) {
+        return true;
     }
 
     public boolean propagatesSkylightDown(BlockState pState, BlockGetter pReader, BlockPos pPos) {

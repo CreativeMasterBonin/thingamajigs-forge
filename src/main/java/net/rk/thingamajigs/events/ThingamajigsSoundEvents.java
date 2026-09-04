@@ -10,6 +10,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.rk.thingamajigs.Thingamajigs;
 
+@SuppressWarnings("removal")
 public class ThingamajigsSoundEvents {
 
     public static final DeferredRegister<SoundEvent> SOUND_EVENTS =

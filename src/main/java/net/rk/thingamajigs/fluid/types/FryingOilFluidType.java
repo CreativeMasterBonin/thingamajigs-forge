@@ -25,6 +25,7 @@ import org.joml.Vector3f;
 
 import java.util.function.Consumer;
 
+@SuppressWarnings("deprecated,removal")
 public class FryingOilFluidType extends FluidType {
     private final Vector3f fogColor = new Vector3f(213f/255f,198f/255f,92f/255f);
 

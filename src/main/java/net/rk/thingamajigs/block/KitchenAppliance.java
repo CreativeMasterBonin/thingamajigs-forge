@@ -149,6 +149,123 @@ public class KitchenAppliance extends ThingamajigsDecorativeBlock {
             Block.box(-2, 12, -4, 18, 16, 20)
     ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
 
+    public static final VoxelShape NORTHSOUTH_YOGURT_MAKER = Stream.of(
+            Block.box(12, 14, 7, 14, 15, 9),
+            Block.box(0, 0, 0, 2, 1, 1),
+            Block.box(14, 0, 0, 16, 1, 1),
+            Block.box(14, 0, 15, 16, 1, 16),
+            Block.box(0, 0, 15, 2, 1, 16),
+            Block.box(-1, 1, 0, 17, 3, 16),
+            Block.box(-1, 3, 0, 17, 13, 1),
+            Block.box(-1, 3, 15, 17, 13, 16),
+            Block.box(-1, 3, 1, 0, 13, 15),
+            Block.box(16, 3, 1, 17, 13, 15),
+            Block.box(-1, 13, 0, 17, 14, 16),
+            Block.box(4, 15, 7, 12, 16, 9),
+            Block.box(2, 14, 7, 4, 15, 9)
+    ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+    public static final VoxelShape EASTWEST_YOGURT_MAKER = Stream.of(
+            Block.box(7, 14, 12, 9, 15, 14),
+            Block.box(15, 0, 0, 16, 1, 2),
+            Block.box(15, 0, 14, 16, 1, 16),
+            Block.box(0, 0, 14, 1, 1, 16),
+            Block.box(0, 0, 0, 1, 1, 2),
+            Block.box(0, 1, -1, 16, 3, 17),
+            Block.box(15, 3, -1, 16, 13, 17),
+            Block.box(0, 3, -1, 1, 13, 17),
+            Block.box(1, 3, -1, 15, 13, 0),
+            Block.box(1, 3, 16, 15, 13, 17),
+            Block.box(0, 13, -1, 16, 14, 17),
+            Block.box(7, 15, 4, 9, 16, 12),
+            Block.box(7, 14, 2, 9, 15, 4)
+    ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+
+    public static final VoxelShape NORTH_PANINI_MAKER = Stream.of(
+            Block.box(0, 0, 0, 5, 2, 5),
+            Block.box(11, 0, 0, 16, 2, 5),
+            Block.box(11, 0, 11, 16, 2, 16),
+            Block.box(0, 0, 11, 5, 2, 16),
+            Block.box(0, 2, 0, 16, 3, 16),
+            Block.box(0, 2, 16, 16, 5, 17),
+            Block.box(0, 3.05, 0, 5, 3.05, 16),
+            Block.box(5, 3.05, 0, 11, 3.05, 16),
+            Block.box(11, 3.05, 0, 16, 3.05, 16),
+            Block.box(0, 4, 15, 16, 5, 16),
+            Block.box(0, 5, 14, 16, 7, 15),
+            Block.box(0, 7, 13, 16, 8, 14),
+            Block.box(0, 8, 12, 16, 9, 13),
+            Block.box(0, 9, 11, 16, 10, 12),
+            Block.box(0, 10, 10, 16, 11, 11),
+            Block.box(0, 11, 9, 16, 12, 10),
+            Block.box(0, 12, 7, 16, 13, 9),
+            Block.box(0, 13, 6, 16, 15, 7),
+            Block.box(0, 15, 4, 16, 16, 6)
+    ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+    public static final VoxelShape EAST_PANINI_MAKER = Stream.of(
+            Block.box(11, 0, 0, 16, 2, 5),
+            Block.box(11, 0, 11, 16, 2, 16),
+            Block.box(0, 0, 11, 5, 2, 16),
+            Block.box(0, 0, 0, 5, 2, 5),
+            Block.box(0, 2, 0, 16, 3, 16),
+            Block.box(-1, 2, 0, 0, 5, 16),
+            Block.box(0, 3.05, 0, 16, 3.05, 5),
+            Block.box(0, 3.05, 5, 16, 3.05, 11),
+            Block.box(0, 3.05, 11, 16, 3.05, 16),
+            Block.box(0, 4, 0, 1, 5, 16),
+            Block.box(1, 5, 0, 2, 7, 16),
+            Block.box(2, 7, 0, 3, 8, 16),
+            Block.box(3, 8, 0, 4, 9, 16),
+            Block.box(4, 9, 0, 5, 10, 16),
+            Block.box(5, 10, 0, 6, 11, 16),
+            Block.box(6, 11, 0, 7, 12, 16),
+            Block.box(7, 12, 0, 9, 13, 16),
+            Block.box(9, 13, 0, 10, 15, 16),
+            Block.box(10, 15, 0, 12, 16, 16)
+    ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+    public static final VoxelShape SOUTH_PANINI_MAKER = Stream.of(
+            Block.box(11, 0, 11, 16, 2, 16),
+            Block.box(0, 0, 11, 5, 2, 16),
+            Block.box(0, 0, 0, 5, 2, 5),
+            Block.box(11, 0, 0, 16, 2, 5),
+            Block.box(0, 2, 0, 16, 3, 16),
+            Block.box(0, 2, -1, 16, 5, 0),
+            Block.box(11, 3.05, 0, 16, 3.05, 16),
+            Block.box(5, 3.05, 0, 11, 3.05, 16),
+            Block.box(0, 3.05, 0, 5, 3.05, 16),
+            Block.box(0, 4, 0, 16, 5, 1),
+            Block.box(0, 5, 1, 16, 7, 2),
+            Block.box(0, 7, 2, 16, 8, 3),
+            Block.box(0, 8, 3, 16, 9, 4),
+            Block.box(0, 9, 4, 16, 10, 5),
+            Block.box(0, 10, 5, 16, 11, 6),
+            Block.box(0, 11, 6, 16, 12, 7),
+            Block.box(0, 12, 7, 16, 13, 9),
+            Block.box(0, 13, 9, 16, 15, 10),
+            Block.box(0, 15, 10, 16, 16, 12)
+    ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+    public static final VoxelShape WEST_PANINI_MAKER = Stream.of(
+            Block.box(0, 0, 11, 5, 2, 16),
+            Block.box(0, 0, 0, 5, 2, 5),
+            Block.box(11, 0, 0, 16, 2, 5),
+            Block.box(11, 0, 11, 16, 2, 16),
+            Block.box(0, 2, 0, 16, 3, 16),
+            Block.box(16, 2, 0, 17, 5, 16),
+            Block.box(0, 3.05, 11, 16, 3.05, 16),
+            Block.box(0, 3.05, 5, 16, 3.05, 11),
+            Block.box(0, 3.05, 0, 16, 3.05, 5),
+            Block.box(15, 4, 0, 16, 5, 16),
+            Block.box(14, 5, 0, 15, 7, 16),
+            Block.box(13, 7, 0, 14, 8, 16),
+            Block.box(12, 8, 0, 13, 9, 16),
+            Block.box(11, 9, 0, 12, 10, 16),
+            Block.box(10, 10, 0, 11, 11, 16),
+            Block.box(9, 11, 0, 10, 12, 16),
+            Block.box(7, 12, 0, 9, 13, 16),
+            Block.box(6, 13, 0, 7, 15, 16),
+            Block.box(4, 15, 0, 6, 16, 16)
+    ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+
+
 
     public KitchenAppliance(Properties properties) {
         super(properties);
@@ -185,6 +302,22 @@ public class KitchenAppliance extends ThingamajigsDecorativeBlock {
                 case SOUTH -> {return SOUTH_STOVE_HOOD;}
                 case EAST -> {return EAST_STOVE_HOOD;}
                 case WEST -> {return WEST_STOVE_HOOD;}
+                default -> {return Shapes.block();}
+            }
+        }
+        else if(state.is(ThingamajigsBlocks.YOGURT_MAKER.get())){
+            switch (direction){
+                case NORTH,SOUTH -> {return NORTHSOUTH_YOGURT_MAKER;}
+                case EAST,WEST -> {return EASTWEST_YOGURT_MAKER;}
+                default -> {return Shapes.block();}
+            }
+        }
+        else if(state.is(ThingamajigsBlocks.PANINI_MAKER.get())){
+            switch (direction){
+                case NORTH -> {return NORTH_PANINI_MAKER;}
+                case SOUTH -> {return SOUTH_PANINI_MAKER;}
+                case EAST -> {return EAST_PANINI_MAKER;}
+                case WEST -> {return WEST_PANINI_MAKER;}
                 default -> {return Shapes.block();}
             }
         }

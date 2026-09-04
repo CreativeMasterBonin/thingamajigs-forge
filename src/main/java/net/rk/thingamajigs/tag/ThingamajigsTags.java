@@ -10,6 +10,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.Fluid;
 import net.rk.thingamajigs.Thingamajigs;
 
+@SuppressWarnings("removal")
 public class ThingamajigsTags {
     public static final TagKey<Fluid> PURIFIED_WATER_TAG = thingamajigsFluidTag("purified_water");
     public static final TagKey<Fluid> SLUDGE_TAG = thingamajigsFluidTag("sludge");

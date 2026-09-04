@@ -11,6 +11,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
@@ -506,13 +507,13 @@ public class ThingamajigsBlocks {
     public static final RegistryObject<Block> ICECREAM_MACHINE = registerBlock("icecream_machine",
             () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.of().sound(SoundType.METAL)), 0);
     public static final RegistryObject<Block> INTERNET_MODEM = registerBlock("internet_modem",
-            () -> new InternetRouter(BlockBehaviour.Properties.of().lightLevel(s -> 5)), 0);
+            () -> new InternetRouter(BlockBehaviour.Properties.of().lightLevel(s -> 5)));
     public static final RegistryObject<Block> INTERNET_ROUTER = registerBlock("internet_router",
-            () -> new InternetRouter(BlockBehaviour.Properties.of().lightLevel(s -> 5)), 0);
+            () -> new InternetRouter(BlockBehaviour.Properties.of().lightLevel(s -> 5)));
     public static final RegistryObject<Block> NEWER_INTERNET_ROUTER = registerBlock("internet_router_newer",
-            () -> new InternetRouter(BlockBehaviour.Properties.of().lightLevel(s -> 5)), 0);
+            () -> new InternetRouter(BlockBehaviour.Properties.of().lightLevel(s -> 5)));
     public static final RegistryObject<Block> WIFI_ROUTER = registerBlock("wifi_router",
-            () -> new OldFlatComputer(BlockBehaviour.Properties.of().lightLevel(s -> 5)), 0);
+            () -> new OldFlatComputer(BlockBehaviour.Properties.of().lightLevel(s -> 5)));
     public static final RegistryObject<Block> OPEN_SIGN = registerBlock("open_sign",
             () -> new OpenSign(BlockBehaviour.Properties.of()
                     .lightLevel(openSignLitEmission(15))), 0);
@@ -785,7 +786,7 @@ public class ThingamajigsBlocks {
     public static final RegistryObject<Block> STANDING_VACUUM = registerBlock("vacuum_standing",
             () -> new StandingVacuum(BlockBehaviour.Properties.copy(Blocks.STONE).sound(SoundType.STONE).strength(0.5F,1F)), 0);
     public static final RegistryObject<Block> SHOP_VACUUM = registerBlock("shop_vac",
-            () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.copy(Blocks.STONE).sound(SoundType.STONE).strength(1F,1F)), 0);
+            () -> new ShopVac(BlockBehaviour.Properties.copy(Blocks.STONE).sound(SoundType.STONE).strength(1F,1F)));
     public static final RegistryObject<Block> BLENDER = registerBlock("blender",
             () -> new Blender(BlockBehaviour.Properties.copy(Blocks.STONE).sound(SoundType.STONE).strength(1F,1F)), 0);
     public static final RegistryObject<Block> FOOD_PROCESSOR = registerBlock("food_processor",
@@ -871,15 +872,15 @@ public class ThingamajigsBlocks {
     public static final RegistryObject<Block> BREAD_MACHINE = registerBlock("bread_machine",
             () -> new KitchenAppliance(BlockBehaviour.Properties.of().sound(SoundType.LANTERN).strength(1F,1F)));
     public static final RegistryObject<Block> ICE_CREAM_MAKER = registerBlock("ice_cream_maker",
-            () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.of().sound(SoundType.LANTERN).strength(1F,1F)), 0);
-    public static final RegistryObject<Block> YOGURT_MAKER = registerBlock("yogurt_maker",
-            () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.of().sound(SoundType.LANTERN).strength(1F,1F)), 0);
-    public static final RegistryObject<Block> COFFEE_GRINDER = registerBlock("coffee_grinder",
-            () -> new Blender(BlockBehaviour.Properties.of().sound(SoundType.LANTERN).strength(1F,1F)), 0);
-    public static final RegistryObject<Block> PANINI_MAKER = registerBlock("panini_maker",
             () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.of().sound(SoundType.LANTERN).strength(1F,1F)));
+    public static final RegistryObject<Block> YOGURT_MAKER = registerBlock("yogurt_maker",
+            () -> new KitchenAppliance(BlockBehaviour.Properties.of().sound(SoundType.LANTERN).strength(1F,1F)));
+    public static final RegistryObject<Block> COFFEE_GRINDER = registerBlock("coffee_grinder",
+            () -> new Blender(BlockBehaviour.Properties.of().sound(SoundType.LANTERN).strength(1F,1F)));
+    public static final RegistryObject<Block> PANINI_MAKER = registerBlock("panini_maker",
+            () -> new KitchenAppliance(BlockBehaviour.Properties.of().sound(SoundType.LANTERN).strength(1F,1F)));
     public static final RegistryObject<Block> FOOD_DEHYDRATOR = registerBlock("food_dehydrator",
-            () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.of().sound(SoundType.LANTERN).strength(1F,1F)), 0);
+            () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.of().sound(SoundType.LANTERN).strength(1F,1F)));
     public static final RegistryObject<Block> KITCHEN_SINK = registerBlock("kitchen_sink",
             () -> new KitchenSink(BlockBehaviour.Properties.of()), 0);
     public static final RegistryObject<Block> GARDEN_GNOME = registerBlock("garden_gnome",
@@ -1021,7 +1022,33 @@ public class ThingamajigsBlocks {
     public static final RegistryObject<Block> AIR_HOCKEY_TABLE = registerBlock("air_hockey_table",
             () -> new AirConditioner(BlockBehaviour.Properties.of().sound(SoundType.LANTERN)));
     public static final RegistryObject<Block> BUTTER_CHURNER = registerBlock("butter_churner",
-            () -> new DoubleTallDecorationBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
+            () -> new DoubleTallDecorationBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)){
+                public static final VoxelShape ALL = Stream.of(
+                        Block.box(5, 0, 13, 11, 1, 15),
+                        Block.box(5, 0, 0, 11, 16, 1),
+                        Block.box(5, 0, 15, 11, 16, 16),
+                        Block.box(15, 0, 5, 16, 16, 11),
+                        Block.box(0, 0, 5, 1, 16, 11),
+                        Block.box(4, 0.25, 4, 12, 16.25, 12),
+                        Block.box(7, 13.25, 7, 9, 29.25, 9),
+                        Block.box(3, 0, 1, 5, 16, 3),
+                        Block.box(1, 0, 3, 3, 16, 5),
+                        Block.box(1, 0, 11, 3, 16, 13),
+                        Block.box(3, 0, 13, 5, 16, 15),
+                        Block.box(13, 0, 11, 15, 16, 13),
+                        Block.box(13, 0, 3, 15, 16, 5),
+                        Block.box(11, 0, 1, 13, 16, 3),
+                        Block.box(11, 0, 13, 13, 16, 15),
+                        Block.box(3, 0, 3, 13, 1, 13),
+                        Block.box(1, 0, 5, 3, 1, 11),
+                        Block.box(13, 0, 5, 15, 1, 11),
+                        Block.box(5, 0, 1, 11, 1, 3)
+                ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+                @Override
+                public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
+                    return ALL;
+                }
+            });
     public static final RegistryObject<Block> FIRE_ESCAPE_LADDER = registerBlock("fire_escape_ladder",
             () -> new FireEscapeLadder(BlockBehaviour.Properties.of().noOcclusion()));
     public static final RegistryObject<Block> CATWALK_CENTER = registerBlock("catwalk_center",
@@ -1099,9 +1126,9 @@ public class ThingamajigsBlocks {
     public static final RegistryObject<Block> BABY_CARRIAGE = registerBlock("baby_carriage",
             () -> new BabyCarriage(BlockBehaviour.Properties.copy(Blocks.STONE)));
     public static final RegistryObject<Block> CONVENIENCE_SHELF = registerBlock("convenience_shelf",
-            () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.copy(Blocks.STONE).sound(SoundType.DEEPSLATE_BRICKS)), 0);
+            () -> new ConvenienceShelf(BlockBehaviour.Properties.copy(Blocks.STONE).sound(SoundType.DEEPSLATE_BRICKS)));
     public static final RegistryObject<Block> CREEPER_PLUSHY = registerBlock("creeper_plushy",
-            () -> new ReindeerPlushy(BlockBehaviour.Properties.copy(Blocks.WHITE_WOOL).sound(SoundType.WOOL).noCollission()), 0);
+            () -> new ReindeerPlushy(BlockBehaviour.Properties.copy(Blocks.WHITE_WOOL).sound(SoundType.WOOL).noCollission()));
 
     // end of finale updates (not the actual final updates per-say, just final listed features list update features) features
 
@@ -1322,7 +1349,7 @@ public class ThingamajigsBlocks {
             () -> new RailroadCrossing(BlockBehaviour.Properties.of())); // updated 1.7.6
     public static final RegistryObject<Block> RAILROAD_CROSSING_LIGHTS = registerBlock("railroad_crossing_lights",
             () -> new RailroadCrossingLights(BlockBehaviour.Properties.of()
-                    .lightLevel(rrCrossingLightsEmission(15))), 0);
+                    .lightLevel(rrCrossingLightsEmission(15))));
 
     public static final RegistryObject<Block> BLUEY_MECHANICAL_BELL = registerBlock("bluey_bell",
             () -> new BlueyMechanicalBell(BlockBehaviour.Properties.of()), 0);
@@ -1371,7 +1398,7 @@ public class ThingamajigsBlocks {
     public static final RegistryObject<Block> NOT_QUITE_MENGER = registerBlock("not_quite",
             () -> new NotQuiteMengerBlock(BlockBehaviour.Properties.copy(Blocks.AMETHYST_BLOCK)), 0);
     public static final RegistryObject<Block> FAX_MACHINE = registerBlock("fax_machine",
-            () -> new FaxMachine(BlockBehaviour.Properties.of()), 0);
+            () -> new FaxMachine(BlockBehaviour.Properties.of()));
 
 
     public static final RegistryObject<Block> NETHER_CHISELED_BOOKSHELF = registerBlock("nether_chiseled_bookshelf",
@@ -1740,43 +1767,43 @@ public class ThingamajigsBlocks {
 
     //
     public static final RegistryObject<Block> CHAINLINK_FENCE = registerBlock("chainlink_fence",
-            () -> new ChainlinkFence(BlockBehaviour.Properties.of()), 0);
+            () -> new ChainlinkFence(BlockBehaviour.Properties.of()));
     public static final RegistryObject<Block> CULVERT = registerBlock("culvert",
-            () -> new CulvertBlock(BlockBehaviour.Properties.of().sound(SoundType.METAL)), 0);
+            () -> new CulvertBlock(BlockBehaviour.Properties.of().sound(SoundType.METAL)));
     public static final RegistryObject<Block> STONE_CULVERT = registerBlock("stone_culvert",
-            () -> new CulvertBlock(BlockBehaviour.Properties.of().sound(SoundType.STONE)), 0);
+            () -> new CulvertBlock(BlockBehaviour.Properties.of().sound(SoundType.STONE)));
     public static final RegistryObject<Block> DIRT_CULVERT = registerBlock("dirt_culvert",
-            () -> new CulvertBlock(BlockBehaviour.Properties.of().sound(SoundType.GRAVEL)), 0);
+            () -> new CulvertBlock(BlockBehaviour.Properties.of().sound(SoundType.GRAVEL)));
     public static final RegistryObject<Block> SAND_CULVERT = registerBlock("sand_culvert",
-            () -> new CulvertBlock(BlockBehaviour.Properties.of().sound(SoundType.SAND)), 0);
+            () -> new CulvertBlock(BlockBehaviour.Properties.of().sound(SoundType.SAND)));
     public static final RegistryObject<Block> SANDSTONE_CULVERT = registerBlock("sandstone_culvert",
-            () -> new CulvertBlock(BlockBehaviour.Properties.of().sound(SoundType.STONE)), 0);
+            () -> new CulvertBlock(BlockBehaviour.Properties.of().sound(SoundType.STONE)));
     public static final RegistryObject<Block> BRICK_CULVERT = registerBlock("brick_culvert",
-            () -> new CulvertBlock(BlockBehaviour.Properties.of().sound(SoundType.STONE)), 0);
+            () -> new CulvertBlock(BlockBehaviour.Properties.of().sound(SoundType.STONE)));
     public static final RegistryObject<Block> STONE_BRICK_CULVERT = registerBlock("stone_brick_culvert",
-            () -> new CulvertBlock(BlockBehaviour.Properties.of().sound(SoundType.STONE)), 0);
+            () -> new CulvertBlock(BlockBehaviour.Properties.of().sound(SoundType.STONE)));
     public static final RegistryObject<Block> TERRACOTTA_CULVERT = registerBlock("terracotta_culvert",
-            () -> new CulvertBlock(BlockBehaviour.Properties.of().sound(SoundType.STONE)), 0);
+            () -> new CulvertBlock(BlockBehaviour.Properties.of().sound(SoundType.STONE)));
 
     // Alarms
     public static final RegistryObject<Block> HORN_FIRE_ALARM = registerBlock("horn_fire_alarm",
-            () -> new HornFireAlarm(BlockBehaviour.Properties.of()), 0);
+            () -> new HornFireAlarm(BlockBehaviour.Properties.of()));
     public static final RegistryObject<Block> BEEP_FIRE_ALARM = registerBlock("beep_fire_alarm",
-            () -> new BeepingFireAlarm(BlockBehaviour.Properties.of()), 0);
+            () -> new BeepingFireAlarm(BlockBehaviour.Properties.of()));
     public static final RegistryObject<Block> LOUD_FIRE_ALARM = registerBlock("loud_fire_alarm",
-            () -> new LoudFireAlarm(BlockBehaviour.Properties.of()), 0);
+            () -> new LoudFireAlarm(BlockBehaviour.Properties.of()));
 
     // Security Cameras
     public static final RegistryObject<Block> FILM_SECURITY_CAMERA = registerBlock("film_cam",
-            () -> new SecurityCameraMultidirectional(BlockBehaviour.Properties.of()), 0);
+            () -> new SecurityCameraMultidirectional(BlockBehaviour.Properties.of()));
     public static final RegistryObject<Block> SECURE_SECURITY_CAMERA = registerBlock("secure_cam",
-            () -> new SecurityCameraMultidirectional(BlockBehaviour.Properties.of()), 0);
+            () -> new SecurityCameraMultidirectional(BlockBehaviour.Properties.of()));
     public static final RegistryObject<Block> BOX_SECURITY_CAMERA = registerBlock("box_cam",
-            () -> new SecurityCameraQuintDirectional(BlockBehaviour.Properties.of()), 0);
+            () -> new SecurityCameraQuintDirectional(BlockBehaviour.Properties.of()));
     public static final RegistryObject<Block> DOME_SECURITY_CAMERA = registerBlock("dome_cam",
-            () -> new DomeSecurityCamera(BlockBehaviour.Properties.of().sound(SoundType.LANTERN).noCollission()), 0);
+            () -> new DomeSecurityCamera(BlockBehaviour.Properties.of().sound(SoundType.LANTERN).noCollission()));
     public static final RegistryObject<Block> ROBOT_SECURITY_CAMERA = registerBlock("robot_cam",
-            () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.of().sound(SoundType.LANTERN)), 0);
+            () -> new RotatingSecurityCamera(BlockBehaviour.Properties.of()));
 
 
     // Hazard Signs
@@ -4293,6 +4320,11 @@ public class ThingamajigsBlocks {
                             return Shapes.block();
                         }
                     }
+                }
+
+                @Override
+                public boolean collisionExtendsVertically(BlockState state, BlockGetter level, BlockPos pos, Entity collidingEntity) {
+                    return true;
                 }
             });
 

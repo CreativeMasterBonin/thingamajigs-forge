@@ -36,7 +36,7 @@ import net.rk.thingamajigs.recipe.ThingamajigsRecipes;
 import net.rk.thingamajigs.screen.*;
 import org.slf4j.Logger;
 
-@SuppressWarnings("deprecated,unused")
+@SuppressWarnings("deprecated,unused,removal")
 @Mod(Thingamajigs.MOD_ID)
 public class Thingamajigs {
     public static final String MOD_ID = "thingamajigs";

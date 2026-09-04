@@ -20,6 +20,7 @@ import net.minecraftforge.client.gui.widget.ForgeSlider;
 import net.rk.thingamajigs.config.ThingamajigsClientConfigs;
 import net.rk.thingamajigs.screen.widget.RevertedButton;
 
+@SuppressWarnings("removal")
 @OnlyIn(Dist.CLIENT)
 public class ThingamajigsConfigScreen extends Screen {
     public static int leftPos = 0;

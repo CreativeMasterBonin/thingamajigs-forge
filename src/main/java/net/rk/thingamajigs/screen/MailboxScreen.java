@@ -8,6 +8,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
+@SuppressWarnings("removal")
 @OnlyIn(Dist.CLIENT)
 public class MailboxScreen extends AbstractContainerScreen<MailboxMenu> {
     // HOPPERS LOOK BORING! Let's add some custom fun!

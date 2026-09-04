@@ -23,6 +23,7 @@ import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraftforge.client.ConfigScreenHandler;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterColorHandlersEvent;
+import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.rk.thingamajigs.block.ThingamajigsBlocks;
@@ -147,7 +148,8 @@ public class ThingamajigsClient {
         );
         rchEvent.register((itemStack,i) -> ThingamajigsColors.getColorFromList(8),
                 ThingamajigsItems.BLUE_BALLOON_BLOCK_ITEM.get(),
-                ThingamajigsBlocks.BLUE_GLOW_BLOCK.get().asItem()
+                ThingamajigsBlocks.BLUE_GLOW_BLOCK.get().asItem(),
+                ThingamajigsItems.WATER_SOURCE.get()
         );
         rchEvent.register((itemStack,i) -> ThingamajigsColors.getColorFromList(9),
                 ThingamajigsItems.PURPLE_BALLOON_BLOCK_ITEM.get(),
@@ -286,6 +288,7 @@ public class ThingamajigsClient {
         );
     }
 
+    @SuppressWarnings({"deprecated","removal","unused"})
     public static void setupClient(final FMLClientSetupEvent event){
         ModLoadingContext.get().registerExtensionPoint(
                 ConfigScreenHandler.ConfigScreenFactory.class,

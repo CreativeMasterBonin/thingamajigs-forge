@@ -12,6 +12,7 @@ import net.rk.thingamajigs.Thingamajigs;
 import net.rk.thingamajigs.block.ThingamajigsBlocks;
 import org.jetbrains.annotations.NotNull;
 
+@SuppressWarnings("deprecated,removal")
 public class ThingamajigsBlockModelProvider extends BlockModelProvider {
     // global texture references for all models
     public static final ResourceLocation POLE_TEXTURE = new ResourceLocation("minecraft:block/blast_furnace_side");

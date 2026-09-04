@@ -41,7 +41,7 @@ public class AlarmedDoor extends DoorBlock {
     public void tick(BlockState bs, ServerLevel slvl, BlockPos bp, RandomSource rs) {
         if(!slvl.isClientSide()){
             if(bs.getValue(OPEN)){
-                slvl.playSound(null,bp,ThingamajigsSoundEvents.BEEP.get(),SoundSource.BLOCKS,1.0F,1.0F);
+                slvl.playSound(null,bp,ThingamajigsSoundEvents.BEEP.get(),SoundSource.BLOCKS,0.5f,1.0F);
                 slvl.scheduleTick(bp,bs.getBlock(),45,TickPriority.LOW);
             }
         }
@@ -75,19 +75,20 @@ public class AlarmedDoor extends DoorBlock {
             }
             //
             if(p_52776_.getValue(OPEN)){
-                p_52777_.playSound(null,p_52778_,SoundEvents.IRON_DOOR_CLOSE,SoundSource.BLOCKS,1.0F,1.0F);
+                p_52777_.playSound(null,p_52778_,SoundEvents.IRON_DOOR_CLOSE,SoundSource.BLOCKS,0.95f,1.0F);
             }
             else{
-                p_52777_.playSound(null,p_52778_,SoundEvents.IRON_DOOR_OPEN,SoundSource.BLOCKS,1.0F,1.0F);
+                p_52777_.playSound(null,p_52778_,SoundEvents.IRON_DOOR_OPEN,SoundSource.BLOCKS,0.95f,1.0F);
             }
             p_52777_.setBlock(p_52778_, p_52776_.setValue(POWERED, Boolean.valueOf(flag)).setValue(OPEN, Boolean.valueOf(flag)), 2);
         }
 
     }
 
+    @SuppressWarnings("unused")
     public boolean attemptToBeep(Level lp, BlockPos bp) {
         if (!lp.isClientSide) {
-            lp.playSound(null, bp, ThingamajigsSoundEvents.BEEP.get(), SoundSource.BLOCKS, 2.0F, 1.0F);
+            lp.playSound(null, bp, ThingamajigsSoundEvents.BEEP.get(), SoundSource.BLOCKS, 0.5f, 1.0F);
             return true;
         }
         else {

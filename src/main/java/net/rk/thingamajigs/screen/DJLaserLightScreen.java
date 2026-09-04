@@ -21,6 +21,7 @@ import net.rk.thingamajigs.network.messages.DJLaserLightUpdateMessage;
 
 import java.util.HashMap;
 
+@SuppressWarnings("removal")
 public class DJLaserLightScreen extends AbstractContainerScreen<DJLaserLightMenu> {
     private final static HashMap<String, Object> guistate = DJLaserLightMenu.guistate;
     private final Level world;

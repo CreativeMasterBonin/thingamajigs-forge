@@ -1,5 +1,6 @@
 package net.rk.thingamajigs.block.custom.specialblocks;
 
+import net.minecraft.client.particle.ParticleEngine;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -23,11 +24,14 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.client.extensions.common.IClientBlockExtensions;
 import net.rk.thingamajigs.tag.ThingamajigsTags;
 
 import java.util.OptionalInt;
+import java.util.function.Consumer;
 
 public class ThingamajigsCustomLeavesBlock extends Block implements SimpleWaterloggedBlock, net.minecraftforge.common.IForgeShearable {
     public static final BooleanProperty PERSISTENT = BlockStateProperties.PERSISTENT;

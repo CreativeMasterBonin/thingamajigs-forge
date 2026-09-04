@@ -15,7 +15,9 @@ import net.minecraftforge.registries.RegistryObject;
 import net.rk.thingamajigs.Thingamajigs;
 import net.rk.thingamajigs.block.ThingamajigsBlocks;
 import net.rk.thingamajigs.item.ThingamajigsItems;
+import net.rk.thingamajigs.misc.ThingamajigsColors;
 
+@SuppressWarnings({"deprecated","removal"})
 public class ThingamajigsItemModelProvider extends ItemModelProvider {
     public ThingamajigsItemModelProvider(PackOutput output, ExistingFileHelper existingFileHelper){
         super(output, Thingamajigs.MOD_ID, existingFileHelper);
@@ -26,7 +28,7 @@ public class ThingamajigsItemModelProvider extends ItemModelProvider {
     @Override
     protected void registerModels() {
         // map maker only item makers (block items)
-        blockAll(ThingamajigsItems.WATER_SOURCE, "block/water_still");
+        simpleVanilla(ThingamajigsItems.WATER_SOURCE,"block/water_still");
         blockAll(ThingamajigsItems.NP_PLACEABLE, "block/nether_portal");
         blockAll(ThingamajigsItems.EP_PLACEABLE, "item/ender_eye");
         blockAll(ThingamajigsItems.EG_PLACEABLE, "item/ender_pearl");
@@ -265,6 +267,13 @@ public class ThingamajigsItemModelProvider extends ItemModelProvider {
     }
 
     // cube_all model with custom texture
+    private ItemModelBuilder blockAllTinted(RegistryObject<Item> item, String textureLocation){
+        return withExistingParent(item.getId().getPath(),
+                new ResourceLocation("block/cube_all")).texture("all",
+                new ResourceLocation(textureLocation)).element().color(ThingamajigsColors.getColorFromList(8)).end();
+    }
+
+    // cube_all model with custom texture
     private ItemModelBuilder blockAll(RegistryObject<Item> item, String textureLocation){
         return withExistingParent(item.getId().getPath(),
                 new ResourceLocation("block/cube_all")).texture("all",
@@ -281,6 +290,20 @@ public class ThingamajigsItemModelProvider extends ItemModelProvider {
     private ItemModelBuilder blockSimple(RegistryObject<Item> item, String blockModelPath){
         return withExistingParent(item.getId().getPath(),
                 new ResourceLocation(blockModelPath));
+    }
+
+    // vanilla flat 2D simple item model using a custom texture location
+    private ItemModelBuilder simpleVanilla(RegistryObject<Item> item,String textureLocation){
+        return withExistingParent(item.getId().getPath(),
+                new ResourceLocation("item/generated")).texture("layer0",
+                new ResourceLocation(textureLocation));
+    }
+
+    // vanilla flat 2D simple item model using texture with same name as item (texture must exist to work)
+    private ItemModelBuilder simpleVanilla(RegistryObject<Item> item){
+        return withExistingParent(item.getId().getPath(),
+                new ResourceLocation("item/generated")).texture("layer0",
+                new ResourceLocation("item/" + item.getId().getPath()));
     }
 
     // flat 2D simple item model using texture with same name as item (texture must exist to work)

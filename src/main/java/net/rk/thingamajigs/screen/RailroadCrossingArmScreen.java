@@ -18,6 +18,7 @@ import net.rk.thingamajigs.network.messages.RailroadCrossingArmUpdateMessage;
 
 import java.util.HashMap;
 
+@SuppressWarnings("removal")
 public class RailroadCrossingArmScreen extends AbstractContainerScreen<RailroadCrossingArmMenu>{
     private final static HashMap<String, Object> guistate = RailroadCrossingArmMenu.guistate;
     private final Level world;

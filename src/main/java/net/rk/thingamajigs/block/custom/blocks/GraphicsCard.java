@@ -13,6 +13,7 @@ import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.rk.thingamajigs.block.ThingamajigsBlocks;
 import net.rk.thingamajigs.block.custom.ThingamajigsDecorativeBlock;
 
 import java.util.stream.Stream;
@@ -59,15 +60,28 @@ public class GraphicsCard extends ThingamajigsDecorativeBlock {
             Block.box(3, 0, 5, 9, 0, 11)
     ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
 
+    public static final VoxelShape NORTH_HARD_DRIVE = Block.box(5, 0, 3, 11, 2, 12);
+    public static final VoxelShape EAST_HARD_DRIVE = Block.box(4, 0, 5, 13, 2, 11);
+    public static final VoxelShape SOUTH_HARD_DRIVE = Block.box(5, 0, 4, 11, 2, 13);
+    public static final VoxelShape WEST_HARD_DRIVE = Block.box(3, 0, 5, 12, 2, 11);
+
     public GraphicsCard(Properties properties) {
         super(properties);
         this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH).setValue(WATERLOGGED, Boolean.FALSE));
     }
 
     @Override
-    public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        Direction direction = pState.getValue(FACING);
-        switch(direction){
+    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext ctx) {
+        if(state.is(ThingamajigsBlocks.HARD_DRIVE.get())){
+            switch(state.getValue(FACING)){
+                case NORTH: return NORTH_HARD_DRIVE;
+                case SOUTH: return SOUTH_HARD_DRIVE;
+                case EAST: return EAST_HARD_DRIVE;
+                case WEST: return WEST_HARD_DRIVE;
+                default: return Shapes.block();
+            }
+        }
+        switch(state.getValue(FACING)){
             case NORTH: return NS;
             case SOUTH: return SS;
             case EAST: return ES;
