@@ -30,6 +30,7 @@ import net.rk.thingamajigs.block.custom.ThingamajigsDecorativeBlock;
 import net.rk.thingamajigs.block.custom.blocks.ToggledStateBlock;
 import net.rk.thingamajigs.block.custom.specialblocks.ThingamajigsCustomLeavesBlock;
 
+@SuppressWarnings("deprecated,unused,removal")
 public class ThingamajigsBlockStateProvider extends BlockStateProvider {
     public ThingamajigsBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
         super(output, Thingamajigs.MOD_ID, exFileHelper);
@@ -109,6 +110,7 @@ public class ThingamajigsBlockStateProvider extends BlockStateProvider {
         rotatedThingamajigsDecoration(ThingamajigsBlocks.OLD_LEGENDARY_COMPUTER.get(),"thingamajigs:block/old_legendary_computer");
         basicBlockItemWithCustomModelNoRotation(ThingamajigsBlocks.CUSTOMIZABLE_COPYING_DECO,"thingamajigs:block/customizable_copying_deco");
         basicBlockWithCustomModelNoRotation(ThingamajigsBlocks.FRYING_OIL,"thingamajigs:block/frying_oil");
+        rotatedThingamajigsDecoration(ThingamajigsBlocks.FALL_WREATH.get(),"thingamajigs:block/fall_wreath");
     }
 
     // ?

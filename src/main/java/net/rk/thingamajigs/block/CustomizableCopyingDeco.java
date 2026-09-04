@@ -76,7 +76,7 @@ public class CustomizableCopyingDeco extends BaseEntityBlock {
         if(customDeco instanceof CustomizableCopyingDecoBE){
             return customDeco.blockTypeToCopy.getCollisionShape(level,pos,ctx);
         }*/
-        return Shapes.empty();
+        return Shapes.block();
     }
 
     @Override

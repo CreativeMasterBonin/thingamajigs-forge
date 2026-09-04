@@ -626,6 +626,8 @@ public class ThingamajigsBlockTagProvider extends BlockTagsProvider {
                 .replace(false)
         ;
         this.tag(BlockTags.SWORD_EFFICIENT)
+                .add(ThingamajigsBlocks.FALL_WREATH.get())
+                .add(ThingamajigsBlocks.CHRISTMAS_WREATH.get())
                 .add(ThingamajigsBlocks.TUBE_MAN_DECO.get())
                 .add(ThingamajigsBlocks.TOWEL_STACK.get())
                 .add(ThingamajigsBlocks.BULBY_FLOWER.get())
@@ -696,6 +698,7 @@ public class ThingamajigsBlockTagProvider extends BlockTagsProvider {
 
         // tools that break these blocks better than others (required tools)
         this.tag(BlockTags.MINEABLE_WITH_AXE)
+                .add(ThingamajigsBlocks.CUSTOMIZABLE_COPYING_DECO.get())
                 .add(ThingamajigsBlocks.WHITE_SECTIONED_SHELF.get())
                 .add(ThingamajigsBlocks.WHITE_CUBE_SHELF.get())
                 .add(ThingamajigsBlocks.EASEL.get())
@@ -815,6 +818,8 @@ public class ThingamajigsBlockTagProvider extends BlockTagsProvider {
                 .replace(false)
         ;
         this.tag(BlockTags.MINEABLE_WITH_HOE)
+                .add(ThingamajigsBlocks.FALL_WREATH.get())
+                .add(ThingamajigsBlocks.CUSTOMIZABLE_COPYING_DECO.get())
                 .add(ThingamajigsBlocks.CHRISTMAS_TREE.get())
                 .add(ThingamajigsBlocks.CHRISTMAS_WREATH.get())
                 .add(ThingamajigsBlocks.LIGHTED_CHRISTMAS_TREE.get())
@@ -826,6 +831,7 @@ public class ThingamajigsBlockTagProvider extends BlockTagsProvider {
                 .replace(false)
         ;
         this.tag(BlockTags.MINEABLE_WITH_SHOVEL)
+                .add(ThingamajigsBlocks.CUSTOMIZABLE_COPYING_DECO.get())
                 .add(ThingamajigsBlocks.PIZZA.get())
                 .add(ThingamajigsBlocks.SNOWMAN.get())
                 .add(ThingamajigsBlocks.SNOWMAN_BLUEMAN_STATUE.get())

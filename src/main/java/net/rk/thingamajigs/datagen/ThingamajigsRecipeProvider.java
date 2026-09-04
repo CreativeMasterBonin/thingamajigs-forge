@@ -2006,6 +2006,15 @@ public class ThingamajigsRecipeProvider extends RecipeProvider implements ICondi
                 .requires(Items.BUCKET)
                 .unlockedBy("has_thingy",has(Items.BUCKET))
                 .save(rc);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ThingamajigsBlocks.FALL_WREATH.get().asItem(),1)
+                .requires(ItemTags.LEAVES)
+                .requires(Tags.Items.DYES_RED)
+                .requires(Tags.Items.DYES_ORANGE)
+                .requires(Tags.Items.DYES_YELLOW)
+                .requires(ThingamajigsItems.THINGAMAJIG.get())
+                .unlockedBy("has_thingy",has(ItemTags.LEAVES))
+                .save(rc);
     }
 
     public static RecipeBuilder stonecutterAny(Item requiredItem, Ingredient inputItem, Item result, int amt){

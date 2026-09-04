@@ -28,6 +28,10 @@
         {
             "type": "patchouli:text",
             "text": "Rabbit hide increases the gate offset, and rabbit feet decrease the offset. The internal value works the same as the arm length value, it is the opposite of what the arm is visually looking like. The offset increases quickly with arm length, so some adjustment may be needed to keep the offset correct for the length of the arm specified."
+        },
+        {
+            "type": "patchouli:text",
+            "text": "The Railroad Crossing also has a UI for those who do not want to manually click on the gate with items to change parameters."
         }
     ]
 }

@@ -36,33 +36,40 @@ public class ByproductBlock extends Block {
 
     @Override
     public void stepOn(Level lvl, BlockPos bp, BlockState bs, Entity ent) {
-        Random r = new Random();
-
-        double rdx = (double)ent.getX() + 0.5D + lvl.getRandom().nextDouble() / 4.0D *
-                (double)(lvl.getRandom().nextBoolean() ? 1 : -1);
-
-        double dy = (double)ent.getY() + 0.4D;
-        double rdz = (double)ent.getZ() + 0.5D + lvl.getRandom().nextDouble() / 4.0D *
-                (double)(lvl.getRandom().nextBoolean() ? 1 : -1);
-
-        if(ent instanceof LivingEntity){
-            lvl.addParticle(ParticleTypes.SNEEZE,
-                    rdx,dy,rdz,
-                    0.0D,0.07D,0.0D);
-            ((LivingEntity) ent).addEffect(new MobEffectInstance(
-                    MobEffects.POISON,
-                    100,
-                    1,
-                    true,
-                    false,
-                    false));
-            ((LivingEntity) ent).addEffect(new MobEffectInstance(
-                    MobEffects.CONFUSION,
-                    200,
-                    0,
-                    true,
-                    false,
-                    false));
+        if(lvl.isClientSide()){
+            if(ent instanceof LivingEntity){
+                Random r = new Random();
+                double rdx = (double)ent.getX() - lvl.getRandom().nextDouble() / 4.0D *
+                        (double)(lvl.getRandom().nextBoolean() ? 1 : -1);
+                double dy = (double)ent.getY() + 0.35D;
+                double rdz = (double)ent.getZ() - lvl.getRandom().nextDouble() / 4.0D *
+                        (double)(lvl.getRandom().nextBoolean() ? 1 : -1);
+                lvl.addParticle(ParticleTypes.SNEEZE,
+                        rdx,dy,rdz,
+                        0.0D,0.07D,0.0D);
+            }
+        }
+        else{
+            if(ent instanceof LivingEntity livingEntity){
+                if(!livingEntity.hasEffect(MobEffects.CONFUSION)){
+                    livingEntity.addEffect(new MobEffectInstance(
+                            MobEffects.CONFUSION,
+                            200,
+                            0,
+                            true,
+                            false,
+                            false));
+                }
+                if(!livingEntity.hasEffect(MobEffects.POISON)){
+                    livingEntity.addEffect(new MobEffectInstance(
+                            MobEffects.POISON,
+                            100,
+                            1,
+                            true,
+                            false,
+                            false));
+                }
+            }
         }
     }
 }

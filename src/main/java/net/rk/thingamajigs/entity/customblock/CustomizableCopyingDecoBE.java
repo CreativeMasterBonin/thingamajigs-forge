@@ -13,6 +13,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.client.model.data.ModelData;
 import net.rk.thingamajigs.block.CustomizableCopyingDeco;
@@ -140,5 +141,17 @@ public class CustomizableCopyingDecoBE extends BlockEntity {
         tag.putDouble("model_offset_x",modelOffsets.x);
         tag.putDouble("model_offset_y",modelOffsets.y);
         tag.putDouble("model_offset_z",modelOffsets.z);
+    }
+
+    @Override
+    public AABB getRenderBoundingBox() {
+        BlockPos bp = this.getBlockPos();
+        return new AABB(
+                bp.getX() - (float)this.modelScale.x,
+                bp.getY() - (float)this.modelScale.y,
+                bp.getZ() - (float)this.modelScale.z,
+                bp.getX() + (float)this.modelScale.x,
+                bp.getY() + (float)this.modelScale.y,
+                bp.getZ() + (float)this.modelScale.z);
     }
 }

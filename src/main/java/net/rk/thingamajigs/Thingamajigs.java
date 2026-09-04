@@ -203,6 +203,7 @@ public class Thingamajigs {
             // fluid items
             event.accept(ThingamajigsItems.PURIFYING_WATER_BUCKET);
             event.accept(ThingamajigsItems.SLUDGE_BUCKET);
+            event.accept(ThingamajigsItems.FRYING_OIL_BUCKET);
             // plants and flowers
             event.accept(ThingamajigsBlocks.BRAMBLE.get().asItem());
             event.accept(ThingamajigsBlocks.ROUND_BUSH.get().asItem());
@@ -1166,6 +1167,8 @@ public class Thingamajigs {
             event.accept(ThingamajigsItems.ANIMATED_ICE_RINK.get().asItem());
             event.accept(ThingamajigsBlocks.SNOW_MACHINE.get().asItem());
             event.accept(ThingamajigsBlocks.BALL_PIT.get().asItem());
+            // Seasonal Autumn/Fall
+            event.accept(ThingamajigsBlocks.FALL_WREATH.get().asItem());
             // Seasonal (Christmas)
             event.accept(ThingamajigsBlocks.CHRISTMAS_FIREPLACE.get().asItem());
             event.accept(ThingamajigsBlocks.SLEIGH.get().asItem());

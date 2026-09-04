@@ -1811,6 +1811,7 @@ public class ThingamajigsLootTables extends VanillaBlockLoot {
         // 1.9.0
         this.dropSelf(ThingamajigsBlocks.OLD_LEGENDARY_COMPUTER.get());
         this.dropSelf(ThingamajigsBlocks.CUSTOMIZABLE_COPYING_DECO.get());
+        this.dropSelf(ThingamajigsBlocks.FALL_WREATH.get());
     }
 
     // from loot tables

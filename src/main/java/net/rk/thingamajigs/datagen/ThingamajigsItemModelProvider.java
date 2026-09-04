@@ -217,6 +217,8 @@ public class ThingamajigsItemModelProvider extends ItemModelProvider {
         handheld(ThingamajigsItems.RENDERING_TOOL);
         handheld(ThingamajigsItems.RANDOMIZE_AND_RESET_TOOL);
         defaultCustomSimple(ThingamajigsBlocks.FRYING_OIL.get(),"animated/frying_oil_still"); // for items that may add block items that do not exist by default
+        fromModelMod(ThingamajigsBlocks.FALL_WREATH.get(),"block/fall_wreath");
+        fromModelMod(ThingamajigsBlocks.CHRISTMAS_WREATH.get(),"custom/christmas_wreath");
     }
 
     private ItemModelBuilder fromModelForgeItem(Item item, String source, String fluidTexture){
