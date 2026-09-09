@@ -10,7 +10,10 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.SlotAccess;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.ClickAction;
+import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -31,6 +34,24 @@ public class RandomizeAndResetTool extends Item {
     }
 
     @Override
+    public ItemStack getDefaultInstance() {
+        ItemStack stack = new ItemStack(ThingamajigsItems.RANDOMIZE_AND_RESET_TOOL.get());
+        CompoundTag tag = new CompoundTag();
+        tag.putBoolean(ROTATE_WHEN_RESETTING_TAG_NAME,true);
+        stack.setTag(tag);
+        return super.getDefaultInstance();
+    }
+
+    @Override
+    public void onCraftedBy(ItemStack stack, Level level, Player player) {
+        if(!stack.hasTag()){
+            CompoundTag tag = new CompoundTag();
+            tag.putBoolean(ROTATE_WHEN_RESETTING_TAG_NAME,false);
+            stack.setTag(tag);
+        }
+    }
+
+    @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
         list.add(Component.translatable("item.thingamajigs.randomize_and_reset_tool.desc")
                 .withStyle(ChatFormatting.GRAY));
@@ -43,45 +64,26 @@ public class RandomizeAndResetTool extends Item {
     }
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
-        ItemStack handStack = player.getItemInHand(hand);
-        CompoundTag tag = handStack.getOrCreateTag();
-
-        if(!player.isSecondaryUseActive()){
-            if(level.isClientSide()){
-                if(handStack.hasTag()){
-                    if(handStack.getTag().contains(ROTATE_WHEN_RESETTING_TAG_NAME)){
-                        if(handStack.getTag().getBoolean(ROTATE_WHEN_RESETTING_TAG_NAME)){
-                            player.playSound(SoundEvents.IRON_GOLEM_REPAIR,0.3f,1.0f);
-                            return InteractionResultHolder.success(handStack);
-                        }
-                        else{
-                            player.playSound(SoundEvents.IRON_GOLEM_REPAIR,0.3f,0.7f);
-                            return InteractionResultHolder.success(handStack);
-                        }
-                    }
+    public boolean overrideOtherStackedOnMe(ItemStack stack, ItemStack other, Slot slot, ClickAction action, Player player, SlotAccess access) {
+        if(action == ClickAction.SECONDARY){
+            if(stack.hasTag()){
+                if(stack.getTag().contains(ROTATE_WHEN_RESETTING_TAG_NAME)){
+                    stack.getTag().putBoolean(ROTATE_WHEN_RESETTING_TAG_NAME,!stack.getTag().getBoolean(ROTATE_WHEN_RESETTING_TAG_NAME));
                 }
                 else{
-                    player.playSound(SoundEvents.UI_LOOM_SELECT_PATTERN,0.4f,ThingamajigsCalcStuffs.nextFloatBetweenInclusive(0.95f,1.0f));
-                    return InteractionResultHolder.success(handStack);
+                    stack.getTag().putBoolean(ROTATE_WHEN_RESETTING_TAG_NAME,false);
                 }
+                player.playSound(SoundEvents.IRON_GOLEM_REPAIR,0.45f, ThingamajigsCalcStuffs.nextFloatBetweenInclusive(0.93f,1.0f));
+                return true;
             }
             else{
-                // if the ItemStack has our tag with the boolean we need, continue
-                if(handStack.hasTag()){
-                    if(tag.contains(ROTATE_WHEN_RESETTING_TAG_NAME)){
-                        tag.putBoolean(ROTATE_WHEN_RESETTING_TAG_NAME,!tag.getBoolean(ROTATE_WHEN_RESETTING_TAG_NAME));
-                        return InteractionResultHolder.success(handStack);
-                    }
-                }
-                else{// no tag, no problem; just add the tag with the required default value
-                    tag.putBoolean(ROTATE_WHEN_RESETTING_TAG_NAME,false);
-                    handStack.setTag(tag);
-                    return InteractionResultHolder.success(handStack);
-                }
+                CompoundTag tag = new CompoundTag();
+                tag.putBoolean(ROTATE_WHEN_RESETTING_TAG_NAME,false);
+                stack.setTag(tag);
+                return true;
             }
         }
-        return InteractionResultHolder.pass(handStack);
+        return false;
     }
 
     @Override

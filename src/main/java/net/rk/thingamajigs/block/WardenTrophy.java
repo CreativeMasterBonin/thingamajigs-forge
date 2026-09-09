@@ -49,7 +49,7 @@ public class WardenTrophy extends ThingamajigsDecorativeBlock {
 
 
     public WardenTrophy(Properties properties) {
-        super(properties.sound(SoundType.SCULK_SHRIEKER).strength(1.0F,50F).noCollission().noOcclusion());
+        super(properties.sound(SoundType.SCULK_SHRIEKER).strength(1.0F,50F).noOcclusion());
         this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH).setValue(WATERLOGGED, false));
     }
 

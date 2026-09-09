@@ -134,6 +134,8 @@ public class MicrowaveTransmitter extends ThingamajigsDecorativeBlock {
             Block.box(12, 0, 0, 16, 10, 16)
     ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
 
+
+
     public MicrowaveTransmitter(Properties properties) {
         super(properties.sound(SoundType.METAL).strength(2F,50F).noOcclusion());
         this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH).setValue(WATERLOGGED, Boolean.FALSE));

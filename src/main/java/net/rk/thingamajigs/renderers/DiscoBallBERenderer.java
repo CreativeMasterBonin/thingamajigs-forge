@@ -1,51 +1,57 @@
 package net.rk.thingamajigs.renderers;
 
 
-@SuppressWarnings("deprecated")
-public class DiscoBallBERenderer {
-    /*
-    //public static final Material RL = new Material(TextureAtlas.LOCATION_BLOCKS, new ResourceLocation("block/animated/disco_ball"));
-    private static final ResourceLocation BALL_TEXTURE = new ResourceLocation("thingamajigs","textures/block/animated/disco_ball.png");
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.math.Axis;
+import net.minecraft.Util;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.Sheets;
+import net.minecraft.client.renderer.block.BlockModelShaper;
+import net.minecraft.client.renderer.block.BlockRenderDispatcher;
+import net.minecraft.client.renderer.block.ModelBlockRenderer;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
+import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
+import net.minecraft.client.resources.model.BakedModel;
+import net.minecraft.client.resources.model.ModelManager;
+import net.minecraftforge.client.model.data.ModelData;
+import net.rk.thingamajigs.block.ThingamajigsBlocks;
+import net.rk.thingamajigs.entity.customblock.DiscoBallBE;
 
-    public DiscoBallBERenderer(BlockEntityRendererProvider.Context ctx){}
+import java.util.Objects;
 
-    public static LayerDefinition createBodyLayer() {
-        MeshDefinition meshdefinition = new MeshDefinition();
-        PartDefinition partdefinition = meshdefinition.getRoot();
-        PartDefinition main = partdefinition.addOrReplaceChild("main",
-                CubeListBuilder.create().texOffs(0, 36)
-                        .addBox(-14.0F, -14.0F, 0.0F, 14.0F, 14.0F, 14.0F,
-                                new CubeDeformation(0.0F)),
-                PartPose.offset(0.0F, 24.0F, 0.0F));
-        return LayerDefinition.create(meshdefinition, 64, 64);
+@SuppressWarnings("deprecated,unused")
+public class DiscoBallBERenderer implements BlockEntityRenderer<DiscoBallBE> {
+    private final Minecraft mc;
+    private final BlockRenderDispatcher dispatcher;
+    private final ModelBlockRenderer blockRenderer;
+    private final ModelManager manager;
+    private final BlockModelShaper blockModelShaper;
+
+    public DiscoBallBERenderer(BlockEntityRendererProvider.Context ctx){
+        mc = Objects.requireNonNull(Minecraft.getInstance());
+        dispatcher = mc.getBlockRenderer();
+        blockRenderer = dispatcher.getModelRenderer();
+        manager = dispatcher.getBlockModelShaper().getModelManager();
+        blockModelShaper = dispatcher.getBlockModelShaper();
     }
 
     @Override
-    public void render(DiscoBallBE dbbe, float ptick, PoseStack pose, MultiBufferSource mbs, int light, int overlay) {
-        try{
-            long j = dbbe.getLevel().getGameTime();
-            float f = (float)Math.floorMod(j, 180) + ptick;
-            float f1 = -f;
-            float f2 = Mth.frac(f1 * 0.2F - (float)Mth.floor(f1 * 0.1F));
-            float f16 = -0.5f;
-            float radius = 0.5f;
+    public void render(DiscoBallBE discoBallBE, float partialTick, PoseStack poseStack, MultiBufferSource buffer, int packedLight, int packedOverlay) {
+        poseStack.pushPose();
+        BakedModel model;
+        model = blockModelShaper.getBlockModel(ThingamajigsBlocks.DISCO_BALL.get().defaultBlockState());
+        double ticks = ((partialTick + Util.getMillis()) * discoBallBE.speed) / 32.0D;
 
-            pose.pushPose();
-
-            pose.translate(dbbe.getBlockPos().getX(),dbbe.getBlockPos().getY(),dbbe.getBlockPos().getZ());
-
-            renderBeamPart(pose,mbs.getBuffer(RenderType.entitySolid(BALL_TEXTURE)), 1.0f, 1.0f, 1.0f,
-                    1.0f, 0, 1,
-                    0.0f, radius, radius,
-                    0.0f, -radius, 0.0F, 0.0F, -radius, 0.0F, 1.0F, f16, 0.0f
-            );
-
-            pose.popPose();
+        if(discoBallBE.spinning){
+            poseStack.rotateAround(Axis.YP.rotationDegrees((float)ticks),0.5f,0.5f,0.5f);
         }
-        catch(Exception e){
-            Logger.getAnonymousLogger().warning("Thingamajigs' DiscoBallBERenderer is broken!" + e.getMessage());
-        }
+        blockRenderer.renderModel(poseStack.last(),buffer.getBuffer(Sheets.solidBlockSheet()),
+                null,
+                model,
+                1.0f, 1.0f, 1.0f,
+                packedLight, packedOverlay, ModelData.EMPTY, RenderType.solid());
+        poseStack.popPose();
     }
-
-*/
 }

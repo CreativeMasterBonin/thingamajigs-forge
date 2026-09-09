@@ -654,7 +654,18 @@ public class ThingamajigsBlocks {
     public static final RegistryObject<Block> TRAFFIC_CONTROL_BOX = registerBlock("traffic_control_box",
             () -> new TrafficControlBox(BlockBehaviour.Properties.of().sound(SoundType.METAL)));
     public static final RegistryObject<Block> CELL_MICROWAVE_TRANSMITTER = registerBlock("microwave_transmitter",
-            () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.of().sound(SoundType.METAL)));
+            () -> new CelltowerComponent(BlockBehaviour.Properties.of().sound(SoundType.METAL)){
+                @Override
+                public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+                    switch(state.getValue(FACING)){
+                        case NORTH -> {return N_MICROWAVE;}
+                        case SOUTH -> {return S_MICROWAVE;}
+                        case EAST -> {return E_MICROWAVE;}
+                        case WEST -> {return W_MICROWAVE;}
+                        default -> {return Shapes.block();}
+                    }
+                }
+            });
     public static final RegistryObject<Block> CELL_TRANSMITTER = registerBlock("cell_transmitter",
             () -> new CelltowerComponent(BlockBehaviour.Properties.of().sound(SoundType.METAL)){
                 @Override
@@ -734,7 +745,7 @@ public class ThingamajigsBlocks {
     public static final RegistryObject<Block> SHOWER_HANDLES = registerBlock("shower_handles",
             () -> new ShowerHandles(BlockBehaviour.Properties.of()));
     public static final RegistryObject<Block> SHOWER_HEAD = registerBlock("shower_head",
-            () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.of().noCollission()));
+            () -> new ShowerHead(BlockBehaviour.Properties.of()));
     public static final RegistryObject<Block> TOILET_PAPER = registerBlock("toilet_paper",
             () -> new HazardSignBlock(BlockBehaviour.Properties.copy(Blocks.COBBLESTONE).sound(SoundType.WOOL)));
 
@@ -1088,7 +1099,7 @@ public class ThingamajigsBlocks {
     public static final RegistryObject<Block> BATHTUB_NOZZLE = registerBlock("bathtub_nozzle",
             () -> new BathtubNozzle(BlockBehaviour.Properties.copy(Blocks.STONE)));
     public static final RegistryObject<Block> GARDEN_HOSE = registerBlock("garden_hose",
-            () -> new ThingamajigsDecorativeBlock(BlockBehaviour.Properties.copy(Blocks.STONE).sound(SoundType.CALCITE).noCollission()));
+            () -> new GardenHose(BlockBehaviour.Properties.copy(Blocks.STONE).sound(SoundType.CALCITE).noCollission()));
     public static final RegistryObject<Block> WOOD_DUCK = registerBlock("wood_duck",
             () -> new ReindeerPlushy(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).noCollission()));
     public static final RegistryObject<Block> WOOD_CAR = registerBlock("wood_car",
@@ -4579,7 +4590,7 @@ public class ThingamajigsBlocks {
             () -> new UmbrellaBlock(BlockBehaviour.Properties.of()));
 
     public static final RegistryObject<Block> STRING_BASS = registerBlock("string_bass",
-            () -> new DoubleTallDecorationBlock(BlockBehaviour.Properties.of()));
+            () -> new StringBass(BlockBehaviour.Properties.of()));
 
     public static final RegistryObject<Block> BASS_DRUM = registerBlock("bass_drum",
             () -> new InstrumentDecorativeBlock(BlockBehaviour.Properties.of().sound(SoundType.WOOD),ThingamajigsSoundEvents.KICK_DRUM.get()){

@@ -177,6 +177,11 @@ ThingamajigsBlocks.TRIPLE_SHELF.get(),ThingamajigsBlocks.TOY_BOX.get()
                             ThingamajigsBlocks.CUSTOMIZABLE_COPYING_DECO.get())
                     .build(null));
 
+    public static final Supplier<BlockEntityType<DiscoBallBE>> DISCO_BALL_BE = BLOCK_ENTITIES.register(
+            "disco_ball_be",() -> BlockEntityType.Builder.of(DiscoBallBE::new,
+                            ThingamajigsBlocks.DISCO_BALL.get())
+                    .build(null));
+
     public static void register(IEventBus eventBus){
         BLOCK_ENTITIES.register(eventBus);
     }

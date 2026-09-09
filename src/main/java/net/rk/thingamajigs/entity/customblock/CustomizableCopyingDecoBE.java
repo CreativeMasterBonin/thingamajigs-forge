@@ -147,11 +147,11 @@ public class CustomizableCopyingDecoBE extends BlockEntity {
     public AABB getRenderBoundingBox() {
         BlockPos bp = this.getBlockPos();
         return new AABB(
-                bp.getX() - (float)this.modelScale.x,
-                bp.getY() - (float)this.modelScale.y,
-                bp.getZ() - (float)this.modelScale.z,
-                bp.getX() + (float)this.modelScale.x,
-                bp.getY() + (float)this.modelScale.y,
-                bp.getZ() + (float)this.modelScale.z);
+                bp.getX() - 32.0f,
+                bp.getY() - (3.5f + (float)this.modelScale.y),
+                bp.getZ() - 32.0f,
+                bp.getX() + 32.0f,
+                bp.getY() + (3.5f + (float)this.modelScale.y),
+                bp.getZ() + 32.0f);
     }
 }

@@ -384,6 +384,8 @@ public class ThingamajigsClient {
             BlockEntityRenderers.register(ThingamajigsBlockEntities.CEILING_FAN_BE.get(),CeilingFanBERenderer::new);
             BlockEntityRenderers.register(ThingamajigsBlockEntities.STOP_GATE_BE.get(),StopGateBERenderer::new);
             BlockEntityRenderers.register(ThingamajigsBlockEntities.CUSTOMIZABLE_COPYING_DECO_BE.get(),CustomizableCopyingDecoRenderer::new);
+            // 1.9.1
+            BlockEntityRenderers.register(ThingamajigsBlockEntities.DISCO_BALL_BE.get(),DiscoBallBERenderer::new);
         }
         catch(Exception blockEntityRendererError){
             logErrorInternal(blockEntityRendererError);
