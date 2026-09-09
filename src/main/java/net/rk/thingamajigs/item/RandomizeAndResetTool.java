@@ -104,9 +104,15 @@ public class RandomizeAndResetTool extends Item {
                     boolean allRotationZero = customDeco.modelRotations.x == 0.0D && customDeco.modelRotations.y == 0.0D && customDeco.modelRotations.z == 0.0D;
                     boolean allScaleZero = customDeco.modelScale.x == 0.0D && customDeco.modelScale.y == 0.0D && customDeco.modelScale.z == 0.0D;
 
-                    if(!allOffsetZero && !allRotationZero && !allScaleZero){
-                        player.playSound(SoundEvents.ILLUSIONER_CAST_SPELL,0.4f,ThingamajigsCalcStuffs.nextFloatBetweenInclusive(0.97f,1.1f));
-                        return InteractionResult.SUCCESS;
+                    if(handStack.hasTag()) {
+                        if (handStack.getTag().contains(ROTATE_WHEN_RESETTING_TAG_NAME)) {
+                            if(handStack.getTag().getBoolean(ROTATE_WHEN_RESETTING_TAG_NAME)){
+                                if(!allOffsetZero && !allRotationZero && !allScaleZero){
+                                    player.playSound(SoundEvents.ILLUSIONER_CAST_SPELL,0.4f,ThingamajigsCalcStuffs.nextFloatBetweenInclusive(0.97f,1.1f));
+                                    return InteractionResult.SUCCESS;
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -123,16 +129,14 @@ public class RandomizeAndResetTool extends Item {
                     boolean allRotationZero = customDeco.modelRotations.x == 0.0D && customDeco.modelRotations.y == 0.0D && customDeco.modelRotations.z == 0.0D;
                     boolean allScaleZero = customDeco.modelScale.x == 0.0D && customDeco.modelScale.y == 0.0D && customDeco.modelScale.z == 0.0D;
 
-                    if(!allOffsetZero && !allRotationZero && !allScaleZero){
-                        // reset values to their defaults
-                        customDeco.modelOffsets = new Vec3(0D,0D,0D);
-                        customDeco.modelScale = new Vec3(1D,1D,1D); // must be 1 for all or the model won't be visible
-                        customDeco.modelRotations = new Vec3(0D,0D,0D);
+                    if(handStack.hasTag()){
+                        if(handStack.getTag().contains(ROTATE_WHEN_RESETTING_TAG_NAME)){
+                            if(handStack.getTag().getBoolean(ROTATE_WHEN_RESETTING_TAG_NAME)){
+                                if(!allOffsetZero && !allRotationZero && !allScaleZero){
+                                    customDeco.modelOffsets = new Vec3(0D,0D,0D);
+                                    customDeco.modelScale = new Vec3(1D,1D,1D); // must be 1 for all or the model won't be visible
+                                    customDeco.modelRotations = new Vec3(0D,0D,0D);
 
-                        // rotate towards player if item has been set to do so
-                        if(handStack.hasTag()){
-                            if(handStack.getTag().contains(ROTATE_WHEN_RESETTING_TAG_NAME)){
-                                if(handStack.getTag().getBoolean(ROTATE_WHEN_RESETTING_TAG_NAME)){
                                     float rotationToTurn = player.getDirection().getOpposite().toYRot();
                                     if(rotationToTurn == 180.0f){
                                         rotationToTurn = 0.0f;
@@ -141,20 +145,19 @@ public class RandomizeAndResetTool extends Item {
                                         rotationToTurn = 180.0f;
                                     }
                                     customDeco.modelRotations = new Vec3(0D,rotationToTurn,0D);
+
+                                    customDeco.updateBlock();
+
+                                    if(level instanceof ServerLevel serverLevel){
+                                        serverLevel.sendParticles(ParticleTypes.CAMPFIRE_COSY_SMOKE,clickedPos.getX() + 1.5D,clickedPos.getY() + 1.5,clickedPos.getZ() + 1.5D,
+                                                10,
+                                                0D,0D,0D,2);
+                                    }
+                                    return InteractionResult.SUCCESS;
                                 }
                             }
                         }
-                        // update the custom deco
-
-                        customDeco.updateBlock();
-                        // show particles for feedback reasons
-                        if(level instanceof ServerLevel serverLevel){
-                            serverLevel.sendParticles(ParticleTypes.CAMPFIRE_COSY_SMOKE,clickedPos.getX() + 1.5D,clickedPos.getY() + 1.5,clickedPos.getZ() + 1.5D,
-                                    10,
-                                    0D,0D,0D,2);
-                        }
                     }
-                    return InteractionResult.SUCCESS;
                 }
             }
             else{
